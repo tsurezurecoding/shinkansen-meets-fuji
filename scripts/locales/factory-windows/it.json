@@ -1,0 +1,291 @@
+{
+  "ui": {
+    "title": "Fabbriche dal finestrino",
+    "description": "Caffè, dolci e cosmetici: scopri le fabbriche visibili dal Tōkaidō Shinkansen, con fotografie e indicazioni per i posti A ed E.",
+    "route": "Tōkaidō Shinkansen · Tokyo–Shin-Osaka",
+    "deck": "Caffè, dolci, cosmetici. Accanto ai binari si trovano i luoghi dove nascono tanti prodotti di ogni giorno.",
+    "browse": "Esplora le fotografie",
+    "direction": "Direzione di viaggio",
+    "down": "Verso Shin-Osaka",
+    "up": "Verso Tokyo",
+    "seat": "Lato del posto",
+    "both": "Entrambi i lati",
+    "sideA": "Posti A",
+    "sideE": "Posti E",
+    "left": "A sinistra nel senso di marcia",
+    "right": "A destra nel senso di marcia",
+    "count": "{n} luoghi",
+    "map": "Mappa",
+    "sources": "Fonti",
+    "related": "Da scoprire",
+    "openPhoto": "Ingrandisci la foto di {name}",
+    "nearby": "Nei dintorni",
+    "candidates": "Luoghi ancora da verificare",
+    "candidateIntro": "Anche questi luoghi hanno una storia da raccontare. Stiamo verificando che cosa si riesce a distinguere oggi dal treno e raccogliendo fotografie.",
+    "grounds": "{side} · Lato dedotto dalla posizione",
+    "seatsTitle": "Da quale finestrino guardare?",
+    "seatsText": "In classe standard, viaggiando verso Shin-Osaka i posti A sono a sinistra e i posti E a destra. Verso Tokyo, i lati si invertono. Nelle carrozze Green Car, il lato D corrisponde al lato E della classe standard.",
+    "notesTitle": "Informazioni su questa guida",
+    "notesText": "Ruoli e prodotti delle singole strutture sono stati verificati su fonti consultate nel novembre 2026, prevalentemente in giapponese. All'interno dello stesso tratto, i luoghi non seguono necessariamente l'esatto ordine di passaggio. Le distanze sono indicative.",
+    "photoCredit": "Fotografie: michikusa. Treno nella foto di POLA: © Disney.",
+    "book": "Kei Kurihara, «東海道新幹線の車窓は、こんなに面白い！» (2016, originale giapponese)",
+    "cta": "Scopri altri panorami dallo Shinkansen",
+    "entry": "Scopri quali prodotti di ogni giorno nascono negli edifici che vedi dal treno.",
+    "comparisonTitle": "Un'insegna anche a Nagoya",
+    "comparisonAlt": "Grande insegna verde SINFONIA su un edificio bianco a Sasashima, Nagoya.",
+    "comparisonCaption": "Sul lato A, prima dell'arrivo a Nagoya verso Shin-Osaka e dopo la partenza verso Tokyo. Circa 800 m a sud della stazione, un annuncio lungo circa 70 m occupa la facciata del centro commerciale Market Square Sasashima, di proprietà dell'azienda.",
+    "observation": "Guarda la foto dell'aerogeneratore dal treno (2025)"
+  },
+  "groups": {
+    "fuji-area": ["Mishima", "Shin-Fuji", "Ai piedi del Fuji"],
+    "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu e il fiume Ōi"],
+    "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi e Hamamatsu"],
+    "toyohashi-area": ["Hamamatsu", "Toyohashi", "Takatsuka, lago Hamana e Toyohashi"],
+    "anjo-area": ["Mikawa-Anjo", "Nagoya", "Anjo"],
+    "nagoya-area": ["Nagoya", "Gifu-Hashima", "Kiyosu"],
+    "shiga-area": ["Maibara", "Kyoto", "Maibara, Hikone e Ōmi"],
+    "kyoto-area": ["Kyoto", "Shin-Osaka", "Yamazaki"]
+  },
+  "places": {
+    "ucc": {
+      "name": "UCC · Stabilimento di Fuji",
+      "hook": "Una torre del caffè e il monte Fuji",
+      "point": "Cerca la scritta «UCC COFFEE FUJI» sulla torre bianca. Dietro lo stabilimento che produce caffè tostato si staglia il monte Fuji.",
+      "alt": "Torre bianca con la scritta UCC COFFEE FUJI e il monte Fuji sullo sfondo.",
+      "related": "Altre vedute del monte Fuji dal treno",
+      "sources": ["UCC | Produzione di caffè nello stabilimento di Fuji"]
+    },
+    "fuji": {
+      "name": "Nippon Paper · Stabilimento di Fuji, area di Fuji",
+      "hook": "La carta di ogni giorno, ai piedi del Fuji",
+      "point": "Le ciminiere bianche e rosse e il monte Fuji aiutano a orientarsi. All'interno del sito, lo stabilimento Shin-Fuji di Crecia Kasuga produce carta igienica e altri prodotti in carta per la casa.",
+      "alt": "Ciminiere ed edifici dell'area di Fuji dello stabilimento Nippon Paper, davanti al monte Fuji.",
+      "related": "Scopri le cartiere di Fuji",
+      "sources": ["Nippon Paper | Stabilimento di Fuji", "Nippon Paper Crecia | Siti produttivi"]
+    },
+    "koa": {
+      "name": "Koa Kogyo · Stabilimento della sede centrale",
+      "hook": "Una ciminiera nei colori dell'arcobaleno",
+      "point": "Qui si produce, fra l'altro, carta per cartone ondulato. L'illuminazione «Nijien» nella foto è un allestimento limitato all'11–23 novembre 2026: non è una veduta abituale.",
+      "alt": "Ciminiera di Koa Kogyo illuminata di notte con i colori dell'arcobaleno.",
+      "related": "Scopri le cartiere di Fuji",
+      "sources": ["Koa Kogyo | Attività e prodotti", "Koa Kogyo | Periodo dell'illuminazione Nijien"]
+    },
+    "sapporo": {
+      "name": "Sapporo Beer · Stabilimento di Shizuoka",
+      "hook": "La birra di Shizuoka nasce a Yaizu",
+      "point": "File di serbatoi argentati e il simbolo della stella. Da questo stabilimento di Yaizu arriva anche Shizuoka Bakushu, la birra venduta soltanto nella prefettura di Shizuoka.",
+      "alt": "File di serbatoi argentati nello stabilimento Sapporo Beer di Shizuoka.",
+      "related": "Scopri lo stabilimento di Shizuoka",
+      "sources": ["Sapporo Beer | Shizuoka Bakushu e lo stabilimento di Shizuoka"]
+    },
+    "kibun": {
+      "name": "Kibun Foods · Stabilimento di Shizuoka",
+      "hook": "Il «＋S» sulla confezione di kamaboko",
+      "point": "Il marchio Kibun spunta sopra una fila di tetti rossi. Qui si producono kamaboko e chikuwa, specialità a base di pasta di pesce. Il codice di produzione «＋S» sulle confezioni indica proprio questo stabilimento.",
+      "alt": "Torre bianca con il simbolo rosso e la scritta 紀文 fra bassi tetti rossi.",
+      "location": "Accanto al ponte ferroviario sul fiume Ōi. Dal finestrino opposto si vedono gli edifici Ajinomoto.",
+      "sources": ["Kibun Foods | Codice dello stabilimento di Shizuoka", "Guida alle imprese di Shimada | Prodotti di Kibun Foods Shizuoka"]
+    },
+    "nestle": {
+      "name": "Nestlé Japan · Stabilimento di Shimada",
+      "hook": "Il nome del caffè, oltre il fiume",
+      "point": "Quando si apre l'ampio greto del fiume, guarda verso le montagne. Lo stabilimento di Shimada produce caffè e usa anche i fondi rimasti dopo l'estrazione come combustibile per le caldaie.",
+      "alt": "Edifici con le scritte Nestlé e NESCAFÉ oltre il greto del fiume Ōi, con le montagne alle spalle.",
+      "location": "Guarda a monte dal ponte sul fiume Ōi. Lo stabilimento dista circa 1,3 km dai binari.",
+      "sources": ["Nestlé Japan | Produzione di caffè a Shimada", "Nestlé Japan | Riutilizzo dei fondi di caffè a Shimada"]
+    },
+    "ajinomoto": {
+      "name": "Ajinomoto Foods e Ajinomoto Bakery",
+      "hook": "Porridge di riso e pane da infornare",
+      "point": "La scritta «Knorr» appare su una parete bianca dal profilo curvo. Allo stesso indirizzo si trovano lo stabilimento di Shizuoka di Ajinomoto Foods, che produce okayu, un porridge di riso, e la sede di Shimada di Ajinomoto Bakery, che prepara impasti surgelati per il pane.",
+      "alt": "La scritta Knorr e il simbolo rosso Ajinomoto su una parete bianca dal profilo curvo.",
+      "location": "Vicino al ponte sul fiume Ōi, dalla parte opposta dei binari rispetto alla torre rossa Kibun.",
+      "note": "La foto permette di riconoscere l'esterno del sito. Non è stato verificato quali linee produttive si trovino nei singoli edifici.",
+      "sources": ["Ajinomoto Foods | Prodotti dello stabilimento di Shizuoka", "Ajinomoto Bakery | Produzione di impasti surgelati per il pane", "Ajinomoto Bakery | Indirizzo della sede di Shimada"]
+    },
+    "shiseido": {
+      "name": "Shiseido · Stabilimento di Kakegawa",
+      "hook": "Cosmetici sotto un grande tetto bianco",
+      "point": "Un grande tetto bianco corre lungo i binari. Nello stabilimento si producono articoli per il trucco; la copertura protegge i prodotti da vento, pioggia e sole durante le operazioni di spedizione.",
+      "alt": "Lunga copertura bianca dello stabilimento Shiseido di Kakegawa, accanto ai binari dello Shinkansen.",
+      "sources": ["Shiseido | Stabilimento di Kakegawa", "Fujita | Progetto della linea S dello stabilimento di Kakegawa"]
+    },
+    "marudai": {
+      "name": "Marudai Food · Stabilimento di Shizuoka",
+      "hook": "«＋P»: un indizio che porta a Kakegawa",
+      "point": "Il marchio rosso Marudai Food spunta sopra gli alberi, con una fila di finestre tonde sotto. Nel 2023 l'azienda ha presentato i suoi würstel Long Wiener prodotti qui. Il codice dello stabilimento sulle confezioni è «＋P».",
+      "alt": "Grande marchio rosso Marudai Food su un edificio grigio con finestre tonde.",
+      "location": "Circa 4 km da Kakegawa verso Hamamatsu. In direzione Shin-Osaka, dopo Shiseido.",
+      "related": "Altre fabbriche nella zona di Fukuroi",
+      "sources": ["Marudai Food | Stabilimenti e codici di produzione (aggiornamento di luglio 2026)", "Marudai Food | Long Wiener prodotti a Shizuoka (2023)"]
+    },
+    "pola": {
+      "name": "POLA Chemical Industries · Stabilimento di Fukuroi",
+      "hook": "Il tuo treno riflesso nel vetro",
+      "point": "Osserva la lunga facciata vetrata di questa fabbrica di cosmetici. Con la luce giusta, potresti vedere riflesso proprio lo Shinkansen su cui stai viaggiando.",
+      "alt": "Uno Shinkansen riflesso nella lunga facciata vetrata dello stabilimento POLA Chemical Industries di Fukuroi.",
+      "related": "Guarda i riflessi dal finestrino",
+      "sources": ["POLA Chemical Industries | Iniziative dello stabilimento di Fukuroi"]
+    },
+    "pocari": {
+      "name": "Otsuka Pharmaceutical · Stabilimento di Fukuroi",
+      "hook": "La parete blu di Pocari Sweat",
+      "point": "Sul verde del prato risalta una grande parete blu con «POCARI SWEAT». Basta uno sguardo per riconoscere lo stabilimento che produce questa e altre bevande.",
+      "alt": "Parete blu POCARI SWEAT oltre il prato dello stabilimento Otsuka Pharmaceutical di Fukuroi.",
+      "related": "Scopri la fabbrica di Pocari Sweat",
+      "sources": ["Otsuka Pharmaceutical | Prodotti dello stabilimento di Fukuroi"]
+    },
+    "nitto": {
+      "name": "Nitto Kogyo · Stabilimento di Kakegawa",
+      "hook": "Scatole che proteggono l'elettricità",
+      "point": "Cerca «NITO 日東工業» sulla parete bianca. I piccoli armadi prodotti qui sono involucri che ospitano e proteggono apparecchiature elettriche.",
+      "alt": "La grande scritta NITO 日東工業 sulla parete bianca dello stabilimento.",
+      "sources": ["Nitto Kogyo | Principali prodotti dello stabilimento di Kakegawa"]
+    },
+    "unicharm": {
+      "name": "Unicharm Products · Stabilimento di Shizuoka",
+      "hook": "Il marchio compare anche in giardino",
+      "point": "Segui le onde gialle e arancioni sulla parete bianca: anche nel giardino appare un grande marchio. Qui si producono pannolini per bambini e adulti, prodotti per l'igiene mestruale e panni per la pulizia, fra altri articoli.",
+      "alt": "Onde gialle e arancioni sulla parete bianca e un grande marchio blu e giallo nel giardino antistante.",
+      "location": "Circa 4 km da Kakegawa verso Hamamatsu. In direzione Shin-Osaka, dopo Nitto Kogyo.",
+      "sources": ["Unicharm Products | Stabilimento di Shizuoka", "Comune di Kakegawa | Prodotti dello stabilimento di Shizuoka (2026)"]
+    },
+    "house": {
+      "name": "House Foods · Stabilimento di Shizuoka",
+      "hook": "Dal curry agli snack",
+      "point": "Cerca la torre con la scritta «ハウス食品». In questo stabilimento di Fukuroi si producono Vermont Curry, Hokkaido Stew e gli snack di mais Tongari Corn.",
+      "alt": "Torre bianca House Foods, pannelli solari sul prato ed edifici dello stabilimento sullo sfondo.",
+      "related": "Guarda la vicina insegna di Shippei",
+      "sources": ["House Foods | Stabilimento di Shizuoka", "House Foods Group | Prodotti dello stabilimento di Shizuoka (2024)"]
+    },
+    "yamaha": {
+      "name": "Yamaha Motor · Stabilimento di Fukuroi Minami",
+      "hook": "Dai binari ai mari del mondo",
+      "point": "Lettere rosse YAMAHA e una facciata di lamelle bianche verticali. Qui si fabbricano motori fuoribordo, quelli montati sulla poppa delle imbarcazioni.",
+      "alt": "Lamelle bianche verticali e scritta rossa YAMAHA nello stabilimento di Fukuroi Minami.",
+      "sources": ["Yamaha Motor | Siti produttivi dei motori fuoribordo", "Takenaka | Architettura dello stabilimento di Fukuroi Minami"]
+    },
+    "teibow": {
+      "name": "Teibow · Sede e stabilimento",
+      "hook": "Dai cappelli alle punte dei pennarelli",
+      "point": "L'insegna verde «TEIBOW» indica la sede e lo stabilimento di un'azienda che dalla lavorazione del feltro per cappelli è passata alla produzione di punte per pennarelli.",
+      "alt": "Grande scritta verde TEIBOW sul tetto della fabbrica e insegna verticale テイボー.",
+      "note": "Non è stato verificato quali specifiche tipologie di prodotto siano attualmente fabbricate in questo stabilimento.",
+      "sources": ["Teibow | Sede, stabilimento, attività e storia"]
+    },
+    "suzuki-takatsuka": {
+      "name": "Suzuki · Sede centrale di Takatsuka",
+      "hook": "Una S rossa sopra i tetti",
+      "point": "Oltre i tetti delle case spunta la S rossa che forse riconosci dalle automobili. È la sede di Suzuki. La produzione dei motori per motociclette, un tempo svolta a Takatsuka, nel 2018 è stata trasferita a Miyakoda, sempre a Hamamatsu.",
+      "alt": "Edifici della sede Suzuki oltre le case di Hamamatsu, con una S rossa e SUZUKI MOTOR CORP. sul tetto.",
+      "location": "Tra la stazione di Hamamatsu e il lago Hamana, vicino alla stazione JR Takatsuka. Verso Shin-Osaka si vede prima di attraversare il lago; verso Tokyo, dopo.",
+      "related": "Guarda anche il lago Hamana dal treno",
+      "sources": ["Suzuki | Attuali funzioni della sede di Takatsuka", "Suzuki | Fine e trasferimento della produzione dell'ex stabilimento di Takatsuka", "Suzuki | Attività di Takatsuka fino a luglio 2018 (rapporto 2019)"]
+    },
+    "sinfonia": {
+      "name": "Sinfonia Technology · Stabilimento di Toyohashi",
+      "hook": "Trasportare il silicio con delicatezza",
+      "point": "Oltre il prato, una lunga parete riporta «豊橋製作所» e «創業1917年»: stabilimento di Toyohashi e fondato nel 1917. È uno dei principali siti produttivi di sistemi che spostano sottili dischi di silicio senza contaminarli durante la fabbricazione dei semiconduttori, come quelli degli smartphone.",
+      "alt": "Lungo edificio industriale oltre il prato, con il nome dell'azienda, 豊橋製作所 e 創業1917年 sulla parete.",
+      "location": "A Mitsuya-cho, Toyohashi, dal lato della stazione di Futagawa rivolto verso Tokyo. Verso Shin-Osaka, prima dell'arrivo a Toyohashi; verso Tokyo, dopo la partenza.",
+      "note": "Lo stesso nome si vede anche circa 800 m a sud della stazione di Nagoya. Lì si tratta di un annuncio lungo circa 70 m sulla facciata del centro commerciale Market Square Sasashima.",
+      "related": "Guarda la vicina roccia Tateiwa",
+      "sources": ["Sinfonia | Sistemi di trasporto per semiconduttori e stabilimento di Toyohashi", "Sinfonia | Lo stabilimento di Toyohashi e lo Shinkansen", "Sogo Hodo | L'insegna di circa 70 m a Sasashima, Nagoya", "Chuden Clavis | Annuncio sulla facciata est di Sasashima"]
+    },
+    "yamazaki-pan": {
+      "name": "Yamazaki Baking · Stabilimento di Anjo",
+      "hook": "Il pane del mattino nasce lungo i binari",
+      "point": "Il simbolo del sole e la scritta rossa «ヤマザキ» passano proprio accanto al treno. Vicino a Mikawa-Anjo, questo stabilimento produce pane e dolci giapponesi e occidentali.",
+      "alt": "Grande insegna rossa Yamazaki nello stabilimento di Anjo, con veicoli per le consegne davanti.",
+      "sources": ["Yamazaki Baking | Produzione e offerte di lavoro dello stabilimento di Anjo"]
+    },
+    "nichiban": {
+      "name": "Nichiban · Stabilimento di Anjo",
+      "hook": "Un'insegna nota, un ruolo che cambia",
+      "point": "La pubblicità rossa, bianca e blu di «セロテープ» aiuta a riconoscerlo. Questo stabilimento di nastri adesivi sta ampliando il proprio ruolo anche nei prodotti per uso sanitario.",
+      "alt": "Grande pubblicità di Cellotape sulla parete rossa, bianca e blu dello stabilimento Nichiban di Anjo.",
+      "note": "Le informazioni sugli impianti del 2026 indicano nastri adesivi per uso sanitario, in carta e in plastica. Una spiegazione ufficiale del 2025 descrive il concentramento della produzione legata a Cellotape a Saitama. L'insegna, da sola, non prova che Cellotape sia ancora prodotto ad Anjo.",
+      "sources": ["Nichiban | Relazione finanziaria annuale 2026 (pag. 37)", "Nichiban | Riorganizzazione della produzione (2025)", "Nichiban | Pubblicità sulla facciata visibile dal treno"]
+    },
+    "kirin": {
+      "name": "Kirin Beer · Stabilimento di Nagoya",
+      "hook": "Serbatoi come birre giganti",
+      "point": "Una fila di serbatoi dipinti d'argento e d'oro. Cerca lo stabilimento di Kiyosu, dove si produce Ichiban Shibori, nel tratto da Nagoya verso Gifu-Hashima.",
+      "alt": "Serbatoi argentati e dorati e insegna rossa KIRIN nello stabilimento di Nagoya.",
+      "related": "Scopri la fabbrica di Kirin",
+      "sources": ["Kirin | Ichiban Shibori e i suoi stabilimenti nel 2026"]
+    },
+    "yanmar": {
+      "name": "Yanmar · Istituto centrale di ricerca",
+      "hook": "Un grande orologio dopo Maibara",
+      "point": "Un edificio allungato con le lettere rosse «YANMAR» e un grande orologio. Questo istituto di Maibara studia tecnologie per ridurre i consumi dei motori ed energie alternative.",
+      "alt": "Scritta rossa YANMAR sulla facciata nella luce dell'alba e orologio digitale all'estremità destra.",
+      "location": "Verso Shin-Osaka, subito dopo Maibara: un viaggiatore lo ha osservato circa un minuto dopo la partenza su un Kodama. Verso Tokyo, prima dell'arrivo a Maibara.",
+      "related": "Guarda anche i treni sperimentali di Maibara",
+      "sources": ["Yanmar | Ricerca di base presso l'istituto di Maibara", "Yanmar | Sede dell'Istituto centrale di ricerca", "Diario di viaggio | L'istituto visto dal lato A di un Kodama"]
+    },
+    "fujitec": {
+      "name": "Fujitec · Big Wing",
+      "hook": "Qui nascono i viaggi in ascensore",
+      "point": "L'alta torre è dedicata alla ricerca sugli ascensori. Nello stesso sito si trova una fabbrica di modelli standard e su misura: ricerca e produzione condividono questo spazio.",
+      "alt": "Edificio con la scritta FUJITEC e, davanti, un'alta torre di ricerca per ascensori.",
+      "related": "Scopri la torre Fujitec",
+      "sources": ["Fujitec | Ricerca e produzione a Big Wing"]
+    },
+    "lotte": {
+      "name": "Lotte · Stabilimento di Shiga",
+      "hook": "Dolci e gelati su enormi insegne",
+      "point": "Una fila di grandi insegne di dolci e gelati. Qui si producono Yukimi Daifuku, Coolish e Toppo, fra gli altri; non tutti i prodotti raffigurati sulle insegne, però, sono fabbricati in questo stabilimento.",
+      "alt": "Grandi insegne di dolci e gelati sugli edifici dello stabilimento Lotte di Shiga.",
+      "related": "Scopri la fabbrica di Lotte",
+      "sources": ["Lotte | Prodotti dello stabilimento di Shiga"]
+    },
+    "nissin": {
+      "name": "Nissin Foods · Stabilimento di Shiga",
+      "hook": "Anche il riso istantaneo nasce qui",
+      "point": "A Ritto cerca l'edificio con la scritta «日清食品». Si produce anche riso istantaneo in coppetta, come Curry Meshi. È uno stabilimento diverso da quello di Kansai, sul lato E, dalla parte opposta dei binari.",
+      "alt": "Edificio dello stabilimento di Shiga, a Ritto, con il nome Nissin Foods.",
+      "sources": ["Nissin Foods | Linea di produzione del riso in coppetta a Shiga", "Nissin Foods | Elenco degli stabilimenti"]
+    },
+    "yamazaki": {
+      "name": "Suntory · Distilleria Yamazaki",
+      "hook": "La casa del whisky ai piedi del monte",
+      "point": "Cerca la scritta «山崎» oltre i tetti delle case e i cavi. In questa distilleria si produce il whisky di malto utilizzato per il single malt Yamazaki.",
+      "alt": "Scritte 山崎 e SINCE 1923 su edifici ai piedi della montagna.",
+      "related": "Scopri la distilleria Yamazaki",
+      "sources": ["Suntory | Yamazaki e la sua distilleria"]
+    }
+  },
+  "candidates": {
+    "bridgestone": {
+      "name": "Bridgestone · Stabilimento di Hikone",
+      "interval": "Maibara–Kyoto",
+      "location": "Circa 9 km da Maibara verso Kyoto, a Takamiya-cho, Hikone.",
+      "point": "Oltre i filari di alberi si producono pneumatici per automobili e autocarri leggeri. Un resoconto documenta le zelcove viste dal treno. Stiamo verificando se oggi si riconoscono anche gli edifici della fabbrica e il grande pneumatico esposto nel sito.",
+      "sources": ["Bridgestone | Prodotti dello stabilimento di Hikone", "Resoconto di una visita | Zelcove viste dal treno (2014)", "Comune di Hikone | Una risaia tra lo stabilimento e lo Shinkansen"]
+    },
+    "lion": {
+      "name": "Lion · Stabilimento di Odawara",
+      "interval": "Shin-Yokohama–Odawara",
+      "location": "Circa 5 km dalla stazione di Odawara in direzione Tokyo.",
+      "point": "Produce dentifrici come Systema e Clinica. Nel libro compare un edificio verde. Resta da verificare quanto se ne vede oggi oltre le barriere antirumore.",
+      "sources": ["Lion | Guida allo stabilimento", "Lion | Prodotti dello stabilimento di Odawara"]
+    },
+    "pg": {
+      "name": "P&G · Stabilimento di Shiga",
+      "interval": "Maibara–Kyoto",
+      "location": "A Kamiya, Yasu, circa 300 m dai binari sul lato del lago Biwa.",
+      "point": "Accanto ai campi si producono cosmetici SK-II. Stiamo verificando se dal finestrino si riconosce ancora lo stesso edificio fotografato nel libro.",
+      "sources": ["P&G | Stabilimento di Shiga e produzione di SK-II"]
+    },
+    "suzuki-kosai": {
+      "name": "Suzuki · Stabilimento di Kosai",
+      "interval": "Hamamatsu–Toyohashi",
+      "location": "A Shirasuka, Kosai, oltre il lago Hamana verso Toyohashi. In direzione Shin-Osaka, dopo il torii di Bentenjima; in direzione Tokyo, prima.",
+      "point": "Qui si fabbricano modelli come Alto e Spacia. Il punto di riferimento è l'aerogeneratore dello stabilimento, fotografato dal lato A del treno nel 2025.",
+      "note": "Il collegamento alla foto apre il diario di viaggio dell'autore. Lo stato di funzionamento dell'impianto eolico nel 2026 non è stato verificato.",
+      "sources": ["Suzuki | Modelli prodotti nello stabilimento di Kosai", "Suzuki | Aerogeneratore dello stabilimento di Kosai"]
+    }
+  }
+}

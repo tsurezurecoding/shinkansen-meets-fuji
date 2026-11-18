@@ -247,7 +247,35 @@ export function onlyRamenEnglishCardAddedToJapaneseDonburi(file, before, after) 
   return restored === before || onlyRamenAssetReferencesChanged(before, restored);
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+export function onlyFactoryRegistrationChanged(file, before, after) {
+  if (before === after) return false;
+  if (file === 'scripts/content-metadata.json') {
+    try {
+      const previous = JSON.parse(before), next = JSON.parse(after);
+      const routes = new Set(['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th']
+        .map(lang => (lang === 'ja' ? '' : lang + '/') + 'factories.html'));
+      const changed = [...new Set([...Object.keys(previous), ...Object.keys(next)])]
+        .filter(route => !isDeepStrictEqual(previous[route], next[route]));
+      return changed.length > 0 && changed.every(route => routes.has(route) && !Object.hasOwn(previous, route)
+        && next[route] && typeof next[route] === 'object' && !Array.isArray(next[route]));
+    } catch { return false; }
+  }
+  if (file === 'locales.js') return before.replace(
+    "['guide.html', 'omamori.html', 'donburi.html', 'ramen.html']",
+    "['guide.html', 'omamori.html', 'donburi.html', 'ramen.html', 'factories.html']") === after;
+  if (file === 'language-router.js') {
+    const addition = '    "/factories.html": "en/factories.html",\n';
+    return after.split(addition).length === 2 && after.replace(addition, '') === before;
+  }
+  if (file === 'scripts/generate-spot-pages.mjs') {
+    const addition = "    ...languages.map(lang=>({loc:`${siteRoot}/${lang==='ja'?'':lang+'/'}factories.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-18'})),\n";
+    return after.split(addition).length === 2 && after.replace(addition, '')
+      .replace('"castles", "guide", "factories", "zukan"', '"castles", "guide", "zukan"') === before;
+  }
+  return false;
+}
+
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, factoryRegistrationOnly = () => false, factoryAssetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const spotAdsenseFiles = new Set(['spot-adsense.js', 'spots/kakegawa.html', 'privacy.html', 'en/privacy.html',
@@ -319,6 +347,48 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       node('scripts/generate-utility-locales.mjs','--route','start.html','--check'),node('scripts/generate-site-runtime.mjs','--check'),
       node('scripts/validate-train-select.mjs'),node('scripts/validate-site-navigation.mjs','--route','start.html'),
       node('scripts/check-content-manifest.mjs')]
+  };
+  const factoryFiles = new Set(['scripts/generate-factories-page.mjs', 'scripts/factory-windows.json',
+    'scripts/shared/factory-windows-links.mjs', 'scripts/shared/story-window.mjs',
+    'factories.html', 'factories.css', 'factories.js', 'zukan.html', 'scripts/locales-contract.test.mjs',
+    'scripts/templates/site-source/zukan.html.tpl', 'scripts/generate-content-manifest.mjs',
+    'scripts/generate-spot-pages.mjs', 'scripts/validate-language-pages.mjs',
+    'scripts/content-metadata.json', 'locales.js', 'language-router.js', 'package.json',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
+    'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json', 'sitemap.xml']);
+  for (const lang of ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th']) {
+    factoryFiles.add(`scripts/locales/factory-windows/${lang}.json`);
+    factoryFiles.add(`shared-ui/${lang.toLowerCase()}.shell.js`);
+    for (const route of ['factories', 'zukan']) {
+      factoryFiles.add(`shared-ui/${lang.toLowerCase()}.rail-${route}.js`);
+      if (lang !== 'ja') factoryFiles.add(`${lang}/${route}.html`);
+    }
+  }
+  let factoryPackage = !files.includes('package.json');
+  if (!factoryPackage && packageBefore && packageAfter) {
+    const before = typeof packageBefore === 'string' ? JSON.parse(packageBefore) : structuredClone(packageBefore);
+    const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : structuredClone(packageAfter);
+    for (const key of ['build:pages', 'preflight:spots']) if (after.scripts?.[key])
+      after.scripts[key] = after.scripts[key].replace(/node scripts\/generate-factories-page\.mjs(?: --check)? && /, '');
+    factoryPackage = isDeepStrictEqual(before, after);
+  }
+  const factoryRegistrations = ['scripts/generate-spot-pages.mjs', 'locales.js', 'language-router.js', 'scripts/content-metadata.json'];
+  if (files.includes('scripts/generate-factories-page.mjs') && factoryPackage &&
+      factoryRegistrations.every(file => !files.includes(file) || factoryRegistrationOnly(file)) &&
+      changes.every(({path: file, status}) => ['A', 'M'].includes(status) && (factoryFiles.has(file) ||
+        /^images\/factories\/[^/]+\.webp$/.test(file) ||
+        status === 'M' && file.endsWith('.html') && factoryAssetVersionOnly(file)))) return {
+    scope: 'factory-windows', needsDependencies: true, pagesCandidate: true,
+    reason: 'Factory guide in ten editions, catalogue cards, scoped route and sitemap additions, photographs and Web distribution. Other HTML may change only the locale/router asset versions.',
+    commands: [...syntax,
+      node('--test', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'scripts/generate-spot-pages.test.mjs'),
+      node('scripts/generate-factories-page.mjs', '--check'),
+      node('scripts/generate-utility-locales.mjs', '--route', 'zukan.html', '--check'),
+      node('scripts/generate-site-chrome.mjs', '--check'), node('scripts/generate-site-runtime.mjs', '--check'),
+      node('--input-type=module', '-e', "import fs from 'node:fs'; import assert from 'node:assert/strict'; import {sitemapXML} from './scripts/generate-spot-pages.mjs'; assert.equal(fs.readFileSync('sitemap.xml','utf8'),sitemapXML());"),
+      node('scripts/validate-language-pages.mjs'),
+      node('scripts/validate-site-navigation.mjs', '--route', 'factories.html', '--route', 'zukan.html'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]
   };
   const ramenFiles = new Set(['scripts/generate-ramen-page.mjs', 'scripts/ramen-page.test.mjs',
     'scripts/shared/ramen-entry.mjs', 'ramen.html', 'ramen.css', 'data/ramen-photo-sources.json',
@@ -852,6 +922,9 @@ export function createReleasePlan(base) {
   const dataBefore = dataChanged ? git('show', `${base}:data.js`) : '';
   const dataAfter = dataChanged ? git('show', `${head}:data.js`) : '';
   const plan = chooseReleaseScope(changes, {
+    factoryRegistrationOnly: file => changes.some(c => c.path === file && c.status === 'M') &&
+      onlyFactoryRegistrationChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    factoryAssetVersionOnly: file => onlyDonburiAssetReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     ramenJapaneseDonburiOnly: changes.some(c => c.path === 'donburi.html' && c.status === 'M') && onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', git('show', `${base}:donburi.html`), git('show', `${head}:donburi.html`)),
     ramenMetadataOnly: changes.some(c => c.path === 'scripts/content-metadata.json' && c.status === 'M') && onlyRamenMetadataAdded(git('show', `${base}:scripts/content-metadata.json`), git('show', `${head}:scripts/content-metadata.json`)),
     ramenSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyRamenSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),

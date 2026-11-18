@@ -1,0 +1,291 @@
+{
+  "ui": {
+    "title": "Fabriken vor dem Zugfenster",
+    "description": "Kaffee, Süßes und Kosmetik: Entdecken Sie Fabriken am Tokaido-Shinkansen mit Fotos und Hinweisen zur Fensterseite A oder E.",
+    "route": "Tokaido-Shinkansen · Tokyo–Shin-Osaka",
+    "deck": "Kaffee, Süßigkeiten, Kosmetik. Gleich neben den Gleisen entstehen viele Dinge des Alltags.",
+    "browse": "Fotos ansehen",
+    "direction": "Fahrtrichtung",
+    "down": "Richtung Shin-Osaka",
+    "up": "Richtung Tokyo",
+    "seat": "Fensterseite",
+    "both": "Beide Seiten",
+    "sideA": "A-Seite",
+    "sideE": "E-Seite",
+    "left": "Links in Fahrtrichtung",
+    "right": "Rechts in Fahrtrichtung",
+    "count": "Orte: {n}",
+    "map": "Karte",
+    "sources": "Quellen",
+    "related": "Mehr erfahren",
+    "openPhoto": "Foto vergrößern: {name}",
+    "nearby": "Weitere Orte auf diesem Abschnitt",
+    "candidates": "Diese Ausblicke prüfen wir als Nächstes",
+    "candidateIntro": "Auf der Karte liegen diese Fabriken dicht an den Gleisen. Was sich heute vom Zug aus erkennen lässt, prüfen wir noch.",
+    "grounds": "Gelände auf der {side}",
+    "seatsTitle": "Auf welcher Seite schauen?",
+    "seatsText": "A und E sind die Fensterplätze in normalen Wagen mit 3+2 Sitzplätzen pro Reihe. Richtung Shin-Osaka liegt A links und E rechts; Richtung Tokyo liegt A rechts und E links. Im Green Car entspricht der Fensterplatz D der E-Seite im normalen Wagen. Die Buchstaben bleiben auf derselben Seite der Strecke, nur links und rechts in Fahrtrichtung wechseln.",
+    "notesTitle": "Zum Guide und seinen Quellen",
+    "notesText": "Aufgaben und Produkte wurden im November 2026 anhand von Unterlagen zum jeweiligen Standort geprüft, darunter offizielle Firmenangaben. Nicht jedes Produkt auf einer Werbetafel wird dort hergestellt. Vorgestellt werden auch Suzukis Hauptsitz auf dem früheren Werksgelände in Takatsuka und Yanmars Forschungszentrum. Die Orte sind nach Bahnhofsabschnitten gruppiert; innerhalb eines Abschnitts entspricht die Anordnung nicht genau der Reihenfolge der Vorbeifahrt. Entfernungen sind Näherungswerte. Zugtempo und Licht verändern den Ausblick. Der Zusatz „Japanisch“ bezeichnet die Sprache der Quelle.",
+    "photoCredit": "Aufnahmen aus dem Zug: michikusa. Gestaltung des Zuges auf dem POLA-Foto: © Disney.",
+    "book": "栗原景『東海道新幹線の車窓は、こんなに面白い！』 — Toyo Keizai, 2016 (japanische Originalausgabe)",
+    "cta": "Zug wählen und Ausblicke entdecken",
+    "comparisonTitle": "Auch das Schild in Nagoya ansehen",
+    "comparisonCaption": "Etwa 800 m südlich des Bahnhofs Nagoya verläuft eine rund 70 m lange Werbung an der Wand des Einkaufszentrums Market Square Sasashima. A-Seite: Richtung Shin-Osaka links vor der Ankunft in Nagoya, Richtung Tokyo rechts nach der Abfahrt.",
+    "observation": "Windräder vom Zug aus fotografiert (2025)",
+    "comparisonAlt": "Der weiße Schriftzug SINFONIA auf einem grünen Band an einem weißen Geschäftsgebäude in Sasashima, Nagoya.",
+    "entry": "Entdecken Sie vom Shinkansen aus, wo Getränke, Süßigkeiten und Kosmetik für den Alltag entstehen."
+  },
+  "groups": {
+    "fuji-area": ["Mishima", "Shin-Fuji", "Am Fuß des Fuji"],
+    "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu und der Fluss Oi"],
+    "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi und Hamamatsu"],
+    "toyohashi-area": ["Hamamatsu", "Toyohashi", "Takatsuka, Hamana-See und Toyohashi"],
+    "anjo-area": ["Mikawa-Anjo", "Nagoya", "Anjo"],
+    "nagoya-area": ["Nagoya", "Gifu-Hashima", "Kiyosu"],
+    "shiga-area": ["Maibara", "Kyoto", "Maibara, Hikone und Omi"],
+    "kyoto-area": ["Kyoto", "Shin-Osaka", "Yamazaki"]
+  },
+  "places": {
+    "ucc": {
+      "name": "UCC, Werk Fuji",
+      "hook": "Ein Kaffeeturm vor dem Fuji",
+      "point": "Achten Sie auf „UCC COFFEE FUJI“ am weißen Turm. Hinter diesem Werk für Röstkaffee erhebt sich der Fuji.",
+      "alt": "Ein weißer Turm mit der Aufschrift UCC COFFEE FUJI und der Fuji im Hintergrund.",
+      "related": "Weitere Blicke auf den Fuji vom Zug aus",
+      "sources": ["UCC: Kaffeeherstellung im Werk Fuji (Japanisch)"]
+    },
+    "fuji": {
+      "name": "Nippon Paper, Werk Fuji, Bereich Fuji",
+      "hook": "Papier für den Alltag am Fuß des Fuji",
+      "point": "Rot-weiße Schornsteine vor dem Fuji weisen den Weg. Auf dem Gelände liegt das Werk Shin-Fuji von Crecia-Kasuga, das Haushaltspapier wie Toilettenpapier herstellt.",
+      "alt": "Schornsteine und Gebäude im Bereich Fuji des Nippon-Paper-Werks vor dem Fuji.",
+      "related": "Fujis Papierfabriken entdecken",
+      "sources": ["Nippon Paper: Werk Fuji (Japanisch)", "Nippon Paper Crecia: Produktionsstandorte (Japanisch)"]
+    },
+    "koa": {
+      "name": "Koa Kogyo, Werk am Hauptsitz",
+      "hook": "Regenbogenlicht über der Fabrik",
+      "point": "Hier entsteht unter anderem Papier für Wellpappe. Das Regenbogenlicht auf dem Foto gehört zu einer befristeten Inszenierung vom 11. bis 23. November 2026 und ist kein alltäglicher Anblick.",
+      "alt": "Ein Schornstein von Koa Kogyo leuchtet nachts in Regenbogenfarben.",
+      "related": "Fujis Papierfabriken entdecken",
+      "sources": ["Koa Kogyo: Geschäftsfelder und Produkte (Japanisch)", "Koa Kogyo: Zeitraum der Regenbogenbeleuchtung (Japanisch)"]
+    },
+    "sapporo": {
+      "name": "Sapporo Beer, Brauerei Shizuoka",
+      "hook": "Shizuokas Bier kommt aus Yaizu",
+      "point": "Silberne Tanks in langen Reihen und ein Stern als Markenzeichen: Auch Shizuoka Bakushu, ein nur in Shizuoka verkauftes Bier, kommt aus dieser Brauerei in Yaizu.",
+      "alt": "Reihen silberner Tanks in der Brauerei Shizuoka von Sapporo Beer.",
+      "related": "Mehr über die Brauerei Shizuoka",
+      "sources": ["Sapporo Beer: Shizuoka Bakushu und die Brauerei Shizuoka (Japanisch)"]
+    },
+    "kibun": {
+      "name": "Kibun Foods, Werk Shizuoka",
+      "hook": "Das „+S“ auf der Fischkuchenpackung",
+      "point": "Über einer Reihe roter Dächer erscheint das Kibun-Zeichen. Das Werk stellt Kamaboko und Chikuwa her, japanische Fischkuchen. Der Herstellerstandort-Code „+S“ auf den Produkten verweist auf diesen Ort.",
+      "alt": "Ein weißer Turm mit Kibuns rotem Zeichen und Namen ragt zwischen flachen roten Dächern auf.",
+      "location": "Nahe der Eisenbahnbrücke über den Oi. Ajinomotos Gebäude liegen auf der anderen Seite des Zuges.",
+      "sources": ["Kibun Foods: Herstellerstandort-Code des Werks Shizuoka (Japanisch)", "Firmenführer der Stadt Shimada: Produkte des Kibun-Werks Shizuoka (Japanisch)"]
+    },
+    "nestle": {
+      "name": "Nestlé Japan, Werk Shimada",
+      "hook": "Kaffeenamen jenseits des Flusses",
+      "point": "Wenn sich das breite Flussbett öffnet, schauen Sie zum Fuß der Hügel. Das Werk Shimada produziert Kaffee und nutzt den Kaffeesatz nach der Extraktion auch als Brennstoff für seine Kessel.",
+      "alt": "Gebäude mit den Schriftzügen Nestlé und NESCAFÉ vor Hügeln, jenseits des breiten Flussbetts des Oi.",
+      "location": "Von der Oi-Brücke flussaufwärts schauen. Das Werk liegt etwa 1,3 km von den Gleisen entfernt.",
+      "sources": ["Nestlé Japan: Kaffeeherstellung im Werk Shimada (Japanisch)", "Nestlé Japan: Nutzung von Kaffeesatz in Shimada (Japanisch)"]
+    },
+    "ajinomoto": {
+      "name": "Ajinomoto Food Manufacturing und Ajinomoto Bakery",
+      "hook": "Reisbrei und Brot vor dem Backen",
+      "point": "Der Name Knorr steht auf einer gerundeten weißen Wand. An dieser Adresse liegen Ajinomoto Food Manufacturings Werk Shizuoka für Reisbrei und Ajinomoto Bakerys Standort Shimada für tiefgekühlten Brotteig.",
+      "alt": "Der Name Knorr und das rote Ajinomoto-Zeichen auf einer gerundeten weißen Wand.",
+      "location": "Nahe der Oi-Eisenbahnbrücke, auf der gegenüberliegenden Gleisseite vom rot markierten Kibun-Turm.",
+      "note": "Das Foto erlaubt die Zuordnung des äußeren Werksgeländes. Welche Produktionslinien in welchen Gebäuden liegen, ist nicht bestätigt.",
+      "sources": ["Ajinomoto Food Manufacturing: Produkte des Werks Shizuoka (Japanisch)", "Ajinomoto Bakery: Herstellung von tiefgekühltem Brotteig (Japanisch)", "Ajinomoto Bakery: Adresse des Standorts Shimada (Japanisch)"]
+    },
+    "shiseido": {
+      "name": "Shiseido, Werk Kakegawa",
+      "hook": "Make-up unter einem langen weißen Dach",
+      "point": "Ein großes weißes Dach zieht sich an den Gleisen entlang. Das Werk stellt Make-up her; beim Versand schützt das Dach die Produkte vor Wind, Regen und Sonne.",
+      "alt": "Das lange weiße Dach des Shiseido-Werks Kakegawa neben den Shinkansen-Gleisen.",
+      "sources": ["Shiseido: Werk Kakegawa (Japanisch)", "Fujita: Entwurf der S-Linie im Werk Kakegawa (Japanisch)"]
+    },
+    "marudai": {
+      "name": "Marudai Food, Werk Shizuoka",
+      "hook": "Ein „+P“ führt nach Kakegawa",
+      "point": "Über den Bäumen erscheint das rote Marudai-Food-Zeichen, darunter eine Reihe runder Fenster. 2023 stellte das Unternehmen hier gefertigte lange Wiener Würstchen vor. Auf Verpackungen trägt dieser Standort den Code „+P“.",
+      "alt": "Ein großes rotes Marudai-Food-Zeichen auf einem grauen Gebäude mit runden Fenstern.",
+      "location": "Etwa 4 km vom Bahnhof Kakegawa Richtung Hamamatsu. Richtung Shin-Osaka nach Shiseido.",
+      "related": "Weitere Fabriken rund um Fukuroi",
+      "sources": ["Marudai Food: Werke und Herstellerstandort-Codes, Stand Juli 2026 (Japanisch)", "Marudai Food: lange Wiener Würstchen aus dem Werk Shizuoka, 2023 (Japanisch)"]
+    },
+    "pola": {
+      "name": "POLA Chemical Industries, Werk Fukuroi",
+      "hook": "Der eigene Zug im Spiegelbild",
+      "point": "Beobachten Sie die lange Glasfront dieser Kosmetikfabrik. Bei passendem Licht spiegelt sich darin der Shinkansen, in dem Sie gerade sitzen.",
+      "alt": "Ein Shinkansen spiegelt sich in der langen Glasfront des POLA-Chemical-Industries-Werks Fukuroi.",
+      "related": "Spiegelungen vor dem Zugfenster",
+      "sources": ["POLA Chemical Industries: Initiativen im Werk Fukuroi (Japanisch)"]
+    },
+    "pocari": {
+      "name": "Otsuka Pharmaceutical, Werk Fukuroi",
+      "hook": "Pocari Sweat auf einer blauen Wand",
+      "point": "Hinter grünem Rasen steht eine große blaue POCARI-SWEAT-Wand. So ist das Werk leicht zu erkennen: Hier entstehen Getränke, darunter Pocari Sweat.",
+      "alt": "Eine blaue Wand mit POCARI SWEAT hinter dem Rasen des Otsuka-Pharmaceutical-Werks Fukuroi.",
+      "related": "Mehr über das Pocari-Sweat-Werk",
+      "sources": ["Otsuka Pharmaceutical: Produkte des Werks Fukuroi (Japanisch)"]
+    },
+    "nitto": {
+      "name": "Nitto Kogyo, Werk Kakegawa",
+      "hook": "Schutzkästen für die Elektrik",
+      "point": "Achten Sie auf NITO und den japanischen Firmennamen an der weißen Wand. Die hier gefertigten kleinen Gehäuse nehmen elektrische Anlagen auf und schützen sie.",
+      "alt": "Große NITO-Buchstaben und der japanische Name Nitto Kogyo an einer weißen Fabrikwand.",
+      "sources": ["Nitto Kogyo: Hauptprodukte des Werks Kakegawa (Japanisch)"]
+    },
+    "unicharm": {
+      "name": "Unicharm Products, Werk Shizuoka",
+      "hook": "Das Markenzeichen steht auch im Garten",
+      "point": "Folgen Sie den gelben und orangefarbenen Wellen an der weißen Wand. Auch im Garten erscheint ein großes Markenzeichen. Hier entstehen unter anderem Windeln für Babys und Erwachsene, Menstruationsprodukte und Reinigungstücher.",
+      "alt": "Gelbe und orangefarbene Wellen auf einer weißen Wand, davor ein großes blau-gelbes Markenzeichen im Garten.",
+      "location": "Etwa 4 km vom Bahnhof Kakegawa Richtung Hamamatsu. Richtung Shin-Osaka nach Nitto Kogyo.",
+      "sources": ["Unicharm Products: Werk Shizuoka (Japanisch)", "Stadt Kakegawa: Produkte des Werks Shizuoka, Unterlagen von 2026 (Japanisch)"]
+    },
+    "house": {
+      "name": "House Foods, Werk Shizuoka",
+      "hook": "Curry, Eintopf und Knabbereien",
+      "point": "Suchen Sie den Turm mit dem Namen House Foods. Dieses Werk in Fukuroi produziert Vermont Curry, Hokkaido Stew und Tongari-Corn-Snacks.",
+      "alt": "Der weiße Schildturm von House Foods, Solarmodule auf dem Rasen und Fabrikgebäude dahinter.",
+      "related": "Das nahe Schild mit Maskottchen Shippei ansehen",
+      "sources": ["House Foods: Werk Shizuoka (Japanisch)", "House Foods Group: Produkte des Werks Shizuoka, 2024 (Japanisch)"]
+    },
+    "yamaha": {
+      "name": "Yamaha Motor, Werk Fukuroi Süd",
+      "hook": "Von den Gleisen auf die Weltmeere",
+      "point": "Rote YAMAHA-Buchstaben und weiße senkrechte Lamellen sind die Erkennungszeichen. Hier werden Außenbordmotoren gebaut, die am Heck eines Bootes sitzen.",
+      "alt": "Weiße senkrechte Lamellen und rote YAMAHA-Buchstaben am Yamaha-Motor-Werk Fukuroi Süd.",
+      "sources": ["Yamaha Motor: Produktionsstandorte für Außenbordmotoren (Japanisch)", "Takenaka: Architektur des Werks Fukuroi Süd (Japanisch)"]
+    },
+    "teibow": {
+      "name": "Teibow, Werk am Hauptsitz",
+      "hook": "Vom Hutfilz zur Schreibspitze",
+      "point": "Das grüne TEIBOW-Schild kennzeichnet Hauptsitz und Werk einer Firma, die von der Verarbeitung von Hutfilz zur Fertigung von Schreibspitzen fand.",
+      "alt": "Große grüne TEIBOW-Buchstaben auf einem Fabrikdach und ein senkrechtes Schild auf Japanisch.",
+      "note": "Welche einzelnen Produktarten heute in diesem Werk gefertigt werden, ist nicht bestätigt.",
+      "sources": ["Teibow: Werk am Hauptsitz, Geschäftsfelder und Geschichte (Japanisch)"]
+    },
+    "suzuki-takatsuka": {
+      "name": "Suzuki, Hauptsitz Takatsuka",
+      "hook": "Ein rotes S über den Hausdächern",
+      "point": "Über den Dächern taucht das rote S auf, das man von Suzuki-Autos kennt. Hier liegt der Hauptsitz. Die früher in Takatsuka angesiedelte Fertigung von Motorradmotoren zog 2018 nach Miyakoda in Hamamatsu um.",
+      "alt": "Gebäude des Suzuki-Hauptsitzes hinter Hamamatsus Hausdächern, mit rotem S und SUZUKI MOTOR CORP. auf dem Dach.",
+      "location": "Nahe dem JR-Bahnhof Takatsuka, zwischen dem Bahnhof Hamamatsu und dem Hamana-See. Richtung Shin-Osaka vor dem See, Richtung Tokyo danach.",
+      "related": "Auch den Hamana-See vom Zug aus sehen",
+      "sources": ["Suzuki: heutige Aufgaben des Hauptsitzes Takatsuka (Japanisch)", "Suzuki: Produktionsende im früheren Werk Takatsuka und Verlagerung (Japanisch)", "Suzuki: Aufgaben des Werks Takatsuka bis Juli 2018, Bericht von 2019 (Japanisch)"]
+    },
+    "sinfonia": {
+      "name": "Sinfonia Technology, Werk Toyohashi",
+      "hook": "Siliziumscheiben behutsam bewegen",
+      "point": "Hinter dem Rasen steht an der langen Wand „Werk Toyohashi“ und „Gegründet 1917“. Dies ist ein wichtiges Werk für Anlagen, die dünne Siliziumscheiben sauber durch die Herstellung von Chips für Smartphones und andere Geräte transportieren.",
+      "alt": "Eine lange Fabrikhalle hinter einer Rasenfläche, mit englischem Firmennamen und den japanischen Aufschriften Werk Toyohashi und Gegründet 1917.",
+      "location": "In Miya-cho, Toyohashi, vom Bahnhof Futagawa aus auf der Tokyo-Seite. Richtung Shin-Osaka vor Toyohashi, Richtung Tokyo nach der Abfahrt dort.",
+      "note": "Derselbe Firmenname ist etwa 800 m südlich des Bahnhofs Nagoya zu sehen. Dort handelt es sich um eine rund 70 m lange Werbung an der Wand des Einkaufszentrums Market Square Sasashima.",
+      "related": "Den nahen Tateiwa-Felsen ansehen",
+      "sources": ["Sinfonia: Transportanlagen für die Halbleiterfertigung und Werk Toyohashi (Japanisch)", "Sinfonia: Werk Toyohashi und Shinkansen (Japanisch)", "Sogo Hodo: das rund 70 m lange Schild in Sasashima, Nagoya (Japanisch)", "Chuden Clavis: Werbung an der Ostwand in Sasashima (Japanisch)"]
+    },
+    "yamazaki-pan": {
+      "name": "Yamazaki Baking, Werk Anjo",
+      "hook": "Frühstücksbrot direkt an den Gleisen",
+      "point": "Das Sonnenzeichen und der rote Yamazaki-Name erscheinen ganz nah am Zug. Dieses Werk bei Mikawa-Anjo stellt Brot sowie japanische und westliche Süßwaren her.",
+      "alt": "Ein großes rotes Yamazaki-Schild am Werk Anjo, davor eine Reihe von Lieferfahrzeugen.",
+      "sources": ["Yamazaki Baking: Produktion und offizielle Stelleninformationen des Werks Anjo (Japanisch)"]
+    },
+    "nichiban": {
+      "name": "Nichiban, Werk Anjo",
+      "hook": "Bekanntes Schild, neue Aufgaben",
+      "point": "Das rot-weiß-blaue Cellotape-Schild fällt ins Auge. Das Werk für Klebebänder hat seine Aufgaben auch auf Produkte für die medizinische Versorgung ausgeweitet.",
+      "alt": "Eine große Cellotape-Werbung an der rot-weiß-blauen Wand des Nichiban-Werks Anjo.",
+      "note": "Die Anlagenangaben von 2026 nennen Klebebänder für medizinische Hilfszwecke sowie Papier- und Kunststoffklebebänder. Laut einer offiziellen Erläuterung von 2025 wurde die Produktion rund um Cellotape in Saitama gebündelt. Das Schild allein belegt daher keine heutige Cellotape-Produktion in Anjo.",
+      "sources": ["Nichiban: jährlicher Wertpapierbericht 2026, S. 37 (Japanisch)", "Nichiban: Erläuterung zur Neuordnung der Produktion, 2025 (Japanisch)", "Nichiban: vom Zug sichtbare Wandwerbung (Japanisch)"]
+    },
+    "kirin": {
+      "name": "Kirin Beer, Brauerei Nagoya",
+      "hook": "Tanks wie riesige Biergläser",
+      "point": "Silbern und golden gestrichene Tanks stehen in langen Reihen. Hinter Nagoya Richtung Shin-Osaka liegt diese Brauerei in Kiyosu, in der Kirin Ichiban gebraut wird.",
+      "alt": "Silber-goldene Tanks und ein rotes KIRIN-Schild an der Brauerei Nagoya.",
+      "related": "Mehr über die Kirin-Brauerei",
+      "sources": ["Kirin: Ichiban und seine Brauereien 2026 (Japanisch)"]
+    },
+    "yanmar": {
+      "name": "Yanmar, Forschungs- und Entwicklungszentrum",
+      "hook": "Eine große Uhr kurz hinter Maibara",
+      "point": "Ein langes Gebäude trägt rote YANMAR-Buchstaben und eine große Uhr. Das zentrale Forschungszentrum in Maibara arbeitet an sparsamen Motoren und alternativen Energien.",
+      "alt": "Rote YANMAR-Buchstaben und eine Digitaluhr am rechten Gebäudeende in der Dämmerung.",
+      "location": "Richtung Shin-Osaka kurz nach Maibara: Ein Kodama-Reisebericht nennt etwa eine Minute nach Abfahrt. Richtung Tokyo vor der Ankunft in Maibara.",
+      "related": "Auch Maibaras Hochgeschwindigkeits-Testzüge ansehen",
+      "sources": ["Yanmar: Grundlagenforschung im Zentrum Maibara (Japanisch)", "Yanmar: Standort des zentralen Forschungszentrums (Japanisch)", "Reisebericht: das Forschungszentrum von der A-Seite eines Kodama (Japanisch)"]
+    },
+    "fujitec": {
+      "name": "Fujitec Big Wing",
+      "hook": "Wo das tägliche Auf und Ab entsteht",
+      "point": "Der hohe Turm dient der Aufzugsforschung. Auf demselben Gelände werden Standardaufzüge und Sonderanfertigungen gebaut. Forschung und Produktion liegen hier beieinander.",
+      "alt": "Ein hoher Forschungsturm für Aufzüge vor einem Gebäude mit dem Namen FUJITEC.",
+      "related": "Mehr über Fujitecs Turm",
+      "sources": ["Fujitec: Forschung und Produktion bei Big Wing (Japanisch)"]
+    },
+    "lotte": {
+      "name": "Lotte, Werk Shiga",
+      "hook": "Süßigkeiten im Riesenformat",
+      "point": "Große Schilder zeigen Süßigkeiten und Eis. Das Werk produziert unter anderem das Mochi-Eis Yukimi Daifuku, Coolish und Toppo. Nicht alle auf den Schildern gezeigten Produkte werden hier hergestellt.",
+      "alt": "Große Schilder für Süßigkeiten und Eis an den Gebäuden des Lotte-Werks Shiga.",
+      "related": "Mehr über das Lotte-Werk",
+      "sources": ["Lotte: Produkte des Werks Shiga (Japanisch)"]
+    },
+    "nissin": {
+      "name": "Nissin Foods, Werk Shiga",
+      "hook": "Auch Reis im Becher kommt von hier",
+      "point": "Suchen Sie in Ritto nach dem Nissin-Foods-Gebäude. Hier entstehen auch Instant-Reisgerichte wie Curry Meshi. Es ist ein anderes Werk als das Kansai-Werk auf der gegenüberliegenden E-Seite.",
+      "alt": "Ein Gebäude mit dem Namen Nissin Foods im Werk Shiga in Ritto.",
+      "sources": ["Nissin Foods: Produktionslinie für Reisgerichte im Becher im Werk Shiga (Japanisch)", "Nissin Foods: Werksübersicht (Japanisch)"]
+    },
+    "yamazaki": {
+      "name": "Suntory, Destillerie Yamazaki",
+      "hook": "Whisky am Fuß der Hügel",
+      "point": "Hinter Hausdächern und Stromleitungen erscheint der Name Yamazaki. Diese Destillerie stellt den Malt Whisky für den Single Malt Yamazaki her.",
+      "alt": "Der Name Yamazaki und SINCE 1923 an Gebäuden am Fuß bewaldeter Hügel.",
+      "related": "Mehr über die Destillerie Yamazaki",
+      "sources": ["Suntory: Yamazaki und seine Destillerie (Japanisch)"]
+    }
+  },
+  "candidates": {
+    "bridgestone": {
+      "name": "Bridgestone, Werk Hikone",
+      "interval": "Maibara–Kyoto",
+      "location": "In Takamiya-cho, Hikone, etwa 9 km vom Bahnhof Maibara Richtung Kyoto.",
+      "point": "Hinter den Bäumen entstehen Reifen für Pkw und leichte Lkw. Ein Bericht erwähnt einen vom Zug sichtbaren Zelkovenhain. Ob sich heute auch die Werkshallen oder der riesige Reifen auf dem Gelände erkennen lassen, prüfen wir noch.",
+      "sources": ["Bridgestone: Produkte des Werks Hikone (Japanisch)", "Werksbesuchsbericht: Zelkoven vom Zug aus, 2014 (Japanisch)", "Stadt Hikone: Reisfelder zwischen Werk und Shinkansen (Japanisch)"]
+    },
+    "lion": {
+      "name": "Lion, Werk Odawara",
+      "interval": "Shin-Yokohama–Odawara",
+      "location": "Etwa 5 km vom Bahnhof Odawara Richtung Tokyo.",
+      "point": "Hier werden die Zahnpasten Systema und Clinica hergestellt. Das Zugfensterfoto im Buch zeigt ein grünes Gebäude. Wie viel davon über die heutigen Lärmschutzwände hinweg sichtbar ist, muss noch geprüft werden.",
+      "sources": ["Lion: Vorstellung des Werks Odawara (Japanisch)", "Lion: Produkte des Werks Odawara (Japanisch)"]
+    },
+    "pg": {
+      "name": "P&G, Werk Shiga",
+      "interval": "Maibara–Kyoto",
+      "location": "In Kamiya, Yasu, etwa 300 m von den Gleisen auf der Seite des Biwa-Sees.",
+      "point": "Die Kosmetik, die hier neben den Feldern entsteht, heißt SK-II. Ob sich die im Buch fotografierte Fabrikhalle heute noch aus dem Zug erkennen lässt, prüfen wir derzeit.",
+      "sources": ["P&G: Werk Shiga und Herstellung von SK-II (Japanisch)"]
+    },
+    "suzuki-kosai": {
+      "name": "Suzuki, Werk Kosai",
+      "interval": "Hamamatsu–Toyohashi",
+      "location": "In Shirasuka, Kosai, auf der Toyohashi-Seite des Hamana-Sees. Richtung Shin-Osaka nach dem Torii von Bentenjima, Richtung Tokyo davor.",
+      "point": "Hier entstehen unter anderem Alto und Spacia. Als Orientierung dienen die Windräder des Werks, die 2025 von der A-Seite des Zuges aus fotografiert wurden.",
+      "note": "Der Fotolink führt zum Reisebericht des Fotografen. Der Betriebsstatus der Anlagen zur Stromerzeugung im Jahr 2026 ist nicht bestätigt.",
+      "sources": ["Suzuki: im Werk Kosai gebaute Modelle (Japanisch)", "Suzuki: Windkraftanlagen des Werks Kosai (Japanisch)"]
+    }
+  }
+}

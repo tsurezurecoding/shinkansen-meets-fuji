@@ -2532,5 +2532,115 @@
     "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
     "imageAlt": "ชามราเม็งจิโร่วางบนเคาน์เตอร์ไม้ มีหมูหั่นหนาอยู่ข้างถั่วงอกและกะหล่ำปลี",
     "imageCredit": "michikusa"
+  },
+  "factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "キリンビール名古屋工場に並ぶ銀色と金色のタンク、赤いKIRINの看板。",
+    "imageCredit": "michikusa"
+  },
+  "en/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "Silver-and-gold tanks and a red KIRIN sign at the Nagoya Brewery.",
+    "imageCredit": "michikusa"
+  },
+  "zh-Hant/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "麒麟啤酒名古屋工廠成排的銀色與金色酒槽，以及紅色KIRIN招牌。",
+    "imageCredit": "michikusa"
+  },
+  "fr/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "Cuves argentées et dorées, avec une enseigne rouge KIRIN, à la brasserie de Nagoya.",
+    "imageCredit": "michikusa"
+  },
+  "de/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "Silber-goldene Tanks und ein rotes KIRIN-Schild an der Brauerei Nagoya.",
+    "imageCredit": "michikusa"
+  },
+  "es/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "Depósitos plateados y dorados y un rótulo rojo KIRIN en la fábrica de Nagoya.",
+    "imageCredit": "michikusa"
+  },
+  "zh-Hans/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "麒麟啤酒名古屋工厂成排的银色与金色酒罐，以及红色KIRIN招牌。",
+    "imageCredit": "michikusa"
+  },
+  "ko/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "기린맥주 나고야 공장의 은색·금색 탱크와 빨간 KIRIN 간판.",
+    "imageCredit": "michikusa"
+  },
+  "it/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "Serbatoi argentati e dorati e insegna rossa KIRIN nello stabilimento di Nagoya.",
+    "imageCredit": "michikusa"
+  },
+  "th/factories.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-17_factory-feature-research.md: feature checked and localized on 2026-11-18",
+    "image": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "scripts/factory-windows.json: kirin, photograph by michikusa",
+    "imageAlt": "ถังสีเงินและสีทองเรียงกัน พร้อมป้าย KIRIN สีแดงที่โรงงานนาโกย่า",
+    "imageCredit": "michikusa"
   }
 }

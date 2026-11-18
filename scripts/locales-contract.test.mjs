@@ -10,7 +10,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 78, '77 canonical pages including Kyoto Station, omamori, donburi and ramen, and the Ibuki A-seat alias');
+  assert.equal(routes.length, 79, '78 canonical pages including factories, and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -96,9 +96,10 @@ test('edition registry loads before synchronous routing and after the base URL',
     assert.equal(withLocaleRegistry(html, '../'), html);
   }
 });
-test('new editions match the 36 active pages and Arabic stays guide-only', () => {
-  assert.equal(locales.routes.length, 36);
-  assert.equal(new Set(locales.routes).size, 36);
+test('new editions match the 37 active pages and Arabic stays guide-only', () => {
+  assert.equal(locales.routes.length, 37);
+  assert.equal(new Set(locales.routes).size, 37);
+  assert.deepEqual(locales.supported('factories.html'),locales.languages);
   assert.deepEqual(locales.supported('omamori.html'),locales.languages);
   assert.deepEqual(locales.supported('donburi.html'),locales.languages, 'Donburi is available in all ten editions, including Japanese through the language menu');
   assert.deepEqual(locales.supported('ramen.html'),locales.languages, 'Ramen is available in all ten editions, including Japanese through the language menu');

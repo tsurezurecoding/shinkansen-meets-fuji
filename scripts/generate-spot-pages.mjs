@@ -1289,7 +1289,7 @@ function localizeEnglishInternalLinks(html) {
     ["href=\"spots/", "href=\"en/spots/"],
   ];
   for (const [from, to] of directRoutes) html = html.replaceAll(from, to);
-  for (const route of ["ferris-wheels", "castles", "guide", "zukan", "journal", "mieru", "window-artworks", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments", "reflections"]) {
+  for (const route of ["ferris-wheels", "castles", "guide", "factories", "zukan", "journal", "mieru", "window-artworks", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments", "reflections"]) {
     html = html
       .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
@@ -1904,6 +1904,7 @@ function sitemapXML() {
     ...languages.map(lang=>({loc:`${siteRoot}/${lang==='ja'?'':lang+'/'}omamori.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-14'})),
     ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/donburi.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-15'})),
     ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/ramen.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-17'})),
+    ...languages.map(lang=>({loc:`${siteRoot}/${lang==='ja'?'':lang+'/'}factories.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-18'})),
     { loc: `${siteRoot}/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/everyday-japan.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },

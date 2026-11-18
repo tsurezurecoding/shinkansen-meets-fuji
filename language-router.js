@@ -9,6 +9,7 @@
     "/omamori.html": "en/omamori.html",
     "/donburi.html": "en/donburi.html",
     "/ramen.html": "en/ramen.html",
+    "/factories.html": "en/factories.html",
     "/stories/index.html": "../en/stories/index.html",
     "/stories/godzilla.html": "../en/stories/godzilla.html",
     "/stories/shogun.html": "../en/stories/shogun.html",
