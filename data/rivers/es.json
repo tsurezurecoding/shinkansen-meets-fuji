@@ -1,0 +1,166 @@
+{
+  "title": "Cada río cambia el paisaje",
+  "kicker": "Ríos y puentes junto a la línea Tokio–Shin-Osaka",
+  "lead": "Busca el cauce. Mira el puente de al lado.\nDescubre, río a río, qué paisaje aparece después.",
+  "order": "De Tokio a Shin-Osaka",
+  "zoomHint": "Toca una foto para ampliarla",
+  "language": "Español",
+  "enlarge": "Ampliar foto: {name}",
+  "close": "Cerrar ×",
+  "compare": "Las fotos del Abe, el Ōi y el Tenryū se tomaron en días y con orientaciones distintas. El cauce y los hilos de agua también cambian con la lluvia y el nivel del río; estas tres imágenes no bastan para comparar cuánto caudal suele llevar cada uno.",
+  "returnTrip": "En dirección a Tokio, disfruta los ríos en orden inverso. En los asientos de clase estándar, el lado E queda a la derecha hacia Shin-Osaka y a la izquierda hacia Tokio; el lado A queda al otro lado.",
+  "credit": "Fotos: Shinkansen Window",
+  "sourcesTitle": "Fotos y fuentes consultadas",
+  "sourceLanguage": "Las fuentes consultadas están en japonés.",
+  "sideE": "Lado del asiento E",
+  "sideA": "Lado del asiento A",
+  "stations": {
+    "shinagawa": "Shinagawa",
+    "shin-yokohama": "Shin-Yokohama",
+    "odawara": "Odawara",
+    "atami": "Atami",
+    "shin-fuji": "Shin-Fuji",
+    "shizuoka": "Shizuoka",
+    "kakegawa": "Kakegawa",
+    "hamamatsu": "Hamamatsu",
+    "toyohashi": "Toyohashi",
+    "mikawa-anjo": "Mikawa-Anjo",
+    "nagoya": "Nagoya",
+    "gifu-hashima": "Gifu-Hashima",
+    "maibara": "Maibara",
+    "kyoto": "Kioto",
+    "shin-osaka": "Shin-Osaka"
+  },
+  "photos": {
+    "tama": {
+      "name": "Río Tamagawa",
+      "body": "Cuando se abre un hueco entre los edificios, aparece el puente Maruko con sus arcos azules. Se cruzan dos trayectos sobre el mismo río: el de quienes viajan en Shinkansen y el de quienes cruzan el puente en su día a día.",
+      "alt": "La superficie del Tamagawa y el puente Maruko con sus arcos de un azul suave",
+      "caption": "El río se abre entre la ciudad y, sobre él, los arcos azules del puente Maruko.",
+      "sub": "Puente Maruko",
+      "link": "Más sobre el puente Maruko"
+    },
+    "shiraito": {
+      "name": "Puente ferroviario Shiraito-gawa",
+      "body": "Cerca de Nebukawa, el mar asoma al otro lado de los pilares rojos. El puente que vemos es de la línea principal Tōkaidō. Aunque no se vea la superficie del río, por un instante se siente la profundidad del valle.",
+      "alt": "El puente ferroviario Shiraito-gawa de la línea Tōkaidō sobre un valle verde, con el mar al fondo",
+      "caption": "Los pilares rojos atraviesan el valle; al fondo asoma el mar.",
+      "sub": "Valle y mar",
+      "link": "Más sobre el puente Shiraito-gawa"
+    },
+    "fuji": {
+      "name": "Río Fujikawa",
+      "body": "Los arcos blancos que se alinean delante del monte Fuji forman un acueducto que transporta agua para uso industrial. El agua del río y la que cruza el puente para llegar a las fábricas: frente a la montaña se superponen dos caminos del agua.",
+      "alt": "La superficie del Fujikawa, un acueducto de arcos blancos y el monte Fuji al fondo",
+      "caption": "El agua del río y el agua que viaja por el acueducto.",
+      "sub": "Acueducto y monte Fuji",
+      "link": "Más sobre el Fujikawa y su acueducto"
+    },
+    "abe": {
+      "name": "Río Abekawa",
+      "body": "En el amplio lecho de grava, un hilo de agua serpentea. Fíjate en la diferencia entre la longitud del puente y la anchura que ocupa el agua.",
+      "alt": "El amplio lecho gris de grava del Abekawa, atravesado por un estrecho cauce sinuoso",
+      "caption": "Un hilo de agua cruza el amplio lecho de grava."
+    },
+    "oi": {
+      "name": "Río Ōigawa",
+      "body": "Al otro lado de las piezas del puente se ve un cauce que traza una gran curva. Antes, los viajeros cruzaban este río con ayuda de los porteadores del vado; hoy lo atravesamos de una vez por el puente.",
+      "alt": "El sinuoso cauce del Ōigawa y su lecho de grava, vistos entre las piezas del puente del Shinkansen",
+      "caption": "El agua rodea el lecho de grava bajo la sombra del puente."
+    },
+    "tenryu": {
+      "name": "Río Tenryū",
+      "body": "Grava, vegetación y agua que fluye junto al borde. Al comparar el Tenryū con el Abekawa y el Ōigawa, busca las diferencias en el cauce y en dónde aparece el verde, aunque compartan lechos pedregosos.",
+      "alt": "El pedregoso lecho del Tenryū, el agua que fluye junto al borde y algunos grupos de vegetación",
+      "caption": "Agua junto al borde del lecho y manchas de vegetación."
+    },
+    "toyo": {
+      "name": "Río Toyogawa",
+      "body": "Al salir de Toyohashi, se abre la amplia superficie del Toyogawa junto a un dique. En dirección a Shin-Osaka, a unos 1,6 km se cruza de nuevo el agua: esta vez por el canal de desvío del Toyogawa, que conduce parte de las crecidas hacia la bahía de Mikawa.",
+      "alt": "La amplia superficie del cauce principal del Toyogawa; una orilla verde y un camino estrecho siguen su curva",
+      "caption": "Cauce principal del Toyogawa. Un camino recorre el dique junto a la orilla.",
+      "sub": "Cauce principal y canal de desvío del Toyogawa"
+    },
+    "shonai": {
+      "name": "Río Shōnaigawa",
+      "body": "Poco después de salir de Nagoya, al otro lado de varias vías que pasan en primer plano aparece una fila de pilares. Estamos en Biwajima, donde se concentran puentes de carretera, de la línea convencional y del Shinkansen en el que viajamos.",
+      "alt": "Vías y catenarias cruzan en primer plano el Shōnaigawa; al fondo, pilares de puentes se alinean sobre el agua",
+      "caption": "Las vías en primer plano; al fondo, una hilera de pilares y la superficie del Shōnaigawa.",
+      "sub": "Puentes de Biwajima"
+    },
+    "kiso": {
+      "name": "Río Kisogawa",
+      "body": "Entre las franjas de tierra cubiertas de árboles se abre una amplia superficie de agua. Más adelante cruzaremos el Nagaragawa y el Ibigawa. Son tres ríos distintos del mismo sistema fluvial Kisogawa; hacia Shin-Osaka, el orden es Kiso, Nagara e Ibi.",
+      "alt": "La amplia superficie del Kisogawa, una franja arbolada y un puente bajo a lo lejos",
+      "caption": "El agua se abre entre las manchas de vegetación."
+    },
+    "nagara": {
+      "name": "Río Nagaragawa",
+      "body": "Justo al lado aparece el puente Hashima, rojo y formado por triángulos. Las piezas grises que cruzan delante son el puente del Shinkansen en el que viajamos. Sobre el río se superponen las formas de dos puentes.",
+      "alt": "El puente rojo Hashima sobre el Nagaragawa y, en primer plano, las piezas grises del puente del Shinkansen",
+      "caption": "El puente rojo de carretera y, delante, la estructura gris del ferrocarril.",
+      "sub": "Puente Hashima"
+    },
+    "ibi": {
+      "name": "Río Ibigawa",
+      "body": "Aquí también hay un puente rojo, pero se ve algo más lejos junto al agua. Compáralo con la foto del Nagaragawa: cambia la distancia al puente y también la anchura de agua que ocupa la ventana.",
+      "alt": "La superficie y el lecho del Ibigawa, con un puente rojo aguas arriba y montañas al fondo",
+      "caption": "Se superponen el agua, el puente rojo y las montañas."
+    },
+    "seta": {
+      "name": "Río Setagawa",
+      "body": "El Setagawa es la única salida natural del lago Biwa. El puente Seta-no-Karahashi, visible desde el lado E, lleva mucho tiempo uniendo a quienes cruzan el río. Contempla con el puente la salida del lago.",
+      "alt": "La amplia superficie del Setagawa, los barrios de ambas orillas y, al fondo, el puente Seta-no-Karahashi",
+      "caption": "El río que sale del lago y el puente que conecta ambas orillas.",
+      "sub": "Seta-no-Karahashi",
+      "link": "Más sobre el puente Seta-no-Karahashi"
+    },
+    "kamo": {
+      "name": "Río Kamogawa",
+      "body": "Justo al este de la estación de Kioto se abre el lecho del Kamogawa. Al levantar la vista del cauce aparecen un puente con tráfico y, más allá, otro puente, la ciudad y las montañas. En dirección a Shin-Osaka se ve justo antes de llegar a Kioto; hacia Tokio, nada más salir de la estación.",
+      "alt": "El lecho y el cauce estrecho del Kamogawa; al otro lado, un puente con tráfico, la ciudad de Kioto y montañas lejanas",
+      "caption": "Del primer plano al fondo: el lecho, un puente con tráfico y la ciudad de Kioto entre montañas.",
+      "sub": "Justo al este de la estación de Kioto",
+      "link": "Ver los alrededores de la estación de Kioto y la torre de Kioto"
+    },
+    "katsura": {
+      "name": "Río Katsuragawa",
+      "body": "Una franja verde separa las superficies de agua; al otro lado continúa la ciudad de Kioto. Más abajo, el Katsuragawa se une al Ujigawa y al Kizugawa para formar el Yodogawa. Paisajes de ventanas distintas se conectan por el curso del agua.",
+      "alt": "Una franja de tierra verde divide la superficie del Katsuragawa; al otro lado se extiende la ciudad",
+      "caption": "El río y la ciudad de Kioto continúan al otro lado de la franja verde."
+    }
+  },
+  "stops": {
+    "sagami-sakawa": {
+      "name": "Ríos Sagamigawa y Sakawagawa (相模川・酒匂川)",
+      "body": "En dirección a Shin-Osaka, el primero es el Sagamigawa, que durante el periodo Edo se cruzaba en barca por la antigua ruta Tōkaidō. Antes de Odawara, en el Sakawagawa, los porteadores llevaban a los viajeros a hombros o sobre plataformas. Hoy ambos se cruzan de una vez desde el asiento, por un puente.",
+      "link": "Busca el monte Fuji en la llanura de Sagami"
+    },
+    "yahagi": {
+      "name": "Río Yahagigawa (矢作川)",
+      "body": "Camino de Mikawa-Anjo cruzamos el Yahagigawa. El agua captada río arriba llega a los campos de Anjo por el canal Meiji-yōsui. El curso que vemos bajo la ventana sostiene la vida agrícola de la llanura."
+    },
+    "aizuma": {
+      "name": "Río Aizumagawa (逢妻川)",
+      "body": "En Kariya, Katsuyoshi Miura (三浦克介) localizó en el mapa un punto desde tierra, al sureste del puente, y fue a ver pasar el Shinkansen. Desde la ventana, el río dura un instante; desde ese punto de observación en tierra, el tren se convierte en protagonista del paisaje.",
+      "link": "Publicación de Katsuyoshi Miura (三浦克介): foto del puente desde tierra, al sureste del puente"
+    }
+  },
+  "sources": {
+    "maruko": "Ciudad de Kawasaki sobre el antiguo cruce en barca de Maruko y su puente",
+    "tokaido": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón: cruces fluviales de la antigua ruta Tōkaidō",
+    "sakawa": "Ciudad de Odawara sobre el cruce del río Sakawa",
+    "fujiWater": "Prefectura de Shizuoka sobre el suministro de agua industrial del río Fuji (PDF)",
+    "oi": "Museo de la Ciudad de Shimada sobre los porteadores y el cruce del Ōi",
+    "kiso": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón sobre el sistema fluvial Kisogawa",
+    "floodway": "Oficina del Río Toyohashi sobre la función del canal de desvío (PDF)",
+    "ride": "Fotos de なごやん de ambos cruces del Toyogawa desde un tren con destino a Tokio",
+    "bridges": "Lista de hitos de distancia de puentes del Shinkansen, utilizada para estimar la separación entre cruces",
+    "meiji": "Ministerio de Agricultura de Japón sobre el canal de riego Meiji y su fundador",
+    "shonai": "Mapa de la Oficina del Río Shōnai con los puentes de Biwajima (PDF)",
+    "kamo": "Mapas de la Prefectura de Kioto sobre el río Kamo (PDF)",
+    "seta": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón sobre el sistema fluvial Seta-Yodo",
+    "map": "Mapas del Instituto de Estudios Geográficos de Japón con ríos y vías ferroviarias",
+    "book": "Guía ilustrada de Kei Kurihara sobre el paisaje desde el Shinkansen Tōkaidō, Toyo Keizai, 2016"
+  }
+}
