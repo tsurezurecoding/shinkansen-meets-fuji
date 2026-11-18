@@ -196,7 +196,7 @@ test('a third Everyday Japan article registers its roles without adding a planne
     'scripts/content-metadata.json': ['{}', '{"en/udon.html":{"title":"Udon"}}'],
   };
   const product = ['package.json', 'scripts/generate-spot-pages.mjs', 'locales.js', 'language-router.js', 'scripts/content-metadata.json',
-    'en/ramen.html', 'de/everyday-japan.html', 'content-manifest.json', articleRegistryPath].map(change);
+    'en/ramen.html', 'de/everyday-japan.html', 'scripts/food-country-locales.test.mjs', 'content-manifest.json', articleRegistryPath].map(change);
   for (const path of [generator, articleTest, 'udon.html', 'udon.css', 'fr/udon.html', 'data/udon/ja.json', 'images/udon/kitsune.webp'])
     product.push({status: 'A', path});
   const run = (files = product, pkg = after, overrides = {}, spec = registry) => chooseReleaseScope(files, {articleRegistry: spec,
@@ -205,7 +205,8 @@ test('a third Everyday Japan article registers its roles without adding a planne
   assert.equal(plan.scope, 'udon-everyday');
   assert(plan.pagesCandidate && plan.needsDependencies);
   const tests = plan.commands.find(c => c.includes('--test') && c.includes(articleTest));
-  for (const file of ['scripts/ramen-page.test.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs']) assert(tests.includes(file));
+  for (const file of ['scripts/ramen-page.test.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs',
+    'scripts/food-country-locales.test.mjs']) assert(tests.includes(file));
   for (const tool of [generator, 'scripts/generate-ramen-page.mjs', 'scripts/generate-site-runtime.mjs', 'scripts/sync-asset-versions.mjs'])
     assert(plan.commands.some(c => c.includes(tool) && c.includes('--check')), tool);
   assert(plan.commands.some(c => c.includes('scripts/validate-site-navigation.mjs') && c.includes('udon.html') && c.includes('ramen.html')));

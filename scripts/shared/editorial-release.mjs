@@ -143,8 +143,8 @@ export function selectEditorialRelease(changes, options, syntax, special) {
         if (lang !== 'ja') files.add(lang + '/' + route);
       }
     }
-    // Ramen's reciprocal promotion also changed the existing consumer tests; they are always run above.
-    if (id === 'ramen') for (const name of seriesTests) files.add('scripts/' + name + '.test.mjs');
+    // Reciprocal promotions can update the consumer tests; the shared recipe always runs them.
+    if (companions.length) for (const name of seriesTests) files.add('scripts/' + name + '.test.mjs');
     const matches = ordered.every(({ path: file, status }) => {
       if (status !== 'A' && status !== 'M') return false;
       if (guards.has(file)) return status === 'M' && (options[id + guards.get(file)] ??
