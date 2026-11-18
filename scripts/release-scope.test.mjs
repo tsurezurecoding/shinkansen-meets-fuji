@@ -8,6 +8,66 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('metadata and spot rendering checks follow their inputs across release scopes', () => {
+  const metadata = 'scripts/generate-spot-pages.test.mjs', validator = 'scripts/validate-spot-page-shared.mjs';
+  const generator = 'scripts/generate-spot-pages.mjs', registry = 'scripts/content-metadata.json';
+  const commandsFor = (files, options) => chooseReleaseScope(files.map(change), options).commands;
+  const metadataChecks = commands => commands.filter(c => c.includes('--test') && c.includes(metadata));
+  const spotChecks = commands => commands.filter(c => c[1] === validator);
+  const ramen = commandsFor(['scripts/generate-ramen-page.mjs', generator, registry],
+    { ramenMetadataOnly: true, ramenSitemapOnly: true });
+  assert.equal(metadataChecks(ramen).length, 1);
+  assert(metadataChecks(ramen)[0].includes('editorial metadata'));
+  assert.equal(spotChecks(ramen).length, 0);
+  const scopeFiles = ['scripts/generate-omamori-page.mjs', generator, registry];
+  const original = 'function sitemapXML() {\n  return [];\n}\nfunction planSpotPage() { return 1; }';
+  const sitemapEdit = original.replace('return [];', 'return routes;');
+  assert.equal(spotChecks(commandsFor(scopeFiles, { fileContents: () => [original, sitemapEdit] })).length, 0);
+  const sharedRender = sitemapEdit.replace('return 1;', 'return 2;');
+  assert.equal(spotChecks(commandsFor(scopeFiles, { fileContents: () => [original, sharedRender] })).length, 1);
+  const pilot = commandsFor(['spot-adsense.js', 'spots/kakegawa.html', 'scripts/spot-adsense.test.mjs', 'scripts/shared/spot-ad-placements.mjs']);
+  assert.equal(spotChecks(pilot).length, 1);
+  assert.equal(pilot.filter(c => c.includes('--test') && c.includes('scripts/spot-adsense.test.mjs')).length, 1);
+  const full = commandsFor([registry, 'package-lock.json', 'scripts/shared/spot-ad-placements.mjs']);
+  assert(full.some(c => c.includes('verify')));
+  assert.equal(metadataChecks(full).length + spotChecks(full).length, 0);
+});
+
+test('ride runtime plans verify only their consumers and reject unrelated app, page and package edits', () => {
+  const app = 'function nowMin() { return 10; }\nfunction otherFeature() { return 7; }\n';
+  const page = '<p>A</p>\n  <script src="app.js?v=abcdef01"></script>\n';
+  const wired = page.replace('  <script', '  <script src="data/stamp-store.js?v=abcdef02"></script>\n  <script')
+    .replace('app.js?v=abcdef01', 'app.js?v=abcdef02');
+  const packageBefore = { scripts: { 'test:generator': 'node --test scripts/existing.test.mjs' }, devDependencies: { jsdom: '1' } };
+  const packageAfter = structuredClone(packageBefore);
+  packageAfter.scripts['test:generator'] += ' scripts/stamp-store.test.mjs';
+  const files = ['app.js', 'train-picker.js', '727-collection.js', 'scripts/validate-spot-page-shared.mjs',
+    'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs', 'package.json', 'en/start.html'].map(change);
+  files.push({ path: 'data/stamp-store.js', status: 'A' }, { path: 'scripts/stamp-store.test.mjs', status: 'A' });
+  const appEdit = app.replace('return 10;', 'return 11;');
+  const plan = (currentApp = appEdit, currentPage = wired, extra = [], pkg = packageAfter) =>
+    chooseReleaseScope([...files, ...extra], { packageBefore: JSON.stringify(packageBefore), packageAfter: JSON.stringify(pkg),
+      fileContents: file => file === 'app.js' ? [app, currentApp] : [page, currentPage] });
+  const combined = plan();
+  assert.equal(combined.scope, 'ride-runtime');
+  assert(combined.pagesCandidate && combined.needsDependencies);
+  for (const file of ['scripts/train-result.test.mjs', 'scripts/stamp-store.test.mjs', 'scripts/validate-spot-page-shared.mjs',
+    'scripts/release-scope.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/check-content-manifest.mjs']) {
+    assert.equal(combined.commands.filter(c => c.includes(file) && !c.includes('--check')).length, 1, file);
+  }
+  const trainOnly = chooseReleaseScope([change('train-select.js')]);
+  assert.equal(trainOnly.scope, 'ride-runtime');
+  assert(!trainOnly.commands.some(c => c.includes('scripts/stamp-store.test.mjs')));
+  for (const edits of [[appEdit.replace('return 7;', 'return 8;')], [appEdit, wired.replace('>A<', '>B<')],
+    [appEdit, wired.replace('src="app.js', 'src="other.js')], [appEdit, wired, [change('style.css')]],
+    [appEdit, wired, [{ path: 'sparkling-dreams.js', status: 'D' }]]]) {
+    assert.equal(plan(...edits).scope, 'unmapped');
+  }
+  const removedTest = structuredClone(packageAfter);
+  removedTest.scripts['test:generator'] = 'node --test scripts/stamp-store.test.mjs';
+  assert.equal(plan(appEdit, wired, [], removedTest).scope, 'unmapped');
+});
+
 test('ramen scope covers ten editions, eleven photographs and only nine entry languages', () => {
   const files = ['scripts/generate-ramen-page.mjs', 'scripts/ramen-page.test.mjs', 'scripts/shared/ramen-entry.mjs',
     'data/ramen/ja.json', 'data/ramen/en.json', 'ramen.html', 'en/ramen.html', 'th/ramen.html', 'ramen.css',

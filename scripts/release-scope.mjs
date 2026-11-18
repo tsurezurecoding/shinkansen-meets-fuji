@@ -247,7 +247,7 @@ export function onlyRamenEnglishCardAddedToJapaneseDonburi(file, before, after) 
   return restored === before || onlyRamenAssetReferencesChanged(before, restored);
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+function selectExistingScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const spotAdsenseFiles = new Set(['spot-adsense.js', 'spots/kakegawa.html', 'privacy.html', 'en/privacy.html',
@@ -766,6 +766,107 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false, reason: `Define affected generators, consumers and checks before execution: ${files.join(', ')}`, commands: [] };
 }
 
+const spotGenerator = 'scripts/generate-spot-pages.mjs';
+const metadataTests = 'scripts/generate-spot-pages.test.mjs';
+const adTests = 'scripts/spot-adsense.test.mjs';
+const spotValidator = 'scripts/validate-spot-page-shared.mjs';
+const trainScripts = ['train-select.js', 'train-picker.js', 'journey-light-events.js', 'sparkling-dreams.js', 'yakei.js'];
+const stampScripts = ['data/stamp-store.js', '727-collection.js', 'ferris-wheels.js'];
+const stampGenerators = ['scripts/generate-727-page.mjs', 'scripts/generate-ferris-wheel-page.mjs'];
+const trainTests = ['train-result', 'journey-light-events', 'yakei-locales', 'train-search-tables'];
+const stampTests = ['stamp-store', '727-collection-analytics', 'ferris-wheels-common-display', 'timeline-recommendations'];
+const browserTest = name => `scripts/${name}.test.mjs`;
+const runtimeTests = new Set([...trainTests, ...stampTests, 'leaflet-loader', 'locales-contract', 'shared-ui-language'].map(browserTest));
+const stampTemplate = /^scripts\/templates\/site-source\/(?:start|zukan|(?:en\/)?journal)\.html\.tpl$/;
+
+function onlyRuntimeReferencesChanged(before, after) {
+  const version = /(\bsrc=["'](?:\.\.\/)*(?:app|train-select|train-picker|journey-light-events|sparkling-dreams|yakei|727-collection|ferris-wheels|data\/stamp-store)\.js\?v=)[a-f0-9]{8}(?=["'])/g;
+  const normalize = html => html.replace(version, '$1VERSION');
+  const addition = /<script src="((?:\.\.\/)*)data\/stamp-store\.js\?v=(?:VERSION|source)"><\/script>\s*(?=(?:<script>window\.MADO_727_LOCALE = [^\r\n]*?<\/script>\s*)?<script src="\1(?:app|727-collection|ferris-wheels)\.js\?v=)/;
+  const old = normalize(before), next = normalize(after);
+  return before !== after && (old === next || !old.includes('data/stamp-store.js') && next.replace(addition, '') === old);
+}
+
+function onlyRideAppChanged(before, after) {
+  // app.js also owns unrelated home, gallery and analytics behavior. Scope only its ride and stamp functions.
+  const body = /^function (?:loadStamps|fmtClock|nowMin|timelinePoint|computeJourney|collectionTimelineSpots|updateLive|toggleStamp|refreshStampDisplay|bindJournalControls)\([^\n]*?\) \{(?:[^\n]*\}$|[\s\S]*?^\})\n?/gm;
+  const normalize = code => code.replace(body, '')
+    .replace(/^let stamps = (?:loadStamps\(\)|window\.MadoStamps\.read\(\));\n/m, '')
+    .replace(/^window\.MadoStamps\.onChange\(\(updated\) => \{\n  stamps = updated;\n  refreshStampDisplay\(\);\n\}\);\n/m, '');
+  return before !== after && normalize(before) === normalize(after);
+}
+
+function addsOnlyRuntimeTests(beforeValue, afterValue, changed) {
+  if (!beforeValue || !afterValue) return false;
+  const read = value => typeof value === 'string' ? JSON.parse(value) : structuredClone(value);
+  const before = read(beforeValue), after = read(afterValue);
+  const old = before.scripts?.['test:generator'], next = after.scripts?.['test:generator'];
+  if (!old?.startsWith('node --test ') || !next?.startsWith('node --test ')) return false;
+  const previous = old.split(' '), args = next.split(' ');
+  const extra = args.filter(arg => !previous.includes(arg));
+  if (!extra.length || extra.length !== new Set(extra).size || !extra.every(arg => runtimeTests.has(arg) && changed.has(arg))) return false;
+  after.scripts['test:generator'] = args.filter(arg => !extra.includes(arg)).join(' ');
+  return isDeepStrictEqual(before, after);
+}
+
+function runtimeScope(changes, options) {
+  const files = new Set(changes.map(change => change.path));
+  const train = trainScripts.some(file => files.has(file));
+  const stamps = stampScripts.some(file => files.has(file));
+  if (!train && !stamps && !files.has('app.js')) return null;
+  const proof = (file, check) => options.fileContents && check(...options.fileContents(file));
+  const runtime = new Set([...trainScripts, ...stampScripts, ...runtimeTests, 'scripts/release-scope.mjs',
+    'scripts/release-scope.test.mjs', metadataTests, spotValidator, 'content-manifest.json']);
+  const allowed = changes.every(({ path: file, status }) => {
+    if (status === 'A') return runtimeTests.has(file) || file === 'data/stamp-store.js';
+    if (status !== 'M') return false;
+    if (runtime.has(file)) return true;
+    if (file === 'app.js') return proof(file, onlyRideAppChanged);
+    if (file === 'package.json') return addsOnlyRuntimeTests(options.packageBefore, options.packageAfter, files);
+    if (file === 'scripts/generate-content-manifest.mjs') return proof(file, (old, next) =>
+      next !== old && next.replace(/^  "data\/stamp-store\.js",\n/m, '') === old);
+    if (stampGenerators.includes(file)) return proof(file, (old, next) =>
+      next !== old && next.replace(/^  <script src="\$\{(?:p|prefix)\}data\/stamp-store\.js\?v=\$\{assetVersion\('data\/stamp-store\.js'\)\}"><\/script>\n/m, '') === old);
+    return (stampTemplate.test(file) || file.endsWith('.html') && !/^v[01]\//.test(file)) && proof(file, onlyRuntimeReferencesChanged);
+  });
+  if (!allowed) return null;
+  const tests = new Set([...files].filter(file => runtimeTests.has(file) || file === 'scripts/release-scope.test.mjs' || file === metadataTests));
+  if (train || files.has('app.js')) for (const name of trainTests) tests.add(browserTest(name));
+  if (stamps || files.has('app.js')) for (const name of stampTests) tests.add(browserTest(name));
+  const commands = [...files].filter(file => file.endsWith('.js')).map(file => node('--check', file));
+  commands.push(node('--test', ...tests));
+  if (train || files.has('app.js')) commands.push(node('scripts/validate-train-select.mjs'));
+  if (files.has('sparkling-dreams.js') || files.has('train-picker.js')) commands.push(node('scripts/validate-sparkling-dreams.mjs'));
+  for (const file of stampGenerators) if (files.has(file)) commands.push(node(file, '--check'));
+  if (files.has('727-collection.js')) commands.push(node('scripts/validate-727-collection.mjs'));
+  commands.push(node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs'));
+  return { scope: 'ride-runtime', needsDependencies: true, pagesCandidate: true,
+    reason: 'Ride and stamp consumers, their runtime tests, versioned script references and distribution inventory.', commands };
+}
+
+export function chooseReleaseScope(changes, options = {}) {
+  let plan = selectExistingScope(changes, options);
+  if (plan.scope === 'unmapped') plan = runtimeScope(changes, options) || plan;
+  if (plan.scope === 'unmapped' || plan.scope === 'full') return plan;
+  const files = new Set(changes.map(change => change.path));
+  const hasFullTest = file => plan.commands.some(command => command[1] === '--test' && command.includes(file)
+    && !command.some(arg => arg.startsWith('--test-name-pattern')));
+  const extra = [];
+  if ((files.has('scripts/content-metadata.json') || files.has(metadataTests)) && !hasFullTest(metadataTests)) {
+    extra.push(node('--test', '--test-name-pattern', 'editorial metadata', metadataTests));
+  }
+  const adPolicy = files.has('scripts/shared/spot-ad-placements.mjs') || files.has('spot-adsense.js');
+  let spotRendering = files.has(spotGenerator) && !(options.donburiSitemapOnly || options.ramenSitemapOnly || options.artworkSitemapOnly);
+  if (spotRendering && options.fileContents && changes.some(change => change.path === spotGenerator && change.status === 'M')) {
+    const [before, after] = options.fileContents(spotGenerator);
+    const sitemap = /^function sitemapXML\(\) \{\n[\s\S]*?^\}/m;
+    spotRendering = !(sitemap.test(before) && sitemap.test(after) && before.replace(sitemap, '') === after.replace(sitemap, ''));
+  }
+  if (adPolicy && !hasFullTest(adTests)) extra.push(node('--test', adTests));
+  if ((adPolicy || spotRendering || files.has(spotValidator)) && !plan.commands.some(command => command[1] === spotValidator)) extra.push(node(spotValidator));
+  return extra.length ? { ...plan, needsDependencies: true, commands: [...plan.commands, ...extra] } : plan;
+}
+
 export function assertReleasePlanContract(plan) {
   if (typeof plan.needsDependencies !== 'boolean') throw new Error('Release plan must explicitly declare needsDependencies');
   if (typeof plan.pagesCandidate !== 'boolean') throw new Error('Release plan must explicitly declare pagesCandidate');
@@ -852,6 +953,8 @@ export function createReleasePlan(base) {
   const dataBefore = dataChanged ? git('show', `${base}:data.js`) : '';
   const dataAfter = dataChanged ? git('show', `${head}:data.js`) : '';
   const plan = chooseReleaseScope(changes, {
+    fileContents: file => [base, head].map(rev => execFileSync('git', ['show', `${rev}:${file}`],
+      { cwd: root, encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 })),
     ramenJapaneseDonburiOnly: changes.some(c => c.path === 'donburi.html' && c.status === 'M') && onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', git('show', `${base}:donburi.html`), git('show', `${head}:donburi.html`)),
     ramenMetadataOnly: changes.some(c => c.path === 'scripts/content-metadata.json' && c.status === 'M') && onlyRamenMetadataAdded(git('show', `${base}:scripts/content-metadata.json`), git('show', `${head}:scripts/content-metadata.json`)),
     ramenSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyRamenSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
