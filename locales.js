@@ -33,6 +33,7 @@
   episodes['spots/maruko-bridge.html'] = translated.slice();
   episodes['spots/mikawa-oshima.html'] = translated.slice();
   episodes['kyoto-station-views.html'] = translated.slice();
+  episodes['rivers.html'] = translated.slice();
   var pattern = languages.filter(function (lang) { return lang !== 'ja'; }).concat(['ar']).join('|');
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();

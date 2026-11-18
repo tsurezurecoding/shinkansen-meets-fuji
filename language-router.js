@@ -38,6 +38,7 @@
     "/window-moments.html": "en/window-moments.html",
     "/reflections.html": "en/reflections.html",
     "/kyoto-station-views.html": "en/kyoto-station-views.html",
+    "/rivers.html": "en/rivers.html",
     "/live/": "../en/live/",
     "/live/index.html": "../en/live/"
   };

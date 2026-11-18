@@ -149,6 +149,13 @@ const contentFiles = [
   "yakei.css",
   "images/20260629_2158_nagoya_station_night_michikusa.jpg",
 
+  // Rivers feature page: ten language editions and its shared runtime assets.
+  "rivers.html",
+  "en/rivers.html",
+  "rivers.js",
+  "rivers.css",
+  ...await walkFiles("images/rivers", p => /\.jpg$/.test(p)),
+
   // 天気で出会う一度きりの車窓（日英）
   "window-moments.html",
   "en/window-moments.html",

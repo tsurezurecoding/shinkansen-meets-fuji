@@ -1,0 +1,166 @@
+{
+  "title": "A different view at every river",
+  "kicker": "Rivers and bridges from Tokyo to Shin-Osaka",
+  "lead": "Look for the stream winding through the gravel, or the bridge beside your own. Each crossing gives you something new to look for.",
+  "order": "In order from Tokyo to Shin-Osaka",
+  "zoomHint": "Select a photo to enlarge it.",
+  "language": "Choose language",
+  "enlarge": "Enlarge photo of {name}",
+  "close": "Close",
+  "compare": "The Abe, Oi and Tenryu photos were taken on different days and facing different directions. Rain and water levels reshape the channels. These three views alone cannot tell us which river usually carries the most water.",
+  "returnTrip": "Traveling toward Tokyo? Read the crossings in reverse order. In ordinary cars, the E-seat side is on the right toward Shin-Osaka and on the left toward Tokyo. The A-seat side is opposite.",
+  "credit": "Photography by Shinkansen Window",
+  "sourcesTitle": "Photos and sources",
+  "sourceLanguage": "The sources below are in Japanese.",
+  "sideE": "E-seat side",
+  "sideA": "A-seat side",
+  "stations": {
+    "shinagawa": "Shinagawa",
+    "shin-yokohama": "Shin-Yokohama",
+    "odawara": "Odawara",
+    "atami": "Atami",
+    "shin-fuji": "Shin-Fuji",
+    "shizuoka": "Shizuoka",
+    "kakegawa": "Kakegawa",
+    "hamamatsu": "Hamamatsu",
+    "toyohashi": "Toyohashi",
+    "mikawa-anjo": "Mikawa-Anjo",
+    "nagoya": "Nagoya",
+    "gifu-hashima": "Gifu-Hashima",
+    "maibara": "Maibara",
+    "kyoto": "Kyoto",
+    "shin-osaka": "Shin-Osaka"
+  },
+  "photos": {
+    "tama": {
+      "name": "Tama River",
+      "sub": "Maruko Bridge",
+      "body": "The city opens up and the pale blue arches of Maruko Bridge come into view. As you cross by Shinkansen, people on the road bridge are crossing the same river on their daily rounds.",
+      "alt": "The Tama River beneath the pale blue arches of Maruko Bridge between two built-up banks.",
+      "caption": "The blue arches of Maruko Bridge span a break in the cityscape.",
+      "link": "A closer look at Maruko Bridge"
+    },
+    "shiraito": {
+      "name": "Shiraito River Bridge",
+      "sub": "A valley opening onto the sea",
+      "body": "Near Nebukawa, look for the sea beyond a line of red bridge piers. The bridge in the window carries the conventional Tokaido Main Line. Its tall piers give a sense of the valley's depth even when the water below is out of sight.",
+      "alt": "The red piers of the Tokaido Main Line bridge stretch across a green valley, with the sea beyond.",
+      "caption": "Beyond the red piers spanning the valley is a glimpse of the sea.",
+      "link": "See the Shiraito River Bridge"
+    },
+    "fuji": {
+      "name": "Fuji River",
+      "sub": "A water pipeline and Mount Fuji",
+      "body": "The white arches in front of Mount Fuji carry a pipeline supplying water to factories. In a single view, water takes two routes, one along the riverbed and another across the bridge.",
+      "alt": "White arches of a water-pipeline bridge cross the Fuji River, with Mount Fuji behind them.",
+      "caption": "Water runs along the river and across it in the pipeline.",
+      "link": "Explore the Fuji River and its pipeline bridge"
+    },
+    "abe": {
+      "name": "Abe River",
+      "body": "Follow the slender stream as it bends across a wide gravel bed. The distance your train travels on the bridge can be much greater than the width of the flowing water below.",
+      "alt": "A narrow channel curves through the broad grey gravel bed of the Abe River.",
+      "caption": "A thin ribbon of water cuts across a wide expanse of gravel."
+    },
+    "oi": {
+      "name": "Oi River",
+      "body": "Look between the bridge girders for a channel sweeping around the gravel. Travelers on the old Tokaido road relied on river porters to get across. Your train covers the same river in moments.",
+      "alt": "Bridge girders frame a curving channel and gravel banks in the Oi River.",
+      "caption": "A bend in the water and the shadow of the bridge on the gravel."
+    },
+    "tenryu": {
+      "name": "Tenryu River",
+      "body": "Patches of green grow on the stony riverbed, while the water follows its edge. Compare this with the Abe and Oi. All three have expanses of gravel, but the stream and the greenery occupy different parts of the view.",
+      "alt": "Water edges the stony bed of the Tenryu River, dotted with patches of vegetation.",
+      "caption": "The water follows the edge of the gravel, past scattered greenery."
+    },
+    "toyo": {
+      "name": "Toyo River",
+      "sub": "The main channel and floodway",
+      "body": "Just beyond Toyohashi, the broad main river comes into view alongside a path on the embankment. Going toward Shin-Osaka, watch for another crossing about 1.6 km later. This is the Toyo floodway, which diverts high water from the main river into Mikawa Bay.",
+      "alt": "The broad main channel of the Toyo River curves beside a grassy embankment and a narrow path.",
+      "caption": "A path traces the bank of the Toyo River's main channel."
+    },
+    "shonai": {
+      "name": "Shonai River",
+      "sub": "The bridges at Biwajima",
+      "body": "Shortly after Nagoya toward Shin-Osaka, look beyond the tracks in the foreground for a row of bridge piers. This is Biwajima, where a road bridge, a conventional railway bridge and the Shinkansen bridge cross the same stretch of river.",
+      "alt": "Tracks and overhead wires in front, bridge piers beyond, and a glimpse of the Shonai River between them.",
+      "caption": "The river shows through between the tracks and the row of bridge piers."
+    },
+    "kiso": {
+      "name": "Kiso River",
+      "body": "A wide sheet of water opens up between wooded banks. The Nagara and Ibi belong to the same river system, yet each is a river in its own right. Heading toward Shin-Osaka, you cross the Kiso first, then the Nagara, then the Ibi.",
+      "alt": "A broad reach of the Kiso River between wooded areas, with a low bridge in the distance.",
+      "caption": "Open water stretches between patches of trees."
+    },
+    "nagara": {
+      "name": "Nagara River",
+      "sub": "Hashima Bridge",
+      "body": "A row of red triangles marks Hashima Bridge just beside the train. The grey steel flashing past in front belongs to the bridge you are riding over. For a moment the two structures overlap in the window.",
+      "alt": "Cars on the red truss of Hashima Bridge over the Nagara River, partly framed by grey steel from the Shinkansen bridge.",
+      "caption": "A red road bridge runs beside the grey steel of the railway bridge."
+    },
+    "ibi": {
+      "name": "Ibi River",
+      "body": "There is a red road bridge here too, set farther back across the water. Compare it with the Nagara photo. Notice how much of the window the bridge fills, and how much is left to the river.",
+      "alt": "A red road bridge upstream from the Ibi River crossing, beyond the water and gravel, with mountains behind.",
+      "caption": "The river, a red bridge and the distant mountains line up in the window."
+    },
+    "seta": {
+      "name": "Seta River",
+      "sub": "Seta no Karahashi Bridge",
+      "body": "The Seta is Lake Biwa's only natural outlet. On the E-seat side stands Seta no Karahashi, a bridge on a crossing travelers have used for centuries. Here you can watch the water that leaves the lake flow past the town.",
+      "alt": "The broad Seta River, buildings along both banks and Seta no Karahashi Bridge beyond.",
+      "caption": "Water leaving Lake Biwa flows past the bridge that links the two banks.",
+      "link": "Discover Seta no Karahashi Bridge"
+    },
+    "kamo": {
+      "name": "Kamo River",
+      "sub": "Just east of Kyoto Station",
+      "body": "Look up from the narrow stream in its gravel bed to a bridge carrying cars, then to a second bridge and the Kyoto skyline. You see this just before arriving at Kyoto from Tokyo, or just after leaving Kyoto for Tokyo.",
+      "alt": "A channel winds through the Kamo riverbed, with traffic on a bridge, Kyoto buildings and mountains behind.",
+      "caption": "The riverbed, road bridges, city and mountains line up in a single view.",
+      "link": "See Kyoto Station and Kyoto Tower"
+    },
+    "katsura": {
+      "name": "Katsura River",
+      "body": "The water divides around a patch of green, with Kyoto spreading out beyond. Farther downstream, the Katsura meets the Uji and Kizu to form the Yodo River. Follow the water on a map to see how these places connect.",
+      "alt": "Green land separating channels of the Katsura River, with buildings on the far side.",
+      "caption": "Beyond the water and the green riverbed, Kyoto stretches into the distance."
+    }
+  },
+  "stops": {
+    "sagami-sakawa": {
+      "name": "The Sagami and Sakawa rivers",
+      "body": "Toward Shin-Osaka you reach the Sagami first. In the Edo period, travelers on the Tokaido road crossed it by ferry. At the Sakawa, just before Odawara, porters carried people on their shoulders or on platforms. Today you stay in your seat for both crossings.",
+      "link": "Look for Mount Fuji across the Sagami Plain"
+    },
+    "yahagi": {
+      "name": "Yahagi River",
+      "body": "On the way to Mikawa-Anjo, the train crosses the Yahagi River. Water drawn farther upstream reaches the fields of Anjo through the Meiji irrigation canal. The river below your window helps sustain the farmland ahead."
+    },
+    "aizuma": {
+      "name": "Aizuma River",
+      "body": "In Kariya the train crosses the Aizuma in a flash. Katsuyoshi Miura spotted a promising place on a map and went to the southeast side of the bridge with a camera. From down there, the passing Shinkansen becomes part of the river view.",
+      "link": "See 三浦克介's ground-level photo on X (Japanese)"
+    }
+  },
+  "sources": {
+    "maruko": "Kawasaki City on the Maruko ferry crossing and its bridge",
+    "tokaido": "Japan's transport ministry on river crossings along the old Tokaido road",
+    "sakawa": "Odawara City on the crossing of the Sakawa River",
+    "fujiWater": "Shizuoka Prefecture on the Fuji River industrial water supply (PDF)",
+    "oi": "Shimada City Museum on porters and the Oi crossing",
+    "kiso": "Japan's transport ministry on the Kiso river system",
+    "floodway": "Toyohashi River Office on the purpose of the floodway (PDF)",
+    "ride": "なごやん's photos of both Toyohashi crossings from a Tokyo-bound train",
+    "bridges": "Shinkansen bridge distance markers used to estimate the gap between crossings",
+    "meiji": "Japan's agriculture ministry on the Meiji irrigation canal and its founder",
+    "shonai": "Shonai River Office map of the bridges at Biwajima (PDF)",
+    "kamo": "Kyoto Prefecture's maps of the Kamo River (PDF)",
+    "seta": "Japan's transport ministry on the Seta and the Yodo river system",
+    "map": "Geospatial Information Authority of Japan maps showing rivers and railways",
+    "book": "Kei Kurihara's illustrated guide to the view from the Tokaido Shinkansen, Toyo Keizai, 2016"
+  }
+}

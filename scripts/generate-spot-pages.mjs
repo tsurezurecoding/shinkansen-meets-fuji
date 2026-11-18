@@ -1941,6 +1941,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
+    { loc: `${siteRoot}/rivers.html`, priority: "0.7", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/rivers.html`, priority: "0.7", changefreq: "monthly" },
     { loc: `${siteRoot}/en/jr-pass-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
     { loc: `${siteRoot}/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-10-10" },

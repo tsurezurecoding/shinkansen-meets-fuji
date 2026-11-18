@@ -2533,6 +2533,116 @@
     "imageAlt": "ชามราเม็งจิโร่วางบนเคาน์เตอร์ไม้ มีหมูหั่นหนาอยู่ข้างถั่วงอกและกะหล่ำปลี",
     "imageCredit": "michikusa"
   },
+  "rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "富士川の水面、白いアーチの水管橋と、その奥の富士山",
+    "imageCredit": "michikusa"
+  },
+  "en/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "White arches of a water-pipeline bridge cross the Fuji River, with Mount Fuji behind them.",
+    "imageCredit": "michikusa"
+  },
+  "zh-Hant/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "富士川水面、白色拱形輸水橋及其後方的富士山",
+    "imageCredit": "michikusa"
+  },
+  "fr/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "La rivière Fuji, un pont-aqueduc blanc en arc et le mont Fuji au loin",
+    "imageCredit": "michikusa"
+  },
+  "de/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "Der Fluss Fuji, eine weiße bogenförmige Wasserleitung und der Berg Fuji",
+    "imageCredit": "michikusa"
+  },
+  "es/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "La superficie del Fujikawa, un acueducto de arcos blancos y el monte Fuji al fondo",
+    "imageCredit": "michikusa"
+  },
+  "zh-Hans/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "富士川水面、白色拱形输水桥及其后方的富士山",
+    "imageCredit": "michikusa"
+  },
+  "ko/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "후지강 수면과 흰 아치형 송수교, 그 너머의 후지산",
+    "imageCredit": "michikusa"
+  },
+  "it/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "Il fiume Fuji, un acquedotto bianco ad arco e il monte Fuji sullo sfondo",
+    "imageCredit": "michikusa"
+  },
+  "th/rivers.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-18",
+    "modifiedEvidence": "2026-11-18: first Web edition of the Tokaido rivers and bridges feature in all ten languages",
+    "image": "images/rivers/fuji.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/rivers/route.json: Fuji River photograph by Shinkansen Window",
+    "imageAlt": "ผิวน้ำแม่น้ำฟูจิ สะพานส่งน้ำซุ้มโค้งสีขาว และภูเขาไฟฟูจิที่อยู่ด้านหลัง",
+    "imageCredit": "michikusa"
+  },
   "factories.html": {
     "kind": "editorial article",
     "article": true,

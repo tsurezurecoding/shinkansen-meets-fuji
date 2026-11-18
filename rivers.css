@@ -1,0 +1,71 @@
+/* The opening uses the same full-width hero as the Ferris Wheels and Reflections features. */
+.river-hero.fw-hero::before {
+  background-image: url("images/rivers/fuji.jpg");
+  background-position: 50% 58%;
+}
+.river-hero .fw-hero-credit { color: rgba(255, 255, 255, .8); margin-top: 20px; }
+.river-hero h1, .river-entry h2 { overflow-wrap: break-word; }
+html:not([lang="ja"]) .river-hero h1 { hyphens: auto; }
+.river-list { min-width: 0; }
+.river-order {
+  display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;
+  gap: 6px 16px; margin: 16px 0 0; padding-bottom: 14px;
+  border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 12px;
+}
+.river-order strong { color: var(--ink); }
+.river-entry { padding: 30px 0 32px; border-bottom: 1px solid var(--line); scroll-margin-top: 85px; }
+.river-entry-head { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+.river-entry-head > div { min-width: 0; }
+.river-number {
+  display: grid; place-items: center; flex: 0 0 34px; height: 34px;
+  color: #805730; background: #f0e7d8; border-radius: 50%; font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.river-place { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin: 0 0 5px; color: var(--ink-soft); font-size: 12px; }
+.river-side { padding-left: 9px; border-left: 1px solid var(--line); font-weight: 600; }
+.river-entry h2 {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px;
+  margin: 0; font: 700 clamp(24px, 3vw, 29px)/1.5 var(--font-serif);
+}
+.river-entry h2 small { font: 400 15px/1.6 var(--font-sans); color: var(--ink-soft); }
+.river-entry-body { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.river-photo { margin: 0; min-width: 0; }
+.river-photo button { display: block; width: 100%; padding: 0; border: 0; border-radius: 14px; overflow: hidden; background: #d8e0df; cursor: zoom-in; }
+.river-photo img { display: block; width: 100%; height: auto; }
+.river-photo figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.river-entry-copy { font-size: 16px; line-height: 1.95; }
+.river-entry-copy p { margin: 0; }
+.river-link { display: inline-block; margin-top: 14px; color: var(--accent); font-size: 14px; font-weight: 700; text-underline-offset: 4px; }
+.river-comparison-note { margin-top: 18px; padding: 16px 19px; background: var(--paper-deep); border-radius: 12px; color: var(--ink-soft); font-size: 13px; line-height: 1.9; }
+.river-waypoint { margin: 22px 0; padding: 2px 0 2px 18px; border-left: 3px solid #a4b8b0; scroll-margin-top: 85px; }
+.river-waypoint h2 { margin: 4px 0 7px; font: 700 21px/1.5 var(--font-serif); }
+.river-waypoint p:not(.river-place) { max-width: 47em; margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.9; }
+.river-waypoint .river-link { margin-top: 5px; }
+.river-reading-note, .river-sources { color: var(--ink-soft); font-size: 13px; line-height: 1.9; }
+.river-reading-note { margin: 28px 0 16px; }
+.river-sources summary { cursor: pointer; font-weight: 700; color: var(--ink); }
+.river-sources p { margin-top: 12px; }
+.river-sources ol { padding-left: 22px; margin-top: 14px; }
+.river-sources li { margin-bottom: 8px; }
+.river-sources a { color: inherit; overflow-wrap: anywhere; }
+.river-lightbox {
+  width: min(1280px, calc(100vw - 28px)); max-height: calc(100dvh - 28px);
+  margin: auto; padding: 14px; border: 0; border-radius: 14px; background: var(--paper); color: var(--ink);
+}
+.river-lightbox::backdrop { background: rgba(16, 28, 44, .9); }
+.river-lightbox img { display: block; width: 100%; max-height: calc(100dvh - 160px); object-fit: contain; background: var(--night); }
+.river-lightbox-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.river-lightbox-top p { margin: 0; font-size: 14px; font-weight: 700; }
+.river-lightbox-close { flex-shrink: 0; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); font: inherit; cursor: pointer; }
+.river-lightbox-caption { margin: 9px 0 0; color: var(--ink-soft); font-size: 13px; }
+body:has(.river-lightbox[open]) { overflow: hidden; }
+@media (max-width: 760px) {
+  .river-entry { padding: 24px 0 28px; }
+  .river-entry-head { gap: 11px; margin-bottom: 14px; }
+  .river-entry h2 { gap: 2px 12px; }
+  .river-entry h2 small { font-size: 13px; }
+  .river-entry-body { grid-template-columns: 1fr; gap: 16px; }
+  .river-entry-copy { font-size: 15px; }
+  .river-place { font-size: 11px; }
+  .river-link { margin-top: 10px; }
+}
