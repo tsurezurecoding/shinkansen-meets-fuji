@@ -1,0 +1,448 @@
+{
+  "photoCredit": "michikusa",
+  "groups": [
+    "fuji-area",
+    "shizuoka-area",
+    "fukuroi-area",
+    "toyohashi-area",
+    "anjo-area",
+    "nagoya-area",
+    "shiga-area",
+    "kyoto-area"
+  ],
+  "places": [
+    {
+      "id": "ucc",
+      "group": "fuji-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/ucc.webp",
+        "thumb": "images/factories/ucc-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/fuji.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=UCC%20%E5%AF%8C%E5%A3%AB%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.ucc.co.jp/company/news/2025/rel250423.html"
+      ]
+    },
+    {
+      "id": "fuji",
+      "group": "fuji-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/fuji.webp",
+        "thumb": "images/factories/fuji-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/fuji-paper-mills.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%9C%AC%E8%A3%BD%E7%B4%99%20%E5%AF%8C%E5%A3%AB%E5%B7%A5%E5%A0%B4%E3%83%BB%E5%AF%8C%E5%A3%AB%E5%9C%B0%E5%8C%BA",
+      "sources": [
+        "https://www.nipponpapergroup.com/about/sales/fuji/",
+        "https://www.crecia.co.jp/corporate/facilities/"
+      ]
+    },
+    {
+      "id": "koa",
+      "group": "fuji-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/koa.webp",
+        "thumb": "images/factories/koa-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/fuji-paper-mills.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E8%88%88%E4%BA%9C%E5%B7%A5%E6%A5%AD%20%E6%9C%AC%E7%A4%BE%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.koa-kogyo.co.jp/work_content/",
+        "https://www.koa-kogyo.co.jp/news/1451/"
+      ]
+    },
+    {
+      "id": "sapporo",
+      "group": "shizuoka-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/sapporo.webp",
+        "thumb": "images/factories/sapporo-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/sapporo-shizuoka-factory.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%83%E3%83%9D%E3%83%AD%E3%83%93%E3%83%BC%E3%83%AB%20%E9%9D%99%E5%B2%A1%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.sapporobeer.jp/shizuokabakusyu/love/"
+      ]
+    },
+    {
+      "id": "kibun",
+      "group": "shizuoka-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/kibun.webp",
+        "thumb": "images/factories/kibun-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://map.yahoo.co.jp/v3/place/-axrlrmGSZ-",
+      "sources": [
+        "https://www.kibun.co.jp/contact/faq/factory/index.html",
+        "https://www.sangyosupport-shimada.com/pdf/shimadasi_guide_2022.pdf"
+      ]
+    },
+    {
+      "id": "nestle",
+      "group": "shizuoka-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/nestle.webp",
+        "thumb": "images/factories/nestle-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://map.yahoo.co.jp/v3/place/JHvdlpzEid-",
+      "sources": [
+        "https://www.nestle.co.jp/sites/g/files/pydnoa331/files/2025-03/20250313_nestle_1.pdf",
+        "https://www.nestle.co.jp/csv/japan/planet/factories"
+      ]
+    },
+    {
+      "id": "ajinomoto",
+      "group": "shizuoka-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/ajinomoto.webp",
+        "thumb": "images/factories/ajinomoto-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://map.yahoo.co.jp/v3/place/oVToe33yMYA",
+      "sources": [
+        "https://www.ajinomoto-shokuhin.co.jp/factory/shizuoka/",
+        "https://www.ajinomoto-bakery.co.jp/strengths/",
+        "https://www.ajinomoto-bakery.co.jp/company/outline.html"
+      ]
+    },
+    {
+      "id": "shiseido",
+      "group": "fukuroi-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/shiseido.webp",
+        "thumb": "images/factories/shiseido-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E8%B3%87%E7%94%9F%E5%A0%82%20%E6%8E%9B%E5%B7%9D%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://corp.shiseido.com/slqm/jp/information/information_260625.html",
+        "https://www.fujita.co.jp/works/718/"
+      ]
+    },
+    {
+      "id": "marudai",
+      "group": "fukuroi-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/marudai.webp",
+        "thumb": "images/factories/marudai-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/pocari-fukuroi.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E4%B8%B8%E5%A4%A7%E9%A3%9F%E5%93%81%20%E9%9D%99%E5%B2%A1%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://marudai.tayori.com/q/marudai-faq/detail/1276863/",
+        "https://www.marudai.jp/bknumber/00000762.html"
+      ]
+    },
+    {
+      "id": "pola",
+      "group": "fukuroi-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/pola.webp",
+        "thumb": "images/factories/pola-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "credit": "© Disney",
+      "related": "reflections.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%83%BC%E3%83%A9%E5%8C%96%E6%88%90%E5%B7%A5%E6%A5%AD%20%E8%A2%8B%E4%BA%95%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://prtimes.jp/main/html/rd/p/000000164.000092303.html"
+      ]
+    },
+    {
+      "id": "pocari",
+      "group": "fukuroi-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/pocari.webp",
+        "thumb": "images/factories/pocari-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/pocari-fukuroi.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E5%A1%9A%E8%A3%BD%E8%96%AC%20%E8%A2%8B%E4%BA%95%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.otsuka.co.jp/virtual-factory-tour/fukuroi/"
+      ]
+    },
+    {
+      "id": "nitto",
+      "group": "fukuroi-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/nitto.webp",
+        "thumb": "images/factories/nitto-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%9D%B1%E5%B7%A5%E6%A5%AD%20%E6%8E%9B%E5%B7%9D%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.nito.co.jp/company/domestic/kakegawa/"
+      ]
+    },
+    {
+      "id": "unicharm",
+      "group": "fukuroi-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/unicharm.webp",
+        "thumb": "images/factories/unicharm-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%A6%E3%83%8B%E3%83%BB%E3%83%81%E3%83%A3%E3%83%BC%E3%83%A0%E3%83%97%E3%83%AD%E3%83%80%E3%82%AF%E3%83%84%20%E9%9D%99%E5%B2%A1%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.unicharmproducts.co.jp/company/office/index.html",
+        "https://www.city.kakegawa.shizuoka.jp/fs/6/3/0/1/4/5/_/R8____12______________________20260217.pdf"
+      ]
+    },
+    {
+      "id": "house",
+      "group": "fukuroi-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/house.webp",
+        "thumb": "images/factories/house-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/genki-sign.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%82%A6%E3%82%B9%E9%A3%9F%E5%93%81%20%E9%9D%99%E5%B2%A1%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://housefoods.jp/data/factory/factory/factory02.html",
+        "https://housefoods-group.com/newsrelease/pdf/newsrelease_20240515_02.pdf"
+      ]
+    },
+    {
+      "id": "yamaha",
+      "group": "fukuroi-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/yamaha.webp",
+        "thumb": "images/factories/yamaha-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%A4%E3%83%9E%E3%83%8F%E7%99%BA%E5%8B%95%E6%A9%9F%20%E8%A2%8B%E4%BA%95%E5%8D%97%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://global.yamaha-motor.com/jp/profile/business/marine-engines/",
+        "https://www.takenaka.co.jp/ja/majorworks/32601352007.html"
+      ]
+    },
+    {
+      "id": "teibow",
+      "group": "fukuroi-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/teibow.webp",
+        "thumb": "images/factories/teibow-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%86%E3%82%A4%E3%83%9C%E3%83%BC%20%E6%9C%AC%E7%A4%BE%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.teibow.co.jp/company/"
+      ]
+    },
+    {
+      "id": "suzuki-takatsuka",
+      "group": "toyohashi-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/suzuki-takatsuka.webp",
+        "thumb": "images/factories/suzuki-takatsuka-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/hamanako.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%82%BA%E3%82%AD%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%20%E6%9C%AC%E7%A4%BE%20%E9%9D%99%E5%B2%A1%E7%9C%8C%E6%B5%9C%E6%9D%BE%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E9%AB%98%E5%A1%9A%E7%94%BA300",
+      "sources": [
+        "https://www.suzuki.co.jp/sustainability/data/company_profile.html",
+        "https://www.suzuki.co.jp/release/d/2017/1222/index.html",
+        "https://www.suzuki.co.jp/about/csr/report/2019/pdf/2019_envj_05.pdf"
+      ]
+    },
+    {
+      "id": "sinfonia",
+      "group": "toyohashi-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/sinfonia.webp",
+        "thumb": "images/factories/sinfonia-640.webp",
+        "width": 1600,
+        "height": 900
+      },
+      "comparison": {
+        "src": "images/factories/sinfonia-sasashima.webp",
+        "thumb": "images/factories/sinfonia-sasashima-640.webp",
+        "width": 1600,
+        "height": 900
+      },
+      "related": "spots/toyohashi-tateiwa.html",
+      "map": "https://map.yahoo.co.jp/v3/place/8IbUvYncR6Q",
+      "sources": [
+        "https://www.sinfo-t.jp/ir/about/semiconductor/",
+        "https://www.sinfonia-recruit.com/benefits/work-location/toyohashi/",
+        "https://www.sogohodo.co.jp/ooh/30675/",
+        "https://www.chudenkbs.co.jp/works/1669/"
+      ]
+    },
+    {
+      "id": "yamazaki-pan",
+      "group": "anjo-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/yamazaki-pan.webp",
+        "thumb": "images/factories/yamazaki-pan-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E5%B1%B1%E5%B4%8E%E8%A3%BD%E3%83%91%E3%83%B3%20%E5%AE%89%E5%9F%8E%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://yamazakipan-recruit.net/jobfind-pc/job/All/78"
+      ]
+    },
+    {
+      "id": "nichiban",
+      "group": "anjo-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/nichiban.webp",
+        "thumb": "images/factories/nichiban-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%8B%E3%83%81%E3%83%90%E3%83%B3%20%E5%AE%89%E5%9F%8E%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.nichiban.co.jp/corp/ir/library/security_reports/pdf/122_02.pdf",
+        "https://www.nichiban.co.jp/corp/ir/library/financial_results/pdf/2025_3-briefing2_qa.pdf",
+        "https://www.nichiban.co.jp/news/18-01/03.html"
+      ]
+    },
+    {
+      "id": "kirin",
+      "group": "nagoya-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/kirin.webp",
+        "thumb": "images/factories/kirin-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/kirin-beer-factory.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%82%AD%E3%83%AA%E3%83%B3%E3%83%93%E3%83%BC%E3%83%AB%20%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.kirinholdings.com/jp/newsroom/release/2026/0527_01.html"
+      ]
+    },
+    {
+      "id": "yanmar",
+      "group": "shiga-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/yanmar.webp",
+        "thumb": "images/factories/yanmar-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/maibara-test-trains.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%A4%E3%83%B3%E3%83%9E%E3%83%BC%20%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E6%89%80",
+      "sources": [
+        "https://www.yanmar.com/jp/engine/fundamental_research/",
+        "https://www.yanmar.com/jp/about/technology/core_excellence/",
+        "https://cotetu.seesaa.net/article/521411970.html"
+      ]
+    },
+    {
+      "id": "fujitec",
+      "group": "shiga-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/fujitec.webp",
+        "thumb": "images/factories/fujitec-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/fujitec-big-wing.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%95%E3%82%B8%E3%83%86%E3%83%83%E3%82%AF%20%E3%83%93%E3%83%83%E3%82%B0%E3%82%A6%E3%82%A3%E3%83%B3%E3%82%B0",
+      "sources": [
+        "https://www.fujitec.co.jp/corporate/domestic_bases/big_wing"
+      ]
+    },
+    {
+      "id": "lotte",
+      "group": "shiga-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/lotte.webp",
+        "thumb": "images/factories/lotte-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/lotte-shiga.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%83%E3%83%86%20%E6%BB%8B%E8%B3%80%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.lotte.co.jp/kengaku/"
+      ]
+    },
+    {
+      "id": "nissin",
+      "group": "shiga-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/nissin.webp",
+        "thumb": "images/factories/nissin-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E6%97%A5%E6%B8%85%E9%A3%9F%E5%93%81%20%E6%BB%8B%E8%B3%80%E5%B7%A5%E5%A0%B4",
+      "sources": [
+        "https://www.nissin.com/jp/company/news/13405/",
+        "https://www.nissin.com/jp/company/about/nissinfoods/factory/"
+      ]
+    },
+    {
+      "id": "yamazaki",
+      "group": "kyoto-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/yamazaki.webp",
+        "thumb": "images/factories/yamazaki-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "related": "spots/yamazaki-distillery.html",
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%82%B5%E3%83%B3%E3%83%88%E3%83%AA%E3%83%BC%20%E5%B1%B1%E5%B4%8E%E8%92%B8%E6%BA%9C%E6%89%80",
+      "sources": [
+        "https://www.suntory.co.jp/whisky/yamazaki/"
+      ]
+    }
+  ]
+}

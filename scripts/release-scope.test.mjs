@@ -1,12 +1,70 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { onlyFactoryJpegMetadataRemoved } from './release-scope.mjs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
 import { onlyRamenSitemapChanged, onlyRamenLocaleRouteChanged, onlyRamenLanguageRouteChanged, onlyRamenAssetReferencesChanged, onlyRamenMetadataAdded, onlyRamenEnglishCardAddedToJapaneseDonburi } from './release-scope.mjs';
 import { onlyDonburiSitemapChanged, onlyDonburiLocaleRouteChanged, onlyDonburiLanguageRouteChanged, onlyDonburiAssetReferencesChanged, onlyDonburiEverydayLayoutChanged } from './release-scope.mjs';
 import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+const factoryPhoto = 'images/20260919_lotte-shiga_4190_michikusa.jpg';
+function jpegSegment(marker, data) {
+  const length = data.length + 2;
+  return Buffer.concat([Buffer.from([0xff, marker, length >> 8, length & 0xff]), data]);
+}
+const factoryExif = jpegSegment(0xe1, Buffer.from('Exif\0\0private camera data'));
+const factoryProfile = jpegSegment(0xe2, Buffer.from('ICC_PROFILE\0rgb'));
+const factoryTables = jpegSegment(0xdb, Buffer.from([0, 3, 6, 9]));
+const factoryScan = Buffer.from([0xff, 0xda, 0, 2, 8, 9, 0xff, 0xd9]);
+const factoryJpeg = (...metadata) => Buffer.concat([Buffer.from([0xff, 0xd8]), ...metadata, factoryProfile, factoryTables, factoryScan]);
+
+test('factory JPEG privacy cleanup removes only EXIF from the ten approved photographs', () => {
+  const before = factoryJpeg(factoryExif), after = factoryJpeg();
+  assert(onlyFactoryJpegMetadataRemoved(factoryPhoto, before, after));
+  assert(!onlyFactoryJpegMetadataRemoved('images/unrelated.jpg', before, after));
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, after, after));
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, after, before));
+  const changedPixels = Buffer.from(after);
+  changedPixels[changedPixels.length - 3] ^= 1;
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, before, changedPixels));
+  const changedProfile = Buffer.from(after);
+  changedProfile[changedProfile.indexOf('rgb')] ^= 1;
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, before, changedProfile));
+  const changedTables = Buffer.from(after);
+  changedTables[changedTables.indexOf(factoryTables) + factoryTables.length - 1] ^= 1;
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, before, changedTables));
+  const xmp = jpegSegment(0xe1, Buffer.from('http://ns.adobe.com/xap/1.0/\0xmp'));
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, factoryJpeg(xmp), after));
+  assert(!onlyFactoryJpegMetadataRemoved(factoryPhoto, Buffer.from([0xff, 0xd8, 0xff, 0xe1, 0xff, 0xff]), after));
+});
+
+test('factory scope includes its photo tests and permits only their single package token', () => {
+  const before = {scripts: {
+    'build:pages': 'node scripts/generate-ramen-page.mjs && node scripts/generate-omamori-page.mjs',
+    'preflight:spots': 'node scripts/generate-ramen-page.mjs --check && node scripts/generate-omamori-page.mjs --check',
+    'test:generator': 'node --test scripts/ramen-page.test.mjs',
+  }};
+  const after = structuredClone(before);
+  after.scripts['build:pages'] = after.scripts['build:pages'].replace(' && ', ' && node scripts/generate-factories-page.mjs && ');
+  after.scripts['preflight:spots'] = after.scripts['preflight:spots'].replace(' && ', ' && node scripts/generate-factories-page.mjs --check && ');
+  after.scripts['test:generator'] = 'node --test scripts/factories-page.test.mjs scripts/ramen-page.test.mjs';
+  const files = ['scripts/generate-factories-page.mjs', 'scripts/factories-page.test.mjs', 'package.json', factoryPhoto].map(change);
+  const options = {packageBefore: JSON.stringify(before), packageAfter: JSON.stringify(after),
+    factoryPhotoMetadataOnly: file => onlyFactoryJpegMetadataRemoved(file, factoryJpeg(factoryExif), factoryJpeg())};
+  const plan = chooseReleaseScope(files, options);
+  assert.equal(plan.scope, 'factory-windows');
+  assert(plan.commands.some(command => command.includes('--test') && command.includes('scripts/factories-page.test.mjs')));
+  assert.notEqual(chooseReleaseScope(files, {...options, factoryPhotoMetadataOnly: () => false}).scope, 'factory-windows');
+  assert.notEqual(chooseReleaseScope([...files, change('images/unrelated.jpg')], {...options, factoryPhotoMetadataOnly: () => true}).scope, 'factory-windows');
+  assert.notEqual(chooseReleaseScope([...files.filter(c => c.path !== factoryPhoto), {path: factoryPhoto, status: 'A'}], options).scope, 'factory-windows');
+  for (const suffix of [' scripts/unrelated.test.mjs', ' scripts/factories-page.test.mjs']) {
+    const invalid = structuredClone(after);
+    invalid.scripts['test:generator'] += suffix;
+    assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(invalid)}).scope, 'factory-windows');
+  }
+});
 
 test('ramen scope covers ten editions, eleven photographs and only nine entry languages', () => {
   const files = ['scripts/generate-ramen-page.mjs', 'scripts/ramen-page.test.mjs', 'scripts/shared/ramen-entry.mjs',

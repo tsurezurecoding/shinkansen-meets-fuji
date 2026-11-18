@@ -81,8 +81,11 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  // Story/Maruko, omamori and window articles, then 24 translated article metadata entries and ten donburi editions.
-  assert.equal(Object.keys(CONTENT_METADATA).length, 138 + 50 + 8 + 10 + 10 + 6 + 24 + 10);
+  const editions = ['', 'en/', 'fr/', 'de/', 'es/', 'it/', 'ko/', 'th/', 'zh-Hant/', 'zh-Hans/'];
+  const recent = new Set(editions.flatMap(prefix => ['ramen.html', 'rivers.html', 'factories.html'].map(route => prefix + route)));
+  const previousEntries = Object.keys(CONTENT_METADATA).filter(route => !recent.has(route));
+  assert.equal(previousEntries.length, 256, 'curated entries through the donburi editions');
+  for (const route of recent) assert.equal(CONTENT_METADATA[route]?.article, !route.endsWith('rivers.html'), route);
   for (const file of ['zh-Hant/spots/fuji.html','es/spots/fuji.html','de/yakei.html','fr/yakei.html','zh-Hant/yakei.html']) {
     assert.equal(CONTENT_METADATA[file].modified, file.endsWith('/yakei.html') ? '2026-11-16' : '2026-10-20');
     assert.equal(CONTENT_METADATA[file].published, undefined, 'local translation dates must not assert publication');
