@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import vm from 'node:vm';
+import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shaPattern = /^[0-9a-f]{40}$/;
@@ -23,6 +24,7 @@ const photoDedup = new Set(['scripts/shared/responsive-photos.mjs', 'scripts/res
   'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', '.github/workflows/quality-gate.yml']);
 const photoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/fuji-paper-mills\.html$/;
 const node = (...args) => ['node', ...args];
+const shortHash = text => createHash('sha256').update(text).digest('hex').slice(0, 8);
 const rideIds = ['tokyo-tower', 'odawara-castle', 'hinataoka', 'solar-ark', 'kakegawa', 'odawara'];
 const rideRelatedIds = [...rideIds, 'nagoya-station-skyline', 'kirin-beer-factory', 'kiyosu', 'kinshozan', 'sekigahara-battlefield'];
 const ridePhotoStems = ['tokyo-tower_night_76831', 'odawara-castle_night_105629', 'hinataoka_night_2594',
@@ -348,7 +350,8 @@ function selectExistingScope(changes, { versionOnly = () => false, assetVersionO
       spotAdsensePackage = isDeepStrictEqual(before, after);
     }
   }
-  if (['spot-adsense.js', 'spots/kakegawa.html', 'scripts/spot-adsense.test.mjs'].every(file => files.includes(file)) &&
+  if (['spots/kakegawa.html', 'scripts/spot-adsense.test.mjs'].every(file => files.includes(file)) &&
+      ['spot-adsense.js', 'scripts/shared/spot-ad-placements.mjs'].some(file => files.includes(file)) &&
       spotAdsensePackage && changes.every(change => ['A', 'M'].includes(change.status) && spotAdsenseFiles.has(change.path))) return {
     scope: 'spot-adsense-pilot', needsDependencies: true, pagesCandidate: true,
     reason: 'Japanese Kakegawa opts into a deferred reusable ad; generator integration, distribution inventory and Japanese/English privacy disclosures only.',
@@ -1062,7 +1065,6 @@ function factoryPhotoScope(changes, options) {
   }
   const applyReferences = text => text.replace(/images\/thumbs\/display\/[\w.-]+\.webp|data\/spot-pages\/[\w-]+\.(?:ja|en)\.js\?v=[a-f0-9]{8}/g,
     reference => replacements.get(reference) ?? reference);
-  const shortHash = text => createHash('sha256').update(text).digest('hex').slice(0, 8);
   for (const { path: file, status } of changes) {
     const payload = file.match(/^data\/spot-pages\/([\w-]+)\.(?:ja|en)\.js$/);
     if (!payload) continue;
@@ -1108,14 +1110,53 @@ function factoryPhotoScope(changes, options) {
   return { ...plan, commands: [...plan.commands, ...checks.filter(c => !plan.commands.some(other => isDeepStrictEqual(c, other)))] };
 }
 
+const nightSpotList = 'scripts/shared/yakei-spots.mjs';
+const momentsPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?window-moments\.html$/;
+function onlyWindowNightCount(file, read, changedPayloads) {
+  const [source, after] = read(file);
+  if (source === after) return false;
+  const payload = file.split('/')[0] + '/utility-data.js';
+  let before = source;
+  if (changedPayloads?.has(payload)) {
+    const [oldTag, newTag] = read(payload).map(text => '<script src="../' + payload + '?v=' + shortHash(text) + '"></script>');
+    before = before.replace(oldTag, newTag);
+    if (before === after) return true;
+  }
+  const label = /(<a class="wm-special-card" href="(?:\.\.\/[\w-]+\/)?yakei\.html">\s*<img\b[^>]*>\s*<span class="wm-special-copy"><small>[^<\d]*)\d+(?=[^<\d]*<\/small>)/g;
+  return [...before.matchAll(label)].length === 1
+    && before.replace(label, (_, prefix) => prefix + YAKEI_SPOT_COUNT) === after;
+}
+
 export function chooseReleaseScope(changes, options = {}) {
-  let plan = factoryPhotoScope(changes, options) || selectExistingScope(changes, options);
-  if (plan.scope === 'unmapped') plan = runtimeScope(changes, options) || plan;
-  if (plan.scope === 'unmapped' || plan.scope === 'full') return plan;
+  const select = inputs => {
+    const existing = factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
+    return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
+  };
+  let plan = select(changes);
   const files = new Set(changes.map(change => change.path));
+  let checkMoments = files.has(nightSpotList);
+  const outputs = changes.filter(c => momentsPage.test(c.path));
+  if (outputs.length && plan.scope === 'unmapped' && options.fileContents) {
+    const rest = changes.filter(c => !momentsPage.test(c.path));
+    const correction = rest.every(c => c.status === 'M' && ['content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'].includes(c.path));
+    const payloads = checkMoments ? new Set(rest.filter(c => c.status === 'M' && c.path.endsWith('/utility-data.js')).map(c => c.path)) : null;
+    if (outputs.every(c => c.status === 'M' && onlyWindowNightCount(c.path, options.fileContents, payloads))) {
+      const other = correction ? { scope: 'window-moments-count', needsDependencies: true, pagesCandidate: true,
+        reason: 'Night-scene count in the Window Moments editions', commands: [node('--test', 'scripts/release-scope.test.mjs')] } : select(rest);
+      if (other.pagesCandidate) {
+        plan = correction ? other : { ...other, reason: other.reason + ' Also verify the Window Moments night-scene count.' };
+        checkMoments = true;
+      }
+    }
+  }
+  if (plan.scope === 'unmapped' || plan.scope === 'full') return plan;
   const hasFullTest = file => plan.commands.some(command => command[1] === '--test' && command.includes(file)
     && !command.some(arg => arg.startsWith('--test-name-pattern')));
   const extra = [];
+  if (checkMoments) {
+    extra.push(node('scripts/generate-window-moments-page.mjs', '--check'), node(utilityGenerator, '--route', 'window-moments.html', '--check'));
+    if (!plan.commands.some(c => c[1] === 'scripts/check-content-manifest.mjs')) extra.push(node('scripts/check-content-manifest.mjs'));
+  }
   if (files.has(castleGenerator)) {
     if (!hasFullTest(localeContract)) extra.push(node('--test', localeContract));
     const riverGenerator = 'scripts/generate-rivers-page.mjs';
