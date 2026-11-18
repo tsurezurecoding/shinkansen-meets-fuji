@@ -350,7 +350,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   };
   const factoryFiles = new Set(['scripts/generate-factories-page.mjs', 'scripts/factory-windows.json',
     'scripts/shared/factory-windows-links.mjs', 'scripts/shared/story-window.mjs',
-    'factories.html', 'factories.css', 'factories.js', 'zukan.html', 'scripts/locales-contract.test.mjs',
+    'factories.html', 'factories.css', 'factories.js', 'zukan.html', 'scripts/locales-contract.test.mjs', 'scripts/generate-spot-pages.test.mjs',
     'scripts/templates/site-source/zukan.html.tpl', 'scripts/generate-content-manifest.mjs',
     'scripts/generate-spot-pages.mjs', 'scripts/validate-language-pages.mjs',
     'scripts/content-metadata.json', 'locales.js', 'language-router.js', 'package.json',
