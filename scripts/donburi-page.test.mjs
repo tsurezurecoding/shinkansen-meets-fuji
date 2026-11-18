@@ -104,8 +104,8 @@ test('Everyday Japan articles link to donburi in nine languages without duplicat
   assert.deepEqual(metadataProblems(), []);
 });
 
-test('donburi ends with six localized photo stories, an all-stories link and the required photo credits', () => {
-  const relatedRoutes = ['foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'];
+test('donburi ends with seven localized photo stories, an all-stories link and the required photo credits', () => {
+  const relatedRoutes = ['foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'ramen.html'];
   for (const lang of languages) {
     const file = edition(lang), dom = documentFor(file), doc = dom.window.document;
     const section = doc.querySelector('main > .everyday-related');
@@ -116,7 +116,7 @@ test('donburi ends with six localized photo stories, an all-stories link and the
     assert.equal(new URL(allStories.href).pathname, `/${targetLang}/everyday-japan.html`);
     const cards = [...section.querySelectorAll('.everyday-story-card')];
     const destinations = cards.map(card => new URL(card.href).pathname);
-    assert.equal(cards.length, relatedRoutes.length, `${file}: all six companion stories`);
+    assert.equal(cards.length, relatedRoutes.length, `${file}: all seven companion stories`);
     assert.equal(new Set(destinations).size, destinations.length, `${file}: no repeated destination`);
     assert.deepEqual(destinations.sort(), relatedRoutes.map(route => `/${targetLang}/${route}`).sort());
     for (const card of cards) {

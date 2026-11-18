@@ -8,6 +8,7 @@ import {readSiteSource} from './shared/site-chrome.mjs';
 import {withLocaleRegistry,languages,editions} from './shared/locales.mjs';
 import {ANALYTICS} from './shared/feature-page.mjs';
 import {donburiStoryCard} from './shared/donburi-entry.mjs';
+import {ramenStoryCard} from './shared/ramen-entry.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const origin='https://www.michikusa-travel.com';
@@ -50,7 +51,7 @@ for(const lang of requestedLang?[requestedLang]:languages){
     return `<section id="${c.id}" class="food-section" aria-labelledby="${c.id}-title">${chapterHead(c)}${body}</section>`;
   }).join('\n');
   const related=copy.relatedStories.map(({route,image,label,title,note})=>[route,image,label,title,note]);
-  const relatedHTML=`<section class="everyday-related" aria-labelledby="everydayRelatedTitle"><div class="section-head"><div><p class="eyebrow">EVERYDAY JAPAN</p><h2 id="everydayRelatedTitle">${e(copy.relatedTitle)}</h2></div></div><nav class="everyday-related-grid" aria-label="${e(copy.relatedTitle)}">${related.map(([route,img,label,title,note])=>`<a class="everyday-story-card" href="${route}" data-cta-track="everyday_related_click" data-cta-id="omamori_to_${route.split('.')[0]}"><span class="everyday-story-photo"><img src="${prefix}images/${img}" alt="" width="640" height="480" loading="lazy" decoding="async"></span><span class="everyday-story-copy"><small>${e(label)}</small><strong>${e(title)}</strong><span>${e(note)}</span><b>${e(copy.relatedRead)} →</b></span></a>`).join('')}${lang!=='ja'?donburiStoryCard(lang):''}</nav><p class="everyday-related-credits">${e(copy.relatedPhotoLabel)}: Michikusa. Onigiri: <a href="https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg">Ocdp</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p></section>`;
+  const relatedHTML=`<section class="everyday-related" aria-labelledby="everydayRelatedTitle"><div class="section-head"><div><p class="eyebrow">EVERYDAY JAPAN</p><h2 id="everydayRelatedTitle">${e(copy.relatedTitle)}</h2></div></div><nav class="everyday-related-grid" aria-label="${e(copy.relatedTitle)}">${related.map(([route,img,label,title,note])=>`<a class="everyday-story-card" href="${route}" data-cta-track="everyday_related_click" data-cta-id="omamori_to_${route.split('.')[0]}"><span class="everyday-story-photo"><img src="${prefix}images/${img}" alt="" width="640" height="480" loading="lazy" decoding="async"></span><span class="everyday-story-copy"><small>${e(label)}</small><strong>${e(title)}</strong><span>${e(note)}</span><b>${e(copy.relatedRead)} →</b></span></a>`).join('')}${lang!=='ja'?donburiStoryCard(lang)+ramenStoryCard(lang):''}</nav><p class="everyday-related-credits">${e(copy.relatedPhotoLabel)}: Michikusa. Onigiri: <a href="https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg">Ocdp</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p></section>`;
   const footerDom=new JSDOM(readSiteSource(root,lang==='ja'?'castles.html':`${lang}/foods.html`));
   const shellDoc=footerDom.window.document;
   if(localized){

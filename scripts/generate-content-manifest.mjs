@@ -69,6 +69,8 @@ const contentFiles = [
   ...await walkFiles("images/omamori", p => /\.jpg$/.test(p)),
   ...locales.languages.map(lang=>`${lang==='ja'?'':lang+'/'}donburi.html`), "donburi.css", "donburi.js", "data/donburi-photo-sources.json",
   ...await walkFiles("images/donburi", p => /\.webp$/.test(p)),
+  ...locales.languages.map(lang=>`${lang==='ja'?'':lang+'/'}ramen.html`), "ramen.css", "data/ramen-photo-sources.json",
+  ...await walkFiles("images/ramen", p => /\.webp$/.test(p)),
   ...await walkFiles("images/foods", p => /\.webp$/.test(p)),
   "kyoto-station-views.html", "en/kyoto-station-views.html", "window-articles.css", "window-articles.js",
   "images/20260704_kyoto-station-building_michikusa_11000.jpg",

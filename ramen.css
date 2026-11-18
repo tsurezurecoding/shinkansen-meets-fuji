@@ -1,0 +1,73 @@
+/* Article-only additions. Shared tokens, chrome and food layout are copied unchanged. */
+.ramen-page .food-hero h1 { line-height:1.45; }
+.ramen-page .food-hero figure img { aspect-ratio:4/3; object-fit:cover; object-position:50% 50%; }
+.ramen-page .food-hero figure { min-width:0; }
+.ramen-page .don-intro { margin-bottom:25px; }
+.ramen-page .don-article a { color:#81543e; }
+.ramen-page .don-article a:hover { color:var(--ink); }
+.ramen-page .don-article > .don-section { padding-top:58px; }
+.ramen-page .don-prose h3 { margin:30px 0 15px; font:700 23px/1.6 var(--font-serif); }
+.ramen-styles { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 32px; margin-top:25px; }
+.ramen-styles > section { min-width:0; padding:28px 0; border-top:1px solid var(--line); }
+.ramen-styles h3 { font-size:28px; margin:0 0 18px; }
+.ramen-styles h3 span { display:block; font:500 14px/1.8 var(--font-sans); color:var(--ink-soft); margin-top:4px; }
+.ramen-styles figure { margin:0 0 22px; }
+.ramen-styles .don-photo img { aspect-ratio:4/3; object-fit:cover; }
+.ramen-styles [data-photo-id="miso"] img { object-position:50% 35%; }
+.ramen-styles p:not(.don-romaji) { font-size:14px; line-height:1.95; }
+.ramen-styles .ramen-example { margin-top:18px; color:var(--ink-soft); font-size:13px; }
+.ramen-example strong { display:block; font-size:12px; color:var(--ink); margin-bottom:4px; }
+.ramen-example a { display:block; width:fit-content; margin-top:8px; font-size:12px; }
+.ramen-photo-note { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center; margin:40px 0 10px; }
+.ramen-photo-note img { aspect-ratio:4/3; object-fit:cover; }
+.ramen-photo-note h3 { font:700 23px/1.65 var(--font-serif); margin-bottom:17px; }
+.ramen-photo-note p:not(.don-romaji,.don-source) { font-size:14px; line-height:1.95; margin-bottom:15px; }
+.ramen-methods { display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:28px; }
+.ramen-methods > section { min-width:0; background:var(--paper-deep); border-radius:var(--radius); padding:27px; }
+.ramen-methods h3 { font-size:27px; margin-bottom:12px; }
+.ramen-methods figure { margin:0 0 22px; }
+.ramen-methods .don-photo img { aspect-ratio:16/9; object-fit:cover; }
+.ramen-methods [data-photo-id="aburasoba"] img { object-position:50% 55%; }
+.ramen-methods p { font-size:14px; line-height:1.95; margin-bottom:15px; }
+.ramen-methods .ramen-method-lead { font-weight:700; font-size:15px; }
+.ramen-methods .ramen-mini { padding-top:17px; border-top:1px solid #d9d0c0; font-size:12px; }
+.ramen-methods .don-source { margin-bottom:0; font-size:11px; }
+.ramen-order-words { max-width:680px; margin:35px auto 0; }
+.ramen-order-words h3 { font:700 23px/1.65 var(--font-serif); margin-bottom:16px; }
+.ramen-order-words > p { font-size:14px; line-height:2; margin:17px 0; }
+.ramen-order-words dl { margin:22px 0; }
+.ramen-order-words dl > div { display:grid; grid-template-columns:110px 1fr; gap:20px; padding:16px 0; border-top:1px solid var(--line); }
+.ramen-order-words dl > div:last-child { border-bottom:1px solid var(--line); }
+.ramen-order-words dt { font-weight:700; font-size:15px; }
+.ramen-order-words dd { margin:0; font-size:14px; line-height:1.9; }
+.ramen-page .don-aside p + p { margin-top:16px; }
+.ramen-page .don-ending p { font-size:15px; line-height:2.1; margin-bottom:18px; }
+.ramen-page .don-sources { overflow-wrap:anywhere; }
+.ramen-page .spot-page-rail .active { color:inherit; }
+.ramen-inspired-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; margin-top:30px; }
+.ramen-inspired-grid > section { min-width:0; }
+.ramen-inspired-grid h3 { font:700 26px/1.65 var(--font-serif); margin:0 0 18px; }
+.ramen-inspired-grid figure { margin:0 0 22px; }
+.ramen-inspired-grid .don-photo img { aspect-ratio:4/3; object-fit:cover; }
+.ramen-inspired-grid p:not(.don-romaji,.don-source) { font-size:14px; line-height:2; margin:0 0 15px; }
+.ramen-jiro-photo { max-width:680px; margin:26px auto 30px; }
+.ramen-jiro-photo img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+@media(max-width:680px) {
+ .ramen-page .food-hero h1 { font-size:31px; }
+ .ramen-styles,.ramen-methods,.ramen-photo-note { grid-template-columns:1fr; }
+ .ramen-styles { gap:0; }
+ .ramen-styles > section { padding:25px 0; }
+ .ramen-methods { gap:18px; }
+ .ramen-methods > section { padding:23px 21px; }
+ .ramen-photo-note { gap:22px; }
+ .ramen-photo-note h3 { font-size:22px; }
+ .ramen-vege figure { grid-row:1; }
+ .ramen-page .don-article > .don-section { padding-top:43px; }
+ .ramen-order-words dl > div { grid-template-columns:88px 1fr; gap:12px; }
+ .ramen-order-words dt { font-size:14px; }
+ .ramen-order-words dd { font-size:13px; }
+ .ramen-inspired-grid { grid-template-columns:1fr; gap:34px; }
+}
+
+html:not([lang="ja"]) .ramen-page .food-hero h1 { line-height:1.15; }
+html:not([lang="ja"]) .ramen-page .don-article { overflow-wrap:break-word; }

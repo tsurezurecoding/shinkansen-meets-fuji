@@ -2422,5 +2422,115 @@
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
     "modified": "2026-11-15",
     "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "木のカウンターに置かれたラーメン二郎の丼。もやしとキャベツの脇に厚く切った豚肉が見える。",
+    "imageCredit": "michikusa"
+  },
+  "en/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "A bowl of Ramen Jiro on a wooden counter, with thick pork slices beside bean sprouts and cabbage.",
+    "imageCredit": "michikusa"
+  },
+  "zh-Hant/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "木製吧台上的拉麵二郎。豆芽與高麗菜旁，可看見厚切豬肉。",
+    "imageCredit": "michikusa"
+  },
+  "fr/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "Ramen Jiro : des légumes avec d’épaisses tranches de porc, dans un bol posé sur un comptoir en bois.",
+    "imageCredit": "michikusa"
+  },
+  "de/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "Ramen Jiro auf einem Holzthekentisch: Gemüse und dick geschnittenes Schweinefleisch in einer Schale.",
+    "imageCredit": "michikusa"
+  },
+  "es/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "Un cuenco de Ramen Jiro sobre una barra de madera, con cortes gruesos de cerdo junto a los brotes de soja y la col.",
+    "imageCredit": "michikusa"
+  },
+  "zh-Hans/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "木制吧台上的拉面二郎。豆芽与高丽菜旁，可看见厚切猪肉。",
+    "imageCredit": "michikusa"
+  },
+  "ko/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "나무 카운터에 놓인 라멘 지로의 한 그릇. 숙주와 양배추 옆으로 두툼하게 썬 돼지고기가 보입니다.",
+    "imageCredit": "michikusa"
+  },
+  "it/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "Una ciotola di Ramen Jiro su un bancone di legno. Accanto ai germogli di soia e al cavolo si vedono fette spesse di maiale.",
+    "imageCredit": "michikusa"
+  },
+  "th/ramen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-17",
+    "modifiedEvidence": "2026-11-17_ramen-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/ramen/jiro.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/ramen-photo-sources.json: jiro; owner-supplied photograph",
+    "imageAlt": "ชามราเม็งจิโร่วางบนเคาน์เตอร์ไม้ มีหมูหั่นหนาอยู่ข้างถั่วงอกและกะหล่ำปลี",
+    "imageCredit": "michikusa"
   }
 }

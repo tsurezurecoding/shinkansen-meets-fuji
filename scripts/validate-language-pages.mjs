@@ -32,6 +32,7 @@ const pairs = [
   ["/foods.html", "/en/foods.html"],
   ["/omamori.html", "/en/omamori.html"],
   ["/donburi.html", "/en/donburi.html"],
+  ["/ramen.html", "/en/ramen.html"],
   ["/countryside.html", "/en/countryside.html"],
   ...SANYO_DETAIL_CASTLES.map(castle => [`/spots/${castle.id}.html`, `/en/spots/${castle.id}.html`]),
   ["/ferris-wheels.html", "/en/ferris-wheels.html"],
