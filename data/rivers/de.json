@@ -1,0 +1,166 @@
+{
+  "title": "Mit jedem Fluss verändert sich die Landschaft",
+  "kicker": "Tokyo–Shin-Osaka · Flüsse und Brücken aus dem Zugfenster",
+  "lead": "Suchen Sie den Wasserlauf. Achten Sie auf die Brücke daneben. Entdecken Sie Landschaft für Landschaft, Fluss für Fluss.",
+  "order": "In Fahrtrichtung Tokyo → Shin-Osaka",
+  "zoomHint": "Foto zum Vergrößern antippen",
+  "language": "Sprache",
+  "enlarge": "Foto vergrößern: {name}",
+  "close": "Schließen ×",
+  "compare": "Die Fotos von Abe, Ōi und Tenryū entstanden an verschiedenen Tagen und aus unterschiedlichen Blickrichtungen. Kiesbänke und Wasserläufe verändern sich zudem mit Regen und Wasserstand. Aus diesen drei Bildern lässt sich der gewöhnliche Wasserstand nicht vergleichen.",
+  "returnTrip": "Auf der Rückfahrt können Sie die Ansichten in umgekehrter Reihenfolge entdecken. Die Sitzseiten beziehen sich auf die normale Wagenklasse. Richtung Shin-Osaka liegt Seite E rechts und Seite A links; Richtung Tokyo ist es umgekehrt.",
+  "credit": "Shinkansen Window",
+  "sourcesTitle": "Fotos und Quellen",
+  "sourceLanguage": "Die Quellen sind auf Japanisch.",
+  "sideE": "Seite E",
+  "sideA": "Seite A",
+  "stations": {
+    "shinagawa": "Shinagawa",
+    "shin-yokohama": "Shin-Yokohama",
+    "odawara": "Odawara",
+    "atami": "Atami",
+    "shin-fuji": "Shin-Fuji",
+    "shizuoka": "Shizuoka",
+    "kakegawa": "Kakegawa",
+    "hamamatsu": "Hamamatsu",
+    "toyohashi": "Toyohashi",
+    "mikawa-anjo": "Mikawa-Anjō",
+    "nagoya": "Nagoya",
+    "gifu-hashima": "Gifu-Hashima",
+    "maibara": "Maibara",
+    "kyoto": "Kyoto",
+    "shin-osaka": "Shin-Osaka"
+  },
+  "photos": {
+    "tama": {
+      "name": "Tama",
+      "body": "Wenn die Häuserzeilen eine Lücke lassen, erscheinen die blauen Bögen der Maruko-Brücke. Shinkansen-Reisende und Menschen, die für ihren Alltag die Brücke überqueren, begegnen sich über demselben Fluss.",
+      "alt": "Der Fluss Tama und die hellblauen Bögen der Maruko-Brücke",
+      "caption": "Zwischen den Stadtvierteln öffnet sich der Fluss; darüber spannen sich die blauen Bögen.",
+      "sub": "Maruko-Brücke",
+      "link": "Mehr zur Maruko-Brücke"
+    },
+    "shiraito": {
+      "name": "Shiraito-Brücke",
+      "body": "Bei Nebukawa zeigt sich hinter den roten Pfeilern das Meer. Zu sehen ist die Brücke der Tōkaidō-Hauptlinie. Auch wenn die Wasserfläche des Flusses verborgen bleibt, lässt sich die Tiefe des Tals in diesem Augenblick erahnen.",
+      "alt": "Die Shiraito-Brücke der Tōkaidō-Hauptlinie über einem grünen Tal, dahinter das Meer",
+      "caption": "Rote Pfeiler überspannen das Tal; dahinter ist das Meer zu sehen.",
+      "sub": "Tal und Meer",
+      "link": "Mehr zur Shiraito-Brücke"
+    },
+    "fuji": {
+      "name": "Fuji",
+      "body": "Vor dem Fuji führen die weißen Bögen Wasser für die Industrie. Flusswasser und Wasser, das über die Leitung zu den Fabriken gelangt: Vor dem Berg kreuzen sich zwei Wege des Wassers.",
+      "alt": "Der Fluss Fuji, eine weiße bogenförmige Wasserleitung und der Berg Fuji",
+      "caption": "Wasser im Fluss und Wasser in der Leitung.",
+      "sub": "Wasserleitung",
+      "link": "Mehr zum Fuji-Fluss und zur Wasserleitung"
+    },
+    "abe": {
+      "name": "Abe",
+      "body": "Ein breites Kiesbett, durchzogen von einem schmalen, geschwungenen Wasserlauf. Achten Sie auf die Länge der Brücke und die Breite des Wassers – ihre unterschiedlichen Größen erzählen vom Fluss.",
+      "alt": "Das breite graue Kiesbett des Abe mit schmalen, geschwungenen Wasserläufen",
+      "caption": "Ein schmaler Wasserlauf zieht sich durch das breite Kiesbett."
+    },
+    "oi": {
+      "name": "Ōi",
+      "body": "Hinter den Bauteilen der Brücke zieht der Wasserlauf einen weiten Bogen. Früher halfen Flussfährleute den Reisenden beim Überqueren; heute fährt der Zug in einem Zug über den Fluss.",
+      "alt": "Der geschwungene Wasserlauf des Ōi und das Kiesbett, durch Teile der Shinkansen-Brücke gesehen",
+      "caption": "Der Wasserlauf windet sich durch das Kiesbett unter dem Schatten der Brücke."
+    },
+    "tenryu": {
+      "name": "Tenryū",
+      "body": "Kies, grüne Tupfer und Wasser, das am Rand des Flussbetts entlangfließt. Vergleichen Sie Abe, Ōi und Tenryū: Kiesreiche Flussbetten gibt es bei allen dreien, doch Wasserläufe und Grün liegen jeweils anders.",
+      "alt": "Das kiesreiche Flussbett des Tenryū, Wasser am Rand und verstreute grüne Stellen",
+      "caption": "Am Rand des Flussbetts fließt Wasser; dazwischen wächst vereinzelt Grün."
+    },
+    "toyo": {
+      "name": "Toyo",
+      "body": "Hinter Toyohashi öffnet sich entlang des Deichs die breite Wasserfläche des Toyo (Toyogawa). Richtung Shin-Osaka überquert der Zug etwa 1,6 km später erneut Wasser: den Toyo-Entlastungskanal. Bei Hochwasser leitet er Wasser aus dem Hauptlauf zur Mikawa-Bucht ab.",
+      "alt": "Die breite Wasserfläche des Toyo, ein grüner Deich und ein schmaler Weg am Ufer",
+      "caption": "Der Hauptlauf des Toyo; am Deich entlang führt ein Weg.",
+      "sub": "Hauptlauf und Entlastungskanal"
+    },
+    "shonai": {
+      "name": "Shōnai",
+      "body": "Kurz nach Nagoya, hinter den vielen Gleisen im Vordergrund, erscheint eine Reihe von Brückenpfeilern. Hier bei Biwajima kommen Straßenbrücke, Brücke der konventionellen Bahn und die Brücke des Shinkansen an einem Ort zusammen.",
+      "alt": "Gleise und Oberleitungen im Vordergrund; dahinter Pfeiler über dem Fluss Shōnai",
+      "caption": "Gleise vorn, Pfeiler dahinter und dazwischen der Fluss Shōnai.",
+      "sub": "Brücken bei Biwajima"
+    },
+    "kiso": {
+      "name": "Kiso",
+      "body": "Zwischen bewaldeten Flächen öffnet sich ein breiter Fluss. Nagara und Ibi, die später folgen, gehören zum selben Flusssystem wie die Kiso, sind aber eigenständige Flüsse. Richtung Shin-Osaka lautet die Reihenfolge: Kiso, Nagara, Ibi.",
+      "alt": "Der breite Fluss Kiso, bewachsene Flächen und eine niedrige Brücke in der Ferne",
+      "caption": "Zwischen grünen Inseln öffnet sich die breite Wasserfläche."
+    },
+    "nagara": {
+      "name": "Nagara",
+      "body": "Direkt daneben liegt die Straßenbrücke von Hashima mit ihren roten Dreiecken. Die grauen Bauteile im Vordergrund gehören zur Shinkansen-Brücke, auf der Sie gerade fahren. Über dem Fluss überlagern sich die Formen der beiden Brücken.",
+      "alt": "Die rote Straßenbrücke von Hashima über der Nagara und graue Teile der Shinkansen-Brücke im Vordergrund",
+      "caption": "Die rote Straßenbrücke und die graue Eisenbahnbrücke liegen übereinander.",
+      "sub": "Hashima-Brücke"
+    },
+    "ibi": {
+      "name": "Ibi",
+      "body": "Auch hier steht eine rote Brücke, aber etwas weiter entfernt und zusammen mit dem Fluss im Blick. Vergleichen Sie das Foto mit der Nagara: Der Abstand zur Brücke und die sichtbare Breite des Wassers unterscheiden sich.",
+      "alt": "Der Fluss Ibi, eine rote Straßenbrücke flussaufwärts und Berge in der Ferne",
+      "caption": "Wasser, rote Brücke und Berge bilden mehrere Ebenen."
+    },
+    "seta": {
+      "name": "Seta",
+      "body": "Die Seta ist der einzige Fluss, der auf natürlichem Weg aus dem Biwa-See abfließt. Die vom Sitzplatz E sichtbare Karahashi-Brücke verbindet die Ufer seit langer Zeit. Betrachten Sie gemeinsam die Brücke und den Abfluss des Sees.",
+      "alt": "Der breite Fluss Seta, Häuser an beiden Ufern und die Karahashi-Brücke in der Ferne",
+      "caption": "Der Abfluss des Sees und die Karahashi-Brücke, die die Stadt verbindet.",
+      "sub": "Karahashi-Brücke",
+      "link": "Mehr zur Karahashi-Brücke"
+    },
+    "kamo": {
+      "name": "Kamo",
+      "body": "Direkt östlich des Bahnhofs Kyoto öffnet sich das Flussbett der Kamo. Heben Sie den Blick vom Wasserlauf: erst eine befahrene Straßenbrücke, dahinter noch eine Brücke und die Stadt. Richtung Shin-Osaka sehen Sie dies kurz vor Kyoto, Richtung Tokyo direkt nach der Abfahrt.",
+      "alt": "Das Flussbett der Kamo mit schmalem Wasserlauf, eine Straßenbrücke, Kyotos Stadtbild und Berge in der Ferne",
+      "caption": "Vom Vordergrund in die Ferne: Flussbett, Straßenbrücke, Stadt und Berge.",
+      "sub": "Direkt östlich des Bahnhofs Kyoto",
+      "link": "Bahnhof Kyoto und Kyoto Tower ansehen"
+    },
+    "katsura": {
+      "name": "Katsura",
+      "body": "Grün zwischen den Wasserflächen, dahinter die Stadt Kyoto. Weiter flussabwärts vereinigt sich die Katsura mit Uji und Kizu zum Yodo. So verbinden die Flussläufe Landschaften, die aus dem Zugfenster getrennt erscheinen.",
+      "alt": "Die Wasserfläche der Katsura, ein grüner Streifen in der Mitte und die Stadt dahinter",
+      "caption": "Hinter Wasser und Grün setzt sich Kyotos Stadtbild fort."
+    }
+  },
+  "stops": {
+    "sagami-sakawa": {
+      "name": "Sagami und Sakawa",
+      "body": "Richtung Shin-Osaka überquert der Zug zuerst die Sagami, die Reisende auf der alten Tōkaidō-Straße mit dem Boot passierten. Vor Odawara trugen Träger die Reisenden über die Sakawa auf den Schultern oder in einem Tragstuhl. Heute überquert der Zug beide Flüsse auf Brücken, während Sie sitzen bleiben.",
+      "link": "Fuji in der Ebene von Sagami suchen"
+    },
+    "yahagi": {
+      "name": "Yahagi",
+      "body": "Auf dem Weg nach Mikawa-Anjō überquert der Zug die Yahagi. Wasser, das weiter oben entnommen wird, gelangt über den Meiji-Kanal zu den Feldern rund um Anjō. Der Fluss unter dem Fenster versorgt das Leben auf dem Land."
+    },
+    "aizuma": {
+      "name": "Aizuma",
+      "body": "Bei Kariya entdeckten Eisenbahnfans die Aizuma auf einer Karte und kamen zum Shinkansen-Beobachten. Aus dem Fenster ist der Fluss nur einen Moment zu sehen. Vom Boden auf der Südostseite der Brücke wird der Zug, in dem man fährt, zum Mittelpunkt der Landschaft.",
+      "link": "Beitrag von 三浦克介 (Katsuyoshi Miura), Foto vom Boden südöstlich der Brücke"
+    }
+  },
+  "sources": {
+    "maruko": "Stadt Kawasaki · Ortsgeschichte der Maruko-Fähre und -Brücke",
+    "tokaido": "Verkehrsministerium · Überquerung der Sagami mit der Fähre und der Sakawa zu Fuß auf der alten Tōkaidō-Straße",
+    "sakawa": "Stadt Odawara · Fußquerung der Sakawa",
+    "fujiWater": "Präfektur Shizuoka · Industriewasserversorgung am Fuji-Fluss",
+    "oi": "Stadtmuseum Shimada · Flussüberquerung am Ōi",
+    "kiso": "Verkehrsministerium · Fluss Kiso",
+    "floodway": "Flussbauamt Toyohashi · Erläuterung zum Entlastungskanal",
+    "ride": "Nagoyan · Fotos der beiden Brücken aus einem Zug Richtung Tokyo",
+    "bridges": "Verzeichnis der Shinkansen-Brücken · geschätzter Abstand",
+    "meiji": "Landwirtschaftsministerium · Geschichte des Meiji-Bewässerungskanals",
+    "shonai": "Flussbauamt Shōnai · Plan des Gebiets Biwajima",
+    "kamo": "Präfektur Kyoto · Karte der Kamo",
+    "seta": "Verkehrsministerium · Fluss Seta",
+    "map": "Japanisches Institut für geografische Information · GSI-Karte",
+    "book": "Kei Kurihara, „So interessant ist der Blick aus dem Tōkaidō-Shinkansen!“ , 2016"
+  }
+}

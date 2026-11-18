@@ -1,0 +1,173 @@
+{
+  "slug": "rivers",
+  "stationOrder": [
+    "shinagawa",
+    "shin-yokohama",
+    "odawara",
+    "atami",
+    "shin-fuji",
+    "shizuoka",
+    "kakegawa",
+    "hamamatsu",
+    "toyohashi",
+    "mikawa-anjo",
+    "nagoya",
+    "gifu-hashima",
+    "maibara",
+    "kyoto",
+    "shin-osaka"
+  ],
+  "items": [
+    {
+      "id": "tama",
+      "type": "photo",
+      "from": "shinagawa",
+      "to": "shin-yokohama",
+      "side": "E",
+      "image": "images/rivers/tama.jpg"
+    },
+    {
+      "id": "sagami-sakawa",
+      "type": "stop",
+      "from": "shin-yokohama",
+      "to": "odawara"
+    },
+    {
+      "id": "shiraito",
+      "type": "photo",
+      "from": "odawara",
+      "to": "atami",
+      "side": "A",
+      "image": "images/rivers/shiraito.jpg"
+    },
+    {
+      "id": "fuji",
+      "type": "photo",
+      "from": "shin-fuji",
+      "to": "shizuoka",
+      "side": "E",
+      "image": "images/rivers/fuji.jpg"
+    },
+    {
+      "id": "abe",
+      "type": "photo",
+      "from": "shizuoka",
+      "to": "kakegawa",
+      "image": "images/rivers/abe.jpg"
+    },
+    {
+      "id": "oi",
+      "type": "photo",
+      "from": "shizuoka",
+      "to": "kakegawa",
+      "image": "images/rivers/oi.jpg"
+    },
+    {
+      "id": "tenryu",
+      "type": "photo",
+      "from": "kakegawa",
+      "to": "hamamatsu",
+      "image": "images/rivers/tenryu.jpg"
+    },
+    {
+      "id": "comparison",
+      "type": "note"
+    },
+    {
+      "id": "toyo",
+      "type": "photo",
+      "from": "toyohashi",
+      "to": "mikawa-anjo",
+      "image": "images/rivers/toyogawa.jpg"
+    },
+    {
+      "id": "yahagi",
+      "type": "stop",
+      "from": "toyohashi",
+      "to": "mikawa-anjo"
+    },
+    {
+      "id": "aizuma",
+      "type": "stop",
+      "from": "mikawa-anjo",
+      "to": "nagoya"
+    },
+    {
+      "id": "shonai",
+      "type": "photo",
+      "from": "nagoya",
+      "to": "gifu-hashima",
+      "image": "images/rivers/shonai.jpg"
+    },
+    {
+      "id": "kiso",
+      "type": "photo",
+      "from": "nagoya",
+      "to": "gifu-hashima",
+      "image": "images/rivers/kiso.jpg"
+    },
+    {
+      "id": "nagara",
+      "type": "photo",
+      "from": "gifu-hashima",
+      "to": "maibara",
+      "side": "E",
+      "image": "images/rivers/nagara.jpg"
+    },
+    {
+      "id": "ibi",
+      "type": "photo",
+      "from": "gifu-hashima",
+      "to": "maibara",
+      "image": "images/rivers/ibi.jpg"
+    },
+    {
+      "id": "seta",
+      "type": "photo",
+      "from": "maibara",
+      "to": "kyoto",
+      "side": "E",
+      "image": "images/rivers/seta.jpg"
+    },
+    {
+      "id": "kamo",
+      "type": "photo",
+      "from": "maibara",
+      "to": "kyoto",
+      "image": "images/rivers/kamo.jpg"
+    },
+    {
+      "id": "katsura",
+      "type": "photo",
+      "from": "kyoto",
+      "to": "shin-osaka",
+      "image": "images/rivers/katsura.jpg"
+    }
+  ],
+  "links": {
+    "tama": "https://www.michikusa-travel.com/spots/maruko-bridge.html",
+    "sagami-sakawa": "https://www.michikusa-travel.com/spots/sagami-fuji.html",
+    "shiraito": "https://www.michikusa-travel.com/spots/shiraitogawa-bridge.html",
+    "fuji": "https://www.michikusa-travel.com/spots/fujikawa-bridge.html",
+    "seta": "https://www.michikusa-travel.com/spots/seta-karahashi.html",
+    "kamo": "https://www.michikusa-travel.com/kyoto-station-views.html",
+    "aizuma": "https://x.com/miurakatsuyoshi/status/1393467060756176897"
+  },
+  "sources": {
+    "maruko": "https://www.city.kawasaki.jp/170/page/0000147126.html",
+    "tokaido": "https://www.ktr.mlit.go.jp/yokohama/tokaido/02_tokaido/03_sisetu/1201.htm",
+    "sakawa": "https://www.city.odawara.kanagawa.jp/encycl/ukiyoe/04/",
+    "fujiWater": "https://www.pref.shizuoka.jp/_res/projects/default_project/_page_/001/063/789/04-2hujisanngaiyou.pdf",
+    "oi": "https://www.city.shimada.shizuoka.jp/shimahaku/kawagoshi/kawagoshi-iseki/",
+    "kiso": "https://www.mlit.go.jp/river/toukei_chousa/kasen/jiten/nihon_kawa/0509_kiso/0509_kiso_00.html",
+    "floodway": "https://www.cbr.mlit.go.jp/local_info/sougou/contents/shisetsu/construction/pdf/kasen/kasen16.pdf",
+    "ride": "https://ameblo.jp/new-nagoyan/entry-12783323103.html",
+    "bridges": "https://www.tanukiacademy.com/Shinkansen/Bridges_Tokaido_Sanyo.html",
+    "meiji": "https://www.maff.go.jp/j/nousin/sekkei/museum/m_izin/aiti/",
+    "shonai": "https://www.cbr.mlit.go.jp/kikaku/2022kannai/pdf/re19.pdf",
+    "kamo": "https://www.pref.kyoto.jp/kamogawa/documents/shiryou1.pdf",
+    "seta": "https://www.mlit.go.jp/river/toukei_chousa/kasen/jiten/nihon_kawa/0608_setagawa/0608_setagawa_00.html",
+    "map": "https://maps.gsi.go.jp/",
+    "book": "https://str.toyokeizai.net/books/9784492046043/"
+  }
+}
