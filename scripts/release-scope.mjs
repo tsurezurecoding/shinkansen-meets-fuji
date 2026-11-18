@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import vm from 'node:vm';
 import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
+import { SPOT_AD_PLACEMENTS } from './shared/spot-ad-placements.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shaPattern = /^[0-9a-f]{40}$/;
@@ -334,7 +335,9 @@ export function onlyFactoryRegistrationChanged(file, before, after) {
 function selectExistingScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, factoryRegistrationOnly = () => false, factoryAssetVersionOnly = () => false, factoryPhotoMetadataOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
-  const spotAdsenseFiles = new Set(['spot-adsense.js', 'spots/kakegawa.html', 'privacy.html', 'en/privacy.html',
+  const spotAdRoutes = Object.keys(SPOT_AD_PLACEMENTS).filter(key => key.startsWith('ja/')).map(key => 'spots/' + key.slice(3) + '.html');
+  const changedSpotAdRoutes = spotAdRoutes.filter(route => files.includes(route));
+  const spotAdsenseFiles = new Set(['spot-adsense.js', ...spotAdRoutes, 'privacy.html', 'en/privacy.html',
     'scripts/shared/spot-ad-placements.mjs', 'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.mjs',
     'scripts/generate-content-manifest.mjs', 'content-manifest.json', 'package.json',
     'scripts/templates/site-source/privacy.html.tpl', 'scripts/templates/site-source/en/privacy.html.tpl',
@@ -350,13 +353,13 @@ function selectExistingScope(changes, { versionOnly = () => false, assetVersionO
       spotAdsensePackage = isDeepStrictEqual(before, after);
     }
   }
-  if (['spots/kakegawa.html', 'scripts/spot-adsense.test.mjs'].every(file => files.includes(file)) &&
+  if (changedSpotAdRoutes.length && files.includes('scripts/spot-adsense.test.mjs') &&
       ['spot-adsense.js', 'scripts/shared/spot-ad-placements.mjs'].some(file => files.includes(file)) &&
       spotAdsensePackage && changes.every(change => ['A', 'M'].includes(change.status) && spotAdsenseFiles.has(change.path))) return {
     scope: 'spot-adsense-pilot', needsDependencies: true, pagesCandidate: true,
-    reason: 'Japanese Kakegawa opts into a deferred reusable ad; generator integration, distribution inventory and Japanese/English privacy disclosures only.',
+    reason: 'Check the configured Japanese spot placements, their generated articles, the shared loader and distribution inventory.',
     commands: [...syntax, node('--test', 'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs'),
-      node('scripts/check-content-manifest.mjs'), node('scripts/validate-site-navigation.mjs', '--route', 'spots/kakegawa.html', '--route', 'privacy.html')],
+      node('scripts/check-content-manifest.mjs'), node('scripts/validate-site-navigation.mjs', ...changedSpotAdRoutes.flatMap(route => ['--route', route]), '--route', 'privacy.html')],
   };
   const zukanAdsenseFiles = new Set(['zukan.html','privacy.html','scripts/templates/site-source/zukan.html.tpl','scripts/templates/site-source/privacy.html.tpl','scripts/generate-language-mirrors.mjs','scripts/release-scope.mjs','scripts/zukan-adsense.test.mjs']);
   if (files.includes('scripts/zukan-adsense.test.mjs') && files.includes('zukan.html') && changes.every(c => ['A','M'].includes(c.status) && zukanAdsenseFiles.has(c.path))) return {
