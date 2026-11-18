@@ -10,5 +10,7 @@ export function withSpotAdvertising(html, spot, lang) {
   const prefix = lang === 'ja' ? '../' : '../../';
   const block = '<!-- SPOT_ADSENSE_START -->\n<script id="mado-spot-ad-config" type="application/json">' + JSON.stringify(config) + '</script>\n<script src="' + prefix + 'spot-adsense.js?v=' + assetVersion('spot-adsense.js') + '" defer></script>\n<!-- SPOT_ADSENSE_END -->';
   const clean = html.replace(/<!-- SPOT_ADSENSE_START -->[\s\S]*?<!-- SPOT_ADSENSE_END -->\n?/, '');
-  return clean.replace('</body>', block + '\n</body>');
+  // The Android invitation finalizer keeps the shared loader at the end of the body.
+  const anchor = /<script\b[^>]*\ssrc\s*=\s*(["'])(?:\.\/)?(?:\.\.\/)*site-runtime-loader\.js(?:\?[^"']*)?\1[^>]*>\s*<\/script\s*>|<\/body\s*>/i;
+  return clean.replace(anchor, tag => block + '\n' + tag);
 }
