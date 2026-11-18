@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { JSDOM } from 'jsdom';
 import locales from '../locales.js';
 import { withLocaleRegistry } from './shared/locales.mjs';
@@ -164,6 +165,15 @@ test('the rivers article resolves the selected language through its registered r
     assert.equal(target.hash, '#journey');
   }
   assert.equal(route({requested: 'ja', saved: 'fr', path: 'rivers.html'}), undefined);
+});
+
+test('castle and episode localization leaves the independently rendered river editions to their generator', () => {
+  for (const [target, expected] of [['rivers.html', 0], ['castles.html', 1], ['spots/maruko-bridge.html', 1]]) {
+    const output = execFileSync(process.execPath,
+      ['scripts/generate-castle-locales.mjs', '--check', '--lang', 'fr', '--route', target],
+      {cwd: new URL('../', import.meta.url), encoding: 'utf8'});
+    assert.ok(output.includes(`localized articles: ${expected} pages,`), target);
+  }
 });
 
 

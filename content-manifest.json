@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "827e60ebea74262e",
+  "contentVersion": "db9a319e16876767",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1664,13 +1664,13 @@
       "path": "de/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/de/spots/fuji-paper-mills.html",
       "bytes": 39971,
-      "sha256": "6750c134f1b500e37b2d1e3602cc91f00848b487ff148d52cfa9904bd11f3b1e"
+      "sha256": "b0f53d8465806be974607e20565af5ea88e3b2a67a0488370686a222284f478d"
     },
     {
       "path": "de/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/de/spots/fuji.html",
       "bytes": 35118,
-      "sha256": "d7e53ad575e8e8f9bfe8d86a38e876594ca4c4bc220a606fb5f76265e1668500"
+      "sha256": "4586c24f65e2bded8323c9a61ccd1ee1f07af77149576942261f453b6a9086bb"
     },
     {
       "path": "de/spots/fujikawa-bridge.html",
@@ -1682,7 +1682,7 @@
       "path": "de/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/de/spots/fujitec-big-wing.html",
       "bytes": 29563,
-      "sha256": "19a51f562e8cb4e5de9ac6eca91134703effc8d2297d4d32672b7b23e477c189"
+      "sha256": "b276aa08f7a1225c3c53382adef86bc35859ec74fe640cc0eac381328a908d86"
     },
     {
       "path": "de/spots/fukuyama-castle.html",
@@ -1754,7 +1754,7 @@
       "path": "de/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/de/spots/kirin-beer-factory.html",
       "bytes": 30769,
-      "sha256": "27ae455ca0d48df690b45d2606b097920f580b43e4014f87b80a0e2cd632a3e8"
+      "sha256": "e01504eb8de69417051b758d57ea9863a246893a9a941513e448c71e25625fe5"
     },
     {
       "path": "de/spots/kiyosu.html",
@@ -1772,7 +1772,7 @@
       "path": "de/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/de/spots/lotte-shiga.html",
       "bytes": 28087,
-      "sha256": "29608a6b73eb03863853f0ae18ccb139373e953b9676eb2ac3cf52a82b8ce28f"
+      "sha256": "c4e491ffba98f43dd92d5e265f9fcf6fbd729b57fb2fbef61ef3c07419da582e"
     },
     {
       "path": "de/spots/maibara-test-trains.html",
@@ -1838,7 +1838,7 @@
       "path": "de/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/de/spots/pocari-fukuroi.html",
       "bytes": 31471,
-      "sha256": "653b111507d022445356af14b10cea4a77b5cb37c5af7f7d3cf9be1368f95d06"
+      "sha256": "28319dbdccd5057321a3151b9f8957d727a41f35320cced76f53843d5d61d2e5"
     },
     {
       "path": "de/spots/sagami-fuji.html",
@@ -1850,7 +1850,7 @@
       "path": "de/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/de/spots/sapporo-shizuoka-factory.html",
       "bytes": 25965,
-      "sha256": "99dce23a08131c5c1774aae14afe53d23cfb0dd86572c25ecd72cfd67706b187"
+      "sha256": "e904fbb85851589592b8dc3a87a672a98e2b3215c8b205317d57cb1c55af8141"
     },
     {
       "path": "de/spots/sawayama-castle.html",
@@ -1910,7 +1910,7 @@
       "path": "de/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/de/spots/yamazaki-distillery.html",
       "bytes": 27130,
-      "sha256": "9997c1dc325a91575ededac8b68fec76b3b6177641e605b8722115bc2992a193"
+      "sha256": "371f2a00c6bf2dbbcacf0b9c0acd60933ede595b40922f49e65e7e793beb87eb"
     },
     {
       "path": "de/start.html",
@@ -2390,13 +2390,13 @@
       "path": "es/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/es/spots/fuji-paper-mills.html",
       "bytes": 40300,
-      "sha256": "9657b70eb553f5f5015068f7c19e0128955d5a1db46720ea2b870f8467850ee7"
+      "sha256": "e69e1041e596c869069bb9f0cfdb8fe6e2414a9222454e011830cff1789c7b69"
     },
     {
       "path": "es/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/es/spots/fuji.html",
       "bytes": 35387,
-      "sha256": "470752999e288706c202ca903cb6dc20139e213b0bac58dfda6e097a382d51c7"
+      "sha256": "59e23f6eec388d1816790470f2fbbdee395e412de24e3cb9099104694af00eb2"
     },
     {
       "path": "es/spots/fujikawa-bridge.html",
@@ -2408,7 +2408,7 @@
       "path": "es/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/es/spots/fujitec-big-wing.html",
       "bytes": 29962,
-      "sha256": "e326751f375e36b0a86b9117f25ec988e046506845a6b0a125e969a3214e827b"
+      "sha256": "04b21244c17a4ae264f23579e5ac3fe305bcc5e59b97b889e3c169fba1b812c3"
     },
     {
       "path": "es/spots/fukuyama-castle.html",
@@ -2480,7 +2480,7 @@
       "path": "es/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/es/spots/kirin-beer-factory.html",
       "bytes": 31458,
-      "sha256": "0bb21b4eea3c4e86cfe32379e808e0f33dc315f5feb7403c37a8256f47d8ba47"
+      "sha256": "f194118fd0cc4377b160f6ec74c787339d93548e011b47b5e0fd548ecfbab693"
     },
     {
       "path": "es/spots/kiyosu.html",
@@ -2498,7 +2498,7 @@
       "path": "es/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/es/spots/lotte-shiga.html",
       "bytes": 28036,
-      "sha256": "7fbf8b043f0ec8daf66d46e6235c09d9665d5941ee8e57148f1d286b597be72f"
+      "sha256": "cd34c3553c8d6f1e05966a3fd6912699783be9a0d90ca54892e4763e642bdc60"
     },
     {
       "path": "es/spots/maibara-test-trains.html",
@@ -2564,7 +2564,7 @@
       "path": "es/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/es/spots/pocari-fukuroi.html",
       "bytes": 31317,
-      "sha256": "904bd213406b8477fdc71ab277f7e7c98a2cd3c5a3054559b2e894c24158cf25"
+      "sha256": "618e7262238cb07e06288824e5c8e21a1b598bdd03d98d748f8ed2774c49071f"
     },
     {
       "path": "es/spots/sagami-fuji.html",
@@ -2576,7 +2576,7 @@
       "path": "es/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/es/spots/sapporo-shizuoka-factory.html",
       "bytes": 26383,
-      "sha256": "cfdce205eac69a24a08e337833001c0903ef33507da0f66925fa220eaa44cae7"
+      "sha256": "27a9f60a3eb526152822de0c39fcde60edb5088c218bba0635d86e4a4aa80a9c"
     },
     {
       "path": "es/spots/sawayama-castle.html",
@@ -2636,7 +2636,7 @@
       "path": "es/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/es/spots/yamazaki-distillery.html",
       "bytes": 27112,
-      "sha256": "3f79a6b27926a7d6afd024777eee9499ded0ccdc74f0dd60fb28b957612c94ef"
+      "sha256": "b8547156a2039186050a708fb26f97f4d6e016fa3ed116b23515f504412c9330"
     },
     {
       "path": "es/start.html",
@@ -2936,13 +2936,13 @@
       "path": "fr/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fuji-paper-mills.html",
       "bytes": 40322,
-      "sha256": "919956ffa77bb798b20dea7f4a698373df9d9fa7fecfb7efe752ad1a83ee1a57"
+      "sha256": "b792b1ff84879afd55ef87e3d7b6c6086720b212fdfd4c8f22bc33867fdc6540"
     },
     {
       "path": "fr/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fuji.html",
       "bytes": 35218,
-      "sha256": "155fdf8be6e1bc286fdbf060a49bfd0e8a55ba8b1f8c9d4365dcae37c6deb8de"
+      "sha256": "b4c76fc69c26125a1229ffd825c800a2c98fae8c4f4bc8aeff358737370a4418"
     },
     {
       "path": "fr/spots/fujikawa-bridge.html",
@@ -2954,7 +2954,7 @@
       "path": "fr/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fujitec-big-wing.html",
       "bytes": 30155,
-      "sha256": "8af207643e95e7f29681a849c3a5642d846fe6bd253e7269e82487b1b5d8db28"
+      "sha256": "cab27f650d7bf2a0e713bca5e9fabf27ecb7a3d94414db5f890aaf50f7b8237f"
     },
     {
       "path": "fr/spots/fukuyama-castle.html",
@@ -3026,7 +3026,7 @@
       "path": "fr/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/fr/spots/kirin-beer-factory.html",
       "bytes": 31118,
-      "sha256": "9c5b0a51ca3b214308986e0aaefc6550cd51bc43449e6cfc9509a061f31dbaf2"
+      "sha256": "a6a2ac1e9f35601a4684d0c0cf754304a597c15b4ddf62d4f94189940d554c15"
     },
     {
       "path": "fr/spots/kiyosu.html",
@@ -3044,7 +3044,7 @@
       "path": "fr/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/fr/spots/lotte-shiga.html",
       "bytes": 28031,
-      "sha256": "0525848edadc9f567deef9242d8bb5a45e8f412be1aff5f8d01511d50f9de562"
+      "sha256": "a88e6b4d502217b4ede5f987ee44ea8a81032b9a3a8887777aa0fa882ebd7844"
     },
     {
       "path": "fr/spots/maibara-test-trains.html",
@@ -3110,7 +3110,7 @@
       "path": "fr/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/fr/spots/pocari-fukuroi.html",
       "bytes": 31674,
-      "sha256": "10c3e3de2bd4fffdb818497f5313de34675a8f2a74abe643a040cbfeeed30968"
+      "sha256": "ea389210731d595657fdfd6dab00981713723380659e07b4adb06fb60b2f50b1"
     },
     {
       "path": "fr/spots/sagami-fuji.html",
@@ -3122,7 +3122,7 @@
       "path": "fr/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/fr/spots/sapporo-shizuoka-factory.html",
       "bytes": 26226,
-      "sha256": "d211d26a1c5d2adb6f48fcc2333b3fe8f78e51fcb98a28ea7c1d8c7e29a95c43"
+      "sha256": "89ded5529b2cd6c1290392bf0ed121a6df1e1e9d484b4fd086ff7d67c8f725ee"
     },
     {
       "path": "fr/spots/sawayama-castle.html",
@@ -3182,7 +3182,7 @@
       "path": "fr/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/fr/spots/yamazaki-distillery.html",
       "bytes": 27361,
-      "sha256": "2e49d99c3fd9d14107f29d14571d86aa94d8a56ff87d297ed5fad3ad689d6688"
+      "sha256": "bb69e010d76b1819ba7efae6a0aac1f51ba7cd6fae94931c9da99731523c0a97"
     },
     {
       "path": "fr/start.html",
@@ -5852,13 +5852,13 @@
       "path": "it/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/it/spots/fuji-paper-mills.html",
       "bytes": 40246,
-      "sha256": "c0d0ad04ea987c84aa6d2652e4cf78c86ff8d8a3747876a868382c231ba9d205"
+      "sha256": "432b46dc1622141fbbe8d7a0c8fd4f43c67e0eff0d613d76ab36f01db5ffd17e"
     },
     {
       "path": "it/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/it/spots/fuji.html",
       "bytes": 34983,
-      "sha256": "df7fe2a7de395da917f6c4a92407c484cadce53b4e152cc0ab32bc2631e8bc0d"
+      "sha256": "b8f888f418aaf287a660a485b5c8a562c402e8318447291173967abe4aef3b71"
     },
     {
       "path": "it/spots/fujikawa-bridge.html",
@@ -5870,7 +5870,7 @@
       "path": "it/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/it/spots/fujitec-big-wing.html",
       "bytes": 29844,
-      "sha256": "e08fa525c0a178c79f87d9f8f679da5b9271a639ce281f21f11e0dd6e5836f58"
+      "sha256": "b71c02c16a740bf4b336be22b4f7d48e1deb2dd4514c12276e0bdb057f876aca"
     },
     {
       "path": "it/spots/fukuyama-castle.html",
@@ -5942,7 +5942,7 @@
       "path": "it/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/it/spots/kirin-beer-factory.html",
       "bytes": 31259,
-      "sha256": "d8ca5b49d3e312a81ebe5092daf0e7dadddaf3785dbc1cdafe094bebab736e66"
+      "sha256": "228fd05d8b212a73e2b229e2900d456fbfa6a707356580d13c8fd3a621cb2c13"
     },
     {
       "path": "it/spots/kiyosu.html",
@@ -5960,7 +5960,7 @@
       "path": "it/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/it/spots/lotte-shiga.html",
       "bytes": 28124,
-      "sha256": "a68935177a5c4d07db0c496b036108735f3daf33da0a556b489cb04a0c222410"
+      "sha256": "93a1cd4511a05ef3c3c43dc2c58a506ec22fa609cfd9a5a7ab759546d26c4fb5"
     },
     {
       "path": "it/spots/maibara-test-trains.html",
@@ -6026,7 +6026,7 @@
       "path": "it/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/it/spots/pocari-fukuroi.html",
       "bytes": 31469,
-      "sha256": "26c3269f1089250f9fd3276891ade8a81c9c6f2601e9da1d1996029710e262ff"
+      "sha256": "7e3249ffe983c2b64c751a4e2f8d31411424bad379ce2bf34bdefbeda5589c16"
     },
     {
       "path": "it/spots/sagami-fuji.html",
@@ -6038,7 +6038,7 @@
       "path": "it/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/it/spots/sapporo-shizuoka-factory.html",
       "bytes": 26308,
-      "sha256": "336f12a4e6814f8584f6a6350d65eb03ea516c96888d3596f3b2ca9fe2780ca4"
+      "sha256": "c378deb200a4376e3399ecd027dc00978b9daa9d2f3890bb97099e3f6ae72990"
     },
     {
       "path": "it/spots/sawayama-castle.html",
@@ -6098,7 +6098,7 @@
       "path": "it/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/it/spots/yamazaki-distillery.html",
       "bytes": 27713,
-      "sha256": "48547d7725ce47329cea427a4202a6d0fdb3be9821c3730864622d0139206c72"
+      "sha256": "75a3c987799d769665c63f8da5c9615a02140e9e1360e1f9e49d42f946ece88f"
     },
     {
       "path": "it/start.html",
@@ -6362,13 +6362,13 @@
       "path": "ko/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/ko/spots/fuji-paper-mills.html",
       "bytes": 39860,
-      "sha256": "0c81f1f2fa721a80cfc35fa0354acd981521539ad9e46ada83a065df2ba50138"
+      "sha256": "e42987fa87e2b7670ad4f089ff3137d4f417e3d12b23e3ee28d2736f2c0a7e60"
     },
     {
       "path": "ko/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/ko/spots/fuji.html",
       "bytes": 35273,
-      "sha256": "47876e3fdc59d6c75e69664528328081fff85b5e71cc8fdd64e62b04bd922179"
+      "sha256": "85247917f0e734f2274ec1aae0a8836cb087f698757c504ad51d0c50287e571e"
     },
     {
       "path": "ko/spots/fujikawa-bridge.html",
@@ -6380,7 +6380,7 @@
       "path": "ko/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/ko/spots/fujitec-big-wing.html",
       "bytes": 29799,
-      "sha256": "882df9e0db622b911779b436227b8e0d45dee0dbeee315dc6ae9c0374f49cf50"
+      "sha256": "8c0d93e9e7856886a13964b5c665307dbebf017fed69a929cb6c686f95e29da0"
     },
     {
       "path": "ko/spots/fukuyama-castle.html",
@@ -6452,7 +6452,7 @@
       "path": "ko/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/ko/spots/kirin-beer-factory.html",
       "bytes": 31064,
-      "sha256": "5679be39a75bc0a1216f3b7324bf063bbb47a91029d233b488d70448ab5f6439"
+      "sha256": "633fe37bb86282cec19b8cac4611eff37b8e6f7be2859f676e5dda2c49438066"
     },
     {
       "path": "ko/spots/kiyosu.html",
@@ -6470,7 +6470,7 @@
       "path": "ko/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/ko/spots/lotte-shiga.html",
       "bytes": 28339,
-      "sha256": "475daeba126d592894fb479a2e4a17ca7265fd7d5d6eabd8bb56cab30da420ed"
+      "sha256": "287f8acbf7c2737a73674ba6f44934d1717782368a5bc93dba0ebc137d9dbc95"
     },
     {
       "path": "ko/spots/maibara-test-trains.html",
@@ -6536,7 +6536,7 @@
       "path": "ko/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/ko/spots/pocari-fukuroi.html",
       "bytes": 31913,
-      "sha256": "7bf1a946b42dbfaf2186af229b4efacc717bc1ab17561ce8b682e277057e86bb"
+      "sha256": "f323f1c96f14b4cf09c8648fcc2c196a9fdc8eb8eacee6568d55c87430b124f3"
     },
     {
       "path": "ko/spots/sagami-fuji.html",
@@ -6548,7 +6548,7 @@
       "path": "ko/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/ko/spots/sapporo-shizuoka-factory.html",
       "bytes": 26470,
-      "sha256": "0e256ce2dbc16fea4e2372aea1a3196d828616c84030fbb12c650055db1cc254"
+      "sha256": "59cda1f622de746df52c08d6526323ddeb5df8a87989673251f4683541a2a86b"
     },
     {
       "path": "ko/spots/sawayama-castle.html",
@@ -6608,7 +6608,7 @@
       "path": "ko/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/ko/spots/yamazaki-distillery.html",
       "bytes": 27488,
-      "sha256": "aa93460391e53417a457bc47c68b87b1a88a75cce98df77b2f75d5a8da83b286"
+      "sha256": "9192abdfaf2adfecb374259df16f30beb4328f68cd2fd62cddf07980c318d6a8"
     },
     {
       "path": "ko/start.html",
@@ -8426,13 +8426,13 @@
       "path": "th/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/th/spots/fuji-paper-mills.html",
       "bytes": 50902,
-      "sha256": "19fe59c4331a7990cdcc8cab93a7ffa3b3e1044ef20b952372da79003ff0cf1e"
+      "sha256": "09dd892f577aa839e0da1c12b74b74ce572a5480cb18ecd49bd78a93b98bba29"
     },
     {
       "path": "th/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/th/spots/fuji.html",
       "bytes": 43263,
-      "sha256": "8535b92665bf403846cf953a1df4124c6f7234ae246c64fe01e9406f1533c4d2"
+      "sha256": "d69a2c7bb9d272787fa2f59536a2c423508b30b77956fce79859adb796c66012"
     },
     {
       "path": "th/spots/fujikawa-bridge.html",
@@ -8444,7 +8444,7 @@
       "path": "th/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/th/spots/fujitec-big-wing.html",
       "bytes": 35570,
-      "sha256": "cdcd86cc7fce980142a82c8839f795195a9cbca3dda9b768d5104ce51a92be1b"
+      "sha256": "2a7e7219be62b8885c9be9aa0943cb6e12c7a93b6ee081bfb648f4f51e31821b"
     },
     {
       "path": "th/spots/fukuyama-castle.html",
@@ -8516,7 +8516,7 @@
       "path": "th/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/th/spots/kirin-beer-factory.html",
       "bytes": 36979,
-      "sha256": "bde692d9b1f6115974e09f3ee0c3890b407a17b4981a801dce99e87645c8b0cd"
+      "sha256": "6f41ac83319b7c63d0b1bf9057329b8b338b4464ed04710efb13b313dec5c811"
     },
     {
       "path": "th/spots/kiyosu.html",
@@ -8534,7 +8534,7 @@
       "path": "th/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/th/spots/lotte-shiga.html",
       "bytes": 33381,
-      "sha256": "10fd8dae3bbe698da75500fec9b42dc51e439797d34f34426bad7a2cda3ff82a"
+      "sha256": "9fe44a526eba41eee5ce5c4d80eae12aba4d554dac7022f7fd3feae9926c0b97"
     },
     {
       "path": "th/spots/maibara-test-trains.html",
@@ -8600,7 +8600,7 @@
       "path": "th/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/th/spots/pocari-fukuroi.html",
       "bytes": 40835,
-      "sha256": "d1e6d3384b429b466f55a50d28fca732cf4702d079f6763755573ae3377be3b3"
+      "sha256": "a760760f1ca56a6e3d3ee1ec12c26ee0befacfe408ddc9da4dc5150142ad711b"
     },
     {
       "path": "th/spots/sagami-fuji.html",
@@ -8612,7 +8612,7 @@
       "path": "th/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/th/spots/sapporo-shizuoka-factory.html",
       "bytes": 31709,
-      "sha256": "11ef7bd9197e718878fbf8c0c031609f98bbbd819f133964532ce082a89f4939"
+      "sha256": "259a0729ac06e68050046fefbb8466c1a04bea9dab080da2725e554218b11a65"
     },
     {
       "path": "th/spots/sawayama-castle.html",
@@ -8672,7 +8672,7 @@
       "path": "th/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/th/spots/yamazaki-distillery.html",
       "bytes": 35088,
-      "sha256": "47a5b0282fea35c82fe2e1a8cb948193d04102d4da8d1d5ce9a8b149e98f7be1"
+      "sha256": "52da1dad3cc03ebf499c7b510a8df4c62433a90748f91707e6074b7376cac88d"
     },
     {
       "path": "th/start.html",
@@ -9116,13 +9116,13 @@
       "path": "zh-Hans/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/fuji-paper-mills.html",
       "bytes": 38249,
-      "sha256": "a81b5e746cea3ffd0da654cdad2c44ccadb2295ff35b57440b24c5bb717ecbf1"
+      "sha256": "81e795eb6c5a4fd5cfba9291f29f0cc47665bd92fed08047d648f2476395a8d1"
     },
     {
       "path": "zh-Hans/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/fuji.html",
       "bytes": 33890,
-      "sha256": "15e58f21217cc0ae752fcb71fc11b4c6bc7d4dd328bfe97a5f01fbfaaaa3c6f9"
+      "sha256": "5f8158f04d2a7254a9d7b126d04d4a6f0da0c584b82ae0567622fee0bc81b8f9"
     },
     {
       "path": "zh-Hans/spots/fujikawa-bridge.html",
@@ -9134,7 +9134,7 @@
       "path": "zh-Hans/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/fujitec-big-wing.html",
       "bytes": 28661,
-      "sha256": "46197bfc94b5e8ac671ae4facb3f279d96ce9331a82db5e460dc9c9bb02248aa"
+      "sha256": "ed45d7a3a6cb417512371caa5708ada3b09d0cabf13803ee4f0d646087eab359"
     },
     {
       "path": "zh-Hans/spots/fukuyama-castle.html",
@@ -9206,7 +9206,7 @@
       "path": "zh-Hans/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/kirin-beer-factory.html",
       "bytes": 30072,
-      "sha256": "870c6d4666397fb5d08cde81c8555e3349094e5e81c2cfdefbb97409cfe75ba7"
+      "sha256": "90ef7693c3c394507a861322e5611ac4bc460235e793f957977176ce98b1df1a"
     },
     {
       "path": "zh-Hans/spots/kiyosu.html",
@@ -9224,7 +9224,7 @@
       "path": "zh-Hans/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/lotte-shiga.html",
       "bytes": 27219,
-      "sha256": "5e4490b50877ece462d512cfa2d9b3b6d26791497d3152ae4cbf8287334b7d0d"
+      "sha256": "3f04f5c41e73b132973dbcd4cd5d6c946718b25a8243c7c676e64e2aaa5b4547"
     },
     {
       "path": "zh-Hans/spots/maibara-test-trains.html",
@@ -9290,7 +9290,7 @@
       "path": "zh-Hans/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/pocari-fukuroi.html",
       "bytes": 29577,
-      "sha256": "03e3f6d6008daf9d1535df702d6440ef0a0855424d5a86d3db1878e77b8d86ad"
+      "sha256": "9cb75a7007599640202f1e819073bb757d55f9fccf119d3fad966657effa7f3b"
     },
     {
       "path": "zh-Hans/spots/sagami-fuji.html",
@@ -9302,7 +9302,7 @@
       "path": "zh-Hans/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/sapporo-shizuoka-factory.html",
       "bytes": 25411,
-      "sha256": "2268f9af92a7377bfa392861f1efba4e5350d4e0227a670634f11c89c73ee36f"
+      "sha256": "7d17ce457502691e7bcc8e42ab9e1b3bd816cd529f11c4ebb059d2cd49e62ba1"
     },
     {
       "path": "zh-Hans/spots/sawayama-castle.html",
@@ -9362,7 +9362,7 @@
       "path": "zh-Hans/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/yamazaki-distillery.html",
       "bytes": 26697,
-      "sha256": "7a86fd03a26295ae91d65af9fae6097b72ba81adbd9e95a6d99b1667c4ad076b"
+      "sha256": "f0b038f00e48245f1f7ed9fbc8de82ac4d4c4f323407c51ac5c1dccfd7b7fce8"
     },
     {
       "path": "zh-Hans/start.html",
@@ -9602,13 +9602,13 @@
       "path": "zh-Hant/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/fuji-paper-mills.html",
       "bytes": 38261,
-      "sha256": "3b72ec3659de8c93a82abd81a64e1f44b3eded46177b6e7d80e716e16b4369d1"
+      "sha256": "4d16ab30ed19c9e681e3a7933c90bd78773b4a27be33c7ec9e6ff4b69d1b4443"
     },
     {
       "path": "zh-Hant/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/fuji.html",
       "bytes": 33905,
-      "sha256": "e3f5272605985ab9a93f0b559b1f245474e8c108606df31c7b6579a2edf253c1"
+      "sha256": "941dfc61b28e50da84e377fb6bbbc61ae0a7aa7635a38e0180b493d21ff1f5e6"
     },
     {
       "path": "zh-Hant/spots/fujikawa-bridge.html",
@@ -9620,7 +9620,7 @@
       "path": "zh-Hant/spots/fujitec-big-wing.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/fujitec-big-wing.html",
       "bytes": 28697,
-      "sha256": "c96b45b83ef1cd627381d7631c99cdc3b70fe0773ea6dc521b322f4517c9394a"
+      "sha256": "acf19075d909582f3740a1d5157f9b610f4537718b7ebb5adc4e65935513674e"
     },
     {
       "path": "zh-Hant/spots/fukuyama-castle.html",
@@ -9692,7 +9692,7 @@
       "path": "zh-Hant/spots/kirin-beer-factory.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/kirin-beer-factory.html",
       "bytes": 30072,
-      "sha256": "0b9b875f2362ae579d26f1f0e908a3696b4c30bf6fabeb60b026c0dc46d6e192"
+      "sha256": "a077013f68a5ae34ff6c768bbc29486cef851e172f0f1a760eec0bf5d140a1aa"
     },
     {
       "path": "zh-Hant/spots/kiyosu.html",
@@ -9710,7 +9710,7 @@
       "path": "zh-Hant/spots/lotte-shiga.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/lotte-shiga.html",
       "bytes": 27219,
-      "sha256": "49254c12f4a9b91a36e375c0b341ce7d217058f8a617d1a5c3b7309871d1adf8"
+      "sha256": "f9f16d6884fb38f98ef3b46292738172ee03b7c94df363c8156922391cfeb400"
     },
     {
       "path": "zh-Hant/spots/maibara-test-trains.html",
@@ -9776,7 +9776,7 @@
       "path": "zh-Hant/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/pocari-fukuroi.html",
       "bytes": 29583,
-      "sha256": "a6a848ba3ee0e1262de83f1bb7775f47ce9bd6b264ef4285eb11e84763bfc80a"
+      "sha256": "7425e5a3c6c4241222c14b406338fe266a5082383694b2aabdb2729709cde9b2"
     },
     {
       "path": "zh-Hant/spots/sagami-fuji.html",
@@ -9788,7 +9788,7 @@
       "path": "zh-Hant/spots/sapporo-shizuoka-factory.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/sapporo-shizuoka-factory.html",
       "bytes": 25411,
-      "sha256": "28e1fde1941c21daad9d6976176980e3eb819d3d94823cdef4a359942741443d"
+      "sha256": "5c833992700673d15611b172f9bd40685edf7ecbfd8ed7a00f09c0ab44ae32f8"
     },
     {
       "path": "zh-Hant/spots/sawayama-castle.html",
@@ -9848,7 +9848,7 @@
       "path": "zh-Hant/spots/yamazaki-distillery.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/yamazaki-distillery.html",
       "bytes": 26697,
-      "sha256": "39188c5044b462dd6c87e13b1376bdd4acb537bae522fbf0b0f80a57990e7f2d"
+      "sha256": "9769f57357cee28839a42d9fa2173b707fe2a2f51279e91e7ec1dad3d699e703"
     },
     {
       "path": "zh-Hant/start.html",
@@ -14984,14 +14984,14 @@
         "sha256": "6b85ade4d7bfc29fe6fa6d13c56d58dd6cc8b7be3b3332bf7e1a5acf2bc2cfd9"
       },
       {
-        "path": "images/thumbs/display/20260919_lotte-shiga_4190_michikusa-cc4313f8-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260919_lotte-shiga_4190_michikusa-cc4313f8-1920.webp",
+        "path": "images/thumbs/display/20260919_lotte-shiga_4190_michikusa-4441cf7d-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260919_lotte-shiga_4190_michikusa-4441cf7d-1920.webp",
         "bytes": 175622,
         "sha256": "9c622df4eb29b39d6e8e0801af3007174778685053a70994346cf900cadc2b47"
       },
       {
-        "path": "images/thumbs/display/20260919_lotte-shiga_4190_michikusa-cc4313f8-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260919_lotte-shiga_4190_michikusa-cc4313f8-640.webp",
+        "path": "images/thumbs/display/20260919_lotte-shiga_4190_michikusa-4441cf7d-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260919_lotte-shiga_4190_michikusa-4441cf7d-640.webp",
         "bytes": 37404,
         "sha256": "32df65a1f4134df1201fb71cb4f30ab88aa60117673e6055f6cf5693048c617e"
       },
@@ -15170,14 +15170,14 @@
         "sha256": "542f8ce5a6291eef12c7ba93fbc87ff7bbd3fa0bc619e035e22814d71ca58a93"
       },
       {
-        "path": "images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-d0b6d044-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-d0b6d044-1920.webp",
+        "path": "images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-b8095138-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-b8095138-1920.webp",
         "bytes": 276510,
         "sha256": "8de54b4a6a8ce1ab8560feab0372644bac3e406f20be516b586638e9dccd3c30"
       },
       {
-        "path": "images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-d0b6d044-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-d0b6d044-640.webp",
+        "path": "images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-b8095138-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-paper-mills_75983_michikusa-b8095138-640.webp",
         "bytes": 54040,
         "sha256": "9fd251d47e6bef0207871189622b0565682df04a889ba7f529d5d43a37601275"
       },
@@ -15218,14 +15218,14 @@
         "sha256": "e2814dfaeefc1f08617434f8c1d309348bb1c7c3df1ac778e7da20d142b9c428"
       },
       {
-        "path": "images/thumbs/display/20260924_fuji-ucc_171517_michikusa-e3547238-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-ucc_171517_michikusa-e3547238-1920.webp",
+        "path": "images/thumbs/display/20260924_fuji-ucc_171517_michikusa-52e4bb1a-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-ucc_171517_michikusa-52e4bb1a-1920.webp",
         "bytes": 199634,
         "sha256": "a35407f116d649aae081602a1c98cda01924950b5926fd2c7d4f6d1149ef3270"
       },
       {
-        "path": "images/thumbs/display/20260924_fuji-ucc_171517_michikusa-e3547238-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-ucc_171517_michikusa-e3547238-640.webp",
+        "path": "images/thumbs/display/20260924_fuji-ucc_171517_michikusa-52e4bb1a-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_fuji-ucc_171517_michikusa-52e4bb1a-640.webp",
         "bytes": 41830,
         "sha256": "4ce913d160eaf061b9ec3e172f2a0557a4835ade25ca92d1e65333985dd41860"
       },
@@ -15386,14 +15386,14 @@
         "sha256": "8f1c999fc664d95ce0d312bf7e56c06d21f8a116d001c1ecf8aefe0052f349a8"
       },
       {
-        "path": "images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-ac871993-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-ac871993-1920.webp",
+        "path": "images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-6989e52e-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-6989e52e-1920.webp",
         "bytes": 149948,
         "sha256": "c3d366c5315973bc4179dfb5bebb246af2154e90a5ee0d389bfb2831e07c6107"
       },
       {
-        "path": "images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-ac871993-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-ac871993-640.webp",
+        "path": "images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-6989e52e-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260924_sapporo-shizuoka-factory_34042_michikusa-6989e52e-640.webp",
         "bytes": 27698,
         "sha256": "59c236f930a7a2d7e81a35bfb7bb12df316437c4feaf3004fa735a5d41f6bdcf"
       },
@@ -15458,14 +15458,14 @@
         "sha256": "235e620e501d5a3ed536be3bffee78b944f85201ca3aaf1dde962e7878c6729f"
       },
       {
-        "path": "images/thumbs/display/20260930_fujitec-big-wing_michikusa-16226803-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260930_fujitec-big-wing_michikusa-16226803-1920.webp",
+        "path": "images/thumbs/display/20260930_fujitec-big-wing_michikusa-6b7ffbc6-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260930_fujitec-big-wing_michikusa-6b7ffbc6-1920.webp",
         "bytes": 92274,
         "sha256": "cb86eebaa0021773e37533224af7e5e4bddfc51dbc9a64d8a6d92c7cb7782cd0"
       },
       {
-        "path": "images/thumbs/display/20260930_fujitec-big-wing_michikusa-16226803-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260930_fujitec-big-wing_michikusa-16226803-640.webp",
+        "path": "images/thumbs/display/20260930_fujitec-big-wing_michikusa-6b7ffbc6-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260930_fujitec-big-wing_michikusa-6b7ffbc6-640.webp",
         "bytes": 22360,
         "sha256": "f6fdc796a84f6a9888c2e5ab57a1e101e0dc3ce1ed8de7c45c44d48dc7e5612f"
       },
@@ -15650,14 +15650,14 @@
         "sha256": "76f43c345496dbce73d6c7648f8e3a25a1961f6bfd7be57665e36e56ee8111c7"
       },
       {
-        "path": "images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-3749e05c-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-3749e05c-1920.webp",
+        "path": "images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-77f1fd49-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-77f1fd49-1920.webp",
         "bytes": 196200,
         "sha256": "eeff70616d2c2052a641ff2b78e189f046fa928a1296462877742d3c684e86c2"
       },
       {
-        "path": "images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-3749e05c-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-3749e05c-640.webp",
+        "path": "images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-77f1fd49-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261010_pocari-fukuroi_80185_michikusa-77f1fd49-640.webp",
         "bytes": 36786,
         "sha256": "5aa9bfd0bd8c8eb7aa83945b150e95f5bea22163f71f031741e3eac3ecfd75f1"
       },
@@ -16028,14 +16028,14 @@
         "sha256": "b4cfd9e75df150a69f207b0053461d993bf2193328aa2f209a55188f4818dc13"
       },
       {
-        "path": "images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-5ad96fe0-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-5ad96fe0-1920.webp",
+        "path": "images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-c3910cc3-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-c3910cc3-1920.webp",
         "bytes": 261372,
         "sha256": "d433a75037f342e3e6b5fc9cde2a602a25f7a937bc4b05d2e8f7511f94096c27"
       },
       {
-        "path": "images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-5ad96fe0-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-5ad96fe0-640.webp",
+        "path": "images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-c3910cc3-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261107_kirin-beer-factory_6901_michikusa-c3910cc3-640.webp",
         "bytes": 56978,
         "sha256": "0fd2aab8eda1adb41d14ae590b438aec2cac6affda6dda7bbf30d87abd121ec1"
       },
@@ -16184,26 +16184,26 @@
         "sha256": "e77c6b2fd20e449962d6ab8c8170fd45ab99e002cd4ce24ac9377fc5cc2ed742"
       },
       {
-        "path": "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-1920.webp",
+        "path": "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-82a186b5-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-82a186b5-1920.webp",
         "bytes": 167186,
         "sha256": "3822c5116a04a9324057cfa68668c0a237ad4be9677433fbeaf45bbc39952e0a"
       },
       {
-        "path": "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-640.webp",
+        "path": "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-82a186b5-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-82a186b5-640.webp",
         "bytes": 43600,
         "sha256": "dbbaa9d97ca89ef8efa1b00832594a0511e115c637883d9daa0cb8c7c31e6a3d"
       },
       {
-        "path": "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-1920.webp",
+        "path": "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-65bb9185-1920.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-65bb9185-1920.webp",
         "bytes": 67956,
         "sha256": "299085dae600ffe11d5b7f1bb1606e279176e0adeee193c12db40d65c21dfaab"
       },
       {
-        "path": "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-640.webp",
+        "path": "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-65bb9185-640.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-65bb9185-640.webp",
         "bytes": 12916,
         "sha256": "659c1661ee737b78caa626ba0a13ef92d33ab7b488aeefd1fa2058c754c20dfd"
       },

@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import {withStoryWindowLinks} from './shared/story-window.mjs';
 import { episodes, editions, languages, supported, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
+import { setImmediate } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 import { UTILITY_ROUTES, LOCALES, utilityAttributes, FEATURE_UTILITY_ROUTES, preservedUtilityText, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
@@ -33,9 +34,10 @@ if (requestedRoute && !UTILITY_ROUTES.includes(requestedRoute)) throw Error("Unk
 const outputRoutes = requestedRoute ? [requestedRoute] : UTILITY_ROUTES;
 const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
 if (requestedLang && !LOCALES.includes(requestedLang)) throw Error(`Unknown utility locale: ${requestedLang}`);
+const englishKeys = collectEnglish(root);
 for (const lang of requestedLang ? [requestedLang] : LOCALES) {
   const dictionary = JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8'));
-  const missing = collectEnglish(root).filter(key => !dictionary[key]);
+  const missing = englishKeys.filter(key => !dictionary[key]);
   if (missing.length) throw Error(`${lang}: ${missing.length} translations missing: ${missing.slice(0, 8).join(' / ')}`);
   function tr(value) {
     if (!translatable(value)) return value;
@@ -185,6 +187,8 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     }
     let html = withUtilityLocales(dom.serialize(), file);
     write(file, html);
+    dom.window.close();
+    await setImmediate();
   }
 }
 // Hand-authored Japanese pages and English contact/forecast must retain these additions.

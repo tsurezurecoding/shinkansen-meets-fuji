@@ -79,7 +79,8 @@ export function collectEnglish(root, { routes = UTILITY_ROUTES, includeRuntime =
   const keys = new Set();
   const add = value => { if (translatable(value)) keys.add(translationKey(value)); };
   for (const route of routes) {
-    const doc = utilitySnapshot(root, route).window.document;
+    const dom = utilitySnapshot(root, route);
+    const doc = dom.window.document;
     for (const node of textNodes(doc)) if (!node.parentElement.closest('.lang-switch,.show-credit') && !preservedUtilityText(node, route)) add(node.textContent);
     for (const el of doc.querySelectorAll('*')) for (const attr of utilityAttributes(el, route)) add(el.getAttribute(attr));
     if (FEATURE_UTILITY_ROUTES.includes(route)) for (const schema of doc.querySelectorAll('script[type="application/ld+json"]')) {
@@ -91,6 +92,7 @@ export function collectEnglish(root, { routes = UTILITY_ROUTES, includeRuntime =
     }
     add(doc.title);
     for (const el of doc.querySelectorAll('meta')) if (/(?:description|title|image:alt)$/.test(el.name || el.getAttribute('property') || '')) add(el.content);
+    dom.window.close();
   }
   if (!includeRuntime) return [...keys].sort();
   for (const table of Object.values(englishTables(root))) for (const value of Object.values(table)) add(valueTemplate(value).text);
