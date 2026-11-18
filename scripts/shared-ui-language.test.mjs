@@ -90,7 +90,7 @@ for (const lang of ['ja', 'en']) {
       w.__navigations = [];
       const count = countClickListeners(w);
       const context = dom.getInternalVMContext();
-      for (const file of ['locales.js', 'data-runtime.js', 'track.js']) vm.runInContext(read(file), context, { filename: file });
+      for (const file of ['locales.js', 'data-runtime.js', 'track.js', 'data/stamp-store.js']) vm.runInContext(read(file), context, { filename: file });
       vm.runInContext(read('app.js').replace('location.href = localizedPageHref(nextLang);', 'window.__navigations.push(localizedPageHref(nextLang));'), context, { filename: 'app.js' });
       w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
       vm.runInContext('journey = { mode: "estimate", marker: "existing selection" }; activeGalleryFilters.clear(); activeGalleryFilters.add("night");', context);

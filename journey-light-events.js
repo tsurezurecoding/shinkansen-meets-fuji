@@ -360,6 +360,7 @@
   function updateDate(){
     rideDate=byId('nd-date').value;cache=null;saveDate();dateNote();
     if(typeof renderTimeline==='function'&&typeof journey!=='undefined'&&journey)renderTimeline();else enrich();
+    updateLive();
   }
   function disneyEventId(minute){
     const train=typeof journey==='undefined'?null:journey?.train;
@@ -457,7 +458,7 @@
     const label=row.querySelector('label');label.textContent=copy.dateTime;label.htmlFor='nd-date';label.removeAttribute('data-picker-text');
     const group=row.querySelector('.depart-wrap');group.classList.add('nd-date-time');
     const input=document.createElement('input');input.type='date';input.id='nd-date';input.setAttribute('aria-label',copy.dateLabel);input.min='1901-01-01';input.max='2099-12-31';input.value=rideDate;group.prepend(input);time.setAttribute('aria-label',copy.timeLabel);
-    // Replace the old node so its browser-local nowClock handler cannot override JST.
+    // This page resets the ride date as well as the departure time.
     const current=document.createElement('button');current.type='button';current.id='nd-now';current.className='chip-btn';current.textContent=copy.now;current.setAttribute('aria-label',copy.reset);now.replaceWith(current);
     if(!(typeof journey!=='undefined'&&journey?.mode==='train'&&!journey.preview))time.value=seed.time;
     const note=document.createElement('p');note.id='nd-date-note';note.className='nd-date-note';note.setAttribute('aria-live','polite');row.after(note);

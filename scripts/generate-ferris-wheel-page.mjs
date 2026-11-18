@@ -236,6 +236,7 @@ ${cards}
   </script>
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}"></script>
   <script src="${prefix}spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}"></script>
+  <script src="${prefix}data/stamp-store.js?v=${assetVersion('data/stamp-store.js')}"></script>
   <script src="${prefix}ferris-wheels.js?v=${assetVersion('ferris-wheels.js')}"></script>
 </body>
 </html>

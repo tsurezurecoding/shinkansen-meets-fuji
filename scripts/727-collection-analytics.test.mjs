@@ -25,6 +25,7 @@ function mount(options = {}) {
     latLngBounds: (points) => points,
   };
   window.MADO_LEAFLET = { load: async () => leaflet };
+  window.eval(fs.readFileSync(new URL('../data/stamp-store.js', import.meta.url), 'utf8'));
   window.eval(source);
   return { dom, window, events, markerHandlers };
 }

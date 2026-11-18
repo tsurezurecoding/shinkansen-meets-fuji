@@ -332,6 +332,7 @@
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
+  <script src="data/stamp-store.js?v=source"></script>
   <script src="app.js?v=6415fc4a"></script>
   <script>
     window.addEventListener("load", function () {

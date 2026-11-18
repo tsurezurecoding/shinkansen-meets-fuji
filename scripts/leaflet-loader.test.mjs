@@ -95,7 +95,10 @@ function harness(t, { lang = "ja", collection = false, dpr = 1 } = {}) {
       evaluate(sharedSource, "spot-map.js");
       return window.MADO_LEAFLET.load();
     },
-    startCollection() { evaluate(collectionSource, "727-collection.js"); },
+    startCollection() {
+      evaluate(read("data/stamp-store.js"), "data/stamp-store.js");
+      evaluate(collectionSource, "727-collection.js");
+    },
   };
 }
 

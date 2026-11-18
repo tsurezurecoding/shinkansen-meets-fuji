@@ -273,6 +273,7 @@
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
   <script src="train-picker.js?v=6cafb7d9"></script>
+  <script src="data/stamp-store.js?v=source"></script>
   <script src="app.js?v=6415fc4a"></script>
 <!-- JA-TRAIN-WINDOW:START -->
 <script src="train-window-geometry.js?v=42ff4818"></script>

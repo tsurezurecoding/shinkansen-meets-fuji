@@ -100,21 +100,12 @@
 
   var points = BOARD_COLLECTION.slice();
   var routeMinutes = 147;
-  var stamps = loadStamps();
+  var stamps = window.MadoStamps.read();
   var mapState = null;
   var leafletPromise = null;
   var openPointId = "";
   var activeFilters = new Set();
 
-  function loadStamps() {
-    try {
-      var parsed = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
-      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
-    } catch (error) { return {}; }
-  }
-  function saveStamps() {
-    try { localStorage.setItem("mado-stamps", JSON.stringify(stamps)); } catch (error) { /* storage is optional */ }
-  }
   // 現地で確認できなかった地点（撤去・工事など）は収集カウントから外す。
   function isMissing(point) { return point.siteStatus === "not-found" || point.siteStatus === "removed"; }
   function countablePoints() { return points.filter(function (point) { return !isMissing(point); }); }
@@ -264,16 +255,12 @@
     }
   }
   function toggleStamp(point) {
-    var id = stampId(point);
-    var operation = isFound(point) ? "remove" : "add";
-    if (operation === "remove") {
-      stampIds(point).forEach(function (storedId) { delete stamps[storedId]; });
-    } else {
-      stamps[id] = Date.now();
-    }
-    track727("collection_727_stamp", { point_id: point.id, operation: operation });
-    saveStamps(); renderProgress(); renderList();
-    if (mapState && mapState.markers.has(point.id)) updateMarkerPopup(point);
+    return window.MadoStamps.toggle(stampIds(point), function (updated) {
+      stamps = updated;
+      track727("collection_727_stamp", { point_id: point.id, operation: isFound(point) ? "add" : "remove" });
+      renderProgress(); renderList();
+      if (mapState && mapState.markers.has(point.id)) updateMarkerPopup(point);
+    });
   }
   function setMapStatus(message) { var status = document.getElementById("collectionMapStatus"); if (status) status.textContent = message; }
   function popupHTML(point) {
@@ -337,6 +324,11 @@
     if (accordionButton) { event.preventDefault(); var id = accordionButton.closest("[data-point-card]").getAttribute("data-point-id"); var opening = openPointId !== id; if (opening) track727("collection_727_card_open", { point_id: id, source: "list" }); setAccordion(id, opening, true); return; }
     var mapButton = event.target.closest("[data-map-point]");
     if (mapButton) { event.preventDefault(); var mapPointId = mapButton.getAttribute("data-map-point"); track727("collection_727_map_select", { point_id: mapPointId, source: "list" }); focusPoint(mapPointId); }
+  });
+  window.MadoStamps.onChange(function (updated) {
+    stamps = updated;
+    renderProgress(); renderList();
+    if (mapState) points.forEach(updateMarkerPopup);
   });
   renderProgress(); renderList(); initMap();
 })();

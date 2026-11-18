@@ -4,7 +4,7 @@ import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { JSDOM } from "jsdom";
-import { SPOTS as GENERATED_SPOTS, spotPageHTML } from "./generate-spot-pages.mjs";
+import { SPOTS as GENERATED_SPOTS, finalPageOutput, planSpotPage } from "./generate-spot-pages.mjs";
 import { fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
 import { commonTargetFailures, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
@@ -472,7 +472,8 @@ async function runThinValidator() {
       const absoluteFile = path.join(appDir, relativeFile);
       if (!fs.existsSync(absoluteFile)) { fail(`${relativeFile} is missing`); continue; }
       const onDisk = fs.readFileSync(absoluteFile, "utf8");
-      const generatedHTML = spotPageHTML(spot, lang);
+      const plan = planSpotPage(spot, lang);
+      const generatedHTML = finalPageOutput(plan.outputPath, plan.generatedHTML);
       expectedPages.push(relativeFile);
       currentPages.push(relativeFile);
       if (onDisk !== generatedHTML) fail(`${relativeFile} does not match in-memory thin generation`);

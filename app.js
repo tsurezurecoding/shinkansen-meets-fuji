@@ -536,15 +536,7 @@ function isWheelCollectionSpot(spot) {
 function is727CollectionSpot(spot) {
   return spot?.is727Collection === true || spot?.id === "727-board" || spot?.id === "727-sign";
 }
-function loadStamps() {
-  try {
-    const parsed = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
-    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
-  } catch {
-    return {};
-  }
-}
-let stamps = loadStamps();
+let stamps = window.MadoStamps.read();
 function loadFavorites() {
   try {
     const parsed = JSON.parse(localStorage.getItem("mado-favorites") || "{}");
@@ -687,8 +679,7 @@ function minToClock(m) {
   m = ((m % 1440) + 1440) % 1440;
   return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
-function fmtClock(date) { return date.toTimeString().slice(0, 5); }
-function nowMin() { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+function nowMin() { return toMin(MTS.jstParts().time); }
 
 /* 列車選択アルゴリズム(tokaidoStops/interpolateSpot/trainCandidates)は
    train-select.js (window.MADO_TRAIN_SELECT) に一本化。mieru.html と共有し、
@@ -707,9 +698,15 @@ function interpolateSpot(spotRef, stops, stationSide) {
 
 /* タイムラインへ置くスポット1件。停車駅と同じ分数のスポットは、駅の手前か先か
    （stationSide）で着・発を選び、同時刻の並びも進行方向の位置（seq）で決める。 */
-function timelinePoint(sp, spotClock, dirSign) {
+function timelinePoint(sp, spotClock, dirSign, boardRef, depMin) {
   const side = MTS.spotStationSide(sp, ROUTE, window.MADO_TRACK);
-  return { sp, clock: spotClock(sp.minutesFromTokyo, side), seq: (sp.minutesFromTokyo + side * 0.01) * dirSign };
+  const ref = sp.minutesFromTokyo;
+  let clock = spotClock(ref, side);
+  if (ref === boardRef) {
+    // The approach side has already passed; an on-station or outgoing sight starts at departure.
+    clock = side * dirSign < 0 ? null : depMin;
+  }
+  return { sp, clock, seq: (ref + side * 0.01) * dirSign };
 }
 
 /* 列車検索: 方向・乗車駅に合う列車を出発時刻順に並べる */
@@ -737,7 +734,7 @@ function computeJourney(train, depMin) {
   }
   const spots = SPOTS
     .filter((sp) => sp.minutesFromTokyo != null)
-    .map((sp) => timelinePoint(sp, spotClock, dirSign))
+    .map((sp) => timelinePoint(sp, spotClock, dirSign, boardRef, depMin))
     .filter((x) => x.clock != null)
     .sort((a, b) => a.clock - b.clock || a.seq - b.seq);
   return {
@@ -916,7 +913,7 @@ function collectionTimelineSpots(board = boardCollectionExpanded) {
   const points = []
     .concat(board ? boardCollectionSpots() : [])
     .concat(wheelCollectionSpots())
-    .map((sp) => timelinePoint(sp, spotClock, dirSign))
+    .map((sp) => timelinePoint(sp, spotClock, dirSign, boardRef, journey.depMin))
     .filter((item) => item.clock != null);
   return journey.spots
     .concat(points)
@@ -2050,8 +2047,14 @@ function stopLive() {
 }
 function updateLive() {
   const banner = $("#nextup");
-  if (!journey || !journey.spots.length) { banner.hidden = true; return; }
-  const now = nowMin();
+  const japan = MTS.jstParts();
+  // A deep link can restore its train before the date control has mounted.
+  const rideDate = $("#nd-date")?.value ?? new URLSearchParams(location.search).get("rideDate");
+  if (!journey || journey.preview || !journey.spots.length || (rideDate !== null && rideDate !== japan.date)) {
+    banner.hidden = true;
+    return;
+  }
+  const now = toMin(japan.time);
   const end = journey.stops.length ? journey.stops[journey.stops.length - 1].clock : journey.depMin;
   if (now < journey.depMin - 30 || now > end + 15) { banner.hidden = true; return; }
   const upcoming = journey.spots.find((x) => x.clock >= now - 1);
@@ -2292,15 +2295,18 @@ function reportMedalGains(before) {
 }
 
 function toggleStamp(id) {
-  const removed = !!stamps[id];
-  const medalsBefore = medalLevelSnapshot();
-  if (removed) delete stamps[id];
-  else stamps[id] = Date.now();
-  const stampEventParams = { spot_id: id };
-  if (document.body?.classList.contains("journal-page")) stampEventParams.page_context = "journal";
-  track(removed ? "stamp_removed" : "stamp_added", stampEventParams);
-  if (!removed) reportMedalGains(medalsBefore);
-  localStorage.setItem("mado-stamps", JSON.stringify(stamps));
+  return window.MadoStamps.toggle([id], (updated, previous) => {
+    stamps = previous;
+    const medalsBefore = medalLevelSnapshot();
+    stamps = updated;
+    const stampEventParams = { spot_id: id };
+    if (document.body?.classList.contains("journal-page")) stampEventParams.page_context = "journal";
+    track(stamps[id] ? "stamp_added" : "stamp_removed", stampEventParams);
+    if (stamps[id]) reportMedalGains(medalsBefore);
+    refreshStampDisplay(id);
+  });
+}
+function refreshStampDisplay(id) {
   renderMedalBoard();
   renderStampboard();
   const journalModal = $("#journalModal");
@@ -2317,11 +2323,14 @@ function toggleStamp(id) {
       if (selected) journalContent.innerHTML = medalDetailHTML(selected);
     }
   }
-  $$(`[data-stamp="${id}"]`).forEach((btn) => {
-    const got = !!stamps[id];
-    updateStampButton(btn, got);
+  $$(id ? `[data-stamp="${id}"]` : "[data-stamp]").forEach((btn) => {
+    updateStampButton(btn, !!stamps[btn.dataset.stamp]);
   });
 }
+window.MadoStamps.onChange((updated) => {
+  stamps = updated;
+  refreshStampDisplay();
+});
 function toggleFavorite(id) {
   const removed = !!favorites[id];
   if (removed) delete favorites[id];
@@ -2904,15 +2913,16 @@ function bindJournalControls() {
   });
   $("#resetBtn")?.addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
-      stamps = {};
-      favorites = {};
-      localStorage.setItem("mado-stamps", "{}");
-      localStorage.setItem("mado-favorites", "{}");
-      renderMedalBoard();
-      renderStampboard();
-      renderGallery();
-      const tl = $("#timelineSection");
-      if (tl && !tl.hidden) renderTimeline();
+      window.MadoStamps.clear((updated) => {
+        stamps = updated;
+        favorites = {};
+        saveFavorites();
+        renderMedalBoard();
+        renderStampboard();
+        renderGallery();
+        const tl = $("#timelineSection");
+        if (tl && !tl.hidden) renderTimeline();
+      });
     }
   });
 }

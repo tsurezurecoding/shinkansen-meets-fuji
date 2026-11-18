@@ -24,7 +24,7 @@ async function fixture({ language = 'ja', saved, savedFilters, blockedStorage = 
   const context = dom.getInternalVMContext();
   const files = ['locales.js', 'data/timetable.js', 'data-runtime.js'];
   if (!['ja', 'en'].includes(language)) files.push(`${language}/utility-data.js`, 'utility-locale-runtime.js');
-  files.push('track.js', 'train-select.js', 'app.js');
+  files.push('track.js', 'train-select.js', 'data/stamp-store.js', 'app.js');
   for (const file of files) {
     vm.runInContext(read(file), context, { filename: file });
   }

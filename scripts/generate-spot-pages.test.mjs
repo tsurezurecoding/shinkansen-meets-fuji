@@ -6,6 +6,8 @@ import { JSDOM } from "jsdom";
 import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOgImage, enhanceContentHead, contentLastmod } from './shared/content-metadata.mjs';
 import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
 import { findUnregisteredCountClaims } from './shared/spot-count.mjs';
+import locales from '../locales.js';
+import { STORY_ROUTES } from './shared/story-window.mjs';
 
 test('verified image rights survive generation across language editions without global defaults', () => {
   const imageNodes = html => {
@@ -76,16 +78,60 @@ test('unmeasured viewing windows stay unknown in both page facts and structured 
   }
 });
 
+test('editorial metadata covers each curated route and its required editions', () => {
+  function expectEditions(routes, languages) {
+    for (const route of routes) {
+      for (const lang of languages) {
+        const file = lang === 'ja' ? route : `${lang}/${route}`;
+        assert.ok(Object.hasOwn(CONTENT_METADATA, file), `Missing editorial metadata for ${file}`);
+      }
+    }
+  }
+
+  // Top-level articles with per-edition JSON, and the story series, register every supported edition.
+  const dataRoot = new URL('../data/', import.meta.url);
+  const translatedArticles = fs.readdirSync(dataRoot, { withFileTypes: true })
+    .filter(entry => entry.isDirectory() && fs.existsSync(new URL(entry.name + '/ja.json', dataRoot))
+      && fs.existsSync(new URL('../' + entry.name + '.html', dataRoot)))
+    .map(entry => entry.name + '.html');
+  for (const route of [...translatedArticles, ...STORY_ROUTES, 'kyoto-station-views.html',
+    'spots/fuji-paper-mills.html', 'spots/pocari-fukuroi.html', 'spots/sekigahara-battlefield.html']) {
+    expectEditions([route], locales.supported(route));
+  }
+
+  // These earlier editorial decisions apply to particular editions of otherwise wider language routes.
+  expectEditions([
+    '727-collection.html', 'arenani.html', 'castles.html', 'ferris-wheels.html', 'guide.html', 'hanabi.html',
+    'reflections.html', 'sparkling-dreams.html', 'window-artworks.html', 'window-moments.html',
+    'spots/727-board.html', 'spots/edo-castle-fujimi-yagura.html', 'spots/fuji-bus-sales.html',
+    'spots/fuji-pipe-sign.html', 'spots/fukuyama-castle.html', 'spots/gyoran-kannon.html', 'spots/himeji-castle.html',
+    'spots/hinataoka.html', 'spots/hirakata-park-wheel.html', 'spots/kaguya-no-akari.html', 'spots/kinshozan.html',
+    'spots/kirin-beer-factory.html', 'spots/kiyosu.html', 'spots/kizakura-otsukaresama-sign.html', 'spots/lotte-shiga.html',
+    'spots/maibara-test-trains.html', 'spots/nagoya-station-skyline.html', 'spots/odawara.html', 'spots/okayama-castle.html',
+    'spots/omi-fuji.html', 'spots/putiputi-sign.html', 'spots/rakusai-egg-tanks.html', 'spots/sapporo-shizuoka-factory.html',
+    'spots/shiraitogawa-bridge.html', 'spots/tamaruya-wasabi-sign.html', 'spots/tokyo-tower.html',
+    'spots/toyohashi-tateiwa.html', 'spots/yamazaki-distillery.html',
+  ], ['ja', 'en']);
+  expectEditions([...locales.jaOnly.filter(route => route.startsWith('sudoori/')),
+    'window-guesser.html', 'window-quiz.html', 'spots/fujitec-big-wing.html', 'spots/left-fuji.html', 'spots/mishima-catapult.html'], ['ja']);
+  expectEditions(['beer-on-shinkansen.html', 'drinks.html', 'everyday-japan.html', 'tokyo-kyoto-stations.html'], ['en']);
+  expectEditions(['countryside.html', 'foods.html', 'spots/gamagori-greenhouses.html', 'yakei.html'],
+    ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko']);
+  expectEditions(['spots/fuji.html'], ['zh-Hant', 'es', 'zh-Hans', 'ko']);
+  expectEditions(['spots/maruko-bridge.html'], locales.translated);
+});
+
 test('editorial metadata: curated candidates and generated spot contracts pass the site gate', () => {
   const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  const editions = ['', 'en/', 'fr/', 'de/', 'es/', 'it/', 'ko/', 'th/', 'zh-Hant/', 'zh-Hans/'];
-  const recent = new Set(editions.flatMap(prefix => ['ramen.html', 'rivers.html', 'factories.html'].map(route => prefix + route)));
-  const previousEntries = Object.keys(CONTENT_METADATA).filter(route => !recent.has(route));
-  assert.equal(previousEntries.length, 256, 'curated entries through the donburi editions');
-  for (const route of recent) assert.equal(CONTENT_METADATA[route]?.article, !route.endsWith('rivers.html'), route);
+  for (const route of ['ramen.html', 'rivers.html', 'factories.html']) {
+    for (const lang of locales.supported(route)) {
+      const file = lang === 'ja' ? route : lang + '/' + route;
+      assert.equal(CONTENT_METADATA[file]?.article, route !== 'rivers.html', file);
+    }
+  }
   for (const file of ['zh-Hant/spots/fuji.html','es/spots/fuji.html','de/yakei.html','fr/yakei.html','zh-Hant/yakei.html']) {
     assert.equal(CONTENT_METADATA[file].modified, file.endsWith('/yakei.html') ? '2026-11-16' : '2026-10-20');
     assert.equal(CONTENT_METADATA[file].published, undefined, 'local translation dates must not assert publication');
