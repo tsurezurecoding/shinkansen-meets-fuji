@@ -126,6 +126,12 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
+  for (const route of ['ramen.html', 'rivers.html', 'factories.html']) {
+    for (const lang of locales.supported(route)) {
+      const file = lang === 'ja' ? route : lang + '/' + route;
+      assert.equal(CONTENT_METADATA[file]?.article, route !== 'rivers.html', file);
+    }
+  }
   for (const file of ['zh-Hant/spots/fuji.html','es/spots/fuji.html','de/yakei.html','fr/yakei.html','zh-Hant/yakei.html']) {
     assert.equal(CONTENT_METADATA[file].modified, file.endsWith('/yakei.html') ? '2026-11-16' : '2026-10-20');
     assert.equal(CONTENT_METADATA[file].published, undefined, 'local translation dates must not assert publication');

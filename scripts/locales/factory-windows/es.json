@@ -1,0 +1,255 @@
+{
+  "ui": {
+    "title": "Fábricas desde la ventanilla",
+    "description": "Café, dulces y cosméticos: descubre las fábricas que se ven desde el Tōkaidō Shinkansen con fotos y una guía de los asientos A y E.",
+    "route": "Tōkaidō Shinkansen · Tokio–Shin-Osaka",
+    "deck": "Café, dulces, cosméticos. Junto a las vías están los lugares donde se hacen muchos de los productos de cada día.",
+    "browse": "Explorar las fotos",
+    "direction": "Sentido del viaje",
+    "down": "Hacia Shin-Osaka",
+    "up": "Hacia Tokio",
+    "seat": "Lado del asiento",
+    "both": "Ambos lados",
+    "sideA": "Asientos A",
+    "sideE": "Asientos E",
+    "left": "A la izquierda en el sentido de la marcha",
+    "right": "A la derecha en el sentido de la marcha",
+    "count": "{n} lugares",
+    "map": "Mapa",
+    "sources": "Fuentes",
+    "related": "Para seguir explorando",
+    "openPhoto": "Ampliar la foto de {name}",
+    "seatsTitle": "¿Qué lado de la ventana?",
+    "seatsText": "En clase estándar, hacia Shin-Osaka los asientos A quedan a la izquierda y los E a la derecha. Hacia Tokio, al revés. En Green Car, el lado D corresponde al lado E de clase estándar.",
+    "notesTitle": "Sobre esta guía",
+    "notesText": "Las funciones y los productos de cada instalación se han contrastado con fuentes consultadas en noviembre de 2026, principalmente en japonés. Dentro de un mismo tramo, los lugares no siguen necesariamente el orden exacto de paso. Las distancias son aproximadas.",
+    "photoCredit": "Fotografías: michikusa. Tren de la foto de POLA: © Disney.",
+    "book": "Kei Kurihara, «東海道新幹線の車窓は、こんなに面白い！» (2016, original en japonés)",
+    "cta": "Explorar más vistas desde el Shinkansen",
+    "entry": "Descubre qué productos cotidianos nacen en los edificios que ves desde el tren.",
+    "comparisonTitle": "También hay un cartel en Nagoya",
+    "comparisonAlt": "Gran anuncio verde de SINFONIA en un edificio blanco de Sasashima, Nagoya.",
+    "comparisonCaption": "En el lado A, antes de llegar a Nagoya si vas hacia Shin-Osaka y después de salir si vas hacia Tokio. A unos 800 m al sur de la estación, este anuncio de unos 70 m ocupa la fachada del centro comercial Market Square Sasashima, propiedad de la empresa."
+  },
+  "groups": {
+    "fuji-area": ["Mishima", "Shin-Fuji", "A los pies del Fuji"],
+    "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu y el río Ōi"],
+    "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi y Hamamatsu"],
+    "toyohashi-area": ["Hamamatsu", "Toyohashi", "Takatsuka, lago Hamana y Toyohashi"],
+    "anjo-area": ["Mikawa-Anjo", "Nagoya", "Anjo"],
+    "nagoya-area": ["Nagoya", "Gifu-Hashima", "Kiyosu"],
+    "shiga-area": ["Maibara", "Kioto", "Maibara, Hikone y Ōmi"],
+    "kyoto-area": ["Kioto", "Shin-Osaka", "Yamazaki"]
+  },
+  "places": {
+    "ucc": {
+      "name": "UCC · Fábrica de Fuji",
+      "hook": "Una torre de café y el monte Fuji",
+      "point": "Busca «UCC COFFEE FUJI» en la torre blanca. Tras esta fábrica de café tostado aparece el monte Fuji.",
+      "alt": "Torre blanca con el rótulo UCC COFFEE FUJI y el monte Fuji al fondo.",
+      "related": "Más vistas del monte Fuji desde el tren",
+      "sources": ["UCC | Producción de café en la fábrica de Fuji"]
+    },
+    "fuji": {
+      "name": "Nippon Paper · Fábrica de Fuji, área de Fuji",
+      "hook": "Papel para cada día, al pie del Fuji",
+      "point": "Las chimeneas rojas y blancas y el monte Fuji te ayudan a localizarla. Dentro del recinto, la fábrica Shin-Fuji de Crecia Kasuga produce papel higiénico y otros papeles de uso doméstico.",
+      "alt": "Chimeneas y edificios del área de Fuji de la fábrica Nippon Paper, con el monte Fuji detrás.",
+      "related": "Conocer las fábricas de papel de Fuji",
+      "sources": ["Nippon Paper | Fábrica de Fuji", "Nippon Paper Crecia | Centros de producción"]
+    },
+    "koa": {
+      "name": "Koa Kogyo · Fábrica de la sede central",
+      "hook": "Una chimenea con colores de arcoíris",
+      "point": "Aquí se fabrica papel para cartón ondulado, entre otros productos. La iluminación «Nijien» de la foto se programó solo del 11 al 23 de noviembre de 2026; no forma parte del paisaje habitual.",
+      "alt": "Chimenea de Koa Kogyo iluminada con los colores del arcoíris por la noche.",
+      "related": "Conocer las fábricas de papel de Fuji",
+      "sources": ["Koa Kogyo | Actividades y productos", "Koa Kogyo | Fechas de la iluminación Nijien"]
+    },
+    "sapporo": {
+      "name": "Sapporo Beer · Fábrica de Shizuoka",
+      "hook": "La cerveza de Shizuoka nace en Yaizu",
+      "point": "Busca las filas de depósitos plateados y el símbolo de la estrella. De esta fábrica de Yaizu sale también Shizuoka Bakushu, una cerveza que solo se vende en Shizuoka.",
+      "alt": "Filas de depósitos plateados en la fábrica de Sapporo Beer de Shizuoka.",
+      "related": "Más sobre la fábrica de Shizuoka",
+      "sources": ["Sapporo Beer | Shizuoka Bakushu y la fábrica de Shizuoka"]
+    },
+    "kibun": {
+      "name": "Kibun Foods · Fábrica de Shizuoka",
+      "hook": "El «＋S» del envase de kamaboko",
+      "point": "El emblema de Kibun asoma sobre una sucesión de tejados rojos. Esta fábrica elabora kamaboko y chikuwa, productos de pasta de pescado. El código de fabricación «＋S» de sus envases identifica este lugar.",
+      "alt": "Torre blanca con un símbolo rojo y las letras 紀文 entre tejados bajos de color rojo.",
+      "location": "Junto al puente ferroviario del río Ōi. Por la ventana del lado opuesto se ven los edificios de Ajinomoto.",
+      "sources": ["Kibun Foods | Código de la fábrica de Shizuoka", "Guía empresarial de Shimada | Productos de Kibun Foods Shizuoka"]
+    },
+    "nestle": {
+      "name": "Nestlé Japón · Fábrica de Shimada",
+      "hook": "El nombre del café, al otro lado del río",
+      "point": "Cuando se abra el amplio cauce, mira hacia el pie de las montañas. La fábrica de Shimada produce café y aprovecha los posos de la extracción como combustible para sus calderas.",
+      "alt": "Edificios con los rótulos Nestlé y NESCAFÉ al otro lado del cauce del río Ōi, con montañas detrás.",
+      "location": "Mira río arriba desde el puente del Ōi. La fábrica está a unos 1,3 km de las vías.",
+      "sources": ["Nestlé Japón | Producción de café en Shimada", "Nestlé Japón | Aprovechamiento de los posos de café en Shimada"]
+    },
+    "ajinomoto": {
+      "name": "Ajinomoto Foods y Ajinomoto Bakery",
+      "hook": "Gachas de arroz y pan por hornear",
+      "point": "Las letras «Knorr» aparecen en una pared blanca de perfil curvo. En esta misma dirección están la fábrica de Shizuoka de Ajinomoto Foods, que elabora okayu —gachas de arroz—, y el centro de Shimada de Ajinomoto Bakery, que produce masa de pan congelada.",
+      "alt": "Las letras Knorr y el símbolo rojo de Ajinomoto sobre una pared blanca de perfil curvo.",
+      "location": "Cerca del puente del río Ōi, al otro lado de las vías respecto a la torre roja de Kibun.",
+      "note": "La foto permite identificar el exterior del recinto. No se ha confirmado qué líneas de producción corresponden a cada edificio.",
+      "sources": ["Ajinomoto Foods | Productos de la fábrica de Shizuoka", "Ajinomoto Bakery | Producción de masa de pan congelada", "Ajinomoto Bakery | Dirección del centro de Shimada"]
+    },
+    "shiseido": {
+      "name": "Shiseido · Fábrica de Kakegawa",
+      "hook": "Maquillaje bajo un gran techo blanco",
+      "point": "Un gran techo blanco se extiende junto a las vías. Esta fábrica produce maquillaje; el techo protege los productos del viento, la lluvia y el sol durante su expedición.",
+      "alt": "Gran cubierta blanca de la fábrica de Shiseido de Kakegawa, extendida junto a las vías del Shinkansen.",
+      "sources": ["Shiseido | Fábrica de Kakegawa", "Fujita | Diseño de la línea S de la fábrica de Kakegawa"]
+    },
+    "marudai": {
+      "name": "Marudai Food · Fábrica de Shizuoka",
+      "hook": "«＋P»: la pista de Kakegawa",
+      "point": "Sobre los árboles asoma el emblema rojo de Marudai Food, con una fila de ventanas redondas debajo. En 2023, la empresa presentó sus salchichas Long Wiener fabricadas aquí. El código de esta fábrica en los envases es «＋P».",
+      "alt": "Gran emblema rojo de Marudai Food sobre un edificio gris con ventanas redondas.",
+      "location": "A unos 4 km de Kakegawa en dirección a Hamamatsu. Hacia Shin-Osaka, después de Shiseido.",
+      "related": "Más fábricas de la zona de Fukuroi",
+      "sources": ["Marudai Food | Fábricas y códigos de fabricación (actualizado en julio de 2026)", "Marudai Food | Long Wiener elaboradas en Shizuoka (2023)"]
+    },
+    "pola": {
+      "name": "POLA Chemical Industries · Fábrica de Fukuroi",
+      "hook": "Tu propio tren reflejado en el cristal",
+      "point": "Fíjate en la larga fachada acristalada de esta fábrica de cosméticos. Si la luz acompaña, podrás ver reflejado el Shinkansen en el que viajas.",
+      "alt": "Un Shinkansen reflejado en la larga fachada acristalada de la fábrica de POLA Chemical Industries de Fukuroi.",
+      "related": "Ver reflejos desde la ventanilla",
+      "sources": ["POLA Chemical Industries | Iniciativas de la fábrica de Fukuroi"]
+    },
+    "pocari": {
+      "name": "Otsuka Pharmaceutical · Fábrica de Fukuroi",
+      "hook": "La pared azul de Pocari Sweat",
+      "point": "Sobre el verde del césped destaca una gran pared azul con «POCARI SWEAT». Es fácil reconocer esta fábrica de bebidas, donde se elabora Pocari Sweat, entre otras.",
+      "alt": "Pared azul de POCARI SWEAT tras el césped de la fábrica de Otsuka Pharmaceutical de Fukuroi.",
+      "related": "Más sobre la fábrica de Pocari Sweat",
+      "sources": ["Otsuka Pharmaceutical | Productos de la fábrica de Fukuroi"]
+    },
+    "nitto": {
+      "name": "Nitto Kogyo · Fábrica de Kakegawa",
+      "hook": "Cajas que protegen la electricidad",
+      "point": "Busca «NITO 日東工業» en la pared blanca. Los pequeños armarios que se fabrican aquí sirven para alojar y proteger equipos eléctricos.",
+      "alt": "Grandes letras NITO 日東工業 sobre la pared blanca de la fábrica.",
+      "sources": ["Nitto Kogyo | Principales productos de la fábrica de Kakegawa"]
+    },
+    "unicharm": {
+      "name": "Unicharm Products · Fábrica de Shizuoka",
+      "hook": "El emblema también está en el jardín",
+      "point": "Sigue las ondas amarillas y naranjas de la fachada blanca: el jardín también luce un gran emblema. Aquí se fabrican pañales para bebés y adultos, productos menstruales y toallitas de limpieza, entre otros artículos.",
+      "alt": "Ondas amarillas y naranjas en la fachada blanca y un gran emblema azul y amarillo en el jardín delantero.",
+      "location": "A unos 4 km de Kakegawa hacia Hamamatsu. Hacia Shin-Osaka, después de Nitto Kogyo.",
+      "sources": ["Unicharm Products | Fábrica de Shizuoka", "Ayuntamiento de Kakegawa | Productos de la fábrica de Shizuoka (2026)"]
+    },
+    "house": {
+      "name": "House Foods · Fábrica de Shizuoka",
+      "hook": "Del curry a los aperitivos",
+      "point": "Busca la torre con el rótulo «ハウス食品». Esta fábrica de Fukuroi produce Vermont Curry, Hokkaido Stew y los conos de maíz Tongari Corn.",
+      "alt": "Torre blanca de House Foods, paneles solares sobre el césped y edificios de la fábrica al fondo.",
+      "related": "Ver el cercano cartel de Shippei",
+      "sources": ["House Foods | Fábrica de Shizuoka", "House Foods Group | Productos de la fábrica de Shizuoka (2024)"]
+    },
+    "yamaha": {
+      "name": "Yamaha Motor · Fábrica de Fukuroi Minami",
+      "hook": "De las vías a los mares del mundo",
+      "point": "Letras rojas de YAMAHA y una fachada de lamas blancas verticales. Aquí se fabrican motores fueraborda, los que se instalan en la popa de las embarcaciones.",
+      "alt": "Lamas blancas verticales y letras rojas de YAMAHA en la fábrica de Fukuroi Minami.",
+      "sources": ["Yamaha Motor | Centros de producción de motores fueraborda", "Takenaka | Arquitectura de la fábrica de Fukuroi Minami"]
+    },
+    "teibow": {
+      "name": "Teibow · Sede y fábrica",
+      "hook": "Del fieltro de sombrero a la punta del rotulador",
+      "point": "El rótulo verde «TEIBOW» marca la sede y fábrica de una empresa que pasó de trabajar el fieltro para sombreros a fabricar puntas de rotulador.",
+      "alt": "Gran rótulo verde TEIBOW en el tejado de la fábrica y un cartel vertical con テイボー.",
+      "note": "No se ha confirmado qué tipos de productos se fabrican actualmente en esta sede.",
+      "sources": ["Teibow | Sede y fábrica, actividad e historia"]
+    },
+    "suzuki-takatsuka": {
+      "name": "Suzuki · Sede central de Takatsuka",
+      "hook": "Una S roja sobre los tejados",
+      "point": "Por encima de los tejados asoma la S roja que quizá reconozcas de los coches. Es la sede de Suzuki. La producción de motores de motocicleta que antes se hacía en Takatsuka se trasladó a Miyakoda, en Hamamatsu, en 2018.",
+      "alt": "Edificios de la sede de Suzuki tras las casas de Hamamatsu, con una S roja y SUZUKI MOTOR CORP. en el tejado.",
+      "location": "Entre la estación de Hamamatsu y el lago Hamana, cerca de la estación JR Takatsuka. Hacia Shin-Osaka se ve antes de cruzar el lago; hacia Tokio, después.",
+      "related": "Ver también el lago Hamana desde el tren",
+      "sources": ["Suzuki | Funciones actuales de la sede de Takatsuka", "Suzuki | Fin y traslado de la producción de la antigua fábrica de Takatsuka", "Suzuki | Actividad de Takatsuka hasta julio de 2018 (informe de 2019)"]
+    },
+    "sinfonia": {
+      "name": "Sinfonia Technology · Fábrica de Toyohashi",
+      "hook": "Mover silicio con delicadeza",
+      "point": "Tras el césped, una larga pared muestra «豊橋製作所» y «創業1917年»: fábrica de Toyohashi y fundada en 1917. Es una de las principales plantas de equipos que transportan finas láminas de silicio sin contaminarlas durante la fabricación de semiconductores, como los de los móviles.",
+      "alt": "Largo edificio industrial tras el césped, con el nombre de la empresa, 豊橋製作所 y 創業1917年 en la fachada.",
+      "location": "En Mitsuya-cho, Toyohashi, al lado de Futagawa que mira hacia Tokio. Hacia Shin-Osaka, antes de llegar a Toyohashi; hacia Tokio, después de salir.",
+      "note": "El mismo nombre aparece a unos 800 m al sur de la estación de Nagoya. Allí es un anuncio de unos 70 m en la fachada del centro comercial Market Square Sasashima.",
+      "related": "Ver la cercana roca Tateiwa",
+      "sources": ["Sinfonia | Equipos de transporte para semiconductores y fábrica de Toyohashi", "Sinfonia | La fábrica de Toyohashi y el Shinkansen", "Sogo Hodo | El cartel de unos 70 m de Sasashima, Nagoya", "Chuden Clavis | Anuncio en la fachada este de Sasashima"]
+    },
+    "yamazaki-pan": {
+      "name": "Yamazaki Baking · Fábrica de Anjo",
+      "hook": "El pan de cada mañana, junto a las vías",
+      "point": "El símbolo del sol y las letras rojas «ヤマザキ» pasan muy cerca. Esta fábrica, próxima a Mikawa-Anjo, produce pan y dulces japoneses y occidentales.",
+      "alt": "Gran rótulo rojo de Yamazaki en la fábrica de Anjo, con vehículos de reparto delante.",
+      "sources": ["Yamazaki Baking | Producción y empleo en la fábrica de Anjo"]
+    },
+    "nichiban": {
+      "name": "Nichiban · Fábrica de Anjo",
+      "hook": "Un cartel conocido, una función que cambia",
+      "point": "La publicidad de «セロテープ» en rojo, blanco y azul sirve de referencia. Esta fábrica de cintas adhesivas también amplía su papel en productos de uso sanitario.",
+      "alt": "Gran anuncio de Cellotape en la pared roja, blanca y azul de la fábrica de Nichiban de Anjo.",
+      "note": "La información de instalaciones de 2026 enumera cintas adhesivas de uso sanitario, de papel y de plástico. Según una explicación oficial de 2025, la producción relacionada con Cellotape se concentra en Saitama. El cartel no demuestra que Cellotape se siga fabricando en Anjo.",
+      "sources": ["Nichiban | Informe de valores de 2026 (pág. 37)", "Nichiban | Explicación de la reorganización de la producción (2025)", "Nichiban | Publicidad en la fachada visible desde el tren"]
+    },
+    "kirin": {
+      "name": "Kirin Beer · Fábrica de Nagoya",
+      "hook": "Depósitos que parecen cervezas gigantes",
+      "point": "Una fila de depósitos pintados de plata y oro. Busca esta fábrica de Kiyosu, donde se elabora Ichiban Shibori, en el tramo de Nagoya hacia Gifu-Hashima.",
+      "alt": "Depósitos plateados y dorados y un rótulo rojo KIRIN en la fábrica de Nagoya.",
+      "related": "Más sobre la fábrica de Kirin",
+      "sources": ["Kirin | Ichiban Shibori y sus fábricas en 2026"]
+    },
+    "yanmar": {
+      "name": "Yanmar · Instituto Central de Investigación",
+      "hook": "Un gran reloj al salir de Maibara",
+      "point": "Un edificio alargado, las letras rojas «YANMAR» y un gran reloj. En este instituto de Maibara se investigan tecnologías para reducir el consumo de los motores y aprovechar energías alternativas.",
+      "alt": "Letras rojas YANMAR en la fachada al amanecer, con un reloj digital en el extremo derecho.",
+      "location": "Hacia Shin-Osaka, poco después de salir de Maibara: un viajero lo observó aproximadamente al minuto en un Kodama. Hacia Tokio, antes de llegar a Maibara.",
+      "related": "Ver también los trenes de pruebas de Maibara",
+      "sources": ["Yanmar | Investigación básica en el instituto de Maibara", "Yanmar | Ubicación del Instituto Central de Investigación", "Relato de viaje | El instituto visto desde el lado A de un Kodama"]
+    },
+    "fujitec": {
+      "name": "Fujitec · Big Wing",
+      "hook": "Donde nacen los viajes en ascensor",
+      "point": "La alta torre sirve para investigar y probar ascensores. En el mismo recinto hay una fábrica de modelos estándar y a medida: aquí se reúnen investigación y producción.",
+      "alt": "Edificio con las letras FUJITEC y una alta torre de investigación de ascensores delante.",
+      "related": "Más sobre la torre de Fujitec",
+      "sources": ["Fujitec | Investigación y producción en Big Wing"]
+    },
+    "lotte": {
+      "name": "Lotte · Fábrica de Shiga",
+      "hook": "Dulces y helados a lo grande",
+      "point": "Una sucesión de enormes carteles de dulces y helados. Aquí se elaboran Yukimi Daifuku, Coolish y Toppo, entre otros productos, aunque no todos los que aparecen en los carteles se fabrican en esta planta.",
+      "alt": "Grandes carteles de dulces y helados sobre los edificios de la fábrica de Lotte de Shiga.",
+      "related": "Más sobre la fábrica de Lotte",
+      "sources": ["Lotte | Productos de la fábrica de Shiga"]
+    },
+    "nissin": {
+      "name": "Nissin Foods · Fábrica de Shiga",
+      "hook": "El arroz instantáneo también sale de aquí",
+      "point": "Busca el edificio con «日清食品» en Ritto. También produce arroz instantáneo en vaso, como Curry Meshi. Es una fábrica distinta de la planta Kansai, situada al otro lado de las vías, del lado E.",
+      "alt": "Edificio de la fábrica de Shiga, en Ritto, con el nombre de Nissin Foods.",
+      "sources": ["Nissin Foods | Línea de arroz instantáneo en vaso de Shiga", "Nissin Foods | Lista de fábricas"]
+    },
+    "yamazaki": {
+      "name": "Suntory · Destilería Yamazaki",
+      "hook": "El hogar del whisky al pie de la montaña",
+      "point": "Busca «山崎» entre los tejados y los cables. Esta destilería elabora el whisky de malta que se utiliza en el single malt Yamazaki.",
+      "alt": "Letras 山崎 y SINCE 1923 sobre edificios al pie de la montaña.",
+      "related": "Más sobre la destilería Yamazaki",
+      "sources": ["Suntory | Yamazaki y su destilería"]
+    }
+  }
+}

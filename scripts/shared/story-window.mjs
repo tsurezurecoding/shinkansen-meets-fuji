@@ -3,6 +3,7 @@ import path from 'node:path';
 import {parse} from 'parse5';
 import {languages, routes, stripEdition, canonicalRoute, supported} from './locales.mjs';
 import {assetVersion} from './asset-version.mjs';
+import {stripFactoryWindowLinks, withFactoryWindowLinks} from './factory-windows-links.mjs';
 export const STORY_ROUTES = routes.filter(route=>route.startsWith('stories/'));
 export const STORY_SLUGS = STORY_ROUTES.filter(route=>route!=='stories/index.html').map(route=>route.slice('stories/'.length,-'.html'.length));
 export const STORY_LANGUAGES = languages;
@@ -26,7 +27,7 @@ export const storyAsset=name=>name.startsWith('20261103_sekigahara-')?`images/${
 export const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function storyCopy(root,lang){return JSON.parse(fs.readFileSync(path.join(root,'data/story-window',lang,'ui.json'),'utf8'));}
 export function storyLanguage(file){return STORY_LANGUAGES.find(lang=>lang!=='ja'&&file.startsWith(lang+'/'))||'ja';}
-export function stripStoryWindowLinks(html){return html.replace(/<!-- STORY-WINDOW:START -->[\s\S]*?<!-- STORY-WINDOW:END -->/g,'<!-- STORY_WINDOW_CARD -->');}
+export function stripStoryWindowLinks(html){return stripFactoryWindowLinks(html.replace(/<!-- STORY-WINDOW:START -->[\s\S]*?<!-- STORY-WINDOW:END -->/g,'<!-- STORY_WINDOW_CARD -->'));}
 // Called after the host page's existing translation pass. Story copy has its own
 // reviewed dictionary, so it must not enter the unrelated utility dictionaries.
 export function withStoryWindowLinks(html,file,root){
@@ -34,7 +35,7 @@ export function withStoryWindowLinks(html,file,root){
   const slug=STORY_SPOTS[route.match(/^spots\/(.+)\.html$/)?.[1]];
   if(route!=='zukan.html'&&!slug)return html;
   const source=path.join(root,'data/story-window',lang,'ui.json');
-  if(!fs.existsSync(source))return html;
+  if(!fs.existsSync(source))return withFactoryWindowLinks(html,file,root);
   const copy=storyCopy(root,lang),e=escapeHTML;
   html=stripStoryWindowLinks(html);
   if(route==='zukan.html'){
@@ -44,7 +45,7 @@ export function withStoryWindowLinks(html,file,root){
     const findGrid=node=>node.attrs?.some(a=>a.name==='class'&&a.value.split(/\s+/).includes('journey-intent-grid'))?node:(node.childNodes||[]).map(findGrid).find(Boolean);
     const offset=findGrid(document)?.sourceCodeLocation?.endTag?.startOffset;
     if(offset===undefined)throw Error(`Story card catalogue grid missing: ${file}`);
-    return html.slice(0,offset)+card+html.slice(offset);
+    return withFactoryWindowLinks(html.slice(0,offset)+card+html.slice(offset),file,root);
   }
   if(!html.includes('story-window-links.css'))html=html.replace('</head>',`<link rel="stylesheet" href="${prefix}story-window-links.css?v=${assetVersion('story-window-links.css')}"></head>`);
   const item=copy.stories[slug];
