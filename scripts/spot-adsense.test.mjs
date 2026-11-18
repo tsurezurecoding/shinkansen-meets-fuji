@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {JSDOM} from 'jsdom';
 import {SPOT_AD_PLACEMENTS,withSpotAdvertising} from './shared/spot-ad-placements.mjs';
-import {planSpotPage,finalPageOutput} from './generate-spot-pages.mjs';
+import {SPOTS,spotPageHTML,planSpotPage,finalPageOutput} from './generate-spot-pages.mjs';
+import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 import {readSiteSource,finalizeSiteChrome} from './shared/site-chrome.mjs';
 const source=fs.readFileSync('spot-adsense.js','utf8');
 function harness({url='https://www.michikusa-travel.com/spots/kakegawa.html',position='before-map',lang='ja',id='kakegawa',map=true,embedded=false,native=false,iframe=false,ready=false}={}) {
@@ -22,10 +23,38 @@ test('only Japanese Kakegawa opts into one generated shared script',()=>{
  const original='<body>article</body>',html=withSpotAdvertising(original,'kakegawa','ja');
  assert.equal(withSpotAdvertising(html,'kakegawa','ja'),html);
  assert.equal((html.match(/id="mado-spot-ad-config"/g)||[]).length,1);
+ assert.ok(html.endsWith('<!-- SPOT_ADSENSE_END -->\n</body>'));
+ assert.ok(!html.includes('site-runtime-loader.js'));
  for(const [spot,lang] of [['fuji','ja'],['kakegawa','en'],['kakegawa','fr']])assert.equal(withSpotAdvertising(original,spot,lang),original);
  const plan=planSpotPage('kakegawa','ja',{requireExisting:true,preserveHead:true});
  assert.equal(fs.readFileSync('spots/kakegawa.html','utf8'),finalPageOutput(plan.outputPath,plan.generatedHTML));
  assert.ok(!planSpotPage('kakegawa','en').generatedHTML.includes('mado-spot-ad-config'));
+});
+test('Kakegawa keeps the same ad and loader order through both generation paths', () => {
+ const file = 'spots/kakegawa.html';
+ const source = spotPageHTML(SPOTS.find(spot => spot.id === 'kakegawa'), 'ja');
+ const advertise = html => withSpotAdvertising(html, 'kakegawa', 'ja');
+ const invite = html => withPageAndroidAppInvite(html, file);
+ const spot = planSpotPage('kakegawa', 'ja');
+ const final = finalPageOutput(spot.outputPath, spot.generatedHTML);
+ assert.equal(invite(final), final, 'the full build leaves the committed spot output intact');
+ assert.equal(finalPageOutput(spot.outputPath, advertise(invite(source))), final);
+ assert.equal(finalPageOutput(spot.outputPath, invite(advertise(source))), final);
+ assert.equal(advertise(final), final);
+
+ const dom = new JSDOM(final);
+ try {
+   const document = dom.window.document;
+   const config = document.querySelector('#mado-spot-ad-config');
+   assert.equal(JSON.parse(config.textContent).slot, '6439684093');
+   const ad = config.nextElementSibling;
+   assert.match(ad.getAttribute('src'), /^\.\.\/spot-adsense\.js\?v=[a-f\d]{8}$/);
+   assert.ok(ad.defer);
+   assert.equal(ad.nextElementSibling, document.body.lastElementChild);
+   assert.match(ad.nextElementSibling.getAttribute('src'), /^\.\.\/site-runtime-loader\.js\?v=[a-f\d]{8}$/);
+ } finally {
+   dom.window.close();
+ }
 });
 test('reserves the slot before the map and defers all Google work to proximity',()=>{
  const h=harness();assert.equal(h.doc.querySelector('.spot-static-map').previousElementSibling.id,'mado-spot-ad');

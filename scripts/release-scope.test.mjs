@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
+import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
 import { onlyFactoryJpegMetadataRemoved } from './release-scope.mjs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
 import { onlyRamenSitemapChanged, onlyRamenLocaleRouteChanged, onlyRamenLanguageRouteChanged, onlyRamenAssetReferencesChanged, onlyRamenMetadataAdded, onlyRamenEnglishCardAddedToJapaneseDonburi } from './release-scope.mjs';
@@ -957,6 +958,42 @@ test('Kyoto layout and existing night-article additions use their bounded consum
  assert.equal(chooseReleaseScope([...files,change('yakei.css')]).scope,'night-article-followup');
  assert.equal(chooseReleaseScope([...files,change('data.js')]).scope,'unmapped');
  assert.equal(chooseReleaseScope([...files,change('site-chrome.js')]).scope,'unmapped');
+});
+
+test('the night-list source and a count-only repair verify both Window Moments generators', () => {
+  const page = 'fr/window-moments.html', source = 'scripts/shared/yakei-spots.mjs', payload = 'fr/utility-data.js';
+  const script = 'scripts/generate-window-moments-page.mjs', translate = 'scripts/generate-utility-locales.mjs';
+  const card = n => '<a class="wm-special-card" href="../fr/yakei.html"><img src="night.webp">' +
+    '<span class="wm-special-copy"><small>NUIT · ' + n + ' vues nocturnes</small><h3>La nuit</h3></span></a>';
+  const before = card(YAKEI_SPOT_COUNT - 1), after = card(YAKEI_SPOT_COUNT);
+  const controls = ['content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'];
+  const choose = (files, editions = [before, after]) => chooseReleaseScope(files.map(change),
+    { fileContents: file => file === page ? editions : ['old-payload', 'new-payload'] });
+  const simple = choose([page, ...controls]), fromSource = choose([source, page, ...controls]);
+  assert.equal(simple.scope, 'window-moments-count');
+  assert(simple.pagesCandidate && simple.needsDependencies);
+  assert.equal(fromSource.scope, 'night-article-followup');
+  const ads = ['scripts/shared/spot-ad-placements.mjs', 'scripts/spot-adsense.test.mjs', 'spots/kakegawa.html'];
+  const combined = choose([page, ...controls, ...ads]);
+  assert.equal(combined.scope, 'spot-adsense-pilot');
+  assert.equal(combined.commands.filter(c => c.includes('--test') && c.includes(ads[1])).length, 1);
+  assert.equal(combined.commands.filter(c => c[1] === 'scripts/validate-spot-page-shared.mjs').length, 1);
+  assert.equal(choose([page, ...controls, ...ads], [before, after.replace('La nuit', 'Autre texte')]).scope, 'unmapped');
+  for (const plan of [simple, fromSource, choose([source]), combined]) {
+    assert.equal(plan.commands.filter(c => c[1] === script && c.includes('--check')).length, 1);
+    assert.equal(plan.commands.filter(c => c[1] === translate && c.includes('window-moments.html') && c.includes('--check')).length, 1);
+    assert(plan.commands.some(c => c.includes('scripts/check-content-manifest.mjs')));
+  }
+  const tags = ['old-payload', 'new-payload'].map(text => '<script src="../fr/utility-data.js?v=' +
+    createHash('sha256').update(text).digest('hex').slice(0, 8) + '"></script>');
+  assert.equal(choose([source, page, payload], [before + tags[0], after + tags[1]]).scope, 'night-article-followup');
+  assert.equal(choose([source, page, payload], [before + tags[0], after + tags[1].replace(/\?v=[a-f0-9]{8}/, '?v=deadbeef')]).scope, 'unmapped');
+  for (const edits of [[before, card(YAKEI_SPOT_COUNT + 1)], [before, after.replace('La nuit', 'Autre texte')],
+    [before + before, after + after], [before.replace('yakei', 'hanabi'), after.replace('yakei', 'hanabi')], [before + tags[0], after + tags[1]]])
+    assert.equal(choose([page, ...controls], edits).scope, 'unmapped');
+  assert.equal(choose([page, 'data.js']).scope, 'unmapped');
+  assert.equal(choose([source, page, 'style.css']).scope, 'unmapped');
+  assert(!choose(['scripts/generate-yakei-page.mjs']).commands.some(c => c[1] === script));
 });
 
 test('rivers feature editions select localized routing, manifest and page checks only', () => {
