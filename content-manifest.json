@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "51407eae6db7fb68",
+  "contentVersion": "d0cbb484e44ac212",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1459,8 +1459,8 @@
     {
       "path": "data/ramen-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/ramen-photo-sources.json",
-      "bytes": 9459,
-      "sha256": "19543c304fe9fb7ed49a8c8f1f9950ef22d7bdb586a5a309a895ec6b78bd0455"
+      "bytes": 9260,
+      "sha256": "0123a9ae258a689a864febaa5d1dc1a7fe1a6e97bc8e7f5291ac7a297cdc3f7a"
     },
     {
       "path": "data/station-photo-sources.json",
@@ -7479,6 +7479,12 @@
       "url": "https://www.michikusa-travel.com/sparkling-locale-runtime.js",
       "bytes": 424,
       "sha256": "3ed6ba90654144c994b6c5ade369d6cda59d68c998dda9310a46160c13c492c2"
+    },
+    {
+      "path": "spot-adsense.js",
+      "url": "https://www.michikusa-travel.com/spot-adsense.js",
+      "bytes": 3683,
+      "sha256": "5c3dc2c5906045bd6dd5ba59cb992014f79e8f710cef8730f2d55ef0872a1697"
     },
     {
       "path": "spot-map.js",

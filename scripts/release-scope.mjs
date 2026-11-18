@@ -250,6 +250,29 @@ export function onlyRamenEnglishCardAddedToJapaneseDonburi(file, before, after) 
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const spotAdsenseFiles = new Set(['spot-adsense.js', 'spots/kakegawa.html', 'privacy.html', 'en/privacy.html',
+    'scripts/shared/spot-ad-placements.mjs', 'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.mjs',
+    'scripts/generate-content-manifest.mjs', 'content-manifest.json', 'package.json',
+    'scripts/templates/site-source/privacy.html.tpl', 'scripts/templates/site-source/en/privacy.html.tpl',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  let spotAdsensePackage = !files.includes('package.json');
+  if (!spotAdsensePackage && packageBefore && packageAfter) {
+    const before = typeof packageBefore === 'string' ? JSON.parse(packageBefore) : structuredClone(packageBefore);
+    const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : structuredClone(packageAfter);
+    const command = before.scripts?.['test:generator'];
+    if (command?.startsWith('node --test ') &&
+        after.scripts?.['test:generator'] === command.replace('node --test ', 'node --test scripts/spot-adsense.test.mjs ')) {
+      after.scripts['test:generator'] = command;
+      spotAdsensePackage = isDeepStrictEqual(before, after);
+    }
+  }
+  if (['spot-adsense.js', 'spots/kakegawa.html', 'scripts/spot-adsense.test.mjs'].every(file => files.includes(file)) &&
+      spotAdsensePackage && changes.every(change => ['A', 'M'].includes(change.status) && spotAdsenseFiles.has(change.path))) return {
+    scope: 'spot-adsense-pilot', needsDependencies: true, pagesCandidate: true,
+    reason: 'Japanese Kakegawa opts into a deferred reusable ad; generator integration, distribution inventory and Japanese/English privacy disclosures only.',
+    commands: [...syntax, node('--test', 'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('scripts/check-content-manifest.mjs'), node('scripts/validate-site-navigation.mjs', '--route', 'spots/kakegawa.html', '--route', 'privacy.html')],
+  };
   const zukanAdsenseFiles = new Set(['zukan.html','privacy.html','scripts/templates/site-source/zukan.html.tpl','scripts/templates/site-source/privacy.html.tpl','scripts/generate-language-mirrors.mjs','scripts/release-scope.mjs','scripts/zukan-adsense.test.mjs']);
   if (files.includes('scripts/zukan-adsense.test.mjs') && files.includes('zukan.html') && changes.every(c => ['A','M'].includes(c.status) && zukanAdsenseFiles.has(c.path))) return {
     scope: 'zukan-adsense', needsDependencies: true, pagesCandidate: true,
