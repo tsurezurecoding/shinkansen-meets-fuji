@@ -214,12 +214,12 @@ expect(page.includes(`<meta property="og:image:alt" content="${CONTENT_METADATA[
 const ogMetadata = CONTENT_METADATA['sparkling-dreams.html'];
 const expectedMetadata = [
   `<title>ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる | 新幹線の窓</title>`,
-  `<meta name="description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・C・Gの運転パターンと運転日も掲載。">`,
+  `<meta name="description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。運転パターンと運転日も掲載。">`,
   `<meta property="og:title" content="ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる">`,
-  `<meta property="og:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・C・Gの運転パターンと運転日も掲載。">`,
+  `<meta property="og:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。運転パターンと運転日も掲載。">`,
   `<meta name="twitter:card" content="summary_large_image">`,
   `<meta name="twitter:title" content="ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる">`,
-  `<meta name="twitter:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・C・Gの運転パターンと運転日も掲載。">`,
+  `<meta name="twitter:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。運転パターンと運転日も掲載。">`,
   `<meta name="twitter:image" content="${SITE}/${ogMetadata.image}">`,
   `<meta name="twitter:image:alt" content="${ogMetadata.imageAlt}">`,
 ];
@@ -272,9 +272,19 @@ const expectedPatterns = {
     { type: "Hikari", number: 636, direction: "east" },
     { type: "Hikari", number: 659, direction: "west" },
   ],
+  E: [
+    { type: "Hikari", number: 640, direction: "east" },
+    { type: "Kodama", number: 819, direction: "west" },
+    { type: "Kodama", number: 840, direction: "east" },
+  ],
   G: [
     { type: "Nozomi", number: 328, direction: "east" },
     { type: "Nozomi", number: 489, direction: "west" },
+  ],
+  H: [
+    { type: "Nozomi", number: 329, direction: "west" },
+    { type: "Nozomi", number: 258, direction: "east" },
+    { type: "Nozomi", number: 471, direction: "west" },
   ],
 };
 
@@ -290,7 +300,8 @@ addExpectedMonth("09", [
 ]);
 
 addExpectedMonth("10", ["G","A","A","A","B","C","B","B","A","A","A","A","B","pending","B","A","A","A","A","C","pending","B","A","A","A","B","C","pending","B","A","A"]);
-addExpectedMonth("11", ["A","C","A","pending","pending","pending","A","A","C","B","pending","B","A","A","A","B","B","pending","A","A","A","A","A","A","pending","B","A","A","A","C"]);
+addExpectedMonth("11", ["A","C","A","no-service","E","H","A","A","C","B","B","B","A","A","A","B","B","B","A","A","A","A","A","A","pending","B","A","A","A","C"]);
+addExpectedMonth("12", ["B","pending","A","A","A","A","A","pending","pending","pending","A","B","A","B","C","pending","B","A","B","A","B","C","pending","A","A","A","A","A","A","pending","A"]);
 
 expect(/PATTERN_SERVICES/.test(calculatorCode), "sparkling-dreams.js: pattern service definitions are missing");
 expect(/DATE_PATTERNS/.test(calculatorCode), "sparkling-dreams.js: date pattern definitions are missing");
@@ -318,8 +329,8 @@ const api = context.window.SPARKLING_DREAMS_CALCULATOR;
 expect(api && typeof api.calculate === "function", "sparkling-dreams.js: calculator API was not initialized");
 
 if (api) {
-  expect(JSON.stringify(api.PATTERN_SERVICES) === JSON.stringify(expectedPatterns), "sparkling-dreams.js: A/B/C/G service patterns do not match the approved schedule");
-  expect(JSON.stringify(api.DATE_PATTERNS) === JSON.stringify(expectedDatePatterns), "sparkling-dreams.js: August–November 2026 date map does not match the approved schedule");
+  expect(JSON.stringify(api.PATTERN_SERVICES) === JSON.stringify(expectedPatterns), "sparkling-dreams.js: train patterns do not match the official schedule");
+  expect(JSON.stringify(api.DATE_PATTERNS) === JSON.stringify(expectedDatePatterns), "sparkling-dreams.js: August–December 2026 date map does not match the official schedule");
   expect(api.START_DATE === "2026-06-19" && api.END_DATE === "2027-03-15", "sparkling-dreams.js: operation range is incorrect");
 
   const expectedServiceTimes = [
@@ -330,11 +341,22 @@ if (api) {
   ];
   expectedServiceTimes.push(
     { type: "Nozomi", number: 328, direction: "east", originStation: "Shin-Osaka", destination: "Tokyo", originTime: "08:22", destinationTime: "10:51" },
-    { type: "Nozomi", number: 489, direction: "west", originStation: "Tokyo", destination: "Shin-Osaka", originTime: "19:18", destinationTime: "21:45" }
+    { type: "Nozomi", number: 489, direction: "west", originStation: "Tokyo", destination: "Shin-Osaka", originTime: "19:18", destinationTime: "21:45" },
+    { type: "Hikari", number: 640, direction: "east", originStation: "Shin-Osaka", destination: "Tokyo", originTime: "07:36", destinationTime: "10:42" },
+    { type: "Kodama", number: 819, direction: "west", originStation: "Tokyo", destination: "Shin-Osaka", originTime: "10:57", destinationTime: "14:51" },
+    { type: "Kodama", number: 840, direction: "east", originStation: "Shin-Osaka", destination: "Tokyo", originTime: "15:54", destinationTime: "19:48" },
+    { type: "Nozomi", number: 329, direction: "west", originStation: "Tokyo", destination: "Shin-Osaka", originTime: "08:09", destinationTime: "10:36" },
+    { type: "Nozomi", number: 258, direction: "east", originStation: "Shin-Osaka", destination: "Tokyo", originTime: "15:00", destinationTime: "17:27" },
+    { type: "Nozomi", number: 471, direction: "west", originStation: "Tokyo", destination: "Shin-Osaka", originTime: "17:51", destinationTime: "20:21" },
   );
   expect(api.calculate("2026-10-01", "east", "Nozomi-328-east").status === "self-match", "G: special-train self-match");
   expect(api.calculate("2026-10-14", "west", "Nozomi-1-west").status === "pending", "October: adjusting date stays pending");
-  expect(api.calculate("2026-12-01", "west", "Nozomi-1-west").status === "pending", "December: unpublished date stays pending");
+  expect(api.calculate("2026-11-04", "west", "Nozomi-1-west").status === "no-service", "November: confirmed non-operating date has its own state");
+  expect(api.calculate("2026-11-05", "east", "Hikari-640-east").status === "self-match", "E: special-train self-match");
+  expect(api.calculate("2026-11-06", "west", "Nozomi-329-west").status === "self-match", "H: special-train self-match");
+  expect(api.calculate("2026-12-01", "west", "Kodama-815-west").status === "self-match", "December: confirmed B pattern is active");
+  expect(api.calculate("2026-12-02", "west", "Nozomi-1-west").status === "pending", "December: adjusting date stays pending");
+  expect(api.calculate("2027-01-01", "west", "Nozomi-1-west").status === "pending", "January: unpublished date stays pending");
   for (const service of expectedServiceTimes) {
     const train = api.findTrain(service);
     expect(train, `data/timetable.js: missing ${service.type} ${service.number} ${service.direction} service`);
@@ -391,12 +413,12 @@ const sitemapEntry = sitemap.match(new RegExp(`<url>[\\s\\S]*?<loc>${seasonalUrl
 expect(sitemapEntry, "sitemap.xml: seasonal page is missing");
 if (sitemapEntry) {
   expect(/<changefreq>weekly<\/changefreq>/.test(sitemapEntry[0]), "sitemap.xml: seasonal page must be weekly");
-  expect(/<lastmod>2026-10-10<\/lastmod>/.test(sitemapEntry[0]), "sitemap.xml: seasonal page lastmod is incorrect");
+  expect(/<lastmod>2026-11-19<\/lastmod>/.test(sitemapEntry[0]), "sitemap.xml: seasonal page lastmod is incorrect");
 }
 
 const englishSeasonalUrl = "https://www.michikusa-travel.com/en/sparkling-dreams.html";
 const englishSitemapEntry = sitemap.match(new RegExp(`<url>[\\s\\S]*?<loc>${englishSeasonalUrl.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&")}</loc>[\\s\\S]*?</url>`));
-expect(englishSitemapEntry && /<lastmod>2026-10-10<\/lastmod>/.test(englishSitemapEntry[0]) && /<changefreq>weekly<\/changefreq>/.test(englishSitemapEntry[0]), "sitemap.xml: English seasonal page is missing or stale");
+expect(englishSitemapEntry && /<lastmod>2026-11-19<\/lastmod>/.test(englishSitemapEntry[0]) && /<changefreq>weekly<\/changefreq>/.test(englishSitemapEntry[0]), "sitemap.xml: English seasonal page is missing or stale");
 expect(/<html lang="en">/.test(englishPage), "en/sparkling-dreams.html: html lang must be English");
 expect(englishPage.includes('<link rel="canonical" href="https://www.michikusa-travel.com/en/sparkling-dreams.html">'), "en/sparkling-dreams.html: canonical is missing");
 expect(englishPage.includes('hreflang="ja" href="https://www.michikusa-travel.com/sparkling-dreams.html"') && englishPage.includes('hreflang="en" href="https://www.michikusa-travel.com/en/sparkling-dreams.html"') && englishPage.includes('hreflang="x-default" href="https://www.michikusa-travel.com/en/sparkling-dreams.html"'), "en/sparkling-dreams.html: hreflang set is incomplete");
@@ -410,7 +432,7 @@ expect(englishPage.includes("Track the Disney Shinkansen") && englishPage.includ
 expect(englishPage.includes('<p class="sd-hero-lead"><span class="copy-chunk">A special train celebrating Tokyo DisneySea\'s 25th anniversary.</span> <span class="copy-chunk">Use published timetables to find a possible encounter,</span> <span class="copy-chunk">then compare the train through videos found along the line, inside trains, and at stations.</span></p>'), "en/sparkling-dreams.html: English hero lead must keep its spaced semantic chunks");
 expect(calculatorCode.includes('document.documentElement.lang === "en" ? "en" : "ja"') && calculatorCode.includes("function renderEnglishResult") && calculatorCode.includes("E-seat side") && calculatorCode.includes('fmt("Pattern {0}", result.pattern)'), "sparkling-dreams.js: localized dynamic English calculator contract is missing");
 expect(!generatorCode.includes("englishSeasonalEntry") && !generatorCode.includes("top_seasonal_banner"), "generate-spot-pages.mjs: English TOP generator must not restore the standalone seasonal entry");
-expect(generatorCode.includes('loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-10-10"') && generatorCode.includes('loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-10-10"'), "generate-spot-pages.mjs: Japanese and English seasonal sitemap entries must be regenerated");
+expect(generatorCode.includes('loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-11-19"') && generatorCode.includes('loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-11-19"'), "generate-spot-pages.mjs: Japanese and English seasonal sitemap entries must be regenerated");
 
 const manifestPaths = new Set((manifest.files || []).map((entry) => entry.path));
 expect(manifestPaths.has("sparkling-dreams.html"), "content-manifest.json: sparkling-dreams.html is missing");

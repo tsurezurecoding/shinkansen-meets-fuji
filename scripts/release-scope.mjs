@@ -1043,9 +1043,64 @@ function guidePageScope(changes, { fileContents }) {
   };
 }
 
+function timetableScope(changes, options) {
+  const sources = new Set([
+    'data/timetable.js', 'sparkling-dreams.js', 'journey-light-model.js', 'journey-light-events.js',
+    'scripts/generate-sparkling-dreams-page.mjs', 'scripts/shared/sparkling-localization.mjs',
+    'scripts/validate-sparkling-dreams.mjs', 'scripts/validate-sparkling-locales.mjs',
+    'scripts/templates/site-source/en/jr-pass-fuji.html.tpl',
+    'scripts/locales/utility-it.json', 'scripts/locales/utility-th.json',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json',
+  ]);
+  const changed = new Set(changes.map(change => change.path));
+  if (!changed.has('data/timetable.js') && !changed.has('sparkling-dreams.js')) return null;
+  const page = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:sparkling-dreams|jr-pass-fuji)\.html$/;
+  const translation = /^(?:scripts\/locales\/sparkling-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json|(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:sparkling|utility)-data\.js)$/;
+  const dateTranslation = /^scripts\/locales\/(?:castle-(?:de|es|fr|ko|zh-Hans|zh-Hant)|expansion-(?:it|th))\.json$/;
+  const allowed = changes.every(({ path: file, status }) => {
+    if (status !== 'M') return false;
+    if (sources.has(file) || page.test(file) || translation.test(file)) return true;
+    if (dateTranslation.test(file)) {
+      const pair = options.fileContents?.(file);
+      if (!pair) return false;
+      const [before, after] = pair.map(source => JSON.parse(source));
+      const stableEntries = Object.entries(after).filter(([key, value]) =>
+        Object.hasOwn(before, key) || key !== value || !/^\d{4}-\d{2}-\d{2}$/.test(key));
+      return isDeepStrictEqual(Object.fromEntries(stableEntries), before);
+    }
+    if (file === 'scripts/generate-spot-pages.mjs' || file === 'sitemap.xml') {
+      const pair = options.fileContents?.(file);
+      if (!pair) return false;
+      const normalize = file.endsWith('.mjs')
+        ? source => source.replace(/(\/sparkling-dreams\.html[^{}\n]+lastmod: ")\d{4}-\d{2}-\d{2}/g, '$1DATE')
+          .replace(/route === 'sparkling-dreams\.html' \? '\d{4}-\d{2}-\d{2}' : /g, '')
+        : source => source.replace(/(\/sparkling-dreams\.html<\/loc>\s*<lastmod>)\d{4}-\d{2}-\d{2}/g, '$1DATE');
+      return normalize(pair[0]) === normalize(pair[1]);
+    }
+    return file.endsWith('.html') && options.assetVersionOnly?.(file);
+  });
+  if (!allowed) return null;
+  return {
+    scope: 'train-timetable', needsDependencies: true, pagesCandidate: true,
+    reason: 'Validate the timetable, Disney operating calendar, train selection, localized pages and distribution references.',
+    commands: [
+      ...['data/timetable.js', 'sparkling-dreams.js', 'journey-light-model.js', 'journey-light-events.js'].map(file => node('--check', file)),
+      node('--test', 'scripts/release-scope.test.mjs', 'scripts/journey-light-events.test.mjs',
+        'scripts/train-search-tables.test.mjs', 'scripts/train-result.test.mjs', 'scripts/yakei-locales.test.mjs'),
+      node('scripts/validate-timetable.mjs'), node('scripts/validate-train-select.mjs'),
+      node('scripts/generate-sparkling-dreams-page.mjs', '--check'),
+      node('scripts/validate-sparkling-dreams.mjs'), node('scripts/validate-sparkling-locales.mjs'),
+      node('scripts/generate-inbound-tables.mjs', '--check'),
+      node('scripts/generate-utility-locales.mjs', '--route', 'start.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'jr-pass-fuji.html', '--check'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs'),
+    ],
+  };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = guidePageScope(inputs, options) || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
+    const existing = guidePageScope(inputs, options) || timetableScope(inputs, options) || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
   let plan = select(changes);

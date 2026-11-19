@@ -61,6 +61,20 @@ test('metadata and spot rendering checks follow their inputs across release scop
   assert.equal(metadataChecks(full).length + spotChecks(full).length, 0);
 });
 
+test('timetable changes check schedule consumers and reject unrelated edits', () => {
+  const files = ['data/timetable.js', 'sparkling-dreams.js', 'fr/sparkling-dreams.html', 'en/start.html'].map(change);
+  const options = { assetVersionOnly: file => file === 'en/start.html' };
+  const plan = chooseReleaseScope(files, options);
+  assert.equal(plan.scope, 'train-timetable');
+  assert(plan.pagesCandidate && plan.needsDependencies);
+  for (const file of ['validate-timetable', 'validate-train-select', 'validate-sparkling-dreams', 'validate-sparkling-locales',
+    'generate-inbound-tables', 'sync-asset-versions', 'check-content-manifest']) {
+    assert(plan.commands.some(args => args.includes('scripts/' + file + '.mjs')), file);
+  }
+  assert.equal(chooseReleaseScope(files).scope, 'unmapped');
+  assert.equal(chooseReleaseScope([...files, change('style.css')], options).scope, 'unmapped');
+});
+
 test('ride runtime plans verify only their consumers and reject unrelated app, page and package edits', () => {
   const app = 'function nowMin() { return 10; }\nfunction otherFeature() { return 7; }\n';
   const page = '<p>A</p>\n  <script src="app.js?v=abcdef01"></script>\n';
