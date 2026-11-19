@@ -1100,7 +1100,8 @@ function timetableScope(changes, options) {
 
 function solarArkSectionScope(changes, { fileContents, assetVersionOnly }) {
   const route = 'spots/solar-ark.html';
-  if (!fileContents || !changes.some(change => change.path === 'data.js' && change.status === 'M')) return null;
+  if (!fileContents || !['data.js', 'data/spot-pages/solar-ark.en.js']
+    .every(file => changes.some(change => change.path === file && change.status === 'M'))) return null;
   const locale = '(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)';
   const localized = new RegExp(`^(?:scripts/locales/castle-${locale}\\.json|${locale}/utility-data\\.js|(?:en|${locale})/${route.replace('.', '\\.')}|data/spot-pages/solar-ark\\.(?:ja|en)\\.js)$`);
   const outputs = new Set([route, 'data.js', 'data-runtime.js', 'content-manifest.json',
@@ -1121,7 +1122,8 @@ function solarArkSectionScope(changes, { fileContents, assetVersionOnly }) {
     delete spot.guideIntro;
     return { areas, data };
   };
-  const [before, after] = fileContents('data.js').map(normalize);
+  let before, after;
+  try { [before, after] = fileContents('data.js').map(normalize); } catch { return null; }
   if (!isDeepStrictEqual(before.areas, ['名古屋 → 岐阜羽島', 'Nagoya → Gifu-Hashima'])
     || !isDeepStrictEqual(after.areas, ['岐阜羽島 → 米原', 'Gifu-Hashima → Maibara'])
     || !isDeepStrictEqual(before.data, after.data)) return null;
