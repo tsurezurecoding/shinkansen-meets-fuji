@@ -348,7 +348,7 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
       assert.deepEqual(buttons.filter(item => item.hidden), [button]);
     }
   } finally { dom.window.close(); }
-  for (const [id, lang] of [['solar-ark', 'en'], ['ibuki', 'ja']]) {
+  for (const [id, lang] of [['solar-ark', 'en'], ['hikone-castle', 'ja']]) {
     const control = renderedArticle(id, lang);
     try {
       const doc = control.window.document;
@@ -356,6 +356,38 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
       assert.ok(doc.querySelector('.spot-page-video-card iframe[src*="youtube-nocookie.com/embed/"]'));
     } finally { control.window.close(); }
   }
+});
+
+test('Japanese videos across sections share one selection and load an X post only while selected', () => {
+  const dom = renderedArticle('ibuki', 'ja', false, page => {
+    page.chapters = [{ id: 'video-chapter', kind: 'background', heading: '車窓', paragraphs: [],
+      media: { ...page.media, videos: page.media.videos.slice(0, 1) } }];
+    page.media.videos = page.media.videos.slice(1, 2);
+  });
+  try {
+    const doc = dom.window.document;
+    const [post, youtube] = doc.querySelectorAll('.spot-video-play');
+    assert.ok(post && youtube);
+    const widgetScript = () => doc.querySelector('script[src="https://platform.twitter.com/widgets.js"]');
+    assert.equal(widgetScript(), null);
+    assert.equal(doc.querySelector('.spot-page-video-card iframe, blockquote.twitter-tweet'), null);
+    post.click();
+    const firstPost = doc.querySelector('.spot-x-post');
+    assert.ok(firstPost.querySelector('blockquote a[href]'));
+    const script = widgetScript();
+    assert.ok(script);
+    youtube.click();
+    assert.ok(!firstPost.isConnected && !post.hidden && youtube.hidden);
+    const rendered = [];
+    dom.window.twttr = { widgets: { load: target => rendered.push(target) } };
+    script.dispatchEvent(new dom.window.Event('load'));
+    assert.deepEqual(rendered, []);
+    post.click();
+    assert.deepEqual(rendered, [doc.querySelector('.spot-x-post')]);
+    assert.equal(doc.querySelector('.spot-page-video-card iframe'), null);
+    assert.equal(widgetScript(), script);
+    assert.ok(post.hidden && !youtube.hidden);
+  } finally { dom.window.close(); }
 });
 
 test('thin spot shells keep static fallback entries and defer common chrome and catalog to runtime', () => {
