@@ -10,12 +10,12 @@
   var HOST_MESSAGE_SOURCE = "michikusa-native-host";
   var TRUSTED_PARENT_ORIGIN = "https://localhost";
   var PUBLIC_ORIGIN = "https://www.michikusa-travel.com";
-  var LANGUAGES = ["ja", "en", "zh-Hant", "fr", "de", "es", "zh-Hans", "ko"];
-  var EDITION_PATTERN = /^\/(en|zh-Hant|fr|de|es|zh-Hans|ko)(?:\/|$)/i;
+  var LANGUAGES = ["ja", "en", "zh-Hant", "fr", "de", "es", "zh-Hans", "ko", "it", "th"];
+  var EDITION_PATTERN = /^\/(en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)(?:\/|$)/i;
   var NATIVE_HASHES = {
     home: ["", "#journey"],
     train: ["", "#journey", "#timelineSection"],
-    gallery: [""],
+    gallery: ["", "#content-news"],
     journal: ["", "#stampboard"],
     live: [""],
     settings: [""],
@@ -30,6 +30,8 @@
     es: { native: "Utiliza el menú de la aplicación para esta acción. Puedes seguir leyendo este artículo aquí.", article: "Este enlace no se puede abrir dentro de esta versión de la aplicación. Puedes leerlo en el navegador.", browser: "Leer en el navegador", close: "Cerrar" },
     "zh-Hans": { native: "请从应用菜单使用此功能。您可以继续阅读这篇文章。", article: "此版本的应用无法在内部打开这个链接。您可以在浏览器阅读。", browser: "在浏览器阅读", close: "关闭" },
     ko: { native: "이 기능은 앱 메뉴에서 열어 주세요. 이 기사는 여기서 계속 읽을 수 있습니다.", article: "이 버전의 앱 안에서는 이 링크를 열 수 없습니다. 브라우저에서 읽을 수 있습니다.", browser: "브라우저에서 읽기", close: "닫기" },
+    it: { native: "Apri questa funzione dal menu dell’app. Puoi continuare a leggere qui.", article: "Questa versione dell’app può aprire il link nel browser.", browser: "Apri nel browser", close: "Chiudi" },
+    th: { native: "เปิดฟังก์ชันนี้จากเมนูแอป คุณอ่านบทความต่อที่นี่ได้", article: "แอปเวอร์ชันนี้เปิดลิงก์นี้ในเบราว์เซอร์ได้", browser: "เปิดในเบราว์เซอร์", close: "ปิด" },
   };
   // Capacitor Android serves the local bundle from https://localhost by
   // default, while this child runs on PUBLIC_ORIGIN. The referrer is not a
@@ -76,7 +78,7 @@
 
   function isHostRoutedArticlePath(path) {
     var route = stripEdition(path);
-    return route === "/guide.html"
+    return ["/guide.html", "/rivers.html", "/factories.html"].indexOf(route) >= 0
       || ((languageFor(path) === "ja" || languageFor(path) === "en")
         && /^\/(?:arenani|reflections)\.html$/.test(route));
   }
@@ -255,7 +257,7 @@
   function explicitNativeDestination(value) {
     if (value === "settings") return { screen: "settings", hash: "" };
     // This attribute is an app route, never an arbitrary URL or query string.
-    if (!/^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko)\/)?(?:index\.html|start\.html|zukan\.html|journal\.html|live\/index\.html)(?:#[A-Za-z0-9_-]+)?$/.test(value || "")) return null;
+    if (!/^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:index\.html|start\.html|zukan\.html|journal\.html|live\/index\.html)(?:#[A-Za-z0-9_-]+)?$/.test(value || "")) return null;
     return nativeDestinationFor(new URL(value, PUBLIC_ORIGIN + "/"));
   }
 

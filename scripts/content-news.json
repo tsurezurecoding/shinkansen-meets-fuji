@@ -1,0 +1,61 @@
+[
+  {
+    "id": "rivers-four-crossings",
+    "date": "2026-11-19",
+    "route": "rivers.html",
+    "titles": {
+      "ja": ["川と橋の特集に", "4つの川を追加"],
+      "en": "Four more river crossings from the Shinkansen",
+      "zh-Hant": "新幹線沿線的河川與橋梁新增四處",
+      "fr": "Quatre nouvelles rivières à voir du Shinkansen",
+      "de": "Vier weitere Flussquerungen vom Shinkansen aus",
+      "es": "Cuatro ríos más para ver desde el Shinkansen",
+      "zh-Hans": "新干线沿线的河流与桥梁新增四处",
+      "ko": "신칸센에서 만나는 강 네 곳 추가",
+      "it": "Altri quattro fiumi da vedere dallo Shinkansen",
+      "th": "เพิ่มแม่น้ำอีกสี่สายที่มองเห็นจากชินคันเซ็น"
+    }
+  },
+  {
+    "id": "factories-odawara-shiga",
+    "date": "2026-11-19",
+    "route": "factories.html",
+    "titles": {
+      "ja": ["小田原と滋賀の", "工場3か所を追加"],
+      "en": "Three more factories to spot in Odawara and Shiga",
+      "zh-Hant": "新增小田原與滋賀的三座工廠",
+      "fr": "Trois usines de plus à repérer à Odawara et dans la préfecture de Shiga",
+      "de": "Drei weitere Fabriken in Odawara und Shiga entdecken",
+      "es": "Tres fábricas más que puedes ver en Odawara y Shiga",
+      "zh-Hans": "新增小田原与滋贺的三座工厂",
+      "ko": "오다와라와 시가의 공장 세 곳 추가",
+      "it": "Altre tre fabbriche da avvistare a Odawara e nella prefettura di Shiga",
+      "th": "เพิ่มโรงงานสามแห่งในโอดาวาระและจังหวัดชิงะ"
+    }
+  },
+  {
+    "id": "story-shinkalion",
+    "date": "2026-11-08",
+    "route": "stories/shinkalion.html",
+    "titles": {
+      "ja": ["シンカリオンと", "本物の新幹線をめぐる"],
+      "en": "Meet the real trains behind Shinkalion",
+      "zh-Hant": "走訪《新幹線變形機器人》的真實列車",
+      "fr": "Les vrais trains qui ont inspiré Shinkalion",
+      "de": "Die echten Züge hinter Shinkalion",
+      "es": "Los trenes reales que inspiraron Shinkalion",
+      "zh-Hans": "探访《新干线变形机器人》里的真实列车",
+      "ko": "신카리온에 등장하는 실제 신칸센을 만나다",
+      "it": "I veri treni che hanno ispirato Shinkalion",
+      "th": "พบรถไฟของจริงที่เป็นต้นแบบของชินคาเลียน"
+    }
+  },
+  {
+    "id": "artwork-727-hunt",
+    "date": "2026-11-05",
+    "route": "artworks/727-hunt/index.html",
+    "titles": {
+      "ja": ["車窓ゲームで", "「727」の看板を探す"]
+    }
+  }
+]

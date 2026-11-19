@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "language": "zh-Hant",
+  "features": [
+    {
+      "id": "guide",
+      "title": "看富士山的時間",
+      "description": "坐哪一側，以及東京出發後多久。",
+      "path": "/zh-Hant/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "富士山"
+    },
+    {
+      "id": "castles",
+      "title": "新幹線車窗外的城堡",
+      "description": "在車窗照片中尋找天守與城山。",
+      "path": "/zh-Hant/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "城堡"
+    },
+    {
+      "id": "rivers",
+      "title": "新幹線車窗看河流",
+      "description": "從東京到新大阪，沿東海道新幹線尋找河流與橋梁。",
+      "path": "/zh-Hant/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "河川與橋梁"
+    },
+    {
+      "id": "arenani",
+      "title": "窗外那是什麼？",
+      "description": "茶田、溫室、巨大球網與更多風景，從吸引目光的事物開始。",
+      "path": "/zh-Hant/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "日常日本"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "日常日本",
+      "description": "食物、飲料與鄉間故事。",
+      "path": "/zh-Hant/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "日常日本"
+    },
+    {
+      "id": "hanabi",
+      "title": "車窗外的煙火",
+      "description": "沿線8場煙火活動，附觀賞區間與時間。",
+      "path": "/zh-Hant/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "煙火"
+    },
+    {
+      "id": "yakei",
+      "title": "夜間景色",
+      "description": "依出發時間，查看哪一段會入夜。",
+      "path": "/zh-Hant/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "入夜之後"
+    },
+    {
+      "id": "window_moments",
+      "title": "新幹線上看到的天氣",
+      "description": "彩虹、雪、雲與閃電：只出現一次的天空。",
+      "path": "/zh-Hant/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "車窗時刻"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "迪士尼新幹線",
+      "description": "確認你的列車是否會經過。",
+      "path": "/zh-Hant/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "期間限定"
+    },
+    {
+      "id": "reflections",
+      "title": "玻璃中的你的列車",
+      "description": "自己的新幹線，出現在沿線玻璃中的地方。",
+      "path": "/zh-Hant/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "倒影"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "尋找摩天輪",
+      "description": "在城市遠方尋找小摩天輪。",
+      "path": "/zh-Hant/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "摩天輪"
+    },
+    {
+      "id": "727_collection",
+      "title": "727招牌收藏",
+      "description": "沿線反覆出現的招牌。",
+      "path": "/zh-Hant/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "沿線招牌"
+    },
+    {
+      "id": "story_window",
+      "title": "車窗外相連的故事",
+      "description": "哥吉拉、SHŌGUN、搖曳露營△、七龍珠與新幹線變形機器人：從故事走進日本的土地。",
+      "path": "/zh-Hant/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "新幹線窗外的工廠",
+      "description": "從咖啡到化妝品，沿著新幹線車窗尋找熟悉用品的生產地。",
+      "path": "/zh-Hant/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "title": "新幹線沿線的河川與橋梁新增四處",
+      "path": "/zh-Hant/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "title": "新增小田原與滋賀的三座工廠",
+      "path": "/zh-Hant/factories.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "title": "走訪《新幹線變形機器人》的真實列車",
+      "path": "/zh-Hant/stories/shinkalion.html"
+    }
+  ]
+}

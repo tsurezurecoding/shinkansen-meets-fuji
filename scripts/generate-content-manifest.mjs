@@ -9,9 +9,12 @@ import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import locales, { episodes } from './shared/locales.mjs';
 import { generateSpotPageRuntime } from './generate-spot-page-runtime.mjs';
 import { generateSiteRuntime } from './generate-site-runtime.mjs';
+import { generateDiscovery } from './generate-discovery.mjs';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteBaseUrl = "https://www.michikusa-travel.com/";
+// Publish both clients' projections from the completed, localized field guides.
+const discoveryAssets = generateDiscovery({check: Boolean(process.env.MADO_CONTENT_MANIFEST_OUTPUT)});
 // The release inventory and the browser's small boot manifest share the same
 // asset bytes. Validation must never repair the working tree as a side effect.
 const runtime = await generateSpotPageRuntime({ appDir: appRoot, check: Boolean(process.env.MADO_CONTENT_MANIFEST_OUTPUT) });
@@ -26,6 +29,7 @@ if (process.env.MADO_CONTENT_MANIFEST_OUTPUT && siteRuntime.changed) throw new E
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "content-news.css", "content-news.js",
   ...locales.languages.flatMap(lang => ["index","godzilla","shogun","yurucamp","dragonball","shinkalion"].map(slug => `${lang === "ja" ? "" : lang + "/"}stories/${slug}.html`)),
   "story-window.js", "story-window.css", "story-window-editorial.css", "story-window-links.css", "story-window-article.css", "story-window-international.css", "story-window-shogun.css", "story-window-map.css",
   ...await walkFiles("images/story-window", p => /\.(?:jpg|png|svg|webp)$/.test(p)),
@@ -216,6 +220,10 @@ for (const { src } of tripPhotos) {
   if (!contentFiles.includes(src)) contentFiles.push(src);
 }
 
+const thumbPaths = await walkFiles("images/thumbs", relative => relative.endsWith(".webp"));
+const registered = new Set([...contentFiles, ...thumbPaths]);
+for (const file of discoveryAssets) if (!registered.has(file)) contentFiles.push(file);
+
 // contentVersion は files の並び順に依存するため、宣言順ではなくパスの昇順で正規化する。
 // これで「配列のどこへ足したか」で contentVersion が変わることがなくなる。
 const sortedContentFiles = [...new Set(contentFiles)].sort((a, b) => a.localeCompare(b));
@@ -260,7 +268,6 @@ async function walkFiles(directory, predicate) {
 }
 
 const audioPaths = await walkFiles("live/audio", (relative) => relative.endsWith(".mp3"));
-const thumbPaths = await walkFiles("images/thumbs", (relative) => relative.endsWith(".webp"));
 
 const audio = await Promise.all(audioPaths.map(fileEntry));
 const thumbnails = await Promise.all(thumbPaths.map(fileEntry));

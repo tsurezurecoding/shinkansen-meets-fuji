@@ -38,6 +38,7 @@ function featureChrome(lang, prefix) {
   header.querySelector('.lang-switch, .guide-lang-menu').replaceWith(menu);
   const chrome = {
     brand: header.querySelector('.brand-name').textContent,
+    guide: header.querySelector('[data-cta-id="nav_features"]').textContent,
     header: header.outerHTML,
     rail: doc.querySelector('.spot-page-rail').outerHTML,
     more: doc.querySelector('.content-rail-section').outerHTML,
@@ -94,7 +95,7 @@ function render(lang) {
   const title = copy.kicker + (lang === 'ja' ? '｜' : ' | ') + chrome.brand;
   const description = copy.kicker + (lang === 'ja' ? '。' : '. ') + copy.lead;
   const alternates = [...languages, 'x-default'].map(code => `<link rel="alternate" hreflang="${code}" href="${SITE}/${pagePath(code === 'x-default' ? 'en' : code)}">`).join('\n');
-  const styles = ['style.css', 'ferris-wheels.css', 'rivers.css', 'article-locales.css'];
+  const styles = ['app-embedded.css', 'style.css', 'ferris-wheels.css', 'rivers.css', 'article-locales.css'];
   const sources = Object.entries(route.sources).map(([key, url]) => `<li><a hreflang="ja" href="${escape(url)}">${escape(copy.sources[key])}</a></li>`).join('\n');
   const schema = {'@context':'https://schema.org','@type':'CollectionPage','@id':SITE + '/' + file, url:SITE + '/' + file, name:copy.title, description, inLanguage:lang};
   const markup = `<!doctype html>
@@ -107,6 +108,7 @@ function render(lang) {
 <meta property="og:type" content="article"><meta property="og:locale" content="${editions[lang].og}"><meta property="og:image" content="${SITE}/${photo.image}"><meta property="og:image:alt" content="${escape(copy.photos.fuji.alt)}"><meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>
 <link rel="icon" href="${prefix}favicon.ico"><link rel="preload" as="image" href="${prefix}${photo.image}">
+<script src="${versioned(prefix, 'app-embedded.js')}"></script>
 ${styles.map(asset => `<link rel="stylesheet" href="${versioned(prefix, asset)}">`).join('\n')}
 ${lang === 'ja' ? `<script src="${versioned(prefix, 'language-router.js')}"></script>` : ''}
 <script defer src="${versioned(prefix, 'article-locales.js')}"></script>
@@ -124,6 +126,7 @@ ${chrome.header}
   ${riverList(copy, lang, prefix)}
   <p class="river-reading-note">${escape(copy.returnTrip)}</p>
   <details class="river-sources"><summary>${escape(copy.sourcesTitle)}</summary><p>${escape(copy.credit)}${copy.sourceLanguage ? '<br>' + escape(copy.sourceLanguage) : ''}</p><ol>${sources}</ol></details>
+  <p><a class="river-link" href="zukan.html">← ${escape(chrome.guide)}</a></p>
 </article></div>${chrome.more}</main>
 ${chrome.footer}
 <dialog id="river-lightbox" class="river-lightbox" aria-labelledby="river-photo-title" aria-describedby="river-photo-caption"><div class="river-lightbox-top"><p id="river-photo-title"></p><button class="river-lightbox-close" type="button">${escape(copy.close)} ×</button></div><img alt=""><p class="river-lightbox-caption" id="river-photo-caption"></p></dialog>

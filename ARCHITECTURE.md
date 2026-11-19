@@ -61,6 +61,12 @@ For a new article that follows the donburi and ramen pattern, add one entry to `
 
 ## Web to Android contract
 
+Register a published feature, artwork, or story once in `scripts/content-news.json`. Give it a permanent ID, its actual publication or update date in Japan, a site-relative HTML route, and a title for each available edition. Omit editions without a published destination. Japanese titles can be arrays of phrase chunks. An optional `descriptions` map supplies longer descriptions to clients. A new announcement about an old article gets a new ID. Correcting a headline keeps the same ID.
+
+Run `node scripts/generate-content-manifest.mjs` after the affected article or field-guide generators. It refreshes the top page, the field guide and `data/discovery/<language>.json` in all ten editions, then hashes the distributed files. `node scripts/generate-discovery.mjs --check` checks the projections without writing. The feed takes its feature titles, descriptions, labels, images and order directly from the localized field-guide cards.
+
+The top shows the newest two entries and links to the full list at `zukan.html#content-news`. A browser records the IDs already published on its first visit and marks later entries as read when opened. IDs are shared across pages and editions. The bundled Android page owns its own list and read state. It can remove the Web block between the `CONTENT-NEWS` comments when copying the page.
+
 Android consumes a frozen copy of selected Web assets described by `content-manifest.json`. Web work must not silently update the Android bundle. The Android repository owns its copied assets, version, AAB, and release checks.
 
 The Android repository records the Web commit used by each mobile release. Merging a Web change updates the Web product; the mobile release process selects its own pin.
