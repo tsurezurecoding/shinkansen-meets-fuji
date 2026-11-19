@@ -12,6 +12,27 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('Solar Ark section selects its projections and excludes timing, other spots and page edits', () => {
+  const files = ['data.js', 'data-runtime.js', 'spots/solar-ark.html', 'de/spots/solar-ark.html',
+    'data/spot-pages/solar-ark.en.js', 'scripts/locales/castle-de.json', 'de/utility-data.js',
+    'artworks/window-trip/window-trip-data.js', 'content-manifest.json', 'start.html'].map(change);
+  const data = (ja, en, minutesFromTokyo) => 'const ROUTE = {}, BOARD_COLLECTION = [], WHEEL_COLLECTION = [], SPOTS = ' + JSON.stringify([
+    { id: 'solar-ark', ja: { area: ja }, en: { area: en }, side: 'E', minutesFromTokyo },
+  ]) + ';';
+  const before = data('名古屋 → 岐阜羽島', 'Nagoya → Gifu-Hashima', 103);
+  const after = data('岐阜羽島 → 米原', 'Gifu-Hashima → Maibara', 103);
+  const plan = (input, code = after) => chooseReleaseScope(input, {
+    fileContents: () => [before, code], assetVersionOnly: file => file === 'start.html',
+  });
+  const selected = plan(files);
+  assert.equal(selected.scope, 'solar-ark-section');
+  assert(selected.pagesCandidate && selected.needsDependencies);
+  assert(selected.commands.some(command => command.includes('scripts/generate-window-trip-data.mjs')));
+  assert.notEqual(plan(files, after.replace('103', '104')).scope, selected.scope);
+  assert.notEqual(plan([...files, change('data/spot-pages/kiyosu.ja.js')]).scope, selected.scope);
+  assert.notEqual(plan([...files, change('guide.html')]).scope, selected.scope);
+});
+
 test('guide and journal checks accept body copy and timetable removal while rejecting dependency and route changes', () => {
   const files = ['scripts/templates/site-source/zukan.html.tpl', 'scripts/templates/site-source/en/journal.html.tpl',
     'zukan.html', 'fr/journal.html', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/stamp-store.test.mjs'];

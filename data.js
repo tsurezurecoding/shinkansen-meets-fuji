@@ -7089,8 +7089,16 @@ const SPOTS = [
   {
     id: "solar-ark",
     icon: "☀️",
-    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "もうすぐ見納め、太陽の船。", story: "岐阜羽島付近のE席側に見えるソーラーアークは、旧三洋電機が2001年に建設した、全長315m・最高部37mの太陽光発電モニュメントです。約5,046枚の太陽電池パネルをまとった船形が車窓の目印でした。解体が進み、2026年11月3日の撮影ではパネルの一部が取り外された状態を記録しました。姿は工事の進行で変わるため、次の乗車時に同じ景色が見られるとは限りません。" },
-    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship, soon to disappear.", story: "Solar Ark is a ship-shaped solar-power monument near Gifu-Hashima, on the Seat E side. Built by Sanyo in 2001, it is 315 metres long and up to 37 metres tall, originally clad in about 5,046 solar panels. Dismantling is under way: our footage from 3 November 2026 records some panels already removed. Its appearance will change as work progresses, so a future ride may bring a different view." },
+    ja: { name: "ソーラーアーク", area: "岐阜羽島 → 米原", hook: "もうすぐ見納め、太陽の船。", story: "岐阜羽島付近のE席側に見えるソーラーアークは、旧三洋電機が2001年に建設した、全長315m・最高部37mの太陽光発電モニュメントです。約5,046枚の太陽電池パネルをまとった船形が車窓の目印でした。解体が進み、2026年11月3日の撮影ではパネルの一部が取り外された状態を記録しました。姿は工事の進行で変わるため、次の乗車時に同じ景色が見られるとは限りません。" },
+    en: { name: "Solar Ark", area: "Gifu-Hashima → Maibara", hook: "A solar ship, soon to disappear.", story: "Solar Ark is a ship-shaped solar-power monument near Gifu-Hashima, on the Seat E side. Built by Sanyo in 2001, it is 315 metres long and up to 37 metres tall, originally clad in about 5,046 solar panels. Dismantling is under way: our footage from 3 November 2026 records some panels already removed. Its appearance will change as work progresses, so a future ride may bring a different view." },
+    routeNote: {
+      ja: "新大阪方面は岐阜羽島を過ぎたら、東京方面は岐阜羽島に着く前に、E席側の窓を見てください。",
+      en: "Look out the Seat E window just after Gifu-Hashima toward Shin-Osaka, or just before Gifu-Hashima toward Tokyo.",
+    },
+    guideIntro: {
+      ja: "新大阪方面は岐阜羽島を過ぎたら、東京方面は岐阜羽島に着く前に、E席側の窓を見てください。乗車中は音声ガイド、事前の確認にはこのページの地図が役立ちます。",
+      en: "Look out the Seat E window just after Gifu-Hashima toward Shin-Osaka, or just before Gifu-Hashima toward Tokyo. Use Audio Guide while riding, or the map on this page before you board.",
+    },
     pageTitle: {
       ja: "解体中のソーラーアーク｜11月3日・7日の車窓動画と見える場所 | 新幹線の窓",
       en: "Solar Ark Dismantling: Train-Window Videos from 3 and 7 November 2026",
