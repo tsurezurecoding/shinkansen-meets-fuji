@@ -845,7 +845,18 @@
         return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div>" + xComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
       }
       var youtubeComment = video.comment ? "<p class=\"spot-page-video-comment\">" + escapeHTML(video.comment) + "</p>" : "";
-      return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.title) + "\"><div class=\"spot-page-video-frame\"><iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeHTML(video.id) + "\" title=\"" + escapeHTML(video.title) + "\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div>" + youtubeComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(video.url) + "</a></p></article>";
+      var onDemand = page.id === "solar-ark" && lang === "ja";
+      var id = escapeHTML(video.id), title = escapeHTML(video.title);
+      var player = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + (onDemand ? '?autoplay=1&amp;playsinline=1' : '') +
+        '" title="' + title + '" loading="' + (onDemand ? 'eager' : 'lazy') +
+        '" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+      if (onDemand) {
+        player = '<button type="button" class="spot-video-play" aria-label="' + title + 'を再生">' +
+          '<img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" width="320" height="180" loading="lazy" decoding="async" alt="">' +
+          '<span class="spot-video-play-icon" aria-hidden="true">▶</span><span class="spot-video-play-title">' + title + '</span></button>' +
+          '<template>' + player + '</template>';
+      }
+      return '<article class="spot-page-video-card" aria-label="' + title + '"><div class="spot-page-video-frame">' + player + '</div>' + youtubeComment + '<p class="spot-page-video-source">' + escapeHTML(ui.source) + '<a href="' + escapeHTML(video.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHTML(video.url) + '</a></p></article>';
     }).join("");
     return "<section class=\"spot-page-section spot-page-video-section\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + readingEyebrow(page, "IN MOTION") + "<h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
   }
@@ -954,6 +965,26 @@
       references = sources.length ? '<section class="spot-page-section spot-reading-sources" id="references" aria-labelledby="spotSourcesTitle">' + readingEyebrow(page, 'FURTHER READING') + '<h2 id="spotSourcesTitle">' + (lang === "ja" ? "参考リンク" : "References") + '</h2><p class="spot-reading-sources-lead">' + (lang === "ja" ? "公式案内・車窓の記録はこちら。" : "Official guidance and window-view records.") + '</p><ul>' + sources.map(function (item) { return '<li><a href="' + escapeHTML(item.href) + '" rel="noopener" target="_blank">' + escapeHTML(item.label) + '</a></li>'; }).join('') + '</ul></section>' : '';
     }
     return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(page.eyebrow || ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + (page.factsAfterArticle ? "" : pageFactsHTML(page, lang)) + guideNotice + sharedGuideBefore + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + pageChaptersHTML(page, rootPath, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\">" + readingEyebrow(page, "PHOTO TIPS") + "<h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + (page.factsAfterArticle ? pageFactsHTML(page, lang) : "") + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + (page.readingLayout ? readingCollectionHTML(page, rootPath, lang) : "") + references + "</article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
+  }
+
+  function bindOnDemandVideos() {
+    var buttons = document.querySelectorAll(".spot-video-play");
+    var activePlayer, activeButton;
+    Array.prototype.forEach.call(buttons, function (button) {
+      button.addEventListener("click", function () {
+        if (activeButton === button) return;
+        if (activePlayer) {
+          activePlayer.remove();
+          activeButton.hidden = false;
+        }
+        var holder = button.parentElement;
+        activePlayer = holder.querySelector("template").content.firstElementChild.cloneNode(true);
+        activeButton = button;
+        button.hidden = true;
+        holder.appendChild(activePlayer);
+        activePlayer.focus({ preventScroll: true });
+      });
+    });
   }
 
   function bindPageLightbox() {
@@ -1111,6 +1142,7 @@
           }
         }
         bindPageLightbox();
+        if (pageId === "solar-ark" && pageLang === "ja") bindOnDemandVideos();
         ensureXWidgetsScript(pageBody);
         root.MADO_SPOT_PAGE_RENDERED = true;
         if (typeof root.Event === "function" && document.dispatchEvent) document.dispatchEvent(new root.Event("mado:shared-ui-ready"));

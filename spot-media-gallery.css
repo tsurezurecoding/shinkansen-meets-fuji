@@ -86,6 +86,40 @@
   background: #111;
 }
 
+.spot-video-play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #151719;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+.spot-video-play img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.spot-video-play-icon {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 78%);
+}
+.spot-video-play-title {
+  position: absolute;
+  inset: auto 0 0;
+  padding: .8rem .65rem .45rem;
+  background: linear-gradient(transparent, rgb(0 0 0 / 90%));
+  font-size: .875rem;
+  text-align: left;
+}
+.spot-video-play:focus-visible { outline: 3px solid white; outline-offset: -4px; }
+
 .spot-page-video-frame iframe,
 .spot-page-video-frame twitter-widget,
 .spot-page-video-frame .twitter-tweet {

@@ -325,6 +325,39 @@ function renderedArticle(id, lang, embedded = false, mutatePage) {
   return dom;
 }
 
+test('Japanese Solar Ark preloads the imported CSS and activates only the selected video', () => {
+  const dom = renderedArticle('solar-ark', 'ja');
+  try {
+    const doc = dom.window.document;
+    const css = doc.querySelectorAll('link[rel="preload"][as="style"]');
+    assert.deepEqual([...css].map(link => link.getAttribute('href')), ['../chrome.css']);
+    const section = doc.querySelector('.spot-page-video-section');
+    const buttons = [...section.querySelectorAll('button.spot-video-play')];
+    const videos = dom.window.MADO_SPOT_PAGE_DATA.media.videos;
+    assert.equal(buttons.length, 4);
+    assert.equal(section.querySelectorAll('iframe').length, 0);
+    for (const [index, button] of buttons.entries()) {
+      assert.ok(button.getAttribute('aria-label').includes(videos[index].title));
+      assert.ok(button.querySelector('img').src.includes(videos[index].id));
+      button.click();
+      const frames = section.querySelectorAll('iframe');
+      assert.equal(frames.length, 1);
+      assert.equal(new URL(frames[0].src).pathname, '/embed/' + videos[index].id);
+      assert.equal(new URL(frames[0].src).searchParams.get('autoplay'), '1');
+      assert.equal(frames[0].title, videos[index].title);
+      assert.deepEqual(buttons.filter(item => item.hidden), [button]);
+    }
+  } finally { dom.window.close(); }
+  for (const [id, lang] of [['solar-ark', 'en'], ['ibuki', 'ja']]) {
+    const control = renderedArticle(id, lang);
+    try {
+      const doc = control.window.document;
+      assert.equal(doc.querySelector('link[rel="preload"][href$="chrome.css"], .spot-video-play'), null);
+      assert.ok(doc.querySelector('.spot-page-video-card iframe[src*="youtube-nocookie.com/embed/"]'));
+    } finally { control.window.close(); }
+  }
+});
+
 test('thin spot shells keep static fallback entries and defer common chrome and catalog to runtime', () => {
   for (const lang of ['ja', 'en']) {
     const plan = planSpotPage('fuji', lang);
