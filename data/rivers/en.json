@@ -40,6 +40,14 @@
       "caption": "The blue arches of Maruko Bridge span a break in the cityscape.",
       "link": "A closer look at Maruko Bridge"
     },
+    "sagami-sakawa": {
+      "name": "Sagami River",
+      "sub": "The Sakawa and the old Tokaido",
+      "body": "Between the grey diagonal bridge beams, a broad stretch of water and green banks on both sides come into view. On the old Tokaido, travelers crossed the Sagami by boat; near Odawara, porters carried travelers across the Sakawa.",
+      "alt": "Broad water and green banks on both sides, seen between grey diagonal bridge beams.",
+      "caption": "Broad water framed by diagonal steel, with green banks on both sides.",
+      "link": "Look for Mount Fuji across the Sagami Plain"
+    },
     "shiraito": {
       "name": "Shiraito River Bridge",
       "sub": "A valley opening onto the sea",
@@ -103,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi River",
-      "body": "There is a red road bridge here too, set farther back across the water. Compare it with the Nagara photo. Notice how much of the window the bridge fills, and how much is left to the river.",
-      "alt": "A red road bridge upstream from the Ibi River crossing, beyond the water and gravel, with mountains behind.",
-      "caption": "The river, a red bridge and the distant mountains line up in the window."
+      "body": "The red Ogaki Bridge is farther away than the bridge over the Nagara. Just right of center, Mount Kinka rises behind it, with Gifu Castle on its summit. The keep is scheduled to be covered with sheeting from late August 2026 to mid-April 2027.",
+      "alt": "Broad water on the Ibi River, the red Ogaki Bridge and Mount Kinka beyond it.",
+      "caption": "The red Ogaki Bridge spans the broad river, with Mount Kinka beyond.",
+      "link": "Look for Gifu Castle from the train window"
     },
     "seta": {
       "name": "Seta River",
@@ -131,19 +140,13 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "The Sagami and Sakawa rivers",
-      "body": "Toward Shin-Osaka you reach the Sagami first. In the Edo period, travelers on the Tokaido road crossed it by ferry. At the Sakawa, just before Odawara, porters carried people on their shoulders or on platforms. Today you stay in your seat for both crossings.",
-      "link": "Look for Mount Fuji across the Sagami Plain"
-    },
     "yahagi": {
       "name": "Yahagi River",
       "body": "On the way to Mikawa-Anjo, the train crosses the Yahagi River. Water drawn farther upstream reaches the fields of Anjo through the Meiji irrigation canal. The river below your window helps sustain the farmland ahead."
     },
     "aizuma": {
       "name": "Aizuma River",
-      "body": "In Kariya the train crosses the Aizuma in a flash. Katsuyoshi Miura spotted a promising place on a map and went to the southeast side of the bridge with a camera. From down there, the passing Shinkansen becomes part of the river view.",
-      "link": "See 三浦克介's ground-level photo on X (Japanese)"
+      "body": "From Mikawa-Anjo toward Nagoya, the train crosses the Aizuma River at Kariya, then the Sakai River. Toward Tokyo, the order is reversed. Watch for the two crossings as you pass through Kariya."
     }
   },
   "sources": {
@@ -154,13 +157,14 @@
     "oi": "Shimada City Museum on porters and the Oi crossing",
     "kiso": "Japan's transport ministry on the Kiso river system",
     "floodway": "Toyohashi River Office on the purpose of the floodway (PDF)",
-    "ride": "なごやん's photos of both Toyohashi crossings from a Tokyo-bound train",
+    "ride": "Toyo floodway and Toyo River from a Tokyo-bound train",
     "bridges": "Shinkansen bridge distance markers used to estimate the gap between crossings",
     "meiji": "Japan's agriculture ministry on the Meiji irrigation canal and its founder",
     "shonai": "Shonai River Office map of the bridges at Biwajima (PDF)",
     "kamo": "Kyoto Prefecture's maps of the Kamo River (PDF)",
     "seta": "Japan's transport ministry on the Seta and the Yodo river system",
     "map": "Geospatial Information Authority of Japan maps showing rivers and railways",
-    "book": "Kei Kurihara's illustrated guide to the view from the Tokaido Shinkansen, Toyo Keizai, 2016"
+    "book": "Kei Kurihara's illustrated guide to the view from the Tokaido Shinkansen, Toyo Keizai, 2016",
+    "gifuCity": "Gifu City: Gifu Castle keep renovation and protective sheeting schedule"
   }
 }

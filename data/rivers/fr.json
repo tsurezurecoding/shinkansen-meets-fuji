@@ -40,6 +40,14 @@
       "sub": "Pont Maruko",
       "link": "En savoir plus sur le pont Maruko"
     },
+    "sagami-sakawa": {
+      "name": "Rivière Sagami",
+      "sub": "La Sakawa et l’ancien Tōkaidō",
+      "body": "Entre les poutres grises en diagonale, on aperçoit une large étendue d’eau et des berges verdoyantes de part et d’autre. Sur l’ancienne route du Tōkaidō, on traversait la Sagami en bateau ; près d’Odawara, des porteurs faisaient passer les voyageurs sur la Sakawa.",
+      "alt": "Une large étendue d’eau et des berges verdoyantes des deux côtés, entre des poutres grises en diagonale.",
+      "caption": "L’eau encadrée par les poutres obliques et les berges vertes des deux côtés.",
+      "link": "Chercher le mont Fuji dans la plaine de Sagami"
+    },
     "shiraito": {
       "name": "Pont de Shiraito",
       "body": "Près de Nebukawa, la mer apparaît au-delà des piles rouges. C’est le pont de la ligne classique Tōkaidō. Même sans voir l’eau de la rivière, on ressent en un instant la profondeur de la vallée.",
@@ -103,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi",
-      "body": "Ici aussi, un pont rouge apparaît, mais un peu plus loin, avec la rivière. Comparez avec la photo de la Nagara : la distance au pont et la largeur de l’eau dans le champ de vision changent.",
-      "alt": "La rivière Ibi, un pont routier rouge en amont et les montagnes au loin",
-      "caption": "L’eau, le pont rouge et les montagnes se répondent."
+      "body": "Le pont rouge d’Ogaki est plus éloigné que celui de la Nagara. Derrière le pont, un peu à droite du centre de la photo, le château de Gifu se dresse au sommet du mont Kinka. Des bâches doivent couvrir le donjon de fin août 2026 à mi-avril 2027.",
+      "alt": "La large rivière Ibi, le pont rouge d’Ōgaki et le mont Kinka au-delà.",
+      "caption": "Le pont rouge d’Ōgaki au-dessus de la rivière, avec le mont Kinka au loin.",
+      "link": "Repérer le château de Gifu depuis le train"
     },
     "seta": {
       "name": "Seta",
@@ -131,19 +140,13 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Sagami et Sakawa",
-      "body": "En allant vers Shin-Osaka, on franchit d’abord la Sagami, que les voyageurs de l’ancienne route du Tōkaidō traversaient en bateau. Près d’Odawara, sur la Sakawa, des porteurs faisaient passer les voyageurs sur leurs épaules ou sur une chaise. Aujourd’hui, le pont permet de franchir les deux rivières sans quitter son siège.",
-      "link": "Chercher le mont Fuji dans la plaine de Sagami"
-    },
     "yahagi": {
       "name": "Yahagi",
       "body": "Sur la route de Mikawa-Anjō, le train franchit la Yahagi. L’eau captée en amont rejoint les champs autour d’Anjō par le canal Meiji. Le cours d’eau sous la fenêtre contribue à la vie agricole de la plaine."
     },
     "aizuma": {
       "name": "Aizuma",
-      "body": "À Kariya, la rivière Aizuma a attiré des passionnés qui ont repéré l’endroit sur une carte pour voir passer le Shinkansen. Depuis la fenêtre, la rivière ne dure qu’un instant. Depuis le sol, au sud-est du pont, le train que l’on prend devient le personnage principal du paysage.",
-      "link": "Publication de 三浦克介 (Katsuyoshi Miura), photo prise au sol depuis le sud-est du pont"
+      "body": "En allant de Mikawa-Anjō vers Nagoya, le train franchit l’Aizuma à Kariya, puis la Sakai. Vers Tokyo, l’ordre s’inverse. Repérez ces deux passages en traversant Kariya."
     }
   },
   "sources": {
@@ -154,13 +157,14 @@
     "oi": "Musée municipal de Shimada · passage de l’Ōi",
     "kiso": "Ministère des Transports · rivière Kiso",
     "floodway": "Bureau fluvial de Toyohashi · explication du canal de décharge",
-    "ride": "Nagoyan · photos des deux ponts depuis un train en direction de Tokyo",
+    "ride": "Le canal de décharge de Toyo et la rivière Toyo vus depuis un train en direction de Tokyo",
     "bridges": "Liste des ponts du Shinkansen · estimation de la distance",
     "meiji": "Ministère de l’Agriculture · histoire du canal d’irrigation Meiji",
     "shonai": "Bureau fluvial de Shōnai · plan du secteur de Biwajima",
     "kamo": "Préfecture de Kyoto · carte de la Kamo",
     "seta": "Ministère des Transports · rivière Seta",
     "map": "Institut d’études géographiques du Japon · carte GSI",
-    "book": "Kei Kurihara, « Comme la fenêtre du Shinkansen Tōkaidō est intéressante ! », 2016"
+    "book": "Kei Kurihara, « Comme la fenêtre du Shinkansen Tōkaidō est intéressante ! », 2016",
+    "gifuCity": "Ville de Gifu · travaux du donjon et calendrier des bâches de protection"
   }
 }

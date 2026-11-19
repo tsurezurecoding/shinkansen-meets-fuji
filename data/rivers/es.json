@@ -40,6 +40,14 @@
       "sub": "Puente Maruko",
       "link": "Más sobre el puente Maruko"
     },
+    "sagami-sakawa": {
+      "name": "Río Sagami",
+      "sub": "La Sakawa y la antigua Tōkaidō",
+      "body": "Entre las vigas grises en diagonal se ven una amplia extensión de agua y orillas verdes a ambos lados. En la antigua ruta del Tōkaidō, los viajeros cruzaban el Sagami en barca; cerca de Odawara, porteadores los llevaban a hombros para cruzar la Sakawa.",
+      "alt": "Amplia extensión de agua y orillas verdes a ambos lados, entre vigas grises en diagonal.",
+      "caption": "Agua entre vigas diagonales y orillas verdes a ambos lados.",
+      "link": "Busca el monte Fuji en la llanura de Sagami"
+    },
     "shiraito": {
       "name": "Puente ferroviario Shiraito-gawa",
       "body": "Cerca de Nebukawa, el mar asoma al otro lado de los pilares rojos. El puente que vemos es de la línea principal Tōkaidō. Aunque no se vea la superficie del río, por un instante se siente la profundidad del valle.",
@@ -103,9 +111,10 @@
     },
     "ibi": {
       "name": "Río Ibigawa",
-      "body": "Aquí también hay un puente rojo, pero se ve algo más lejos junto al agua. Compáralo con la foto del Nagaragawa: cambia la distancia al puente y también la anchura de agua que ocupa la ventana.",
-      "alt": "La superficie y el lecho del Ibigawa, con un puente rojo aguas arriba y montañas al fondo",
-      "caption": "Se superponen el agua, el puente rojo y las montañas."
+      "body": "El puente rojo de Ogaki queda más lejos que el puente sobre el Nagara. Detrás, un poco a la derecha del centro de la foto, el castillo de Gifu corona el monte Kinka. Está previsto que las lonas cubran la torre principal desde finales de agosto de 2026 hasta mediados de abril de 2027.",
+      "alt": "La amplia superficie del río Ibi, el puente rojo de Ōgaki y el monte Kinka detrás.",
+      "caption": "El puente rojo de Ōgaki sobre el río, con el monte Kinka al fondo.",
+      "link": "Busca el castillo de Gifu desde el tren"
     },
     "seta": {
       "name": "Río Setagawa",
@@ -131,19 +140,13 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Ríos Sagamigawa y Sakawagawa (相模川・酒匂川)",
-      "body": "En dirección a Shin-Osaka, el primero es el Sagamigawa, que durante el periodo Edo se cruzaba en barca por la antigua ruta Tōkaidō. Antes de Odawara, en el Sakawagawa, los porteadores llevaban a los viajeros a hombros o sobre plataformas. Hoy ambos se cruzan de una vez desde el asiento, por un puente.",
-      "link": "Busca el monte Fuji en la llanura de Sagami"
-    },
     "yahagi": {
       "name": "Río Yahagigawa (矢作川)",
       "body": "Camino de Mikawa-Anjo cruzamos el Yahagigawa. El agua captada río arriba llega a los campos de Anjo por el canal Meiji-yōsui. El curso que vemos bajo la ventana sostiene la vida agrícola de la llanura."
     },
     "aizuma": {
       "name": "Río Aizumagawa (逢妻川)",
-      "body": "En Kariya, Katsuyoshi Miura (三浦克介) localizó en el mapa un punto desde tierra, al sureste del puente, y fue a ver pasar el Shinkansen. Desde la ventana, el río dura un instante; desde ese punto de observación en tierra, el tren se convierte en protagonista del paisaje.",
-      "link": "Publicación de Katsuyoshi Miura (三浦克介): foto del puente desde tierra, al sureste del puente"
+      "body": "De Mikawa-Anjo hacia Nagoya, el tren cruza primero el río Aizuma en Kariya y después el río Sakai. Hacia Tokio, el orden se invierte. Fíjate en ambos cruces al pasar por Kariya."
     }
   },
   "sources": {
@@ -154,13 +157,14 @@
     "oi": "Museo de la Ciudad de Shimada sobre los porteadores y el cruce del Ōi",
     "kiso": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón sobre el sistema fluvial Kisogawa",
     "floodway": "Oficina del Río Toyohashi sobre la función del canal de desvío (PDF)",
-    "ride": "Fotos de なごやん de ambos cruces del Toyogawa desde un tren con destino a Tokio",
+    "ride": "El canal de alivio del Toyogawa y el río Toyogawa vistos desde un tren con destino a Tokio",
     "bridges": "Lista de hitos de distancia de puentes del Shinkansen, utilizada para estimar la separación entre cruces",
     "meiji": "Ministerio de Agricultura de Japón sobre el canal de riego Meiji y su fundador",
     "shonai": "Mapa de la Oficina del Río Shōnai con los puentes de Biwajima (PDF)",
     "kamo": "Mapas de la Prefectura de Kioto sobre el río Kamo (PDF)",
     "seta": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón sobre el sistema fluvial Seta-Yodo",
     "map": "Mapas del Instituto de Estudios Geográficos de Japón con ríos y vías ferroviarias",
-    "book": "Guía ilustrada de Kei Kurihara sobre el paisaje desde el Shinkansen Tōkaidō, Toyo Keizai, 2016"
+    "book": "Guía ilustrada de Kei Kurihara sobre el paisaje desde el Shinkansen Tōkaidō, Toyo Keizai, 2016",
+    "gifuCity": "Ayuntamiento de Gifu · obras de la torre y calendario de las lonas protectoras"
   }
 }

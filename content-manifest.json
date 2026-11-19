@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "5c040fe02029f007",
+  "contentVersion": "4f87a4efe6457fe0",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1633,8 +1633,8 @@
     {
       "path": "de/rivers.html",
       "url": "https://www.michikusa-travel.com/de/rivers.html",
-      "bytes": 30130,
-      "sha256": "c88dce2cb21d827cb787386b696e5eeaceb340df9ba401290e43cae171a8c023"
+      "bytes": 31071,
+      "sha256": "932d55ddb2019b648e5ab2d35c7b9ee983c0f56c71140fcc79e48c976b1258f1"
     },
     {
       "path": "de/sparkling-data.js",
@@ -2137,8 +2137,8 @@
     {
       "path": "en/rivers.html",
       "url": "https://www.michikusa-travel.com/en/rivers.html",
-      "bytes": 30148,
-      "sha256": "8380e4ae5dd4444cb1b4d153881c8ef4f9e9d90ecbcd2a2957ae2f6c6af0362f"
+      "bytes": 31048,
+      "sha256": "9ec225287b97aab62372336815f571662c2e388df06a34e35b5daa470e43b224"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -2359,8 +2359,8 @@
     {
       "path": "es/rivers.html",
       "url": "https://www.michikusa-travel.com/es/rivers.html",
-      "bytes": 31041,
-      "sha256": "b94f6932091bdd208ca3de653ba0f911ac7a409425eb856360e24a2aa246d775"
+      "bytes": 31921,
+      "sha256": "f1526552657293d58d6e4a9d8cd3c19441c7b37701ce180d4b0b56a3f77318b9"
     },
     {
       "path": "es/sparkling-data.js",
@@ -2905,8 +2905,8 @@
     {
       "path": "fr/rivers.html",
       "url": "https://www.michikusa-travel.com/fr/rivers.html",
-      "bytes": 30356,
-      "sha256": "5ba31593713404d2988799e807ab31400c92897994a69ab0609e96baf4aad33a"
+      "bytes": 31297,
+      "sha256": "b5947abb4db1c8eeafba1f00dc43e0e56969bba3f85492912cf7b286372720f9"
     },
     {
       "path": "fr/sparkling-data.js",
@@ -5003,6 +5003,12 @@
       "sha256": "1ad14ca9df8cb5b045b312d99eadde204651dfd2e50beeb97d6bf7a8b740113b"
     },
     {
+      "path": "images/rivers/sagami.jpg",
+      "url": "https://www.michikusa-travel.com/images/rivers/sagami.jpg",
+      "bytes": 384375,
+      "sha256": "236ab25174d63b769a26c4f7f0e3a33b31194a196dbe23a44b500ef9ff926252"
+    },
+    {
       "path": "images/rivers/seta.jpg",
       "url": "https://www.michikusa-travel.com/images/rivers/seta.jpg",
       "bytes": 178329,
@@ -5821,8 +5827,8 @@
     {
       "path": "it/rivers.html",
       "url": "https://www.michikusa-travel.com/it/rivers.html",
-      "bytes": 30027,
-      "sha256": "92429ece67c0e8eefe4d09f397e6163bf4b4b89e449bae8500ed1bb76c32fe52"
+      "bytes": 30936,
+      "sha256": "e41344ee59d98e2b02d462843c40fadcf3891762d792ad86916cd8f04ea07727"
     },
     {
       "path": "it/sparkling-data.js",
@@ -6331,8 +6337,8 @@
     {
       "path": "ko/rivers.html",
       "url": "https://www.michikusa-travel.com/ko/rivers.html",
-      "bytes": 31040,
-      "sha256": "3d3a69671b6b47a045747c82a7c656554c50fc51a45efde07f0da17ee5277831"
+      "bytes": 31931,
+      "sha256": "9432e78338cd13c0a6b089561907126858c9ed5e8c3b9e7b889a3fc6179192f2"
     },
     {
       "path": "ko/sparkling-data.js",
@@ -7477,8 +7483,8 @@
     {
       "path": "rivers.html",
       "url": "https://www.michikusa-travel.com/rivers.html",
-      "bytes": 29430,
-      "sha256": "a2c937c636b61786ac38f129686ef537835f74912797d8fefe0ae6f90df43430"
+      "bytes": 30332,
+      "sha256": "9faa53e78e29d2123c6077bb469c8ec92b222e79358cd6ac413d6a067db449b0"
     },
     {
       "path": "rivers.js",
@@ -8395,8 +8401,8 @@
     {
       "path": "th/rivers.html",
       "url": "https://www.michikusa-travel.com/th/rivers.html",
-      "bytes": 45168,
-      "sha256": "61c57d639db23325bae87718e693df0d77e9273155d496dde2b32a6dd399c8bf"
+      "bytes": 46587,
+      "sha256": "712002a986ce1fc7591c12a6420ac256521307bac65513dfb9703dec51a8cc47"
     },
     {
       "path": "th/sparkling-data.js",
@@ -9085,8 +9091,8 @@
     {
       "path": "zh-Hans/rivers.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/rivers.html",
-      "bytes": 28683,
-      "sha256": "5f7dc194a5c4bead8a7b25f0ae7d40854d1231ff85193b61e38ecc0703dc6958"
+      "bytes": 29563,
+      "sha256": "1767c5e894524e70c16475d358634b2ad6f3cd70b4a1fcd1aca76ccd743a0e48"
     },
     {
       "path": "zh-Hans/sparkling-data.js",
@@ -9571,8 +9577,8 @@
     {
       "path": "zh-Hant/rivers.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/rivers.html",
-      "bytes": 28695,
-      "sha256": "c511e1b33f3a42ef71be684dea08e168f419e8a6fabe327b1a3b8f2336a09147"
+      "bytes": 29581,
+      "sha256": "7e5dc0988b5c7d5030039b65141c9589cee670b9459e0ae5fa95c78615c0a10d"
     },
     {
       "path": "zh-Hant/sparkling-data.js",

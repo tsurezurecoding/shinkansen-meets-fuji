@@ -40,6 +40,14 @@
       "sub": "Ponte Maruko",
       "link": "Scopri il ponte Maruko"
     },
+    "sagami-sakawa": {
+      "name": "Fiume Sagami",
+      "sub": "La Sakawa e l’antica Tōkaidō",
+      "body": "Tra le travi grigie oblique si vedono un ampio tratto d’acqua e rive verdi su entrambi i lati. Sull’antica Tōkaidō, i viaggiatori attraversavano il Sagami in barca; vicino a Odawara, i portatori li trasportavano oltre la Sakawa.",
+      "alt": "Un ampio tratto d’acqua e rive verdi su entrambi i lati, tra travi grigie oblique.",
+      "caption": "L’acqua tra le travi oblique e le rive verdi su entrambi i lati.",
+      "link": "Cerca il monte Fuji nella pianura del Sagami"
+    },
     "shiraito": {
       "name": "Ponte di Shiraito",
       "body": "Nei pressi di Nebukawa, il mare appare oltre i piloni rossi. È il ponte della linea Tōkaidō tradizionale. Anche se non si vede l’acqua del fiume, per un attimo si percepisce la profondità della valle.",
@@ -103,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi",
-      "body": "Anche qui c’è un ponte rosso, ma lo si vede un po’ più lontano insieme al fiume. Confrontalo con la foto della Nagara: cambiano la distanza dal ponte e l’ampiezza dell’acqua che entra nel finestrino.",
-      "alt": "Il fiume Ibi, un ponte stradale rosso a monte e le montagne sullo sfondo",
-      "caption": "L’acqua, il ponte rosso e le montagne si dispongono su piani diversi."
+      "body": "Il ponte rosso di Ogaki è più lontano di quello sul Nagara. Dietro il ponte, un po’ a destra del centro della foto, il castello di Gifu sorge sulla cima del monte Kinka. I lavori prevedono la copertura del mastio con teli da fine agosto 2026 a metà aprile 2027.",
+      "alt": "L’ampia distesa del fiume Ibi, il ponte rosso Ōgaki e il monte Kinka oltre il ponte.",
+      "caption": "Il ponte rosso Ōgaki sul fiume, con il monte Kinka sullo sfondo.",
+      "link": "Cerca il castello di Gifu dal finestrino"
     },
     "seta": {
       "name": "Seta",
@@ -131,19 +140,13 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Sagami e Sakawa",
-      "body": "Verso Shin-Osaka si attraversa prima il Sagami, che i viaggiatori dell’antica strada del Tōkaidō superavano in barca. Poco prima di Odawara, sul Sakawa, i portatori trasportavano i viaggiatori sulle spalle o su una portantina. Oggi si passa su entrambi i ponti restando comodamente seduti.",
-      "link": "Cerca il monte Fuji nella pianura del Sagami"
-    },
     "yahagi": {
       "name": "Yahagi",
       "body": "Lungo il percorso verso Mikawa-Anjō, il treno attraversa lo Yahagi. L’acqua captata a monte arriva ai campi intorno ad Anjō attraverso il canale Meiji. Il fiume sotto il finestrino sostiene la vita agricola della pianura."
     },
     "aizuma": {
       "name": "Aizuma",
-      "body": "A Kariya, alcuni appassionati hanno individuato su una mappa un punto sul fiume Aizuma da cui osservare lo Shinkansen. Dal finestrino il fiume appare solo per un attimo. Da terra, a sud-est del ponte, il treno su cui viaggi diventa protagonista del paesaggio.",
-      "link": "Post di 三浦克介 (Katsuyoshi Miura), foto scattata da terra a sud-est del ponte"
+      "body": "Da Mikawa-Anjō verso Nagoya, il treno attraversa prima il fiume Aizuma a Kariya e poi il fiume Sakai. Verso Tokyo l’ordine si inverte. Segui i due attraversamenti mentre passi per Kariya."
     }
   },
   "sources": {
@@ -154,13 +157,14 @@
     "oi": "Museo civico di Shimada · attraversamento dell’Ōi",
     "kiso": "Ministero dei Trasporti · fiume Kiso",
     "floodway": "Ufficio fluviale di Toyohashi · spiegazione del canale di scolmo",
-    "ride": "Nagoyan · foto dei due ponti dal treno diretto a Tokyo",
+    "ride": "Canale di scolmo del Toyo e fiume Toyo visti da un treno diretto a Tokyo",
     "bridges": "Elenco dei ponti dello Shinkansen · distanza approssimativa",
     "meiji": "Ministero dell’Agricoltura · storia del canale irriguo Meiji",
     "shonai": "Ufficio fluviale dello Shōnai · mappa dell’area di Biwajima",
     "kamo": "Prefettura di Kyoto · mappa del Kamo",
     "seta": "Ministero dei Trasporti · fiume Seta",
     "map": "Istituto geografico giapponese · mappa GSI",
-    "book": "Kei Kurihara, «Quanto è interessante il panorama dal finestrino dello Shinkansen Tōkaidō!», 2016"
+    "book": "Kei Kurihara, «Quanto è interessante il panorama dal finestrino dello Shinkansen Tōkaidō!», 2016",
+    "gifuCity": "Città di Gifu · lavori al mastio e calendario dei teli protettivi"
   }
 }

@@ -40,6 +40,14 @@
       "sub": "Maruko-Brücke",
       "link": "Mehr zur Maruko-Brücke"
     },
+    "sagami-sakawa": {
+      "name": "Sagami-Fluss",
+      "sub": "Die Sakawa und der alte Tōkaidō",
+      "body": "Zwischen den schrägen grauen Stahlträgern öffnen sich eine breite Wasserfläche und grüne Ufer auf beiden Seiten. Auf dem alten Tōkaidō überquerten Reisende die Sagami mit dem Boot; nahe Odawara trugen Flusshelfer die Reisenden über die Sakawa.",
+      "alt": "Breite Wasserfläche und grüne Ufer auf beiden Seiten, gesehen zwischen schrägen grauen Stahlträgern.",
+      "caption": "Wasser zwischen schrägen Stahlträgern und grünen Ufern auf beiden Seiten.",
+      "link": "Fuji in der Ebene von Sagami suchen"
+    },
     "shiraito": {
       "name": "Shiraito-Brücke",
       "body": "Bei Nebukawa zeigt sich hinter den roten Pfeilern das Meer. Zu sehen ist die Brücke der Tōkaidō-Hauptlinie. Auch wenn die Wasserfläche des Flusses verborgen bleibt, lässt sich die Tiefe des Tals in diesem Augenblick erahnen.",
@@ -103,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi",
-      "body": "Auch hier steht eine rote Brücke, aber etwas weiter entfernt und zusammen mit dem Fluss im Blick. Vergleichen Sie das Foto mit der Nagara: Der Abstand zur Brücke und die sichtbare Breite des Wassers unterscheiden sich.",
-      "alt": "Der Fluss Ibi, eine rote Straßenbrücke flussaufwärts und Berge in der Ferne",
-      "caption": "Wasser, rote Brücke und Berge bilden mehrere Ebenen."
+      "body": "Die rote Ōgaki-Brücke ist weiter entfernt als die Brücke über den Nagara. Dahinter, etwas rechts von der Bildmitte, liegt die Burg Gifu auf dem Gipfel des Berges Kinka. Der Burgturm soll von Ende August 2026 bis Mitte April 2027 mit Planen verhüllt sein.",
+      "alt": "Das breite Wasser des Ibi-Flusses, die rote Ogaki-Brücke und dahinter der Berg Kinka.",
+      "caption": "Die rote Ogaki-Brücke über dem breiten Fluss, dahinter der Berg Kinka.",
+      "link": "Die Burg Gifu vom Zugfenster aus suchen"
     },
     "seta": {
       "name": "Seta",
@@ -131,19 +140,13 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Sagami und Sakawa",
-      "body": "Richtung Shin-Osaka überquert der Zug zuerst die Sagami, die Reisende auf der alten Tōkaidō-Straße mit dem Boot passierten. Vor Odawara trugen Träger die Reisenden über die Sakawa auf den Schultern oder in einem Tragstuhl. Heute überquert der Zug beide Flüsse auf Brücken, während Sie sitzen bleiben.",
-      "link": "Fuji in der Ebene von Sagami suchen"
-    },
     "yahagi": {
       "name": "Yahagi",
       "body": "Auf dem Weg nach Mikawa-Anjō überquert der Zug die Yahagi. Wasser, das weiter oben entnommen wird, gelangt über den Meiji-Kanal zu den Feldern rund um Anjō. Der Fluss unter dem Fenster versorgt das Leben auf dem Land."
     },
     "aizuma": {
       "name": "Aizuma",
-      "body": "Bei Kariya entdeckten Eisenbahnfans die Aizuma auf einer Karte und kamen zum Shinkansen-Beobachten. Aus dem Fenster ist der Fluss nur einen Moment zu sehen. Vom Boden auf der Südostseite der Brücke wird der Zug, in dem man fährt, zum Mittelpunkt der Landschaft.",
-      "link": "Beitrag von 三浦克介 (Katsuyoshi Miura), Foto vom Boden südöstlich der Brücke"
+      "body": "Von Mikawa-Anjō Richtung Nagoya überquert der Zug bei Kariya zuerst den Fluss Aizuma, danach den Fluss Sakai. Richtung Tokyo ist die Reihenfolge umgekehrt. Achten Sie auf die beiden Flussquerungen bei Kariya."
     }
   },
   "sources": {
@@ -154,13 +157,14 @@
     "oi": "Stadtmuseum Shimada · Flussüberquerung am Ōi",
     "kiso": "Verkehrsministerium · Fluss Kiso",
     "floodway": "Flussbauamt Toyohashi · Erläuterung zum Entlastungskanal",
-    "ride": "Nagoyan · Fotos der beiden Brücken aus einem Zug Richtung Tokyo",
+    "ride": "Toyo-Entlastungskanal und Toyo-Fluss aus einem Zug Richtung Tokyo",
     "bridges": "Verzeichnis der Shinkansen-Brücken · geschätzter Abstand",
     "meiji": "Landwirtschaftsministerium · Geschichte des Meiji-Bewässerungskanals",
     "shonai": "Flussbauamt Shōnai · Plan des Gebiets Biwajima",
     "kamo": "Präfektur Kyoto · Karte der Kamo",
     "seta": "Verkehrsministerium · Fluss Seta",
     "map": "Japanisches Institut für geografische Information · GSI-Karte",
-    "book": "Kei Kurihara, „So interessant ist der Blick aus dem Tōkaidō-Shinkansen!“ , 2016"
+    "book": "Kei Kurihara, „So interessant ist der Blick aus dem Tōkaidō-Shinkansen!“ , 2016",
+    "gifuCity": "Stadt Gifu · Sanierung des Burgturms und Zeitplan für die Schutzplanen"
   }
 }
