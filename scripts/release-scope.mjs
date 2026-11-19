@@ -1197,9 +1197,32 @@ function spotVideoLoadingScope(changes, { assetVersionOnly }) {
   };
 }
 
+function timelineScope(changes, { assetVersionOnly }) {
+  const files = new Set(changes.map(change => change.path));
+  const railAsset = /^shared-ui\/[a-z-]+\.rail-[a-z0-9-]+\.js$/;
+  if (!files.has('spot-page-shared.js') || !files.has(spotValidator) || !changes.some(change => railAsset.test(change.path))) return null;
+  const pageGenerators = ['727', 'arenani', 'castle', 'ferris-wheel', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei'].map(name => 'scripts/generate-' + name + '-page.mjs');
+  pageGenerators.push('scripts/generate-sanyo-castle-pages.mjs');
+  const owners = new Set([...pageGenerators, 'scripts/templates/mieru-ja.html.tpl', 'scripts/templates/mieru-en.html.tpl',
+    ...['en/besides-fuji', 'en/jr-pass-fuji', 'en/reflections', 'reflections'].map(route => 'scripts/templates/site-source/' + route + '.html.tpl'),
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'spot-page-shared.js', spotValidator, 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json']);
+  const timelinePage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:727-collection|arenani|besides-fuji|castles|ferris-wheels|hanabi|jr-pass-fuji|mieru|reflections|sparkling-dreams|window-moments|yakei|spots\/(?:himeji|okayama|fukuyama)-castle)\.html$/;
+  if (!changes.every(({path, status}) => status === 'M' && (owners.has(path) || railAsset.test(path) || timelinePage.test(path) ||
+      ((path.endsWith('.html') || path === 'mieru.js') && assetVersionOnly?.(path))))) return null;
+  return {
+    scope: 'shared-timeline', needsDependencies: true, pagesCandidate: true,
+    reason: 'Check the shared spot/feature timeline, localized snapshots, and the versioned references in its consumers.',
+    commands: [node('--test', 'scripts/release-scope.test.mjs'), node('--check', 'spot-page-shared.js'), node(spotValidator),
+      ...[...pageGenerators, 'scripts/generate-mieru-page.mjs', 'scripts/generate-site-chrome.mjs', 'scripts/generate-site-runtime.mjs',
+        'scripts/generate-spot-page-runtime.mjs'].map(generator => node(generator, '--check')),
+      node(utilityGenerator, '--route', 'mieru.html', '--check'), node(castleGenerator, '--route', 'spots/okayama-castle.html', '--check'),
+      node('scripts/generate-sparkling-locales.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
+  };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = timelineScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };

@@ -186,7 +186,7 @@ var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える"
     renderTrainResults(); // 「読み込み中」表示
     timetableLoadPromise = new Promise(function(resolve){
       var s = document.createElement("script");
-      s.src = new URL("data/timetable.js?v=89e78630", document.querySelector('script[src*="mieru.js"]').src).href;
+      s.src = new URL("data/timetable.js?v=e093fb33", document.querySelector('script[src*="mieru.js"]').src).href;
       s.onload = function(){
         timetableLoading = false;
         TT = window.SHINKANSEN_TIMETABLE || null;

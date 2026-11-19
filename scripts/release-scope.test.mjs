@@ -31,6 +31,17 @@ test('river and factory photo updates check both guides and keep unrelated asset
   assert.notEqual(select([...files, {path: 'images/rivers/tama.jpg', status: 'D'}]).scope, plan.scope);
 });
 
+test('shared timelines check saved translations and limit other pages to asset references', () => {
+  const files = ['spot-page-shared.js', 'scripts/validate-spot-page-shared.mjs', 'shared-ui/fr.rail-mieru.js',
+    'fr/arenani.html', 'ko/spots/okayama-castle.html', 'de/beer-on-shinkansen.html', 'mieru.js'].map(change);
+  const options = {assetVersionOnly: path => ['de/beer-on-shinkansen.html', 'mieru.js'].includes(path)};
+  const plan = chooseReleaseScope(files, options);
+  assert.equal(plan.scope, 'shared-timeline');
+  assert.ok(plan.commands.some(command => command.includes('scripts/generate-sparkling-locales.mjs')));
+  assert.notEqual(chooseReleaseScope(files, {assetVersionOnly: () => false}).scope, plan.scope);
+  assert.notEqual(chooseReleaseScope([...files, change('data.js')], options).scope, plan.scope);
+});
+
 test('spot video loading checks both runtime manifests and accepts only version changes on other pages', () => {
   const files = ['spots/solar-ark.html', 'spot-page-shared.js', 'spot-media-gallery.css', 'scripts/generate-spot-pages.mjs',
     'site-runtime.json', 'spot-page-runtime.json', 'en/spots/solar-ark.html', 'de/727-collection.html'].map(change);

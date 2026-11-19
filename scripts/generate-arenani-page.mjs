@@ -352,7 +352,6 @@ ${otherLines.filter(c => c.heading).map(otherLineCard).join('\n')}
       </article>
     </div>
 
-    <section data-spot-page-shared-module="mobile-promos"></section>
     <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
@@ -485,7 +484,6 @@ ${englishKintetsu.map(c => otherLineCard(c, 'en')).join('\n')}
       </article>
     </div>
 
-    <section data-spot-page-shared-module="mobile-promos"></section>
     <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
