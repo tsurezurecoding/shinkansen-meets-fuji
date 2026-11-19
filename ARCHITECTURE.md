@@ -57,11 +57,13 @@ The exclusion list is a deny list on purpose. A field nobody has considered keep
 
 Editing an article field now changes four files. Editing a field the shell shows, such as a hook, still changes the shell.
 
+For a new article that follows the donburi and ramen pattern, add one entry to `scripts/editorial-release-articles.json`. Use the existing entries for the photo names, locale routes and related articles. CI derives the generator and test names from the article slug and runs the shared checks for all ten editions. A change outside that family needs its own validation scope.
+
 ## Web to Android contract
 
 Android consumes a frozen copy of selected Web assets described by `content-manifest.json`. Web work must not silently update the Android bundle. The Android repository owns its copied assets, version, AAB, and release checks.
 
-As of 2026-08-25 Android is under production-access review and new Android releases are frozen. Web release-gate work must not edit, copy, build, upload, or publish Android artifacts.
+The Android repository records the Web commit used by each mobile release. Merging a Web change updates the Web product; the mobile release process selects its own pin.
 
 ## Required local checks
 
@@ -72,7 +74,7 @@ npm run verify
 
 `verify` performs validators, generator drift checks, deterministic manifest comparison, syntax checks for all first-party JavaScript including legacy, Node tests, the severity-aware site audit, and Git whitespace checks.
 
-After editing a source that has generated consumers, run `npm run build`, then run `npm run verify`. A second build must produce no diff.
+After editing a source that has generated consumers, regenerate those outputs. For a committed candidate, `node scripts/release-scope.mjs plan <base-sha> <plan.json>` lists the affected checks. Store the plan outside the checkout. Run the full verification when the plan selects it.
 
 ## Publication path
 
@@ -81,4 +83,6 @@ working branch -> pull request -> quality-gate -> main
 main + approved exact SHA -> manual deploy-pages workflow -> GitHub Pages
 ```
 
-Normal pushes must never deploy. The deploy workflow accepts an exact 40-character SHA, proves it is on `origin/main`, reruns `verify`, checks deterministic build output, enforces the release interval, and then uploads the static site. Publication still requires the chair's explicit approval.
+The PR runs the checks selected from the diff. Main can reuse successful PR evidence when the repository, Git tree and both merge parents match. Main then stages the public paths in `scripts/pages-layout.json` from the verified commit and saves a Pages candidate for 30 days. Run `node scripts/pages-package.mjs check HEAD` to check the inventory and manifest sizes locally. Classify any new top-level directory in the layout.
+
+After the chair approves publication, dispatch `deploy-pages` with the full commit SHA from main. The workflow verifies the main ancestry, CI run, immutable artifact ID, digest and contents of the saved archive, then deploys that archive.

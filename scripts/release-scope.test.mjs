@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
+import { articleRegistryPath, articleReleaseHelper, articleRegistry, editions, validateArticleRegistry } from './shared/editorial-release.mjs';
 import { onlyFactoryJpegMetadataRemoved } from './release-scope.mjs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
 import { onlyRamenSitemapChanged, onlyRamenLocaleRouteChanged, onlyRamenLanguageRouteChanged, onlyRamenAssetReferencesChanged, onlyRamenMetadataAdded, onlyRamenEnglishCardAddedToJapaneseDonburi } from './release-scope.mjs';
@@ -10,6 +11,30 @@ import { onlyDonburiSitemapChanged, onlyDonburiLocaleRouteChanged, onlyDonburiLa
 import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+test('guide and journal checks accept body copy and timetable removal while rejecting dependency and route changes', () => {
+  const files = ['scripts/templates/site-source/zukan.html.tpl', 'scripts/templates/site-source/en/journal.html.tpl',
+    'zukan.html', 'fr/journal.html', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/stamp-store.test.mjs'];
+  const tag = '  <script src="data/timetable.js?v=89e78630"></script>\n';
+  const body = '<html><head><link rel="stylesheet" href="guide.css"></head><body><p>View</p>\n';
+  const end = '<script>init()</script></body></html>';
+  const changes = files.map(change);
+  const plan = (input, before, after) => chooseReleaseScope(input, {fileContents: () => [before + end, after + end]});
+  const selected = plan(changes, body + tag, body);
+  assert.equal(selected.scope, 'guide-and-journal');
+  assert(selected.pagesCandidate && selected.needsDependencies);
+  for (const name of ['zukan.html', 'journal.html']) assert(selected.commands.some(c => c.includes('--check') && c.includes(name)));
+  assert(selected.commands.some(c => c.includes('scripts/stamp-store.test.mjs') && c.includes('scripts/train-result.test.mjs')));
+  assert.equal(plan(changes, body, body.replace('View', 'Views from the train')).scope, selected.scope);
+  for (const rejected of [plan(changes, body, body + '<script src="https://cdn.example/guide.js"></script>'),
+    plan(changes, body, body.replace('guide.css', 'other.css')), plan(changes, body + '<script>a()</script>', body + '<script>b()</script>'),
+    plan(changes, body + '<style>.a{color:red}</style>', body + '<style>.a{color:blue}</style>'), plan(changes, body + tag + tag, body),
+    plan([...changes, change('en/start.html')], body + tag, body), plan([...changes, {path: 'it/zukan.html', status: 'D'}], body + tag, body),
+    plan([...changes, {path: 'de/journal.html', status: 'A'}], body, body.replace('View', 'Train')),
+    plan(changes, body + tag.replace('data/timetable.js', 'data-runtime.js'), body)]) {
+    assert.notEqual(rejected.scope, selected.scope);
+  }
+});
 
 test('metadata and spot rendering checks follow their inputs across release scopes', () => {
   const metadata = 'scripts/generate-spot-pages.test.mjs', validator = 'scripts/validate-spot-page-shared.mjs';
@@ -129,6 +154,100 @@ test('factory scope includes its photo tests and permits only their single packa
     const invalid = structuredClone(after);
     invalid.scripts['test:generator'] += suffix;
     assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(invalid)}).scope, 'factory-windows');
+  }
+});
+
+test('each declared article has a generator, tests, source copy, ten editions and every registered photograph', () => {
+  const exists = file => fs.existsSync(new URL('../' + file, import.meta.url));
+  for (const [id, article] of Object.entries(articleRegistry)) {
+    const inputs = ['scripts/generate-' + id + '-page.mjs', 'scripts/' + id + '-page.test.mjs', id + '.css',
+      ...editions.flatMap(lang => ['data/' + id + '/' + lang + '.json', (lang === 'ja' ? '' : lang + '/') + id + '.html']),
+      ...article.photos.map(stem => 'images/' + id + '/' + stem + '.webp')];
+    if (article.clientScript) inputs.push(id + '.js');
+    for (const file of inputs) assert(exists(file), file);
+    for (const own of ['data/' + id + '/fr.json', 'fr/' + id + '.html', 'images/' + id + '/' + article.photos[0] + '.webp']) {
+      const plan = chooseReleaseScope([change(own)]);
+      assert.equal(plan.scope, id + '-everyday');
+      assert(plan.commands.some(c => c.includes('--test') && c.includes('scripts/' + id + '-page.test.mjs')));
+      assert(plan.commands.some(c => c.includes('--check') && c.includes('scripts/generate-' + id + '-page.mjs')));
+    }
+  }
+  const read = [];
+  const mixed = ['ramen.html', ...Array.from({length: 40}, (_, index) => 'spots/unrelated-' + index + '.html'), 'app.js'];
+  assert.equal(chooseReleaseScope(mixed.map(change), {fileContents: file => { read.push(file); return ['', '']; }}).scope, 'unmapped');
+  assert.deepEqual(read.filter(file => file.startsWith('spots/unrelated-')), []);
+});
+
+test('a third Everyday Japan article registers its roles without adding a planner branch', () => {
+  const udon = {sitemapDate: '2026-11-19', previousLocaleRoutes: ['guide', 'omamori', 'donburi', 'ramen', 'factories'],
+    companionArticles: ['ramen'], photos: ['kitsune', 'kake']};
+  const registry = {...articleRegistry, udon}, generator = 'scripts/generate-udon-page.mjs', articleTest = 'scripts/udon-page.test.mjs';
+  const before = {scripts: {'build:pages': 'node existing.mjs', 'preflight:spots': 'node existing.mjs --check', 'test:generator': 'node --test scripts/existing.test.mjs'}};
+  const after = {scripts: {'build:pages': 'node ' + generator + ' && node existing.mjs',
+    'preflight:spots': 'node ' + generator + ' --check && node existing.mjs --check', 'test:generator': 'node --test ' + articleTest + ' scripts/existing.test.mjs'}};
+  const registered = "['guide.html', 'omamori.html', 'donburi.html', 'ramen.html', 'factories.html']";
+  const sitemap = 'function sitemapXML() {\n  return [\n  ];\n}';
+  const line = "    ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/udon.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-19'})),\n";
+  const data = {
+    [articleRegistryPath]: [JSON.stringify(articleRegistry), JSON.stringify(registry)],
+    'scripts/generate-spot-pages.mjs': [sitemap, sitemap.replace('  ];', line + '  ];')],
+    'locales.js': [registered, registered.replace(']', ", 'udon.html']")],
+    'language-router.js': ['const routes = {\n};', 'const routes = {\n    "/udon.html": "en/udon.html",\n};'],
+    'scripts/content-metadata.json': ['{}', '{"en/udon.html":{"title":"Udon"}}'],
+  };
+  const product = ['package.json', 'scripts/generate-spot-pages.mjs', 'locales.js', 'language-router.js', 'scripts/content-metadata.json',
+    'en/ramen.html', 'de/everyday-japan.html', 'scripts/food-country-locales.test.mjs', 'content-manifest.json', articleRegistryPath].map(change);
+  for (const path of [generator, articleTest, 'udon.html', 'udon.css', 'fr/udon.html', 'data/udon/ja.json', 'images/udon/kitsune.webp'])
+    product.push({status: 'A', path});
+  const run = (files = product, pkg = after, overrides = {}, spec = registry) => chooseReleaseScope(files, {articleRegistry: spec,
+    packageBefore: JSON.stringify(before), packageAfter: JSON.stringify(pkg), fileContents: file => overrides[file] || data[file] || ['old\n', 'other\n']});
+  const plan = run();
+  assert.equal(plan.scope, 'udon-everyday');
+  assert(plan.pagesCandidate && plan.needsDependencies);
+  const tests = plan.commands.find(c => c.includes('--test') && c.includes(articleTest));
+  for (const file of ['scripts/ramen-page.test.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs',
+    'scripts/food-country-locales.test.mjs']) assert(tests.includes(file));
+  for (const tool of [generator, 'scripts/generate-ramen-page.mjs', 'scripts/generate-site-runtime.mjs', 'scripts/sync-asset-versions.mjs'])
+    assert(plan.commands.some(c => c.includes(tool) && c.includes('--check')), tool);
+  assert(plan.commands.some(c => c.includes('scripts/validate-site-navigation.mjs') && c.includes('udon.html') && c.includes('ramen.html')));
+  const declarationOnly = run([change(articleRegistryPath)]);
+  assert.equal(declarationOnly.scope, 'udon-everyday');
+  assert.equal(declarationOnly.pagesCandidate, false);
+  assert(declarationOnly.commands.some(c => c.includes('--test') && c.includes(articleTest)));
+  for (const file of ['app.js', 'ar/udon.html', 'fr/guide.html', 'images/udon/unregistered.webp'])
+    assert.notEqual(run([...product, change(file)]).scope, 'udon-everyday', file);
+  const hijack = {...registry, ramen: {...articleRegistry.ramen, companionArticles: []}};
+  assert.notEqual(run(product, after, {[articleRegistryPath]: [JSON.stringify(articleRegistry), JSON.stringify(hijack)]}, hijack).scope, 'udon-everyday');
+  for (const [file, edit] of [['scripts/content-metadata.json', '{"en/guide.html":{}}'], ['locales.js', registered + '; other()']])
+    assert.notEqual(run(product, after, {[file]: [data[file][0], edit]}).scope, 'udon-everyday');
+  assert.notEqual(run(product.filter(c => c.path !== articleTest)).scope, 'udon-everyday');
+  for (const [key, replacement] of [['preflight:spots', after.scripts['preflight:spots'].replace(generator + ' --check', generator)],
+    ['test:generator', 'node --test ' + articleTest], ['test:generator', 'node --test ' + articleTest + ' ' + articleTest + ' scripts/existing.test.mjs']]) {
+    const damaged = structuredClone(after); damaged.scripts[key] = replacement;
+    assert.notEqual(run(product, damaged).scope, 'udon-everyday');
+  }
+  for (const invalid of [{...udon, commands: []}, {...udon, photos: ['../app']}, {...udon, companionArticles: ['missing']}])
+    assert.throws(() => validateArticleRegistry({...articleRegistry, udon: invalid}));
+  const infrastructure = ['ARCHITECTURE.md', 'scripts/pages-package.mjs', 'scripts/pages-package.test.mjs', 'scripts/pages-layout.json',
+    '.github/workflows/quality-gate.yml'].map(change);
+  const combined = run([...product, ...infrastructure]);
+  assert.equal(combined.scope, 'udon-everyday');
+  assert(combined.commands.some(c => c.includes('--test') && c.includes('scripts/pages-package.test.mjs')));
+  assert(combined.commands.some(c => c.includes('--test') && c.includes(articleTest)));
+});
+
+test('a changed Pages package definition validates the package and builds a main deployment candidate', () => {
+  const testFile = 'scripts/pages-package.test.mjs';
+  for (const [file, candidate] of [['scripts/pages-layout.json', true], ['scripts/pages-package.mjs', true], [testFile, false]]) {
+    const files = [{status: 'A', path: articleRegistryPath}, change(articleReleaseHelper), change('scripts/release-scope.mjs'),
+      change('ARCHITECTURE.md'), change(file)];
+    const plan = chooseReleaseScope(files);
+    assert.equal(plan.scope, 'release-infrastructure');
+    assert.equal(plan.pagesCandidate, candidate);
+    assert.equal(plan.needsDependencies, false);
+    assert.equal(plan.commands.filter(c => c.includes('--test') && c.includes(testFile)).length, 1);
+    assert(!plan.commands.some(c => c[1] === 'scripts/pages-package.mjs' && c.includes('check')));
+    assert.equal(chooseReleaseScope([...files, change('app.js')]).scope, 'unmapped');
   }
 });
 
@@ -281,7 +400,7 @@ test('ramen package extension preserves the existing generator, test and depende
   assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(arbitrary)}).scope, 'ramen-everyday');
 });
 
-test('Kakegawa advertising pilot is bounded to one opt-in page and test-only package registration', () => {
+test('spot advertising checks only configured Japanese routes and test-only package registration', () => {
   const files = ['spot-adsense.js', 'spots/kakegawa.html', 'scripts/shared/spot-ad-placements.mjs',
     'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.mjs', 'scripts/generate-content-manifest.mjs',
     'content-manifest.json', 'privacy.html', 'en/privacy.html', 'scripts/templates/site-source/privacy.html.tpl',
@@ -290,6 +409,14 @@ test('Kakegawa advertising pilot is bounded to one opt-in page and test-only pac
   assert.equal(plan.scope, 'spot-adsense-pilot');
   assert(plan.commands.some(command => command.includes('scripts/generate-spot-pages.test.mjs')));
   assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
+  const routes = ['genki-sign', 'hikone-castle', 'hinataoka', 'kiyosu', 'solar-ark'].map(id => 'spots/' + id + '.html');
+  const expansion = [...routes, 'scripts/shared/spot-ad-placements.mjs', 'scripts/spot-adsense.test.mjs', 'content-manifest.json'];
+  const expandedPlan = chooseReleaseScope(expansion.map(change));
+  assert.equal(expandedPlan.scope, 'spot-adsense-pilot');
+  const navigation = expandedPlan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs'));
+  for (const route of routes) assert(navigation.includes(route), route);
+  for (const unrelated of ['spots/727-board.html', 'spots/ibuki.html', 'en/spots/kiyosu.html'])
+    assert.notEqual(chooseReleaseScope([...expansion, unrelated].map(change)).scope, 'spot-adsense-pilot', unrelated);
   for (const unrelated of ['spot-page-shared.js', 'style.css', 'zukan.html', 'spots/fuji.html', 'en/spots/kakegawa.html'])
     assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'spot-adsense-pilot', unrelated);
   assert.notEqual(chooseReleaseScope([...files.map(change), {path:'privacy.html',status:'D'}]).scope, 'spot-adsense-pilot');
@@ -685,6 +812,10 @@ test('release infrastructure changes test release behavior without generating un
 });
 test('documentation and empty changes do not run product tests', () => {
   assert.deepEqual(chooseReleaseScope([change('README.md')]).commands, []);
+  const architecture = chooseReleaseScope([change('ARCHITECTURE.md')]);
+  assert.equal(architecture.scope, 'documentation');
+  assert.deepEqual(architecture.commands, []);
+  assert.equal(chooseReleaseScope([change('ARCHITECTURE.md'), change('app.js')]).scope, 'unmapped');
   assert.deepEqual(chooseReleaseScope([]).commands, []);
 });
 

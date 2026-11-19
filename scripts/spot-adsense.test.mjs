@@ -18,17 +18,26 @@ function harness({url='https://www.michikusa-travel.com/spots/kakegawa.html',pos
  const run=()=>vm.runInNewContext(source,{window:root});run();
  return {root,doc:root.document,observers,run,resolveReady,intersect:()=>observers[0]?.callback([{isIntersecting:true}]),sdk:()=>root.document.querySelectorAll('script[src*="adsbygoogle.js"]').length};
 }
-test('only Japanese Kakegawa opts into one generated shared script',()=>{
- assert.deepEqual(Object.keys(SPOT_AD_PLACEMENTS),['ja/kakegawa']);
- const original='<body>article</body>',html=withSpotAdvertising(original,'kakegawa','ja');
- assert.equal(withSpotAdvertising(html,'kakegawa','ja'),html);
- assert.equal((html.match(/id="mado-spot-ad-config"/g)||[]).length,1);
- assert.ok(html.endsWith('<!-- SPOT_ADSENSE_END -->\n</body>'));
- assert.ok(!html.includes('site-runtime-loader.js'));
- for(const [spot,lang] of [['fuji','ja'],['kakegawa','en'],['kakegawa','fr']])assert.equal(withSpotAdvertising(original,spot,lang),original);
- const plan=planSpotPage('kakegawa','ja',{requireExisting:true,preserveHead:true});
- assert.equal(fs.readFileSync('spots/kakegawa.html','utf8'),finalPageOutput(plan.outputPath,plan.generatedHTML));
- assert.ok(!planSpotPage('kakegawa','en').generatedHTML.includes('mado-spot-ad-config'));
+test('only the selected Japanese articles have one matching placement in their final HTML', () => {
+ const spots = ['genki-sign', 'hikone-castle', 'hinataoka', 'kakegawa', 'kiyosu', 'solar-ark'];
+ assert.deepEqual(Object.keys(SPOT_AD_PLACEMENTS).sort(), spots.map(spot => 'ja/' + spot));
+ const original = '<body>article</body>';
+ for (const spot of spots) {
+   const html = withSpotAdvertising(original, spot, 'ja');
+   assert.equal(withSpotAdvertising(html, spot, 'ja'), html);
+   assert.ok(html.endsWith('<!-- SPOT_ADSENSE_END -->\n</body>'));
+   assert.ok(!html.includes('site-runtime-loader.js'));
+   const plan = planSpotPage(spot, 'ja', {requireExisting:true, preserveHead:true});
+   const final = finalPageOutput(plan.outputPath, plan.generatedHTML);
+   assert.equal(fs.readFileSync(plan.outputPath, 'utf8'), final, spot);
+   const configs = [...final.matchAll(/<script id="mado-spot-ad-config" type="application\/json">([^<]+)<\/script>/g)];
+   assert.equal(configs.length, 1, spot);
+   assert.deepEqual(JSON.parse(configs[0][1]), {version:1, spot, lang:'ja', client:'ca-pub-5756673901202661', position:'before-map', slot:'6439684093'});
+   assert.equal((final.match(/src="\.\.\/spot-adsense\.js\?/g) || []).length, 1, spot);
+   for (const lang of ['en', 'fr']) assert.equal(withSpotAdvertising(original, spot, lang), original);
+   assert.ok(!planSpotPage(spot, 'en').generatedHTML.includes('mado-spot-ad-config'));
+ }
+ for (const spot of ['fuji', 'ibuki', '727-board']) assert.equal(withSpotAdvertising(original, spot, 'ja'), original);
 });
 test('Kakegawa keeps the same ad and loader order through both generation paths', () => {
  const file = 'spots/kakegawa.html';

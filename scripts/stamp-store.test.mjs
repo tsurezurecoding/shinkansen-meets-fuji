@@ -2,11 +2,23 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import vm from "node:vm";
 import { test } from "node:test";
+import { fileURLToPath } from "node:url";
 import locales from "../locales.js";
+import { readSiteSource } from "./shared/site-chrome.mjs";
+import { withStoryWindowLinks } from "./shared/story-window.mjs";
+import { withUtilityLocales } from "./shared/utility-locales.mjs";
 
 const root = new URL("../", import.meta.url);
 const storeScript = fs.readFileSync(new URL("data/stamp-store.js", root), "utf8");
 const key = "mado-stamps";
+
+test("field guide and stamp book authored pages agree with their templates", () => {
+  const appDir = fileURLToPath(root);
+  for (const file of ["zukan.html", "journal.html", "en/journal.html"]) {
+    const source = withStoryWindowLinks(readSiteSource(appDir, file), file, appDir);
+    assert.equal(withUtilityLocales(source, file), fs.readFileSync(new URL(file, root), "utf8"), file);
+  }
+});
 
 function tab(storage, locks) {
   const window = { navigator: { locks }, localStorage: storage };
@@ -68,6 +80,12 @@ test("every language loads the same local store before its stamp controls", () =
       const consumerPath = new URL(consumer, root).pathname;
       assert.equal(scripts.filter(url => url === store).length, 1, file.pathname);
       assert.ok(scripts.indexOf(store) < scripts.indexOf(consumerPath), file.pathname);
+      if (["start.html", "zukan.html", "journal.html"].includes(route)) {
+        const needsTrains = route === "start.html";
+        const timetable = new URL("data/timetable.js", root).pathname;
+        assert.equal(/\bdata-train-picker\b/.test(html), needsTrains, file.pathname);
+        assert.equal(scripts.filter(url => url === timetable).length, needsTrains ? 1 : 0, file.pathname);
+      }
     }
   }
 });

@@ -1,0 +1,21 @@
+{
+  "publicDirectories": [
+    "ar", "artworks", "buildingfinder", "data", "de", "en", "es", "fonts", "fr",
+    "images", "it", "ko", "live", "promo", "quiz", "shared-ui", "spots", "stories",
+    "sudoori", "th", "traingraph", "v0", "v1", "vendor", "videos", "window-xray",
+    "zh-Hans", "zh-Hant"
+  ],
+  "publicRootExtensions": [".css", ".html", ".ico", ".js", ".png"],
+  "publicRootFiles": [
+    "CNAME", "a0c4d4d3dcca4bcbb5d2024dae7a953d.txt", "ads.txt",
+    "content-manifest.json", "manifest.json", "robots.txt", "site-runtime.json",
+    "sitemap.xml", "spot-page-runtime.json"
+  ],
+  "sourceDirectories": [".github", "docs", "reports", "scripts"],
+  "sourceFiles": [".gitattributes", ".gitignore", "ARCHITECTURE.md", "package-lock.json", "package.json"],
+  "requiredFiles": [
+    "CNAME", "index.html", "en/index.html", "app.js", "robots.txt", "sitemap.xml",
+    "content-manifest.json", "site-runtime.json", "shared-ui/ja.shell.js",
+    "v0/index.html", "v1/index.html", "window-quiz.html"
+  ]
+}
