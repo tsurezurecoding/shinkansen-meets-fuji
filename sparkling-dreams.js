@@ -41,13 +41,23 @@
       { type: "Hikari", number: 636, direction: "east" },
       { type: "Hikari", number: 659, direction: "west" },
     ],
+    E: [
+      { type: "Hikari", number: 640, direction: "east" },
+      { type: "Kodama", number: 819, direction: "west" },
+      { type: "Kodama", number: 840, direction: "east" },
+    ],
     G: [
       { type: "Nozomi", number: 328, direction: "east" },
       { type: "Nozomi", number: 489, direction: "west" },
     ],
+    H: [
+      { type: "Nozomi", number: 329, direction: "west" },
+      { type: "Nozomi", number: 258, direction: "east" },
+      { type: "Nozomi", number: 471, direction: "west" },
+    ],
   };
 
-  // JR Central calendar images v=261001, checked 2026-10-10. The G icon's HTML alt says D; the visible calendar and icon both say G.
+  // JR Central calendar images: October v=261001, November v=261111 and December v=261027.
   const DATE_PATTERNS = {};
   const addMonthPatterns = (month, patterns) => patterns.forEach((pattern, index) => {
     DATE_PATTERNS[`2026-${month}-${String(index + 1).padStart(2, "0")}`] = pattern;
@@ -60,7 +70,8 @@
   ]);
 
   addMonthPatterns("10", ["G","A","A","A","B","C","B","B","A","A","A","A","B","pending","B","A","A","A","A","C","pending","B","A","A","A","B","C","pending","B","A","A"]);
-  addMonthPatterns("11", ["A","C","A","pending","pending","pending","A","A","C","B","pending","B","A","A","A","B","B","pending","A","A","A","A","A","A","pending","B","A","A","A","C"]);
+  addMonthPatterns("11", ["A","C","A","no-service","E","H","A","A","C","B","B","B","A","A","A","B","B","B","A","A","A","A","A","A","pending","B","A","A","A","C"]);
+  addMonthPatterns("12", ["B","pending","A","A","A","A","A","pending","pending","pending","A","B","A","B","C","pending","B","A","B","A","B","C","pending","A","A","A","A","A","A","pending","A"]);
 
   const START_DATE = "2026-06-19";
   const END_DATE = "2027-03-15";
@@ -93,6 +104,7 @@
     if (dateKey < START_DATE || dateKey > END_DATE) return { status: "outside-range", date: dateKey };
     const pattern = DATE_PATTERNS[dateKey];
     if (!pattern || pattern === "pending") return { status: "pending", date: dateKey };
+    if (pattern === "no-service") return { status: "no-service", date: dateKey };
     return { status: "known", date: dateKey, pattern };
   }
 
@@ -256,6 +268,11 @@
       resultBox.innerHTML = fmt("<h3>The pattern for this date is not confirmed</h3><p>The operating pattern for {0} has not been published yet. Please check the official schedule when it is available.</p>", escapeHTML(result.date));
       return;
     }
+    if (result.status === "no-service") {
+      resultBox.classList.add("is-note");
+      resultBox.innerHTML = fmt("<h3>Special train not running</h3><p>JR Central lists no Sparkling Dreams Shinkansen service on {0}.</p>", escapeHTML(result.date));
+      return;
+    }
     if (result.status === "invalid" || result.status === "invalid-train") {
       resultBox.classList.add("is-empty");
       resultBox.innerHTML = tr("<h3>Please choose a date and train</h3><p>Check your date and direction, then try again.</p>");
@@ -300,6 +317,11 @@
     if (result.status === "pending") {
       resultBox.classList.add("is-note");
       resultBox.innerHTML = `<h3>この日の運転パターンは未確定です</h3><p>${escapeHTML(result.date)}の運転予定はまだ確定していません。推測で補わず、公式スケジュールをご確認ください。</p>`;
+      return;
+    }
+    if (result.status === "no-service") {
+      resultBox.classList.add("is-note");
+      resultBox.innerHTML = `<h3>この日は特別列車の運行がありません</h3><p>JR東海の運行予定では、${escapeHTML(result.date)}は特別編成の運休日です。</p>`;
       return;
     }
     if (result.status === "invalid" || result.status === "invalid-train") {

@@ -46,10 +46,11 @@
     const epoch=dateEpoch(date),today=jstParts(now).date;
     if(epoch==null)return {status:'invalid',message:'乗車日を正しく選んでください。太陽計算の範囲は1901〜2099年です。'};
     if(date<timetable.validFrom)return {status:'before-dataset',message:'時刻表データの対象開始日より前です。この日の便とすれ違いは判定できません。'};
-    const monthMatch=/october-2026/.test(timetable.datasetId||'')&&date.startsWith('2026-10');
+    const snapshotMonth=timetable.snapshotMonth||(/october-2026/.test(timetable.datasetId||'')?'2026-10':'');
+    const monthMatch=date.slice(0,7)===snapshotMonth;
     const relation=date<today?'past':date>today?'future':'today';
     const caution=relation==='past'?'過去日です。当時のダイヤは未照合。':relation==='future'?'未来日です。その日の便の運行は未確認。':'今日の運行変更・遅延は未反映。';
-    return {status:'reference',relation,monthMatch,message:caution+(monthMatch?'':'10月固定ダイヤで走ると仮定した参考です。')};
+    return {status:'reference',relation,monthMatch,message:caution+(monthMatch?'':'掲載の固定ダイヤで走ると仮定した参考です。')};
   }
   function movingSolar({journey,date,track,trainSelect}){
     const epoch=dateEpoch(date),stops=journey?.stops;

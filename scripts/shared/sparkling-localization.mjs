@@ -2,10 +2,11 @@ import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './castle-lo
 export const SPARKLING_ROUTE = 'sparkling-dreams.html';
 export { translated as SPARKLING_LOCALES } from './locales.mjs';
 export const SPARKLING_EXTRA = [
- 'Enable JavaScript to use the calculator. The A/B/C patterns and official links below are still available without it.',
+ 'Enable JavaScript to use the calculator. The operating patterns and official links below remain available.',
  'Pattern {0}', 'E-seat side', 'A-seat side', 'Westbound (Tokyo → Shin-Osaka)', 'Eastbound (Shin-Osaka → Tokyo)',
  '<h3>That date is outside the operating period</h3><p>{0} is outside the published operating period, June 19, 2026 to March 15, 2027. Please check official information for the latest dates.</p>',
  '<h3>The pattern for this date is not confirmed</h3><p>The operating pattern for {0} has not been published yet. Please check the official schedule when it is available.</p>',
+ '<h3>Special train not running</h3><p>JR Central lists no Sparkling Dreams Shinkansen service on {0}.</p>',
  '<h3>Please choose a date and train</h3><p>Check your date and direction, then try again.</p>',
  '<h3>Your selected train is the special train</h3><p>{0} is part of {1} on {2}. It is the Sparkling Dreams Shinkansen itself, so there is no passing encounter to estimate.</p>',
  '<h3>No likely passing encounter was found</h3><p>{0} and the opposite-direction special train in {1} do not appear to cross within the calculated route. Please still check official information, as the plan can change.</p>',

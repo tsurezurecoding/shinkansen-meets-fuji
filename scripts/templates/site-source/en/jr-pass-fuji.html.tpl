@@ -184,7 +184,7 @@
       <p class="jp-table-note"><b>Select a train number</b> to open its own window timeline — every view it passes, each with a time and a seat side, worked out from that train&rsquo;s schedule.</p>
 
       <!-- JRPASS_TABLE_START -->
-        <p class="jp-table-note">Timetable data updated on <time datetime="2026-10-10">2026-10-10</time></p>
+        <p class="jp-table-note">Timetable data updated on <time datetime="2026-11-19">2026-11-19</time></p>
         <p class="jp-table-note">Times are in Japan time (JST). Operating dates and live delays are not reflected. Check the railway operator for your travel date.</p>
         <h3>Toward Kyoto and Shin-Osaka</h3>
         <p class="jp-table-note">Mt. Fuji is on your <b>right</b>, in <b>Seat E</b>.</p>
