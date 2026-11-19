@@ -1,3 +1,4 @@
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import { withSparklingLocales } from './shared/sparkling-locales.mjs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
@@ -199,7 +200,7 @@ ${t.sd_post_embed3}
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html');
   // COPYの中に固定で書かれた language-router.js の ?v= を、実ファイルのハッシュに揃える。
-  const html = withSparklingLocales(enhanceContentHead(render(lang), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html', root), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html').replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
+  const html = withSparklingLocales(enhanceContentHead(withFeatureMedia(render(lang), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html'), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html', root), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html').replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('sparkling-dreams page out of date: ' + dest);
   } else {

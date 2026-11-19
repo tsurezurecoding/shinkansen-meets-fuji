@@ -165,7 +165,7 @@ expect(postSection.includes("WINDOW FINDS") && postSection.includes("みんな�
 expect(!/class="section-sub"/.test(postSection), "sparkling-dreams.html: X video section must not add editorial summary copy");
 expect(postBlocks.length === 12 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: expected exactly twelve official X blockquotes");
 expect((postSection.match(/class="sd-post-embed sd-x-embed/g) || []).length === 12, "sparkling-dreams.html: every X post must use the stable loading container");
-expect((postSection.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="[^"]+"><blockquote class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: every X blockquote must sit inside the shared 16:9 media frame");
+expect((postSection.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="[^"]+"><a class="feature-post-open"[^>]+>[^<]+<\/a><template><blockquote class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: every X blockquote must sit inside the shared 16:9 media frame");
 expect((postSection.match(/<div class="sd-media-frame sd-youtube-frame" data-placeholder="[^"]+">/g) || []).length === 2, "sparkling-dreams.html: every YouTube player must use the same media frame as the X cards");
 expect(!/data-sd-media-fallback/.test(page), "sparkling-dreams.html: the obsolete JS fallback marker is still present");
 expect(postBlocks.every((block) => /data-dnt="true"/.test(block) && /data-media-max-width="560"/.test(block)), "sparkling-dreams.html: every X video must use privacy-enhanced official embed attributes");

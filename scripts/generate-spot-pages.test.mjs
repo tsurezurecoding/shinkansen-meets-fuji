@@ -348,7 +348,7 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
       assert.deepEqual(buttons.filter(item => item.hidden), [button]);
     }
   } finally { dom.window.close(); }
-  for (const [id, lang] of [['solar-ark', 'en'], ['hikone-castle', 'ja']]) {
+  for (const [id, lang] of [['solar-ark', 'en'], ['hikone-castle', 'en']]) {
     const control = renderedArticle(id, lang);
     try {
       const doc = control.window.document;
@@ -356,6 +356,13 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
       assert.ok(doc.querySelector('.spot-page-video-card iframe[src*="youtube-nocookie.com/embed/"]'));
     } finally { control.window.close(); }
   }
+  const single = renderedArticle('hikone-castle', 'ja');
+  try {
+    const doc = single.window.document;
+    assert.equal(doc.querySelector('.spot-page-video-card iframe'), null);
+    doc.querySelector('.spot-video-play').click();
+    assert.ok(doc.querySelector('.spot-page-video-card iframe[src*="V0t-dPBWI4Q"]'));
+  } finally { single.window.close(); }
 });
 
 test('Japanese videos across sections share one selection and load an X post only while selected', () => {
