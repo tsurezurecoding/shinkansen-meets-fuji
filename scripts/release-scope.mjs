@@ -7,7 +7,7 @@ import { isDeepStrictEqual } from 'node:util';
 import vm from 'node:vm';
 import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
 import { SPOT_AD_PLACEMENTS } from './shared/spot-ad-placements.mjs';
-import { articleRegistryPath, articleReleaseHelper, onlyArticleAssetReferencesChanged, onlyArticleRegistrationChanged, selectEditorialRelease } from './shared/editorial-release.mjs';
+import { articleRegistryPath, articleReleaseHelper, editions, onlyArticleAssetReferencesChanged, onlyArticleRegistrationChanged, selectEditorialRelease } from './shared/editorial-release.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shaPattern = /^[0-9a-f]{40}$/;
@@ -614,6 +614,35 @@ function selectExistingScope(changes, options = {}) {
       node('scripts/validate-spot-counts.mjs'),node('scripts/audit-photo-credits.mjs','--check'),
       node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs'),node('scripts/audit-site.mjs')],
   };
+  if (files.includes('data/rivers/route.json') && files.includes('scripts/factory-windows.json')) {
+    const routes = ['rivers.html', 'factories.html'];
+    const pages = editions.flatMap(lang => routes.map(route => lang === 'ja' ? route : lang + '/' + route));
+    const sources = new Set(['data/rivers/route.json', 'scripts/factory-windows.json', 'scripts/factories-page.test.mjs',
+      'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json', 'sitemap.xml', ...pages,
+      ...editions.flatMap(lang => [`data/rivers/${lang}.json`, `scripts/locales/factory-windows/${lang}.json`])]);
+    const withinFeatures = changes.every(({ path: file, status }) => {
+      if (status === 'A') return /^(?:images\/rivers\/[a-z0-9-]+\.jpg|images\/factories\/[a-z0-9-]+\.webp)$/.test(file);
+      if (status !== 'M') return false;
+      if (file !== 'scripts/content-metadata.json') return sources.has(file);
+      if (!options.fileContents) return false;
+      const [before, after] = options.fileContents(file).map(text => JSON.parse(text));
+      for (const page of pages) {
+        if (!before[page] || !after[page]) return false;
+        before[page].modified = after[page].modified;
+        before[page].modifiedEvidence = after[page].modifiedEvidence;
+      }
+      return isDeepStrictEqual(before, after);
+    });
+    if (withinFeatures) return {
+      scope: 'river-factory-photos', needsDependencies: true, pagesCandidate: true,
+      reason: 'Check the river crossings and nearby factories in ten editions, their photo links, sitemap and distributed assets.',
+      commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/factories-page.test.mjs'),
+        node('scripts/generate-rivers-page.mjs', '--check'), node('scripts/generate-factories-page.mjs', '--check'),
+        node('scripts/validate-site-navigation.mjs', '--route', 'rivers.html', '--route', 'factories.html'),
+        node('--input-type=module', '-e', "import assert from 'node:assert/strict'; import fs from 'node:fs'; import {sitemapXML} from './scripts/generate-spot-pages.mjs'; assert.equal(fs.readFileSync('sitemap.xml','utf8'),sitemapXML());"),
+        node('scripts/check-content-manifest.mjs')],
+    };
+  }
   const riversSources = new Set(['locales.js','language-router.js','package.json','scripts/generate-rivers-page.mjs',
     'scripts/validate-language-pages.mjs','scripts/generate-content-manifest.mjs','scripts/generate-spot-pages.mjs',
     'scripts/generate-language-mirrors.mjs','scripts/generate-utility-locales.mjs','scripts/templates/site-source/zukan.html.tpl',

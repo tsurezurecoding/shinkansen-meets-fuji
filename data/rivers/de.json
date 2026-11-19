@@ -48,6 +48,13 @@
       "caption": "Wasser zwischen schrägen Stahlträgern und grünen Ufern auf beiden Seiten.",
       "link": "Fuji in der Ebene von Sagami suchen"
     },
+    "sakawa": {
+      "name": "Sakawa",
+      "body": "Kurz vor Odawara sieht man auf der E-Seite flussaufwärts die Tore des Iizumi-Wehrs. Hier wird Wasser für die Trinkwasserversorgung der Präfektur Kanagawa entnommen.",
+      "alt": "Zwischen den Stahlträgern der Brücke sind eine Kiesbank, der Sakawa und dahinter die Wehrverschlüsse zu sehen.",
+      "caption": "Hinter der Kiesbank erstrecken sich die Tore des Iizumi-Wehrs über den Fluss.",
+      "link": "Das Arzneimittelwerk am Sakawa"
+    },
     "shiraito": {
       "name": "Shiraito-Brücke",
       "body": "Bei Nebukawa zeigt sich hinter den roten Pfeilern das Meer. Zu sehen ist die Brücke der Tōkaidō-Hauptlinie. Auch wenn die Wasserfläche des Flusses verborgen bleibt, lässt sich die Tiefe des Tals in diesem Augenblick erahnen.",
@@ -89,6 +96,12 @@
       "caption": "Der Hauptlauf des Toyo; am Deich entlang führt ein Weg.",
       "sub": "Hauptlauf und Entlastungskanal"
     },
+    "toyogawa-floodway": {
+      "name": "Flutkanal des Toyo",
+      "body": "Von Toyohashi Richtung Shin-Osaka quert der Zug zuerst den Toyo und dann seinen Flutkanal. Auf der A-Seite weisen die geraden Deiche in die Abendsonne. Richtung Tokyo kommt der Kanal zuerst.",
+      "alt": "Abendlicht spiegelt sich im Flutkanal zwischen zwei geraden Deichen.",
+      "caption": "Die geraden Ufer des Kanals lassen sich mit der Biegung des Hauptflusses vergleichen."
+    },
     "shonai": {
       "name": "Shōnai",
       "body": "Kurz nach Nagoya, hinter den vielen Gleisen im Vordergrund, erscheint eine Reihe von Brückenpfeilern. Hier bei Biwajima kommen Straßenbrücke, Brücke der konventionellen Bahn und die Brücke des Shinkansen an einem Ort zusammen.",
@@ -115,6 +128,20 @@
       "alt": "Das breite Wasser des Ibi-Flusses, die rote Ogaki-Brücke und dahinter der Berg Kinka.",
       "caption": "Die rote Ogaki-Brücke über dem breiten Fluss, dahinter der Berg Kinka.",
       "link": "Die Burg Gifu vom Zugfenster aus suchen"
+    },
+    "echigawa": {
+      "name": "Echi",
+      "body": "In der Präfektur Shiga schlängelt sich der Echi zwischen hellen Kiesbänken hindurch. Am anderen Ufer ragt ein Schild von Japan Pile über die Bäume hinaus.",
+      "alt": "Ein schmaler Wasserlauf zwischen hellen Kiesbänken und ein Schild über den Bäumen am gegenüberliegenden Ufer.",
+      "caption": "Wasser zieht sich durch den hellen Kies. In der Ferne liegen Berge.",
+      "link": "Das Joyson-Werk am Echi"
+    },
+    "yasu": {
+      "name": "Yasu",
+      "body": "Von der A-Seite erkennt man die dreieckige Silhouette des Mikami, den man hier auch Omi-Fuji nennt. Auf dem Foto entsteht in der Flussaue vor dem Berg eine Brücke.",
+      "alt": "Brückenpfeiler und ein unfertiger Überbau vor dem dreieckigen Gipfel des Mikami.",
+      "caption": "Über der Brückenbaustelle erhebt sich der Mikami.",
+      "link": "Qualitech Pharma am Yasu"
     },
     "seta": {
       "name": "Seta",
@@ -150,6 +177,7 @@
     }
   },
   "sources": {
+    "iizumi": "Präfektur Kanagawa – das Iizumi-Wehr und die Wasserversorgung",
     "maruko": "Stadt Kawasaki · Ortsgeschichte der Maruko-Fähre und -Brücke",
     "tokaido": "Verkehrsministerium · Überquerung der Sagami mit der Fähre und der Sakawa zu Fuß auf der alten Tōkaidō-Straße",
     "sakawa": "Stadt Odawara · Fußquerung der Sakawa",

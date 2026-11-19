@@ -48,6 +48,13 @@
       "caption": "Agua entre vigas diagonales y orillas verdes a ambos lados.",
       "link": "Busca el monte Fuji en la llanura de Sagami"
     },
+    "sakawa": {
+      "name": "Río Sakawa",
+      "body": "Cerca de Odawara, mira río arriba desde el lado E. Las compuertas del azud de Iizumi cruzan el Sakawa. Aquí se capta agua para el abastecimiento de la prefectura de Kanagawa.",
+      "alt": "Entre las vigas del puente se ven un banco de grava, el Sakawa y una fila de compuertas río arriba.",
+      "caption": "Las compuertas de Iizumi cruzan el río más allá del banco de grava.",
+      "link": "La fábrica de medicamentos junto al Sakawa"
+    },
     "shiraito": {
       "name": "Puente ferroviario Shiraito-gawa",
       "body": "Cerca de Nebukawa, el mar asoma al otro lado de los pilares rojos. El puente que vemos es de la línea principal Tōkaidō. Aunque no se vea la superficie del río, por un instante se siente la profundidad del valle.",
@@ -89,6 +96,12 @@
       "caption": "Cauce principal del Toyogawa. Un camino recorre el dique junto a la orilla.",
       "sub": "Cauce principal y canal de desvío del Toyogawa"
     },
+    "toyogawa-floodway": {
+      "name": "Canal de desvío del Toyo",
+      "body": "De Toyohashi hacia Shin-Osaka se cruza primero el cauce principal del Toyo y después el canal. Desde el lado A, sus diques rectos se pierden en la luz del atardecer. Hacia Tokio, el canal aparece primero.",
+      "alt": "La luz del atardecer se refleja en el canal entre dos diques rectos.",
+      "caption": "Compara las orillas rectas del canal con la curva del cauce principal."
+    },
     "shonai": {
       "name": "Río Shōnaigawa",
       "body": "Poco después de salir de Nagoya, al otro lado de varias vías que pasan en primer plano aparece una fila de pilares. Estamos en Biwajima, donde se concentran puentes de carretera, de la línea convencional y del Shinkansen en el que viajamos.",
@@ -115,6 +128,20 @@
       "alt": "La amplia superficie del río Ibi, el puente rojo de Ōgaki y el monte Kinka detrás.",
       "caption": "El puente rojo de Ōgaki sobre el río, con el monte Kinka al fondo.",
       "link": "Busca el castillo de Gifu desde el tren"
+    },
+    "echigawa": {
+      "name": "Río Echi",
+      "body": "En Shiga, el Echi serpentea entre bancos de grava clara. En la orilla opuesta, un cartel de Japan Pile sobresale por encima de los árboles.",
+      "alt": "Un cauce estrecho entre bancos de grava clara y un cartel sobre los árboles de la otra orilla.",
+      "caption": "El agua se abre paso entre la grava con las montañas al fondo.",
+      "link": "La planta de Joyson junto al Echi"
+    },
+    "yasu": {
+      "name": "Río Yasu",
+      "body": "Desde el lado A, busca la silueta triangular del monte Mikami, conocido como el «Fuji de Omi». En la foto se ve un puente en construcción en la llanura del río, al pie de la montaña.",
+      "alt": "Pilares y un tablero de puente en construcción delante del perfil triangular del monte Mikami.",
+      "caption": "El monte Mikami se alza detrás del tablero en construcción.",
+      "link": "Qualitech Pharma junto al Yasu"
     },
     "seta": {
       "name": "Río Setagawa",
@@ -150,6 +177,7 @@
     }
   },
   "sources": {
+    "iizumi": "Prefectura de Kanagawa – el azud de Iizumi y el abastecimiento de agua",
     "maruko": "Ciudad de Kawasaki sobre el antiguo cruce en barca de Maruko y su puente",
     "tokaido": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón: cruces fluviales de la antigua ruta Tōkaidō",
     "sakawa": "Ciudad de Odawara sobre el cruce del río Sakawa",

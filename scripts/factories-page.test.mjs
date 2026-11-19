@@ -15,6 +15,7 @@ const edition = (lang, route = 'factories.html') => `${lang === 'ja' ? '' : lang
 const catalog = JSON.parse(read('scripts/factory-windows.json'));
 const photos = catalog.places.flatMap(place => [place.photo, ...(place.comparison ? [place.comparison] : [])]);
 const photoPaths = photos.flatMap(photo => [photo.src, photo.thumb]);
+const riverRoute = JSON.parse(read('data/rivers/route.json'));
 const pathname = node => new URL(node.href || node.src).pathname.slice(1);
 
 function webpChunks(bytes, label) {
@@ -33,14 +34,14 @@ function webpChunks(bytes, label) {
   return chunks;
 }
 
-test('factories retain 26 photographed places, one comparison and ten language editions', () => {
+test('factories retain 29 photographed places, one comparison and ten language editions', () => {
   assert.deepEqual([...languages].sort(), ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'].sort());
   assert.deepEqual(supported('factories.html'), languages);
-  assert.equal(catalog.places.length, 26);
-  assert.equal(new Set(catalog.places.map(place => place.id)).size, 26);
-  assert.equal(photos.length, 27);
-  assert.equal(new Set(photos.map(photo => photo.src)).size, 27);
-  assert.equal(new Set(photoPaths).size, 54, 'Every large photo has a distinct 640px alternative');
+  assert.equal(catalog.places.length, 29);
+  assert.equal(new Set(catalog.places.map(place => place.id)).size, 29);
+  assert.equal(photos.length, 30);
+  assert.equal(new Set(photos.map(photo => photo.src)).size, 30);
+  assert.equal(new Set(photoPaths).size, 60, 'Every large photo has a distinct 640px alternative');
   assert.equal(catalog.photoCredit, 'michikusa');
   for (const photo of photos) {
     assert.match(photo.src, /^images\/factories\/[a-z0-9-]+\.webp$/);
@@ -49,7 +50,7 @@ test('factories retain 26 photographed places, one comparison and ten language e
   }
 });
 
-test('all 54 factory photo assets and ten pages are distributed with current bytes and hashes', () => {
+test('all factory photo assets and ten pages are distributed with current bytes and hashes', () => {
   const manifest = JSON.parse(read('content-manifest.json'));
   for (const file of [...photoPaths, ...languages.map(lang => edition(lang)), 'factories.css', 'factories.js']) {
     const entries = manifest.files.filter(entry => entry.path === file);
@@ -58,6 +59,16 @@ test('all 54 factory photo assets and ten pages are distributed with current byt
     assert.equal(entries[0].bytes, bytes.length, `${file}: distribution byte count`);
     assert.equal(entries[0].sha256, createHash('sha256').update(bytes).digest('hex'), `${file}: distribution hash`);
     assert.equal(entries[0].url, site + file, `${file}: production asset URL`);
+  }
+});
+
+test('the two feature galleries use every photo in their respective directories', () => {
+  for (const [folder, sources] of [
+    ['rivers', riverRoute.items.filter(item => item.type === 'photo').map(item => item.image)],
+    ['factories', photoPaths],
+  ]) {
+    const onDisk = fs.readdirSync(path.join(root, 'images', folder)).filter(name => /\.(jpg|webp)$/.test(name));
+    assert.deepEqual(onDisk.sort(), sources.map(source => path.basename(source)).sort());
   }
 });
 
@@ -91,11 +102,19 @@ const applyLangTo = app.slice(app.indexOf('function applyLangTo('), app.indexOf(
 for (const lang of languages) test(`${edition(lang)}: photographed cards and same-language catalogue entry`, () => {
   const file = edition(lang);
   const dom = new JSDOM(read(file), {url: site + file});
+  const riverFile = edition(lang, 'rivers.html');
+  const riverDOM = new JSDOM(read(riverFile), {url: site + riverFile});
   const entryFile = edition(lang, 'zukan.html');
   const entryDOM = new JSDOM(read(entryFile), {url: site + entryFile});
   try {
     const doc = dom.window.document;
     assert.equal(doc.documentElement.lang, lang);
+    for (const [river, factory] of [['sakawa', 'meiji-pharmatech'], ['echigawa', 'joyson-echigawa'], ['yasu', 'qualitech-shiga']]) {
+      const crossing = riverDOM.window.document.getElementById(river);
+      const plant = doc.getElementById(factory);
+      assert.equal(crossing.querySelector('.river-link').href, site + file + '#' + factory);
+      assert.equal(plant.dataset.side, riverRoute.items.find(item => item.id === river).side);
+    }
     assert.deepEqual([...doc.querySelectorAll('#factory-list .ff-card')].map(card => card.id).sort(), catalog.places.map(place => place.id).sort());
     for (const place of catalog.places) {
       const card = doc.getElementById(place.id);
@@ -131,6 +150,7 @@ for (const lang of languages) test(`${edition(lang)}: photographed cards and sam
     if (lang !== 'ja') assert.equal(probe.getAttribute('href'), 'en/factories.html', 'The fallback pass actually ran for an unmarked link');
   } finally {
     dom.window.close();
+    riverDOM.window.close();
     entryDOM.window.close();
   }
 });

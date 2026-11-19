@@ -32,6 +32,11 @@
     "entry": "Depuis le Shinkansen, repérez les usines des boissons, confiseries et cosmétiques du quotidien."
   },
   "groups": {
+    "odawara-area": [
+      "Shin-Yokohama",
+      "Odawara",
+      "Kamonomiya, à Odawara"
+    ],
     "fuji-area": ["Mishima", "Shin-Fuji", "Au pied du mont Fuji"],
     "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu et la rivière Oi"],
     "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi et Hamamatsu"],
@@ -42,6 +47,15 @@
     "kyoto-area": ["Kyoto", "Shin-Osaka", "Yamazaki"]
   },
   "places": {
+    "meiji-pharmatech": {
+      "name": "Meiji Seika Pharmatech",
+      "hook": "Une enseigne rouge sur le toit",
+      "point": "Juste à l’est de la Sakawa, le nom rouge sur un bâtiment crème signale l’usine de Kamonomiya, à Odawara. On y fabrique notamment des comprimés et des médicaments injectables.",
+      "alt": "Le nom Meiji Seika Pharmatech en rouge sur le toit, devant les montagnes.",
+      "sources": [
+        "Association japonaise des fabricants de médicaments sous contrat – Meiji Seika Pharmatech (japonais)"
+      ]
+    },
     "ucc": {
       "name": "UCC, usine de Fuji",
       "hook": "Une tour de café devant le mont Fuji",
@@ -228,6 +242,15 @@
       "related": "Découvrir la tour de Fujitec",
       "sources": ["Fujitec : recherche et production à Big Wing (en japonais)"]
     },
+    "joyson-echigawa": {
+      "name": "Joyson Safety Systems, usine d’Echigawa",
+      "hook": "JOYSON au-dessus de l’entrée",
+      "point": "Près de l’Echi, le nom JOYSON surmonte une entrée vitrée. L’usine conçoit et fabrique des pièces automobiles et des sièges auto pour enfants.",
+      "alt": "Entre les arbres apparaît la façade blanche de l’usine d’Echigawa, avec l’enseigne JOYSON.",
+      "sources": [
+        "Activités de l’usine d’Echigawa déclarées à la préfecture de Shiga (japonais)"
+      ]
+    },
     "lotte": {
       "name": "Lotte, usine de Shiga",
       "hook": "Les friandises s'affichent en grand",
@@ -235,6 +258,15 @@
       "alt": "De grands panneaux de confiseries et de glaces sur les bâtiments de l'usine Lotte de Shiga.",
       "related": "Découvrir l'usine Lotte",
       "sources": ["Lotte : productions de l'usine de Shiga (en japonais)"]
+    },
+    "qualitech-shiga": {
+      "name": "Qualitech Pharma, usine de Shiga",
+      "hook": "De grandes lettres bleues le long des voies",
+      "point": "Près de la Yasu, des caractères japonais bleus s’étirent sur un mur clair. Cette usine de Mikami, dans la ville de Yasu, fabrique des médicaments pour d’autres entreprises.",
+      "alt": "Le nom de Qualitech Pharma en katakana bleus sur un mur clair au bord des voies.",
+      "sources": [
+        "Qualitech Pharma présente son usine de Shiga (japonais)"
+      ]
     },
     "nissin": {
       "name": "Nissin Foods, usine de Shiga",

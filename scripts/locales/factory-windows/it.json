@@ -32,6 +32,11 @@
     "comparisonCaption": "Sul lato A, prima dell'arrivo a Nagoya verso Shin-Osaka e dopo la partenza verso Tokyo. Circa 800 m a sud della stazione, un annuncio lungo circa 70 m occupa la facciata del centro commerciale Market Square Sasashima, di proprietà dell'azienda."
   },
   "groups": {
+    "odawara-area": [
+      "Shin-Yokohama",
+      "Odawara",
+      "Kamonomiya, a Odawara"
+    ],
     "fuji-area": ["Mishima", "Shin-Fuji", "Ai piedi del Fuji"],
     "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu e il fiume Ōi"],
     "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi e Hamamatsu"],
@@ -42,6 +47,15 @@
     "kyoto-area": ["Kyoto", "Shin-Osaka", "Yamazaki"]
   },
   "places": {
+    "meiji-pharmatech": {
+      "name": "Meiji Seika Pharmatech",
+      "hook": "Un’insegna rossa sul tetto",
+      "point": "Subito a est del Sakawa si vede il nome in rosso sul tetto di un edificio color crema. Lo stabilimento di Kamonomiya, a Odawara, produce compresse e farmaci iniettabili.",
+      "alt": "Il nome rosso di Meiji Seika Pharmatech sul tetto, con le montagne sullo sfondo.",
+      "sources": [
+        "Associazione giapponese dei produttori farmaceutici conto terzi – Meiji Seika Pharmatech (in giapponese)"
+      ]
+    },
     "ucc": {
       "name": "UCC · Stabilimento di Fuji",
       "hook": "Una torre del caffè e il monte Fuji",
@@ -228,6 +242,15 @@
       "related": "Scopri la torre Fujitec",
       "sources": ["Fujitec | Ricerca e produzione a Big Wing"]
     },
+    "joyson-echigawa": {
+      "name": "Joyson Safety Systems, stabilimento di Echigawa",
+      "hook": "La scritta JOYSON sopra l’ingresso",
+      "point": "Vicino all’Echi si legge JOYSON sopra un ingresso a vetri. Lo stabilimento progetta e produce componenti per auto e seggiolini per bambini.",
+      "alt": "Tra gli alberi appare la scritta JOYSON sulla facciata bianca dello stabilimento di Echigawa.",
+      "sources": [
+        "Attività dello stabilimento di Echigawa dichiarate alla prefettura di Shiga (in giapponese)"
+      ]
+    },
     "lotte": {
       "name": "Lotte · Stabilimento di Shiga",
       "hook": "Dolci e gelati su enormi insegne",
@@ -235,6 +258,15 @@
       "alt": "Grandi insegne di dolci e gelati sugli edifici dello stabilimento Lotte di Shiga.",
       "related": "Scopri la fabbrica di Lotte",
       "sources": ["Lotte | Prodotti dello stabilimento di Shiga"]
+    },
+    "qualitech-shiga": {
+      "name": "Qualitech Pharma, stabilimento di Shiga",
+      "hook": "Lettere blu lungo i binari",
+      "point": "Vicino allo Yasu, una scritta giapponese blu corre lungo una parete chiara. Lo stabilimento di Mikami, nella città di Yasu, produce farmaci per conto di altre aziende.",
+      "alt": "Il nome Qualitech Pharma in katakana blu su una parete chiara accanto ai binari.",
+      "sources": [
+        "Qualitech Pharma sullo stabilimento di Shiga (in giapponese)"
+      ]
     },
     "nissin": {
       "name": "Nissin Foods · Stabilimento di Shiga",

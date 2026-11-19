@@ -48,6 +48,13 @@
       "caption": "L’eau encadrée par les poutres obliques et les berges vertes des deux côtés.",
       "link": "Chercher le mont Fuji dans la plaine de Sagami"
     },
+    "sakawa": {
+      "name": "La Sakawa",
+      "body": "Près d’Odawara, regardez vers l’amont du côté des sièges E. Les vannes du barrage d’Iizumi traversent la Sakawa. L’eau prélevée ici alimente le réseau d’eau potable de Kanagawa.",
+      "alt": "Entre les poutres du pont apparaissent un banc de graviers, la Sakawa et, en amont, les vannes du barrage.",
+      "caption": "Au-delà du banc de graviers, les vannes d’Iizumi barrent la rivière.",
+      "link": "L’usine pharmaceutique près de la Sakawa"
+    },
     "shiraito": {
       "name": "Pont de Shiraito",
       "body": "Près de Nebukawa, la mer apparaît au-delà des piles rouges. C’est le pont de la ligne classique Tōkaidō. Même sans voir l’eau de la rivière, on ressent en un instant la profondeur de la vallée.",
@@ -89,6 +96,12 @@
       "caption": "Le cours principal de la Toyo, bordé par le chemin de digue.",
       "sub": "Cours principal et canal de décharge"
     },
+    "toyogawa-floodway": {
+      "name": "Le canal de dérivation de la Toyo",
+      "body": "En quittant Toyohashi pour Shin-Osaka, on franchit la Toyo puis son canal de dérivation. Du côté A, les deux digues rectilignes filent vers le soleil couchant. Vers Tokyo, le canal se présente en premier.",
+      "alt": "La lumière du soir se reflète dans le canal entre deux digues rectilignes.",
+      "caption": "Les berges droites du canal se distinguent des courbes de la Toyo."
+    },
     "shonai": {
       "name": "Shōnai",
       "body": "Peu après Nagoya, au-delà des nombreuses voies ferrées au premier plan, une rangée de piles apparaît. Ici, à Biwajima, pont routier, pont ferroviaire classique et pont du Shinkansen se rassemblent au même endroit.",
@@ -115,6 +128,20 @@
       "alt": "La large rivière Ibi, le pont rouge d’Ōgaki et le mont Kinka au-delà.",
       "caption": "Le pont rouge d’Ōgaki au-dessus de la rivière, avec le mont Kinka au loin.",
       "link": "Repérer le château de Gifu depuis le train"
+    },
+    "echigawa": {
+      "name": "L’Echi",
+      "body": "Dans la préfecture de Shiga, l’Echi serpente entre des bancs de graviers clairs. Sur l’autre rive, l’enseigne de Japan Pile dépasse des arbres.",
+      "alt": "Un filet d’eau entre des bancs de graviers clairs et une enseigne au-dessus des arbres de l’autre rive.",
+      "caption": "L’eau dessine un sillon dans le gravier, avec les montagnes à l’horizon.",
+      "link": "L’usine Joyson près de l’Echi"
+    },
+    "yasu": {
+      "name": "La Yasu",
+      "body": "Du côté A, cherchez le profil triangulaire du mont Mikami, surnommé le « Fuji d’Omi ». Sur la photo, un pont prend forme dans le lit majeur de la Yasu, au pied de la montagne.",
+      "alt": "Des piles et le tablier d’un pont en construction devant la silhouette triangulaire du mont Mikami.",
+      "caption": "Le mont Mikami se détache au-dessus du tablier en construction.",
+      "link": "L’usine Qualitech Pharma près de la Yasu"
     },
     "seta": {
       "name": "Seta",
@@ -150,6 +177,7 @@
     }
   },
   "sources": {
+    "iizumi": "Préfecture de Kanagawa – le barrage d’Iizumi et l’alimentation en eau",
     "maruko": "Ville de Kawasaki · histoire du bac de Maruko et du pont",
     "tokaido": "Ministère des Transports · traversées de la Sagami en bac et de la Sakawa à pied sur l’ancienne route du Tōkaidō",
     "sakawa": "Ville d’Odawara · traversée à pied de la Sakawa",

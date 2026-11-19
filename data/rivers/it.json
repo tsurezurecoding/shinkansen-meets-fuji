@@ -48,6 +48,13 @@
       "caption": "L’acqua tra le travi oblique e le rive verdi su entrambi i lati.",
       "link": "Cerca il monte Fuji nella pianura del Sagami"
     },
+    "sakawa": {
+      "name": "Fiume Sakawa",
+      "body": "Vicino a Odawara, dal lato E si vede a monte la fila di paratoie di Iizumi. L’acqua prelevata qui alimenta la rete idrica della prefettura di Kanagawa.",
+      "alt": "Tra le travi del ponte si scorgono un banco di ghiaia, il Sakawa e le paratoie a monte.",
+      "caption": "Le paratoie di Iizumi attraversano il fiume oltre il banco di ghiaia.",
+      "link": "Lo stabilimento farmaceutico sul Sakawa"
+    },
     "shiraito": {
       "name": "Ponte di Shiraito",
       "body": "Nei pressi di Nebukawa, il mare appare oltre i piloni rossi. È il ponte della linea Tōkaidō tradizionale. Anche se non si vede l’acqua del fiume, per un attimo si percepisce la profondità della valle.",
@@ -89,6 +96,12 @@
       "caption": "Il corso principale del Toyo, con il sentiero che segue l’argine.",
       "sub": "Corso principale e canale di scolmo"
     },
+    "toyogawa-floodway": {
+      "name": "Canale scolmatore del Toyo",
+      "body": "Da Toyohashi verso Shin-Osaka si attraversa prima il corso principale del Toyo e poi lo scolmatore. Dal lato A, gli argini rettilinei si allungano verso il sole al tramonto. Verso Tokyo si incontra prima il canale.",
+      "alt": "La luce della sera si specchia nel canale fra due argini rettilinei.",
+      "caption": "Gli argini diritti del canale risaltano accanto alle curve del corso principale."
+    },
     "shonai": {
       "name": "Shōnai",
       "body": "Poco dopo Nagoya, oltre i numerosi binari in primo piano, appare una fila di piloni. Qui, a Biwajima, si concentrano un ponte stradale, un ponte ferroviario della linea tradizionale e il ponte dello Shinkansen.",
@@ -115,6 +128,20 @@
       "alt": "L’ampia distesa del fiume Ibi, il ponte rosso Ōgaki e il monte Kinka oltre il ponte.",
       "caption": "Il ponte rosso Ōgaki sul fiume, con il monte Kinka sullo sfondo.",
       "link": "Cerca il castello di Gifu dal finestrino"
+    },
+    "echigawa": {
+      "name": "Fiume Echi",
+      "body": "A Shiga, l’Echi si apre un varco fra banchi di ghiaia chiara. Sulla sponda opposta spunta tra gli alberi l’insegna di Japan Pile.",
+      "alt": "Un ramo d’acqua tra banchi di ghiaia chiara e un’insegna sopra gli alberi della riva opposta.",
+      "caption": "L’acqua serpeggia tra le ghiaie, con i monti sullo sfondo.",
+      "link": "Lo stabilimento Joyson vicino all’Echi"
+    },
+    "yasu": {
+      "name": "Fiume Yasu",
+      "body": "Dal lato A cerca il profilo triangolare del monte Mikami, detto il «Fuji di Omi». Nella foto si vede un ponte in costruzione nella piana del fiume, ai piedi del monte.",
+      "alt": "Pile e impalcato di un ponte in costruzione davanti alla sagoma triangolare del monte Mikami.",
+      "caption": "Il monte Mikami si alza sopra l’impalcato in costruzione.",
+      "link": "Qualitech Pharma vicino allo Yasu"
     },
     "seta": {
       "name": "Seta",
@@ -150,6 +177,7 @@
     }
   },
   "sources": {
+    "iizumi": "Prefettura di Kanagawa – la traversa di Iizumi e l’approvvigionamento idrico",
     "maruko": "Città di Kawasaki · storia del traghetto e del ponte Maruko",
     "tokaido": "Ministero dei Trasporti · attraversamento del Sagami in traghetto e del Sakawa a piedi lungo l’antica strada del Tōkaidō",
     "sakawa": "Città di Odawara · attraversamento a piedi del Sakawa",

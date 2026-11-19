@@ -35,6 +35,14 @@
       "side": "E"
     },
     {
+      "id": "sakawa",
+      "type": "photo",
+      "from": "shin-yokohama",
+      "to": "odawara",
+      "side": "E",
+      "image": "images/rivers/sakawa.jpg"
+    },
+    {
       "id": "shiraito",
       "type": "photo",
       "from": "odawara",
@@ -83,6 +91,14 @@
       "image": "images/rivers/toyogawa.jpg"
     },
     {
+      "id": "toyogawa-floodway",
+      "type": "photo",
+      "from": "toyohashi",
+      "to": "mikawa-anjo",
+      "side": "A",
+      "image": "images/rivers/toyogawa-floodway.jpg"
+    },
+    {
       "id": "yahagi",
       "type": "stop",
       "from": "toyohashi",
@@ -125,6 +141,22 @@
       "image": "images/rivers/ibi.jpg"
     },
     {
+      "id": "echigawa",
+      "type": "photo",
+      "from": "maibara",
+      "to": "kyoto",
+      "side": "A",
+      "image": "images/rivers/echigawa.jpg"
+    },
+    {
+      "id": "yasu",
+      "type": "photo",
+      "from": "maibara",
+      "to": "kyoto",
+      "side": "A",
+      "image": "images/rivers/yasu.jpg"
+    },
+    {
       "id": "seta",
       "type": "photo",
       "from": "maibara",
@@ -154,7 +186,10 @@
     "fuji": "https://www.michikusa-travel.com/spots/fujikawa-bridge.html",
     "ibi": "https://www.michikusa-travel.com/spots/gifu-castle.html",
     "seta": "https://www.michikusa-travel.com/spots/seta-karahashi.html",
-    "kamo": "https://www.michikusa-travel.com/kyoto-station-views.html"
+    "kamo": "https://www.michikusa-travel.com/kyoto-station-views.html",
+    "sakawa": "https://www.michikusa-travel.com/factories.html#meiji-pharmatech",
+    "echigawa": "https://www.michikusa-travel.com/factories.html#joyson-echigawa",
+    "yasu": "https://www.michikusa-travel.com/factories.html#qualitech-shiga"
   },
   "sources": {
     "maruko": "https://www.city.kawasaki.jp/170/page/0000147126.html",
@@ -172,6 +207,7 @@
     "seta": "https://www.mlit.go.jp/river/toukei_chousa/kasen/jiten/nihon_kawa/0608_setagawa/0608_setagawa_00.html",
     "map": "https://maps.gsi.go.jp/",
     "book": "https://str.toyokeizai.net/books/9784492046043/",
-    "gifuCity": "https://www.city.gifu.lg.jp/kankoubunka/kankou/1013051/1005097/1005098.html"
+    "gifuCity": "https://www.city.gifu.lg.jp/kankoubunka/kankou/1013051/1005097/1005098.html",
+    "iizumi": "https://www.pref.kanagawa.jp/docs/vh6/cnt/f8018/p221066.html"
   }
 }
