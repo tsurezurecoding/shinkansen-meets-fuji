@@ -1171,9 +1171,33 @@ function solarArkSectionScope(changes, { fileContents, assetVersionOnly }) {
   };
 }
 
+function spotVideoLoadingScope(changes, { assetVersionOnly }) {
+  const route = 'spots/solar-ark.html';
+  const renderer = 'spot-page-shared.js';
+  const galleryStyles = 'spot-media-gallery.css';
+  const files = new Set(changes.map(change => change.path));
+  if (![route, renderer, galleryStyles, 'scripts/generate-spot-pages.mjs'].every(file => files.has(file))) return null;
+  const inputs = new Set([route, renderer, galleryStyles, 'scripts/generate-spot-pages.mjs',
+    'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
+    'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json']);
+  if (!changes.every(({path: file, status}) => status === 'M' &&
+      (inputs.has(file) || (file.endsWith('.html') && assetVersionOnly?.(file))))) return null;
+  return {
+    scope: 'spot-video-loading', needsDependencies: true, pagesCandidate: true,
+    reason: 'Check the shared renderer, the Japanese Solar Ark stylesheet preload and on-demand players, and asset-only references in other pages.',
+    commands: [
+      node('--check', renderer), node('--test', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('--input-type=module', '-e', "import fs from 'node:fs'; import assert from 'node:assert/strict'; import {planSpotPage, finalPageOutput} from './scripts/generate-spot-pages.mjs'; for (const lang of ['ja', 'en']) {const p=planSpotPage('solar-ark', lang, {requireExisting:true, preserveHead:true}); assert.equal(fs.readFileSync(p.outputPath,'utf8'), finalPageOutput(p.outputPath,p.generatedHTML));}"),
+      node('scripts/validate-spot-page-shared.mjs'), node('scripts/generate-site-runtime.mjs', '--check'),
+      node('scripts/generate-spot-page-runtime.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'),
+      node('scripts/check-content-manifest.mjs'),
+    ],
+  };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };

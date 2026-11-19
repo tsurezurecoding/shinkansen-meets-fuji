@@ -31,6 +31,21 @@ test('river and factory photo updates check both guides and keep unrelated asset
   assert.notEqual(select([...files, {path: 'images/rivers/tama.jpg', status: 'D'}]).scope, plan.scope);
 });
 
+test('spot video loading checks both runtime manifests and accepts only version changes on other pages', () => {
+  const files = ['spots/solar-ark.html', 'spot-page-shared.js', 'spot-media-gallery.css', 'scripts/generate-spot-pages.mjs',
+    'site-runtime.json', 'spot-page-runtime.json', 'en/spots/solar-ark.html', 'de/727-collection.html'].map(change);
+  const references = new Set(['en/spots/solar-ark.html', 'de/727-collection.html']);
+  const options = {assetVersionOnly: file => references.has(file)};
+  const plan = chooseReleaseScope(files, options);
+  assert.equal(plan.scope, 'spot-video-loading');
+  assert.ok(needsPagesCandidate(plan));
+  for (const generator of ['generate-site-runtime', 'generate-spot-page-runtime']) {
+    assert.ok(plan.commands.some(command => command.includes('scripts/' + generator + '.mjs') && command.includes('--check')));
+  }
+  assert.notEqual(chooseReleaseScope(files, {assetVersionOnly: () => false}).scope, plan.scope);
+  assert.notEqual(chooseReleaseScope([...files, change('data.js')], options).scope, plan.scope);
+});
+
 test('Solar Ark section selects its projections and excludes timing, other spots and page edits', () => {
   const files = ['data.js', 'data-runtime.js', 'spots/solar-ark.html', 'de/spots/solar-ark.html',
     'data/spot-pages/solar-ark.en.js', 'scripts/locales/castle-de.json', 'de/utility-data.js',
