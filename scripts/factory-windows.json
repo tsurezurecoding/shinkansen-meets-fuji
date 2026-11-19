@@ -1,6 +1,7 @@
 {
   "photoCredit": "michikusa",
   "groups": [
+    "odawara-area",
     "fuji-area",
     "shizuoka-area",
     "fukuroi-area",
@@ -11,6 +12,21 @@
     "kyoto-area"
   ],
   "places": [
+    {
+      "id": "meiji-pharmatech",
+      "group": "odawara-area",
+      "side": "E",
+      "photo": {
+        "src": "images/factories/meiji-pharmatech.webp",
+        "thumb": "images/factories/meiji-pharmatech-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=Meiji%20Seika%20%E3%83%95%E3%82%A1%E3%83%AB%E3%83%9E%E3%83%86%E3%83%83%E3%82%AF%20%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%B0%8F%E7%94%B0%E5%8E%9F%E5%B8%82%E9%B4%A8%E5%AE%AE1056",
+      "sources": [
+        "https://www.jcmoa.org/company/meijiseika.html"
+      ]
+    },
     {
       "id": "ucc",
       "group": "fuji-area",
@@ -397,6 +413,21 @@
       ]
     },
     {
+      "id": "joyson-echigawa",
+      "group": "shiga-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/joyson-echigawa.webp",
+        "thumb": "images/factories/joyson-echigawa-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%82%B8%E3%83%A7%E3%82%A4%E3%82%BD%E3%83%B3%20%E6%84%9B%E7%9F%A5%E5%B7%9D%E8%A3%BD%E9%80%A0%E6%89%80%20%E6%BB%8B%E8%B3%80%E7%9C%8C%E6%84%9B%E7%9F%A5%E9%83%A1%E6%84%9B%E8%8D%98%E7%94%BA%E6%84%9B%E7%9F%A5%E5%B7%9D658",
+      "sources": [
+        "https://www.pref.shiga.lg.jp/file/attachment/5506872.pdf"
+      ]
+    },
+    {
       "id": "lotte",
       "group": "shiga-area",
       "side": "A",
@@ -410,6 +441,21 @@
       "map": "https://www.google.com/maps/search/?api=1&query=%E3%83%AD%E3%83%83%E3%83%86%20%E6%BB%8B%E8%B3%80%E5%B7%A5%E5%A0%B4",
       "sources": [
         "https://www.lotte.co.jp/kengaku/"
+      ]
+    },
+    {
+      "id": "qualitech-shiga",
+      "group": "shiga-area",
+      "side": "A",
+      "photo": {
+        "src": "images/factories/qualitech-shiga.webp",
+        "thumb": "images/factories/qualitech-shiga-640.webp",
+        "width": 1920,
+        "height": 1080
+      },
+      "map": "https://www.google.com/maps/search/?api=1&query=%E3%82%AF%E3%82%AA%E3%83%AA%E3%83%86%E3%83%83%E3%82%AF%E3%83%95%E3%82%A1%E3%83%BC%E3%83%9E%20%E6%BB%8B%E8%B3%80%E5%B7%A5%E5%A0%B4%20%E9%87%8E%E6%B4%B2%E5%B8%82%E4%B8%89%E4%B8%8A2195-1",
+      "sources": [
+        "https://www.qualitech-pharma.co.jp/shiga/"
       ]
     },
     {

@@ -32,6 +32,11 @@
     "entry": "Spot the factories behind everyday drinks, sweets and cosmetics from your Shinkansen window."
   },
   "groups": {
+    "odawara-area": [
+      "Shin-Yokohama",
+      "Odawara",
+      "Kamonomiya, Odawara"
+    ],
     "fuji-area": ["Mishima", "Shin-Fuji", "At the foot of Mount Fuji"],
     "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu and the Oi River"],
     "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi and Hamamatsu"],
@@ -42,6 +47,15 @@
     "kyoto-area": ["Kyoto", "Shin-Osaka", "Yamazaki"]
   },
   "places": {
+    "meiji-pharmatech": {
+      "name": "Meiji Seika Pharmatech",
+      "hook": "Red lettering above the roofline",
+      "point": "Just east of the Sakawa River, look for a red name on a cream-coloured building. This plant in Kamonomiya, Odawara, makes medicines including tablets and injectables.",
+      "alt": "The red Meiji Seika Pharmatech name on the roof, with mountains beyond.",
+      "sources": [
+        "Japan CDMO Association – Meiji Seika Pharmatech and its Odawara plant (Japanese)"
+      ]
+    },
     "ucc": {
       "name": "UCC Fuji Factory",
       "hook": "A coffee tower beneath Mount Fuji",
@@ -228,6 +242,15 @@
       "related": "More about Fujitec's tower",
       "sources": ["Fujitec: research and production at Big Wing (Japanese)"]
     },
+    "joyson-echigawa": {
+      "name": "Joyson Safety Systems, Echigawa Plant",
+      "hook": "Look for JOYSON above the entrance",
+      "point": "Near the Echi River, JOYSON appears above a glass-fronted entrance. The site develops and makes automotive parts and child car seats.",
+      "alt": "The JOYSON name on a white building seen between trees at the Echigawa plant.",
+      "sources": [
+        "Echigawa plant operations, as reported to Shiga Prefecture (Japanese)"
+      ]
+    },
     "lotte": {
       "name": "Lotte Shiga Factory",
       "hook": "Sweets on a very large scale",
@@ -235,6 +258,15 @@
       "alt": "Large signs for sweets and ice creams on buildings at Lotte's Shiga Factory.",
       "related": "More about the Lotte factory",
       "sources": ["Lotte: products made at the Shiga Factory (Japanese)"]
+    },
+    "qualitech-shiga": {
+      "name": "Qualitech Pharma, Shiga Plant",
+      "hook": "Blue lettering beside the tracks",
+      "point": "Near the Yasu River, blue Japanese lettering stretches across a pale wall. This plant in Mikami, Yasu, makes medicines under contract for other companies.",
+      "alt": "The Qualitech Pharma name in blue katakana on a pale wall beside the railway.",
+      "sources": [
+        "Qualitech Pharma on its Shiga plant (Japanese)"
+      ]
     },
     "nissin": {
       "name": "Nissin Foods Shiga Factory",

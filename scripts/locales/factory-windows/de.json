@@ -32,6 +32,11 @@
     "entry": "Entdecken Sie vom Shinkansen aus, wo Getränke, Süßigkeiten und Kosmetik für den Alltag entstehen."
   },
   "groups": {
+    "odawara-area": [
+      "Shin-Yokohama",
+      "Odawara",
+      "Kamonomiya in Odawara"
+    ],
     "fuji-area": ["Mishima", "Shin-Fuji", "Am Fuß des Fuji"],
     "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu und der Fluss Oi"],
     "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi und Hamamatsu"],
@@ -42,6 +47,15 @@
     "kyoto-area": ["Kyoto", "Shin-Osaka", "Yamazaki"]
   },
   "places": {
+    "meiji-pharmatech": {
+      "name": "Meiji Seika Pharmatech",
+      "hook": "Rote Buchstaben auf dem Dach",
+      "point": "Unmittelbar östlich des Sakawa fällt der rote Schriftzug auf einem cremefarbenen Gebäude auf. Das Werk in Kamonomiya, einem Ortsteil von Odawara, stellt unter anderem Tabletten und Injektionspräparate her.",
+      "alt": "Der rote Schriftzug von Meiji Seika Pharmatech auf dem Dach, dahinter Berge.",
+      "sources": [
+        "Japanischer Verband der Auftragshersteller für Arzneimittel – Meiji Seika Pharmatech (Japanisch)"
+      ]
+    },
     "ucc": {
       "name": "UCC, Werk Fuji",
       "hook": "Ein Kaffeeturm vor dem Fuji",
@@ -228,6 +242,15 @@
       "related": "Mehr über Fujitecs Turm",
       "sources": ["Fujitec: Forschung und Produktion bei Big Wing (Japanisch)"]
     },
+    "joyson-echigawa": {
+      "name": "Joyson Safety Systems, Werk Echigawa",
+      "hook": "JOYSON über dem Eingang",
+      "point": "Nahe dem Echi steht JOYSON über einem verglasten Eingang. Hier werden Autoteile und Kindersitze für Autos entwickelt und hergestellt.",
+      "alt": "Zwischen Bäumen ist das weiße Werksgebäude mit dem Schriftzug JOYSON zu sehen.",
+      "sources": [
+        "Betriebsangaben des Werks Echigawa für die Präfektur Shiga (Japanisch)"
+      ]
+    },
     "lotte": {
       "name": "Lotte, Werk Shiga",
       "hook": "Süßigkeiten im Riesenformat",
@@ -235,6 +258,15 @@
       "alt": "Große Schilder für Süßigkeiten und Eis an den Gebäuden des Lotte-Werks Shiga.",
       "related": "Mehr über das Lotte-Werk",
       "sources": ["Lotte: Produkte des Werks Shiga (Japanisch)"]
+    },
+    "qualitech-shiga": {
+      "name": "Qualitech Pharma, Werk Shiga",
+      "hook": "Blaue Schrift direkt am Gleis",
+      "point": "Nahe dem Yasu zieht sich ein blauer japanischer Schriftzug über eine helle Wand. Das Werk in Mikami, einem Ortsteil von Yasu, stellt Arzneimittel im Auftrag anderer Unternehmen her.",
+      "alt": "Der Firmenname Qualitech Pharma in blauen Katakana auf einer hellen Wand am Gleis.",
+      "sources": [
+        "Qualitech Pharma über das Werk Shiga (Japanisch)"
+      ]
     },
     "nissin": {
       "name": "Nissin Foods, Werk Shiga",

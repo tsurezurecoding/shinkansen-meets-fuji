@@ -32,6 +32,11 @@
     "entry": "從咖啡到化妝品，沿著新幹線車窗尋找熟悉用品的生產地。"
   },
   "groups": {
+    "odawara-area": [
+      "新橫濱",
+      "小田原",
+      "小田原・鴨宮"
+    ],
     "fuji-area": ["三島", "新富士", "富士山腳下"],
     "shizuoka-area": ["靜岡", "掛川", "燒津・大井川"],
     "fukuroi-area": ["掛川", "濱松", "掛川・袋井・濱松"],
@@ -42,6 +47,15 @@
     "kyoto-area": ["京都", "新大阪", "山崎"]
   },
   "places": {
+    "meiji-pharmatech": {
+      "name": "Meiji Seika Pharmatech 製藥廠",
+      "hook": "找找屋頂上的紅色招牌",
+      "point": "酒匂川東側的米色建築，屋頂掛著紅色公司名稱。這是小田原市鴨宮的製藥廠，生產錠劑與注射劑。",
+      "alt": "群山前，米色建築的屋頂上掛著 Meiji Seika Pharmatech 的紅色招牌。",
+      "sources": [
+        "日本 CDMO 協會的 Meiji Seika Pharmatech 廠商介紹（日文）"
+      ]
+    },
     "ucc": {
       "name": "UCC 富士工廠",
       "hook": "咖啡白塔與富士山",
@@ -228,6 +242,15 @@
       "related": "進一步認識富士達研究塔",
       "sources": ["富士達｜Big Wing的研發與生產功能"]
     },
+    "joyson-echigawa": {
+      "name": "Joyson 愛知川製造所",
+      "hook": "玻璃入口上方的 JOYSON",
+      "point": "愛知川附近，玻璃入口上方可以看見「JOYSON」字樣。這座工廠研發並製造汽車零件及兒童汽車安全座椅。",
+      "alt": "樹木之間可見愛知川製造所的白色正面和 JOYSON 招牌。",
+      "sources": [
+        "愛知川製造所向滋賀縣提交的業務概要（日文）"
+      ]
+    },
     "lotte": {
       "name": "LOTTE 樂天 滋賀工廠",
       "hook": "巨大的零食招牌排成一列",
@@ -235,6 +258,15 @@
       "alt": "LOTTE滋賀工廠建築上成排的大型零食與冰品招牌。",
       "related": "進一步認識LOTTE工廠",
       "sources": ["LOTTE｜滋賀工廠的產品"]
+    },
+    "qualitech-shiga": {
+      "name": "Qualitech Pharma 滋賀工廠",
+      "hook": "沿線外牆的藍色片假名",
+      "point": "野洲川附近，淺色外牆上的一行藍色片假名就是公司名稱。這座位於野洲市三上的工廠，受其他企業委託製造藥品。",
+      "alt": "鐵路旁的淺色外牆，以藍色片假名寫著「クオリテックファーマ」。",
+      "sources": [
+        "Qualitech Pharma 滋賀工廠介紹（日文）"
+      ]
     },
     "nissin": {
       "name": "日清食品 滋賀工廠",

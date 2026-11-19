@@ -32,6 +32,11 @@
     "comparisonCaption": "En el lado A, antes de llegar a Nagoya si vas hacia Shin-Osaka y después de salir si vas hacia Tokio. A unos 800 m al sur de la estación, este anuncio de unos 70 m ocupa la fachada del centro comercial Market Square Sasashima, propiedad de la empresa."
   },
   "groups": {
+    "odawara-area": [
+      "Shin-Yokohama",
+      "Odawara",
+      "Kamonomiya, en Odawara"
+    ],
     "fuji-area": ["Mishima", "Shin-Fuji", "A los pies del Fuji"],
     "shizuoka-area": ["Shizuoka", "Kakegawa", "Yaizu y el río Ōi"],
     "fukuroi-area": ["Kakegawa", "Hamamatsu", "Kakegawa, Fukuroi y Hamamatsu"],
@@ -42,6 +47,15 @@
     "kyoto-area": ["Kioto", "Shin-Osaka", "Yamazaki"]
   },
   "places": {
+    "meiji-pharmatech": {
+      "name": "Meiji Seika Pharmatech",
+      "hook": "Letras rojas en la azotea",
+      "point": "Justo al este del Sakawa se ve el nombre en rojo sobre un edificio de color crema. La planta de Kamonomiya, en Odawara, fabrica comprimidos y medicamentos inyectables.",
+      "alt": "El nombre de Meiji Seika Pharmatech en rojo sobre la azotea, con las montañas al fondo.",
+      "sources": [
+        "Asociación japonesa de fabricantes de medicamentos por encargo – Meiji Seika Pharmatech (en japonés)"
+      ]
+    },
     "ucc": {
       "name": "UCC · Fábrica de Fuji",
       "hook": "Una torre de café y el monte Fuji",
@@ -228,6 +242,15 @@
       "related": "Más sobre la torre de Fujitec",
       "sources": ["Fujitec | Investigación y producción en Big Wing"]
     },
+    "joyson-echigawa": {
+      "name": "Joyson Safety Systems, planta de Echigawa",
+      "hook": "JOYSON sobre la entrada",
+      "point": "Cerca del Echi, el nombre JOYSON corona una entrada acristalada. Aquí se desarrollan y fabrican piezas para automóviles y sillas de seguridad infantiles.",
+      "alt": "Entre los árboles se ve el nombre JOYSON en la fachada blanca de la planta de Echigawa.",
+      "sources": [
+        "Actividad de la planta de Echigawa declarada a la prefectura de Shiga (en japonés)"
+      ]
+    },
     "lotte": {
       "name": "Lotte · Fábrica de Shiga",
       "hook": "Dulces y helados a lo grande",
@@ -235,6 +258,15 @@
       "alt": "Grandes carteles de dulces y helados sobre los edificios de la fábrica de Lotte de Shiga.",
       "related": "Más sobre la fábrica de Lotte",
       "sources": ["Lotte | Productos de la fábrica de Shiga"]
+    },
+    "qualitech-shiga": {
+      "name": "Qualitech Pharma, planta de Shiga",
+      "hook": "Letras azules junto a la vía",
+      "point": "Cerca del Yasu, unas letras japonesas azules recorren una pared clara. La planta de Mikami, en la ciudad de Yasu, fabrica medicamentos por encargo de otras empresas.",
+      "alt": "El nombre de Qualitech Pharma en katakana azules sobre una pared clara junto a la vía.",
+      "sources": [
+        "Qualitech Pharma sobre su planta de Shiga (en japonés)"
+      ]
     },
     "nissin": {
       "name": "Nissin Foods · Fábrica de Shiga",

@@ -48,6 +48,13 @@
       "caption": "Broad water framed by diagonal steel, with green banks on both sides.",
       "link": "Look for Mount Fuji across the Sagami Plain"
     },
+    "sakawa": {
+      "name": "Sakawa River",
+      "body": "Near Odawara, look upstream from the E-seat side for the gates of the Iizumi Intake Weir. Water drawn here supplies homes in Kanagawa Prefecture.",
+      "alt": "Bridge girders frame a gravel bar, the Sakawa River and a row of weir gates upstream.",
+      "caption": "The gates of the Iizumi Intake Weir stretch across the river beyond the gravel bar.",
+      "link": "The pharmaceutical plant by the Sakawa"
+    },
     "shiraito": {
       "name": "Shiraito River Bridge",
       "sub": "A valley opening onto the sea",
@@ -89,6 +96,12 @@
       "alt": "The broad main channel of the Toyo River curves beside a grassy embankment and a narrow path.",
       "caption": "A path traces the bank of the Toyo River's main channel."
     },
+    "toyogawa-floodway": {
+      "name": "Toyogawa Floodway",
+      "body": "Heading from Toyohashi toward Shin-Osaka, you cross the main Toyo River first and the floodway next. From the A-seat side, its straight banks lead toward the evening sun. Toward Tokyo, the floodway comes first.",
+      "alt": "Evening light reflected in the Toyogawa Floodway between two straight embankments.",
+      "caption": "The straight banks of the floodway catch the light. Compare them with the curve of the main river."
+    },
     "shonai": {
       "name": "Shonai River",
       "sub": "The bridges at Biwajima",
@@ -115,6 +128,20 @@
       "alt": "Broad water on the Ibi River, the red Ogaki Bridge and Mount Kinka beyond it.",
       "caption": "The red Ogaki Bridge spans the broad river, with Mount Kinka beyond.",
       "link": "Look for Gifu Castle from the train window"
+    },
+    "echigawa": {
+      "name": "Echi River",
+      "body": "In Shiga, the Echi threads its way between pale gravel bars. Across the water, a Japan Pile sign rises above the trees.",
+      "alt": "A narrow channel between pale gravel bars, with trees and a sign on the far bank.",
+      "caption": "The stream winds through the gravel with mountains on the horizon.",
+      "link": "Joyson’s plant by the Echi River"
+    },
+    "yasu": {
+      "name": "Yasu River",
+      "body": "Look out on the A-seat side for Mount Mikami's triangular outline. Locals call it Omi Fuji. In this view, a bridge is taking shape on the floodplain below the mountain.",
+      "alt": "Concrete piers and a bridge deck under construction in front of the triangular outline of Mount Mikami.",
+      "caption": "Mount Mikami rises above the unfinished bridge deck.",
+      "link": "Qualitech Pharma by the Yasu River"
     },
     "seta": {
       "name": "Seta River",
@@ -150,6 +177,7 @@
     }
   },
   "sources": {
+    "iizumi": "Kanagawa Prefecture – the Iizumi Intake Weir and the water supply (Japanese)",
     "maruko": "Kawasaki City on the Maruko ferry crossing and its bridge",
     "tokaido": "Japan's transport ministry on river crossings along the old Tokaido road",
     "sakawa": "Odawara City on the crossing of the Sakawa River",

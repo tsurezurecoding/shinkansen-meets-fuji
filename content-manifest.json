@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "edfb0a390f305635",
+  "contentVersion": "a1ca2cc7d12fd5bd",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1555,8 +1555,8 @@
     {
       "path": "de/factories.html",
       "url": "https://www.michikusa-travel.com/de/factories.html",
-      "bytes": 65361,
-      "sha256": "d7a1a5dd66101b223c7aef5d812361f5a09cdcb53198c2bd37830f8e71f2c975"
+      "bytes": 71118,
+      "sha256": "60f6e0985be883628e88aa5c37af9904af391d3f800d35a0b3b6bd29cb3f6bfe"
     },
     {
       "path": "de/ferris-wheels.html",
@@ -1633,8 +1633,8 @@
     {
       "path": "de/rivers.html",
       "url": "https://www.michikusa-travel.com/de/rivers.html",
-      "bytes": 31071,
-      "sha256": "932d55ddb2019b648e5ab2d35c7b9ee983c0f56c71140fcc79e48c976b1258f1"
+      "bytes": 35966,
+      "sha256": "2c4a85b0354b5b51f85f2e42302494ceebf17f11548412670d9953161fd9a1ef"
     },
     {
       "path": "de/sparkling-data.js",
@@ -2083,8 +2083,8 @@
     {
       "path": "en/factories.html",
       "url": "https://www.michikusa-travel.com/en/factories.html",
-      "bytes": 65089,
-      "sha256": "9126bc04b370881765a31fe7d0ba643a9739f44dea8b4eb7d358b580af507d95"
+      "bytes": 70793,
+      "sha256": "f46f3df5ae0691450bea611507fb66b0a223e0722e652132b76f5e79120410c4"
     },
     {
       "path": "en/ferris-wheels.html",
@@ -2137,8 +2137,8 @@
     {
       "path": "en/rivers.html",
       "url": "https://www.michikusa-travel.com/en/rivers.html",
-      "bytes": 31048,
-      "sha256": "9ec225287b97aab62372336815f571662c2e388df06a34e35b5daa470e43b224"
+      "bytes": 36003,
+      "sha256": "6535cffb31b8c080c69dd036719cd6fea3fa68c9ad4f8151cbced65f4c8f52f2"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -2281,8 +2281,8 @@
     {
       "path": "es/factories.html",
       "url": "https://www.michikusa-travel.com/es/factories.html",
-      "bytes": 66008,
-      "sha256": "bd8d33d00d69b3cabd904b660aa67424056eeaacd90f294420a253861d92996b"
+      "bytes": 71859,
+      "sha256": "e3da42b40fda1df6986a4c9ee9698ff07c6bdedaf36b5b23487306eafe695ef6"
     },
     {
       "path": "es/ferris-wheels.html",
@@ -2359,8 +2359,8 @@
     {
       "path": "es/rivers.html",
       "url": "https://www.michikusa-travel.com/es/rivers.html",
-      "bytes": 31921,
-      "sha256": "f1526552657293d58d6e4a9d8cd3c19441c7b37701ce180d4b0b56a3f77318b9"
+      "bytes": 36935,
+      "sha256": "acf3a16b3b0c5d0a1ec5c8aad39208ded3d3cf85d59a6f6b5d618181fe39d656"
     },
     {
       "path": "es/sparkling-data.js",
@@ -2731,8 +2731,8 @@
     {
       "path": "factories.html",
       "url": "https://www.michikusa-travel.com/factories.html",
-      "bytes": 65955,
-      "sha256": "285d95a5a8997edb6b2c132aceb43013b2e1f5906495b15fb353d4102bee8f79"
+      "bytes": 72075,
+      "sha256": "9a0a490dffd650ca5a92fc00f4b57f044f8f85e8dcb125d60fe3a782f3702585"
     },
     {
       "path": "factories.js",
@@ -2827,8 +2827,8 @@
     {
       "path": "fr/factories.html",
       "url": "https://www.michikusa-travel.com/fr/factories.html",
-      "bytes": 67815,
-      "sha256": "c482bd13758a7c83f0b924fcae382811c7867debd8c9ed004a7328f4f276380a"
+      "bytes": 73696,
+      "sha256": "4a6f78365e7795e9330280d841bd360fc6af9bc404249a7d1c59139c5e43af74"
     },
     {
       "path": "fr/ferris-wheels.html",
@@ -2905,8 +2905,8 @@
     {
       "path": "fr/rivers.html",
       "url": "https://www.michikusa-travel.com/fr/rivers.html",
-      "bytes": 31297,
-      "sha256": "b5947abb4db1c8eeafba1f00dc43e0e56969bba3f85492912cf7b286372720f9"
+      "bytes": 36400,
+      "sha256": "06907aecc3ab242223218882b68386be328f9670c6863d02b62c5e3854f736e2"
     },
     {
       "path": "fr/sparkling-data.js",
@@ -4373,6 +4373,18 @@
       "sha256": "7a0b406886a3aa55df9032918cb1e5f88cabf1ab15274ecc5f70575d60072d0f"
     },
     {
+      "path": "images/factories/joyson-echigawa-640.webp",
+      "url": "https://www.michikusa-travel.com/images/factories/joyson-echigawa-640.webp",
+      "bytes": 35668,
+      "sha256": "98a766d603a90e685c4196b5acb5381dafc28cee6727342f5bcffeaca72bbed3"
+    },
+    {
+      "path": "images/factories/joyson-echigawa.webp",
+      "url": "https://www.michikusa-travel.com/images/factories/joyson-echigawa.webp",
+      "bytes": 136374,
+      "sha256": "da120c590ae75135dea44b420b9e079e3fc54678c80a976c40cffac156663f88"
+    },
+    {
       "path": "images/factories/kibun-640.webp",
       "url": "https://www.michikusa-travel.com/images/factories/kibun-640.webp",
       "bytes": 25096,
@@ -4431,6 +4443,18 @@
       "url": "https://www.michikusa-travel.com/images/factories/marudai.webp",
       "bytes": 242222,
       "sha256": "14dfab6b760431861c22a2ef0d685009bbe849053f649a8a7ef66976b2e6f275"
+    },
+    {
+      "path": "images/factories/meiji-pharmatech-640.webp",
+      "url": "https://www.michikusa-travel.com/images/factories/meiji-pharmatech-640.webp",
+      "bytes": 21480,
+      "sha256": "5c4e5f969c6bce5d6367bd60755e8cda6b19c3b5288ed3acfd89345e12cdd36c"
+    },
+    {
+      "path": "images/factories/meiji-pharmatech.webp",
+      "url": "https://www.michikusa-travel.com/images/factories/meiji-pharmatech.webp",
+      "bytes": 88698,
+      "sha256": "28d17bd953d6683f13171da51aa9f9667fd4e29f803b70773f7235f5037838fe"
     },
     {
       "path": "images/factories/nestle-640.webp",
@@ -4503,6 +4527,18 @@
       "url": "https://www.michikusa-travel.com/images/factories/pola.webp",
       "bytes": 167292,
       "sha256": "aba52e6a8b8669de43125bd50a47acb337a4e6c12a968d66f2b1077f87917653"
+    },
+    {
+      "path": "images/factories/qualitech-shiga-640.webp",
+      "url": "https://www.michikusa-travel.com/images/factories/qualitech-shiga-640.webp",
+      "bytes": 18718,
+      "sha256": "6b6b8c7a805d87d0f6add4a0fb974cc2743bfc35a19832f976bd54d04e8e0861"
+    },
+    {
+      "path": "images/factories/qualitech-shiga.webp",
+      "url": "https://www.michikusa-travel.com/images/factories/qualitech-shiga.webp",
+      "bytes": 79004,
+      "sha256": "ecca043418d8ae301c4f5ee3127630724910f60460301999b4a14444f60278c1"
     },
     {
       "path": "images/factories/sapporo-640.webp",
@@ -4961,6 +4997,12 @@
       "sha256": "f3ddd66fba84c82be0d20e171e9a4093c3275805bc6956d775f3b2bf6919f9dc"
     },
     {
+      "path": "images/rivers/echigawa.jpg",
+      "url": "https://www.michikusa-travel.com/images/rivers/echigawa.jpg",
+      "bytes": 272265,
+      "sha256": "2e2e0692c703e32f936c39968b30634634bd5538e0d284577461a26aeb13ca4e"
+    },
+    {
       "path": "images/rivers/fuji.jpg",
       "url": "https://www.michikusa-travel.com/images/rivers/fuji.jpg",
       "bytes": 240565,
@@ -5009,6 +5051,12 @@
       "sha256": "236ab25174d63b769a26c4f7f0e3a33b31194a196dbe23a44b500ef9ff926252"
     },
     {
+      "path": "images/rivers/sakawa.jpg",
+      "url": "https://www.michikusa-travel.com/images/rivers/sakawa.jpg",
+      "bytes": 194792,
+      "sha256": "8cb2275c9a51508cd8017e59e652e1e414f7e779b1e6d703e8e5ef97cbfa5ca2"
+    },
+    {
       "path": "images/rivers/seta.jpg",
       "url": "https://www.michikusa-travel.com/images/rivers/seta.jpg",
       "bytes": 178329,
@@ -5039,10 +5087,22 @@
       "sha256": "4ecf11494531e3c1f72d85ea74e7abe6582dab40a6eb70cf13e5f556a5c3692a"
     },
     {
+      "path": "images/rivers/toyogawa-floodway.jpg",
+      "url": "https://www.michikusa-travel.com/images/rivers/toyogawa-floodway.jpg",
+      "bytes": 147996,
+      "sha256": "276de289a1e1a497657493b24989978f798b78a1b60597d3794cca69e7d7b010"
+    },
+    {
       "path": "images/rivers/toyogawa.jpg",
       "url": "https://www.michikusa-travel.com/images/rivers/toyogawa.jpg",
       "bytes": 397852,
       "sha256": "381e48dd13fa830e3bdc60b1fc4095384a10df3c4da6bea1caf10b0d43b699b4"
+    },
+    {
+      "path": "images/rivers/yasu.jpg",
+      "url": "https://www.michikusa-travel.com/images/rivers/yasu.jpg",
+      "bytes": 217119,
+      "sha256": "0a7069f9c8cd44611497f8d2740ee2f83029d102ec57cd5fd307dfc571fef7be"
     },
     {
       "path": "images/sparkling-dreams-window.svg",
@@ -5743,8 +5803,8 @@
     {
       "path": "it/factories.html",
       "url": "https://www.michikusa-travel.com/it/factories.html",
-      "bytes": 66213,
-      "sha256": "1c9e93c969ced374b55c4c16275eec64f38dc0b666df148b18fbd9e5d86f1f91"
+      "bytes": 72077,
+      "sha256": "7b895a4bfb487cc91db77f66adedecc0cd6bdba5b06e696a4cc931b67a66b0f6"
     },
     {
       "path": "it/ferris-wheels.html",
@@ -5827,8 +5887,8 @@
     {
       "path": "it/rivers.html",
       "url": "https://www.michikusa-travel.com/it/rivers.html",
-      "bytes": 30936,
-      "sha256": "e41344ee59d98e2b02d462843c40fadcf3891762d792ad86916cd8f04ea07727"
+      "bytes": 35909,
+      "sha256": "80e198b43b5eb50c1e5724f93020883751ee5f7eb1d375a4513b65e0f0ab9c8c"
     },
     {
       "path": "it/sparkling-data.js",
@@ -6259,8 +6319,8 @@
     {
       "path": "ko/factories.html",
       "url": "https://www.michikusa-travel.com/ko/factories.html",
-      "bytes": 66454,
-      "sha256": "8712881af5ef68c50563c835c0cde13101298da691a89f0d23ace8a1ca0cff54"
+      "bytes": 72436,
+      "sha256": "5f5713159fe32e15d55110a9d10ed3921c9e6182247bfa3ffa0b09ea9c7c09d2"
     },
     {
       "path": "ko/ferris-wheels.html",
@@ -6337,8 +6397,8 @@
     {
       "path": "ko/rivers.html",
       "url": "https://www.michikusa-travel.com/ko/rivers.html",
-      "bytes": 31931,
-      "sha256": "9432e78338cd13c0a6b089561907126858c9ed5e8c3b9e7b889a3fc6179192f2"
+      "bytes": 37110,
+      "sha256": "0dffa5a50a894195f364b201b24bd0ab42a64d117d74051dc3a0ceea59c6dd78"
     },
     {
       "path": "ko/sparkling-data.js",
@@ -7483,8 +7543,8 @@
     {
       "path": "rivers.html",
       "url": "https://www.michikusa-travel.com/rivers.html",
-      "bytes": 30332,
-      "sha256": "9faa53e78e29d2123c6077bb469c8ec92b222e79358cd6ac413d6a067db449b0"
+      "bytes": 35427,
+      "sha256": "bdb9ac590bda7efa3ff485289806426041fd9943e7777f34afc3f628516286a7"
     },
     {
       "path": "rivers.js",
@@ -8317,8 +8377,8 @@
     {
       "path": "th/factories.html",
       "url": "https://www.michikusa-travel.com/th/factories.html",
-      "bytes": 91710,
-      "sha256": "d8eae224d1c82a851351475ccc9061b69b9c3b996d9b6cbf6b84037cb04809c7"
+      "bytes": 99408,
+      "sha256": "c48819eed40e2fc5b59a798ccb857d89ca2874aeea649aac1825ef5aa886b492"
     },
     {
       "path": "th/ferris-wheels.html",
@@ -8401,8 +8461,8 @@
     {
       "path": "th/rivers.html",
       "url": "https://www.michikusa-travel.com/th/rivers.html",
-      "bytes": 46587,
-      "sha256": "712002a986ce1fc7591c12a6420ac256521307bac65513dfb9703dec51a8cc47"
+      "bytes": 54018,
+      "sha256": "2913d87dee45c0a8a65cc226876ead710c827de70a66008f539b8fe8cc627a65"
     },
     {
       "path": "th/sparkling-data.js",
@@ -9013,8 +9073,8 @@
     {
       "path": "zh-Hans/factories.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/factories.html",
-      "bytes": 62587,
-      "sha256": "37d3396574e66325b64eeb403cab477b03622d8b960b8f108388d3e52721a781"
+      "bytes": 68260,
+      "sha256": "02bbcad67ed30ef8e66d3094eff4287a27786da98606cd735681734514e5119a"
     },
     {
       "path": "zh-Hans/ferris-wheels.html",
@@ -9091,8 +9151,8 @@
     {
       "path": "zh-Hans/rivers.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/rivers.html",
-      "bytes": 29563,
-      "sha256": "1767c5e894524e70c16475d358634b2ad6f3cd70b4a1fcd1aca76ccd743a0e48"
+      "bytes": 34392,
+      "sha256": "1970943c548d5e78be26f3059a81c74a93fbb051e951233870658b2918d98bac"
     },
     {
       "path": "zh-Hans/sparkling-data.js",
@@ -9499,8 +9559,8 @@
     {
       "path": "zh-Hant/factories.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/factories.html",
-      "bytes": 62502,
-      "sha256": "f19715fa2a2a242ec4efdc14c8325f452070cfbca778e7788a31133af420bbb7"
+      "bytes": 68165,
+      "sha256": "583875a8a33ef67f24a97938028b674c824cb6769004c7d5e52e870aa98b690e"
     },
     {
       "path": "zh-Hant/ferris-wheels.html",
@@ -9577,8 +9637,8 @@
     {
       "path": "zh-Hant/rivers.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/rivers.html",
-      "bytes": 29581,
-      "sha256": "7e5dc0988b5c7d5030039b65141c9589cee670b9459e0ae5fa95c78615c0a10d"
+      "bytes": 34437,
+      "sha256": "18d329263748842b2f67da0a82a9f6a691edb534c0d50bed9a16aeb94da5d7a5"
     },
     {
       "path": "zh-Hant/sparkling-data.js",

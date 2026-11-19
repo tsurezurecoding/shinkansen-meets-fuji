@@ -12,6 +12,25 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('river and factory photo updates check both guides and keep unrelated assets and metadata out of scope', () => {
+  const files = ['data/rivers/route.json', 'scripts/factory-windows.json', 'scripts/content-metadata.json',
+    'en/rivers.html', 'de/factories.html', 'content-manifest.json'].map(change);
+  files.push({ path: 'images/rivers/sakawa.jpg', status: 'A' }, { path: 'images/factories/meiji-pharmatech.webp', status: 'A' });
+  const before = Object.fromEntries(editions.flatMap(lang => ['rivers.html', 'factories.html'].map(route =>
+    [lang === 'ja' ? route : lang + '/' + route, { modified: '2026-11-18', modifiedEvidence: 'first edition' }])));
+  const after = structuredClone(before);
+  after['en/factories.html'].modified = '2026-11-19';
+  const select = (entries, metadata = after) => chooseReleaseScope(entries, { fileContents: () => [JSON.stringify(before), JSON.stringify(metadata)] });
+  const plan = select(files);
+  assert.equal(plan.scope, 'river-factory-photos');
+  for (const generator of ['scripts/generate-rivers-page.mjs', 'scripts/generate-factories-page.mjs']) {
+    assert.ok(plan.commands.some(command => command.includes(generator) && command.includes('--check')));
+  }
+  assert.notEqual(select([...files, change('app.js')]).scope, plan.scope);
+  assert.notEqual(select(files, { ...after, 'start.html': { modified: '2026-11-19' } }).scope, plan.scope);
+  assert.notEqual(select([...files, {path: 'images/rivers/tama.jpg', status: 'D'}]).scope, plan.scope);
+});
+
 test('Solar Ark section selects its projections and excludes timing, other spots and page edits', () => {
   const files = ['data.js', 'data-runtime.js', 'spots/solar-ark.html', 'de/spots/solar-ark.html',
     'data/spot-pages/solar-ark.en.js', 'scripts/locales/castle-de.json', 'de/utility-data.js',
