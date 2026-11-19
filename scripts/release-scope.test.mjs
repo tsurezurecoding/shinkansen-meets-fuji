@@ -12,6 +12,21 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('news registrations check both client projections and embedded articles add bridge validation', () => {
+  const files = ['scripts/content-news.json', 'data/discovery/ja.json', 'index.html', 'en/zukan.html', 'content-manifest.json'].map(change);
+  const news = chooseReleaseScope(files);
+  assert.equal(news.scope, 'content-news');
+  assert.ok(news.commands.some(args => args.includes('scripts/content-news.test.mjs')));
+  assert.ok(news.commands.some(args => args.includes('scripts/check-content-manifest.mjs')));
+  assert.ok(!news.commands.some(args => args.includes('scripts/generate-rivers-page.mjs')));
+  const combined = [...files, ...['app-embedded.js', 'scripts/generate-rivers-page.mjs', 'it/rivers.html', 'spots/fuji.html'].map(change)];
+  assert.equal(chooseReleaseScope(combined).scope, 'unmapped');
+  const articles = chooseReleaseScope(combined, {assetVersionOnly:file => file === 'spots/fuji.html'});
+  assert.equal(articles.scope, 'content-news');
+  assert.ok(articles.commands.some(args => args.includes('scripts/app-embedded.test.mjs')));
+  assert.equal(chooseReleaseScope([...files, change('app.js')]).scope, 'unmapped');
+});
+
 test('river and factory photo updates check both guides and keep unrelated assets and metadata out of scope', () => {
   const files = ['data/rivers/route.json', 'scripts/factory-windows.json', 'scripts/content-metadata.json',
     'en/rivers.html', 'de/factories.html', 'content-manifest.json'].map(change);

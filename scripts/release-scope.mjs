@@ -1197,13 +1197,69 @@ function spotVideoLoadingScope(changes, { assetVersionOnly }) {
   };
 }
 
+const discoveryFeed = /^data\/discovery\/(?:ja|en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\.json$/;
+const discoveryPage = /^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:index|zukan)\.html$/;
+const discoveryArticle = /^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:rivers|factories)\.html$/;
+
+function discoveryScope(changes, options) {
+  const files = new Set(changes.map(change => change.path));
+  const sources = ['scripts/content-news.json', 'scripts/shared/content-news.mjs', 'scripts/generate-discovery.mjs',
+    'content-news.js', 'content-news.css', 'scripts/content-news.test.mjs'];
+  if (!sources.some(file => files.has(file))) return null;
+  const bridge = files.has('app-embedded.js');
+  const owned = new Set([...sources, 'ARCHITECTURE.md', 'scripts/shared/utility-locales.mjs', 'scripts/shared/utility-localization.mjs',
+    'scripts/generate-content-manifest.mjs', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (files.has('scripts/shared/story-window.mjs') && options.fileContents) {
+    const [before, after] = options.fileContents('scripts/shared/story-window.mjs');
+    if (after.replace('href="${prefix}${storyFile(lang)}" hreflang="${lang}" data-cta-track="zukan_theme_click"',
+        'href="${prefix}${storyFile(lang)}" data-cta-track="zukan_theme_click"') === before) owned.add('scripts/shared/story-window.mjs');
+  }
+  if (bridge) for (const file of ['app-embedded.js', 'scripts/app-embedded.test.mjs', 'scripts/generate-rivers-page.mjs',
+    'scripts/generate-factories-page.mjs']) owned.add(file);
+  if (files.has('package.json')) {
+    if (!options.packageBefore || !options.packageAfter) return null;
+    const parse = value => typeof value === 'string' ? JSON.parse(value) : structuredClone(value);
+    const before = parse(options.packageBefore), after = parse(options.packageAfter);
+    after.scripts['test:generator'] = after.scripts['test:generator']?.replace('scripts/content-news.test.mjs ', '');
+    if (!isDeepStrictEqual(before, after)) return null;
+    owned.add('package.json');
+  }
+  if (!changes.every(({path: file, status}) => ['A', 'M'].includes(status) && (owned.has(file) || discoveryFeed.test(file) ||
+    status === 'M' && (discoveryPage.test(file) || bridge && (discoveryArticle.test(file) || file.endsWith('.html') && options.assetVersionOnly?.(file)))))) return null;
+  const tests = ['scripts/content-news.test.mjs', 'scripts/zukan-adsense.test.mjs', 'scripts/release-scope.test.mjs'];
+  const routes = ['index.html', 'zukan.html'];
+  const articles = [];
+  if (bridge) {
+    tests.push('scripts/app-embedded.test.mjs', 'scripts/factories-page.test.mjs');
+    routes.push('rivers.html', 'factories.html');
+    articles.push(node('scripts/generate-rivers-page.mjs', '--check'), node('scripts/generate-factories-page.mjs', '--check'));
+  }
+  return {scope:'content-news', needsDependencies:true, pagesCandidate:true,
+    reason:'Verify the localized entry pages, browser read state, Android discovery feeds and their distribution.',
+    commands:[...changes.filter(c => /\.(?:mjs|js)$/.test(c.path)).map(c => node('--check', c.path)),
+      node('--test', ...tests), ...articles,
+      ...['index.html','zukan.html'].map(route => node('scripts/generate-utility-locales.mjs', '--check', '--route', route)),
+      node('scripts/validate-site-navigation.mjs', ...routes.flatMap(route => ['--route', route])),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = discoveryScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
   let plan = select(changes);
+  // A field-guide editor may change the derived feature order or copy without publishing news.
+  if (plan.scope === 'unmapped' && changes.some(c => discoveryFeed.test(c.path)) &&
+      changes.some(c => discoveryPage.test(c.path) && c.path.endsWith('zukan.html'))) {
+    const rest = select(changes.filter(c => !discoveryFeed.test(c.path) || c.status !== 'M'));
+    if (rest.pagesCandidate) {
+      const manifest = 'scripts/check-content-manifest.mjs';
+      plan = {...rest, needsDependencies:true, commands:rest.commands.some(args => args[1] === manifest)
+        ? rest.commands : [...rest.commands, node(manifest)]};
+    }
+  }
   const files = new Set(changes.map(change => change.path));
   let checkMoments = files.has(nightSpotList);
   const outputs = changes.filter(c => momentsPage.test(c.path));
