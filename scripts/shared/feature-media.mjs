@@ -20,7 +20,8 @@ function youtubePreview(tag, src, id, showPoster) {
 }
 
 function postPreview(original, frame, quote) {
-  const source = quote.match(/https:\/\/(?:x|twitter)\.com\/([\w]+)\/status\/\d+/i);
+  // The attribution at the end of an official blockquote identifies its own post.
+  const source = [...quote.matchAll(/https:\/\/(?:x|twitter)\.com\/(\w+)\/status\/\d+/gi)].at(-1);
   if (!source) return original;
   return frame + '<a class="feature-post-open" href="' + source[0] + '" aria-label="@' + source[1] +
     'の投稿をXで表示">Xの投稿を表示</a><template>' + quote + '</template></div>';

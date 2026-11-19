@@ -9,6 +9,13 @@ const features = [
   ['reflections', 0, 4], ['stories/shinkalion', 0, 2], ['stories/shogun', 0, 1],
   ['stories/godzilla', 0, 1], ['727-collection', 0, 1], ['yakei', 0, 1],
 ];
+test('an X post can link to another post in its text', () => {
+  const html = '<div class="wm-x" data-placeholder="X"><template><blockquote class="twitter-tweet">' +
+    '<p><a href="https://x.com/quoted/status/11">引用</a></p>' +
+    '<a href="https://x.com/author/status/22">元投稿</a></blockquote></template></div>';
+  const page = JSDOM.fragment(withFeatureMedia(html, 'arenani.html'));
+  assert.equal(page.querySelector('.feature-post-open').href, 'https://x.com/author/status/22');
+});
 test('Japanese feature controls keep the credited sources and official embed destinations', () => {
   for (const [route, posts, videos] of features) {
     const file = route + '.html';
