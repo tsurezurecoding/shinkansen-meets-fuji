@@ -1098,9 +1098,54 @@ function timetableScope(changes, options) {
   };
 }
 
+function solarArkSectionScope(changes, { fileContents, assetVersionOnly }) {
+  const route = 'spots/solar-ark.html';
+  if (!fileContents || !['data.js', 'data/spot-pages/solar-ark.en.js']
+    .every(file => changes.some(change => change.path === file && change.status === 'M'))) return null;
+  const locale = '(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)';
+  const localized = new RegExp(`^(?:scripts/locales/castle-${locale}\\.json|${locale}/utility-data\\.js|(?:en|${locale})/${route.replace('.', '\\.')}|data/spot-pages/solar-ark\\.(?:ja|en)\\.js)$`);
+  const outputs = new Set([route, 'data.js', 'data-runtime.js', 'content-manifest.json',
+    'artworks/window-trip/index.html', 'artworks/window-trip/window-trip-data.js',
+    'data/window-trip-photo-sources.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (!changes.every(({ path: file, status }) => status === 'M' && (outputs.has(file) || localized.test(file)
+    || file.endsWith('.html') && assetVersionOnly?.(file)))) return null;
+
+  const normalize = code => {
+    const context = {};
+    vm.runInNewContext(code + ';this.data = JSON.stringify({ SPOTS, ROUTE, BOARD_COLLECTION, WHEEL_COLLECTION });', context, { timeout: 5000 });
+    const data = JSON.parse(context.data);
+    const spot = data.SPOTS.find(item => item.id === 'solar-ark');
+    const areas = [spot.ja.area, spot.en.area];
+    delete spot.ja.area;
+    delete spot.en.area;
+    delete spot.routeNote;
+    delete spot.guideIntro;
+    return { areas, data };
+  };
+  let before, after;
+  try { [before, after] = fileContents('data.js').map(normalize); } catch { return null; }
+  if (!isDeepStrictEqual(before.areas, ['名古屋 → 岐阜羽島', 'Nagoya → Gifu-Hashima'])
+    || !isDeepStrictEqual(after.areas, ['岐阜羽島 → 米原', 'Gifu-Hashima → Maibara'])
+    || !isDeepStrictEqual(before.data, after.data)) return null;
+  return {
+    scope: 'solar-ark-section', needsDependencies: true, pagesCandidate: true,
+    reason: 'Check the Solar Ark section and its article, locale, window trip and distribution projections.',
+    commands: [
+      node('--check', 'data.js'), node('--test', 'scripts/release-scope.test.mjs', 'scripts/spot-page-loader.test.mjs'),
+      node('scripts/validate-spot-schema.mjs'), node('scripts/generate-spot-page-shared-data.mjs', '--check'),
+      node('scripts/validate-spot-page-shared.mjs'), node('scripts/generate-runtime-data.mjs', '--check'),
+      node('scripts/validate-runtime-data.mjs'), node(utilityGenerator, '--route', 'reflections.html', '--check'),
+      node(castleGenerator, '--route', route, '--check'), node('scripts/generate-window-trip-data.mjs', '--check'),
+      node('scripts/generate-window-trip-page.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'),
+      node('scripts/check-content-manifest.mjs'),
+    ],
+  };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = guidePageScope(inputs, options) || timetableScope(inputs, options) || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
+    const existing = solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+      || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
   let plan = select(changes);
