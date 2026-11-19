@@ -787,7 +787,7 @@
       '<figcaption>' + escapeHTML(copy.note) + '</figcaption></figure>';
   }
 
-  function pageChaptersHTML(page, rootPath, lang) {
+  function pageChaptersHTML(page, rootPath, lang, onDemand) {
     if (!page.chapters) return "";
     return page.chapters.map(function (chapter) {
       var heading = lang === "ja" ? chapter.heading.split('｜').map(function (text) { return '<span class="copy-chunk">' + escapeHTML(text) + '</span>'; }).join(' ') : escapeHTML(chapter.heading);
@@ -799,7 +799,7 @@
           return '<li><span class="spot-article-history-year">' + escapeHTML(record.year) + '</span><div><h3>' + escapeHTML(record.title) + '</h3><p>' + escapeHTML(record.text) + '</p>' +
             (record.href ? '<a href="' + escapeHTML(record.href) + '"' + (/^https:/.test(record.href) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHTML(record.label) + '</a>' : '') + '</div></li>';
         }).join('') + '</ol>' : '') +
-        (chapter.media ? pageMediaHTML({ id: page.id + '-' + chapter.id, name: page.name, media: chapter.media }, rootPath, lang) : '') +
+        (chapter.media ? pageMediaHTML({ id: page.id + '-' + chapter.id, name: page.name, media: chapter.media }, rootPath, lang, onDemand) : '') +
         (chapter.link ? '<p><a href="' + escapeHTML(/^(?:https:|#)/.test(chapter.link.route) ? chapter.link.route : href(rootPath, chapter.link.route)) + '"' + (/^https:/.test(chapter.link.route) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHTML(chapter.link.label) + '</a></p>' : '') + '</section>';
     }).join('');
   }
@@ -832,29 +832,45 @@
     return "<section class=\"spot-page-section\"><h2>" + escapeHTML(guide.title) + "</h2><h3>" + escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first") + "</h3><p>" + escapeHTML(guide.intro) + "</p><p>" + escapeHTML(guide.duration) + "</p><h3>" + escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights") + "</h3><p>" + escapeHTML(guide.highlight) + "</p></section>" + compactGuideHTML(page, rootPath, lang);
   }
 
-  function pageMediaHTML(page, rootPath, lang) {
+  function usesOnDemandVideos(page, lang) {
+    if (lang !== "ja") return false;
+    var count = page.media ? page.media.videos.length : 0;
+    return count > 1 || (page.chapters || []).some(function (chapter) {
+      if (chapter.media) count += chapter.media.videos.length;
+      return count > 1;
+    });
+  }
+
+  function videoButtonHTML(label, title, poster, player) {
+    return '<button type="button" class="spot-video-play" aria-label="' + label + '">' + poster +
+      '<span class="spot-video-play-icon" aria-hidden="true">▶</span><span class="spot-video-play-title">' + title + '</span></button>' +
+      '<template>' + player + '</template>';
+  }
+
+  function pageMediaHTML(page, rootPath, lang, onDemand) {
     if (!page.media) return "";
     var ui = PAGE_UI[lang];
-    var hasX = page.media.videos.some(function (video) { return video.kind === "x"; });
     var cards = page.media.videos.map(function (video) {
       if (video.kind === "x") {
         var xText = escapeHTML(video.fallbackText).replace(/\n/g, "<br>");
         var sourceLabel = video.accountName ? video.accountName + "（" + video.handle + "）／" + ui.original : video.handle + " / " + ui.original;
         var frameClass = " spot-page-video-frame-x" + (video.orientation === "portrait" ? " is-portrait" : "");
         var xComment = video.comment ? "<p class=\"spot-page-video-comment\">" + escapeHTML(video.comment) + "</p>" : "";
-        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div>" + xComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
+        var post = "<blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote>";
+        if (onDemand) {
+          var xTitle = escapeHTML(video.accessibleTitle);
+          post = videoButtonHTML(xTitle + "の投稿を表示", xTitle, "", '<div class="spot-x-post" tabindex="-1">' + post + "</div>");
+        }
+        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\">" + post + "</div>" + xComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
       }
       var youtubeComment = video.comment ? "<p class=\"spot-page-video-comment\">" + escapeHTML(video.comment) + "</p>" : "";
-      var onDemand = page.id === "solar-ark" && lang === "ja";
       var id = escapeHTML(video.id), title = escapeHTML(video.title);
       var player = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + (onDemand ? '?autoplay=1&amp;playsinline=1' : '') +
         '" title="' + title + '" loading="' + (onDemand ? 'eager' : 'lazy') +
         '" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
       if (onDemand) {
-        player = '<button type="button" class="spot-video-play" aria-label="' + title + 'を再生">' +
-          '<img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" width="320" height="180" loading="lazy" decoding="async" alt="">' +
-          '<span class="spot-video-play-icon" aria-hidden="true">▶</span><span class="spot-video-play-title">' + title + '</span></button>' +
-          '<template>' + player + '</template>';
+        var poster = '<img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" width="320" height="180" loading="lazy" decoding="async" alt="">';
+        player = videoButtonHTML(title + "を再生", title, poster, player);
       }
       return '<article class="spot-page-video-card" aria-label="' + title + '"><div class="spot-page-video-frame">' + player + '</div>' + youtubeComment + '<p class="spot-page-video-source">' + escapeHTML(ui.source) + '<a href="' + escapeHTML(video.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHTML(video.url) + '</a></p></article>';
     }).join("");
@@ -940,7 +956,7 @@
     }).join("") + (page.storyLink ? '<p class="spot-page-story-link"><a href="' + escapeHTML(href(rootPath, page.storyLink.route)) + '">' + escapeHTML(page.storyLink.label) + '</a></p>' : "");
   }
 
-  function pageHTML(data, page, rootPath, lang, currentId) {
+  function pageHTML(data, page, rootPath, lang, currentId, onDemand) {
     var ui = PAGE_UI[lang];
     var embedded = !!root.MADO_EMBEDDED_WEB;
     var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
@@ -964,24 +980,50 @@
       var sources = (page.references || []).concat(page.bodyLinks || []).filter(function (item, index, all) { return all.findIndex(function (other) { return other.href === item.href; }) === index; });
       references = sources.length ? '<section class="spot-page-section spot-reading-sources" id="references" aria-labelledby="spotSourcesTitle">' + readingEyebrow(page, 'FURTHER READING') + '<h2 id="spotSourcesTitle">' + (lang === "ja" ? "参考リンク" : "References") + '</h2><p class="spot-reading-sources-lead">' + (lang === "ja" ? "公式案内・車窓の記録はこちら。" : "Official guidance and window-view records.") + '</p><ul>' + sources.map(function (item) { return '<li><a href="' + escapeHTML(item.href) + '" rel="noopener" target="_blank">' + escapeHTML(item.label) + '</a></li>'; }).join('') + '</ul></section>' : '';
     }
-    return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(page.eyebrow || ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + (page.factsAfterArticle ? "" : pageFactsHTML(page, lang)) + guideNotice + sharedGuideBefore + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + pageChaptersHTML(page, rootPath, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\">" + readingEyebrow(page, "PHOTO TIPS") + "<h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + (page.factsAfterArticle ? pageFactsHTML(page, lang) : "") + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + (page.readingLayout ? readingCollectionHTML(page, rootPath, lang) : "") + references + "</article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
+    return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(page.eyebrow || ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + (page.factsAfterArticle ? "" : pageFactsHTML(page, lang)) + guideNotice + sharedGuideBefore + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + pageChaptersHTML(page, rootPath, lang, onDemand) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\">" + readingEyebrow(page, "PHOTO TIPS") + "<h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + (page.factsAfterArticle ? pageFactsHTML(page, lang) : "") + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang, onDemand) + (page.readingLayout ? readingCollectionHTML(page, rootPath, lang) : "") + references + "</article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
   }
 
   function bindOnDemandVideos() {
     var buttons = document.querySelectorAll(".spot-video-play");
-    var activePlayer, activeButton;
+    if (!buttons.length) return;
+    var activePlayer, activeButton, widgetsScript;
+    function clearPlayer() {
+      if (!activePlayer) return;
+      activePlayer.remove();
+      activeButton.hidden = false;
+      activePlayer = activeButton = null;
+    }
+    function loadPost(post) {
+      function renderPost() {
+        if (post.isConnected && root.twttr && root.twttr.widgets) root.twttr.widgets.load(post);
+      }
+      if (root.twttr && root.twttr.widgets) { renderPost(); return; }
+      if (!widgetsScript) {
+        widgetsScript = document.createElement("script");
+        widgetsScript.async = true;
+        widgetsScript.src = "https://platform.twitter.com/widgets.js";
+        widgetsScript.onerror = function () { widgetsScript.remove(); widgetsScript = null; };
+        document.head.appendChild(widgetsScript);
+      }
+      widgetsScript.addEventListener("load", renderPost, { once: true });
+    }
+    var localClip = document.querySelector("[data-tokyo-clip]");
+    if (localClip) localClip.addEventListener("toggle", function () { if (localClip.open) clearPlayer(); });
     Array.prototype.forEach.call(buttons, function (button) {
       button.addEventListener("click", function () {
         if (activeButton === button) return;
-        if (activePlayer) {
-          activePlayer.remove();
-          activeButton.hidden = false;
+        clearPlayer();
+        if (localClip) {
+          localClip.open = false;
+          var video = localClip.querySelector("video[src]");
+          if (video) { video.pause(); video.removeAttribute("src"); video.load(); }
         }
         var holder = button.parentElement;
         activePlayer = holder.querySelector("template").content.firstElementChild.cloneNode(true);
         activeButton = button;
         button.hidden = true;
         holder.appendChild(activePlayer);
+        if (holder.dataset.videoPlatform === "x") loadPost(activePlayer);
         activePlayer.focus({ preventScroll: true });
       });
     });
@@ -1128,7 +1170,8 @@
         if (!pageBody || pageBody.id !== pageId || pageBody.lang !== pageLang) throw new Error("page payload does not match this page context");
         validatePageData(pageBody, pageId, pageLang);
         // Construct all required fragments before replacing the static fallback.
-        var articleHTML = pageHTML(pageData, pageBody, pageRoot, pageLang, pageId);
+        var onDemand = usesOnDemandVideos(pageBody, pageLang);
+        var articleHTML = pageHTML(pageData, pageBody, pageRoot, pageLang, pageId, onDemand);
         var headerHTML = headerHost && !root.MADO_EMBEDDED_WEB ? siteHeaderHTML(pageRoot, pageLang, pageId) : "";
         var footerHTML = footerHost && !root.MADO_EMBEDDED_WEB ? discoveryContentRailHTML(pageRoot, pageLang) : "";
         if (headerHost) headerHost.outerHTML = headerHTML;
@@ -1142,8 +1185,8 @@
           }
         }
         bindPageLightbox();
-        if (pageId === "solar-ark" && pageLang === "ja") bindOnDemandVideos();
-        ensureXWidgetsScript(pageBody);
+        if (onDemand) bindOnDemandVideos();
+        else ensureXWidgetsScript(pageBody);
         root.MADO_SPOT_PAGE_RENDERED = true;
         if (typeof root.Event === "function" && document.dispatchEvent) document.dispatchEvent(new root.Event("mado:shared-ui-ready"));
         // The article is inserted after navigation, so restore a chapter deep link now.

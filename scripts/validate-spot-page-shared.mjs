@@ -619,7 +619,10 @@ async function runThinValidator() {
           if (!output.includes(`href="${video.url}"`) || (video.kind === "x" && !output.includes(escape(video.handle))) || (video.kind === "youtube" && !output.includes(`youtube-nocookie.com/embed/${video.id}`))) fail(`${relativeFile} video source/embed is incomplete`);
           if (video.comment && !output.includes(`class="spot-page-video-comment">${escape(video.comment)}</p>`)) fail(`${relativeFile} video comment is missing`);
         }
-        if (rendered.createdScripts.filter((script) => script.src === "https://platform.twitter.com/widgets.js").length !== (articleVideos.some((video) => video.kind === "x") ? 1 : 0)) fail(`${relativeFile} X widgets script count is invalid`);
+        const tapToLoad = lang === 'ja' && articleVideos.length > 1;
+        if (count(output, /class="spot-video-play"/g) !== (tapToLoad ? articleVideos.length : 0)) fail(`${relativeFile} has incorrect video controls`);
+        const loadWidgets = !tapToLoad && articleVideos.some(video => video.kind === 'x');
+        if (rendered.createdScripts.filter(script => script.src === "https://platform.twitter.com/widgets.js").length !== Number(loadWidgets)) fail(`${relativeFile} X widgets script count is invalid`);
       } else if (["spot-page-video-section", "spot-page-video-platform-note", "spot-page-video-grid", "spot-page-video-card", "spotVideoTitle-"].some((needle) => output.includes(needle))) {
         fail(`${relativeFile} rendered a video heading, footnote, container, or card without structured videos`);
       }

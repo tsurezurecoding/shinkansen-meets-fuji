@@ -120,6 +120,10 @@
 }
 .spot-video-play:focus-visible { outline: 3px solid white; outline-offset: -4px; }
 
+.spot-x-post { height: 100%; overflow: auto; color: white; }
+.spot-x-post blockquote { box-sizing: border-box; padding: .75rem 1rem; }
+.spot-x-post a { color: inherit; }
+
 .spot-page-video-frame iframe,
 .spot-page-video-frame twitter-widget,
 .spot-page-video-frame .twitter-tweet {

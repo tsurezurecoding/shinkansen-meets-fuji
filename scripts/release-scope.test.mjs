@@ -44,6 +44,10 @@ test('spot video loading checks both runtime manifests and accepts only version 
   }
   assert.notEqual(chooseReleaseScope(files, {assetVersionOnly: () => false}).scope, plan.scope);
   assert.notEqual(chooseReleaseScope([...files, change('data.js')], options).scope, plan.scope);
+  const expansion = ['spot-page-shared.js', 'spot-media-gallery.css', 'scripts/validate-spot-page-shared.mjs',
+    'scripts/generate-spot-pages.test.mjs', 'en/spots/solar-ark.html'].map(change);
+  assert.equal(chooseReleaseScope(expansion, options).scope, plan.scope);
+  assert.notEqual(chooseReleaseScope([...expansion, change('spots/solar-ark.html')], options).scope, plan.scope);
 });
 
 test('Solar Ark section selects its projections and excludes timing, other spots and page edits', () => {
