@@ -419,6 +419,7 @@
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
+    var imageAttribute = (options && options.imageAttribute) || "src";
     var railSpots = data.spots.concat(data.wheelSpots || []);
     var rows = [];
     data.stations.forEach(function (station) {
@@ -440,7 +441,7 @@
       var seats = "<span class=\"spot-page-shared-seat-group\" aria-label=\"" + escapeHTML(row.sideLabel) + "\">" + row.seats.map(function (seat) {
         return "<span class=\"spot-page-shared-seat is-" + escapeHTML(seat.toLowerCase()) + "\">" + escapeHTML(seat) + "</span>";
       }).join("") + "</span>";
-      var thumbnail = "<span class=\"spot-page-rail-thumb-wrap\"><img class=\"spot-page-rail-thumb\" src=\"" + escapeHTML(href(rootPath, row.thumb)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"38\" height=\"38\"><span class=\"spot-page-shared-preview\" aria-hidden=\"true\"><img src=\"" + escapeHTML(href(rootPath, row.thumb)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-shared-preview-copy\"><strong>" + escapeHTML(row.name) + "</strong><span>" + escapeHTML(ui.railPreviewTiming(row.minutes)) + " ・ " + escapeHTML(row.sideLabel) + "</span></span></span></span>";
+      var thumbnail = "<span class=\"spot-page-rail-thumb-wrap\"><img class=\"spot-page-rail-thumb\" " + imageAttribute + "=\"" + escapeHTML(href(rootPath, row.thumb)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"38\" height=\"38\"><span class=\"spot-page-shared-preview\" aria-hidden=\"true\"><img " + imageAttribute + "=\"" + escapeHTML(href(rootPath, row.thumb)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-shared-preview-copy\"><strong>" + escapeHTML(row.name) + "</strong><span>" + escapeHTML(ui.railPreviewTiming(row.minutes)) + " ・ " + escapeHTML(row.sideLabel) + "</span></span></span></span>";
       var guideHref = row.guideRoute ? href(rootPath, row.guideRoute) : (spotHrefPrefix || "") + (row.guide || row.id + ".html");
       return "<li class=\"spot-page-rail-row spot-page-rail-spot" + (isCurrent ? " is-current" : "") + "\"><a class=\"spot-page-rail-link\" href=\"" + escapeHTML(guideHref) + "\"" + (isCurrent ? " aria-current=\"page\"" : "") + ">" + thumbnail + "<span class=\"spot-page-rail-min\">" + escapeHTML(row.minutes) + "</span><span class=\"spot-page-rail-name\">" + escapeHTML(row.name) + "</span>" + seats + "</a></li>";
     }).join("");
@@ -538,7 +539,13 @@
 
   // One source for the selector's static footer and every spot page.
   // Existing cards stay after these discovery entries, including the English extras.
-  function discoveryContentRailHTML(rootPath, lang) {
+  function cardImageAttribute(lang) {
+    // Reuse the photo observer so hidden sidebars and clipped carousel cards fetch only when visible.
+    return lang === "ja" && root.IntersectionObserver && root.requestAnimationFrame
+      ? "data-photo-deferred data-photo-original-src" : "src";
+  }
+
+  function discoveryContentRailHTML(rootPath, lang, imageAttribute) {
     var base = basePath(rootPath, lang), ja = lang === "ja";
     var items = [
       { href: "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", img: "images/android/app-icon-192.webp", label: "ANDROID APP", title: ja ? "Androidアプリ" : "Android app", desc: ja ? "画面を消しても音声案内。無料・登録不要。" : "Audio guidance with the screen off. Free, with no registration.", app: true },
@@ -557,7 +564,7 @@
     var keys = ['android', 'zukan', '727', 'castles', 'sudoori', 'quiz'];
     if (!ja) { events[2] = 'arenani_entry_click'; keys[2] = 'arenani'; events[4] = 'everyday_japan_entry_click'; events[5] = 'yakei_entry_click'; keys[4] = 'everyday'; keys[5] = 'yakei'; }
     var cards = items.map(function (item, index) {
-      return '<a class="content-rail-card' + (item.app ? ' content-rail-android hide-in-app' : '') + '" href="' + escapeHTML(item.href) + '" data-cta-track="' + events[index] + '" data-cta-id="discovery_' + keys[index] + '"' + (item.app ? ' target="_blank" rel="noopener noreferrer"' : '') + (item.japanese ? ' hreflang="ja"' : '') + '><img src="' + escapeHTML(href(rootPath, item.img)) + '" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>' + escapeHTML(item.label) + '</small><strong>' + escapeHTML(item.title) + (item.app ? ' <span aria-hidden="true">↗</span>' : '') + '</strong><span>' + escapeHTML(item.desc) + '</span>' + (item.japanese ? '<small class="discovery-language">日本語</small>' : '') + '</span></a>';
+      return '<a class="content-rail-card' + (item.app ? ' content-rail-android hide-in-app' : '') + '" href="' + escapeHTML(item.href) + '" data-cta-track="' + events[index] + '" data-cta-id="discovery_' + keys[index] + '"' + (item.app ? ' target="_blank" rel="noopener noreferrer"' : '') + (item.japanese ? ' hreflang="ja"' : '') + '><img ' + (imageAttribute || 'src') + '="' + escapeHTML(href(rootPath, item.img)) + '" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>' + escapeHTML(item.label) + '</small><strong>' + escapeHTML(item.title) + (item.app ? ' <span aria-hidden="true">↗</span>' : '') + '</strong><span>' + escapeHTML(item.desc) + '</span>' + (item.japanese ? '<small class="discovery-language">日本語</small>' : '') + '</span></a>';
     }).join('');
     return contentRailHTML(rootPath, lang).replace('class="content-rail-section"', 'class="content-rail-section content-rail-discovery"').replace('<div class="content-rail">', '<div class="content-rail">' + cards);
   }
@@ -571,7 +578,7 @@
     return "<small class=\"show-credit\">" + escapeHTML(text) + "</small>";
   }
 
-  function showcaseHTML(data, rootPath, lang) {
+  function showcaseHTML(data, rootPath, lang, imageAttribute) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var cards = data.showcase.map(function (item) {
@@ -581,7 +588,7 @@
         ? href(rootPath, item.guideRoute[lang])
         : href(base, "spots/" + (item.guide || item.id + ".html"));
       return "<a class=\"show-card\" href=\"" + escapeHTML(guideHref) + "\" aria-label=\"" + escapeHTML(name + ": " + ui.showcaseAction) + "\">" +
-        "<div class=\"show-media\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"" + escapeHTML(name) + "\" loading=\"lazy\" decoding=\"async\"></div>" +
+        "<div class=\"show-media\"><img " + (imageAttribute || "src") + "=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"" + escapeHTML(name) + "\" loading=\"lazy\" decoding=\"async\"></div>" +
         "<span class=\"show-caption\"><strong>" + escapeHTML((item.icon || "") + " " + name).trim() + "</strong>" + showcaseCreditHTML(item, lang) + "<span class=\"show-hook\">" + escapeHTML(hook) + "</span><span class=\"show-guide-link\">" + escapeHTML(ui.showcaseAction) + "</span></span>" +
         "</a>";
     }).join("");
@@ -834,10 +841,8 @@
 
   function usesOnDemandVideos(page, lang) {
     if (lang !== "ja") return false;
-    var count = page.media ? page.media.videos.length : 0;
-    return count > 1 || (page.chapters || []).some(function (chapter) {
-      if (chapter.media) count += chapter.media.videos.length;
-      return count > 1;
+    return !!(page.media && page.media.videos.length) || (page.chapters || []).some(function (chapter) {
+      return chapter.media && chapter.media.videos.length;
     });
   }
 
@@ -971,8 +976,8 @@
     var sharedGuide = (page.sharedGuide || []).filter(function (chapter) { return chapter.placement !== "before-story"; }).map(sharedGuideChapterHTML).join("");
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
-    var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
-    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId, null, null, { noPromos: true });
+    var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang, cardImageAttribute(lang));
+    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId, null, null, { noPromos: true, imageAttribute: cardImageAttribute(lang) });
     var mobilePromos = "";
     // Chrome has separate hosts so page-specific supplements keep their order.
     var references = "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section>";
@@ -1173,7 +1178,7 @@
         var onDemand = usesOnDemandVideos(pageBody, pageLang);
         var articleHTML = pageHTML(pageData, pageBody, pageRoot, pageLang, pageId, onDemand);
         var headerHTML = headerHost && !root.MADO_EMBEDDED_WEB ? siteHeaderHTML(pageRoot, pageLang, pageId) : "";
-        var footerHTML = footerHost && !root.MADO_EMBEDDED_WEB ? discoveryContentRailHTML(pageRoot, pageLang) : "";
+        var footerHTML = footerHost && !root.MADO_EMBEDDED_WEB ? discoveryContentRailHTML(pageRoot, pageLang, cardImageAttribute(pageLang)) : "";
         if (headerHost) headerHost.outerHTML = headerHTML;
         if (footerHost) footerHost.outerHTML = footerHTML;
         pageHost.outerHTML = articleHTML;

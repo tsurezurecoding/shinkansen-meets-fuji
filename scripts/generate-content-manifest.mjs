@@ -137,6 +137,8 @@ const contentFiles = [
   "hanabi.html",
   "en/hanabi.html",
   "hanabi.js",
+  "feature-media.js",
+  "feature-media.css",
   "hanabi.css",
   "images/hanabi-window.svg",
   "images/og-hanabi.jpg",

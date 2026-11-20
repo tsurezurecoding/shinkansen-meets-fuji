@@ -12,6 +12,17 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('feature media releases only the opted-in articles and version-only changes in other routes', () => {
+  const files = [{ path: 'feature-media.js', status: 'A' }, change('stories/shogun.html'), change('fr/guide.html')];
+  const options = { assetVersionOnly: file => file === 'fr/guide.html' };
+  const plan = chooseReleaseScope(files, options);
+  assert.equal(plan.scope, 'feature-media');
+  assert.ok(needsPagesCandidate(plan));
+  assert.ok(plan.commands.some(command => command.includes('scripts/feature-media.test.mjs')));
+  assert.notEqual(chooseReleaseScope(files, { assetVersionOnly: () => false }).scope, plan.scope);
+  assert.notEqual(chooseReleaseScope([...files, change('data.js')], options).scope, plan.scope);
+});
+
 test('river and factory photo updates check both guides and keep unrelated assets and metadata out of scope', () => {
   const files = ['data/rivers/route.json', 'scripts/factory-windows.json', 'scripts/content-metadata.json',
     'en/rivers.html', 'de/factories.html', 'content-manifest.json'].map(change);

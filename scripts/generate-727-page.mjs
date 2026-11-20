@@ -1,3 +1,4 @@
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -319,7 +320,7 @@ for (const lang of requestedLanguage ? [requestedLanguage] : ['ja', 'en']) {
   if (lang === 'ja') {
     const node = { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': site + '/727-collection.html', url: site + '/727-collection.html', name: COPY.ja.pageTitle.replace(/<\/?title>/g, ''), description: COPY.ja.metaDescription.match(/content="([^"]*)"/)[1], inLanguage: 'ja' };
     html = html.replace('</head>', '  <script type="application/ld+json">' + JSON.stringify(node) + '</script>\n</head>');
-    html = enhanceContentHead(html, '727-collection.html', root);
+    html = enhanceContentHead(withFeatureMedia(html, '727-collection.html'), '727-collection.html', root);
   }
   if (lang === 'en') html = enhanceContentHead(html, 'en/727-collection.html', root);
   if (process.argv.includes('--check')) {

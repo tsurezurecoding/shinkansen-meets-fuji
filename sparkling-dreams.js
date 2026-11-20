@@ -354,7 +354,7 @@
     if (typeof document === "undefined" || typeof document.querySelectorAll !== "function") return;
     const groups = document.querySelector(".sd-video-groups");
     const stages = groups ? Array.from(groups.querySelectorAll(".sd-x-embed")) : [];
-    if (!groups || !stages.length) return;
+    if (!groups || !stages.length || groups.querySelector(".feature-post-open")) return;
     const reveal = () => {
       stages.forEach((stage) => {
         stage.classList.remove("is-loading");
