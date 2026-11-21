@@ -1,3 +1,4 @@
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import {withSpotAdvertising} from './shared/spot-ad-placements.mjs';
 import {STORY_ROUTES,STORY_LANGUAGES,withStoryWindowLinks} from './shared/story-window.mjs';
 import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
@@ -2231,7 +2232,7 @@ for (const config of guideRailConfigs) {
 }
 for (const file of ["reflections.html", "en/reflections.html"]) {
   const target = path.join(appDir, file);
-  writeFileIfChanged(target, withUtilityLocales(enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir), file));
+  writeFileIfChanged(target, withUtilityLocales(enhanceContentHead(withFeatureMedia(readSiteSource(appDir, file), file), file, appDir), file));
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 

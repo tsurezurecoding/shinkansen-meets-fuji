@@ -35,7 +35,7 @@
 }
 </script>
   <link rel="stylesheet" href="../style.css?v=2117933f">
-  <link rel="stylesheet" href="../mieru.css?v=96f08b57">
+  <link rel="stylesheet" href="../mieru.css?v=95e712a0">
   <!-- ANDROID_APP_INVITE_RESET_START -->
 <script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
 (function () {
@@ -125,70 +125,71 @@
       <h1>富士山可見度預報<small style="font-size:.55em;color:var(--accent);margin-left:8px">測試版</small></h1>
       <p class="mieru-lead">今天從新幹線能看見富士山嗎？比較5個觀景區間的山頂雲量與空氣清晰度。選擇列車、上車車站與方向，或輸入出發時間，即可查看通過各區間時的天氣條件。</p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>上車車站 <select id="mieruBoard"></select></label>
-          <label>方向
-            <select id="mieruDir">
-              <option value="west">往新大阪／博多</option>
-              <option value="east">往東京</option>
-            </select>
-          </label>
-          <label>白天 <select id="mieruDay"><option value="0">今天</option><option value="1">明天</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="選擇出發時間的設定方式">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">選擇列車</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">輸入時間</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>此時間之後出發 <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">搜尋列車</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>出發時間（約） <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">計算中…</div>
-      </div>
+      <section class="weather-focus" aria-labelledby="focus-title">
+  <div class="weather-focus-head"><h2 id="focus-title">新富士附近的富士山能見度</h2><p>三島至新富士 · E 座 · 距離富士山約 24 公里</p><div class="forecast-days" role="group" aria-label="預報日期" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div>
+  <div class="weather-feature"><div class="weather-reading">
+    <p id="mieruStatus" role="status">氣象資料載入中…</p>
+    <div id="mieruForecastContext" aria-live="polite" hidden="">
+      <p class="weather-date" id="mieruForecastDate"></p>
+      <dl id="weather-periods" class="weather-periods"><div><dt>08:00</dt><dd><strong data-hour="8"></strong>%</dd></div><div><dt>12:00</dt><dd><strong data-hour="12"></strong>%</dd></div><div><dt>16:00</dt><dd><strong data-hour="16"></strong>%</dd></div></dl>
+    </div>
+    <a class="weather-hours-link" href="#hour-fuji">查看逐小時預報 <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure class="weather-photo"><img src="../images/thumbs/display/20240211_fuji_michikusa-ece7c5cc-640.webp" alt="新富士附近，城市上方積雪的富士山" width="640" height="360" fetchpriority="high"><figcaption>新富士附近的車窗風景</figcaption></figure></div>
+  <p id="mieruRetrievedAt" class="weather-stamp" hidden=""></p>
+</section>
+<details class="ride-panel" id="ride"><summary><span><strong>查看所搭列車的預報</strong><small>選擇列車或輸入出發時間</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
+  <div class="ride-content"><div class="ride-modes" role="group" aria-label="選擇出發時間的設定方式"><button type="button" id="mieruModeTrain" aria-pressed="true">選擇列車</button><button type="button" id="mieruModeTime" aria-pressed="false">輸入時間</button></div>
+  <div id="forecast-picker" class="setup-card"></div><p id="picker-status" role="status"></p><div id="mieruRide" aria-live="polite"></div></div>
+</details>
+<aside class="camera-note"><a href="https://www.city.fuji.shizuoka.jp/1005330000/p007780.html" target="_blank" rel="noopener noreferrer">觀看富士山即時影像 <span aria-hidden="true">↗</span></a><p>畫面來自富士市政府。拍攝時間請見連結頁面（日文）。</p></aside>
+      <section class="mieru-factset" aria-labelledby="region-title"><h2 id="region-title">從新幹線欣賞富士山的5個區間</h2><div class="region-controls"><div class="forecast-days" role="group" aria-label="預報日期" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div><p class="region-note">看見富士山的機率 · 06:00–19:00（日本時間）</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji" id="hour-ota-fuji" aria-labelledby="view-ota-fuji">
+  <header class="region-card-heading"><h3 id="view-ota-fuji">大田的富士山 <span>品川 → 新橫濱（東京大田區）</span></h3>
+  <p class="mieru-fact-meta">從東京出發約10分鐘・E座（靠山側）・觀景距離約95公里</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/ota-fuji.html" aria-label="查看照片與觀景指南：大田的富士山"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="大田區附近，東京屋頂後方的富士山" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">望向東京屋頂後方，尋找遠處小小的富士山。這裡相距約95公里，需要格外清澈的空氣才容易發現。它是旅程中富士山的第一個提示，與新富士附近的大景色截然不同。</p>
+  <a class="mieru-fact-more" href="../zh-Hant/spots/ota-fuji.html">查看照片與觀景指南 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="sagami-fuji" id="hour-sagami-fuji" aria-labelledby="view-sagami-fuji">
+  <header class="region-card-heading"><h3 id="view-sagami-fuji">相模平原後方的富士山 <span>新橫濱→小田原</span></h3>
+  <p class="mieru-fact-meta">從東京出發約25分鐘・E座（靠山側）・觀景距離約59公里</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/sagami-fuji.html" aria-label="查看照片與觀景指南：相模平原後方的富士山"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="小田原附近，山丘後方積雪的富士山" width="735" height="414" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">富士山出現在廣闊的相模平野與丹澤山稜後方。平野、山麓與富士山層層重疊，與新富士附近的構圖很不一樣。冬季與初春乾燥的早晨，山的輪廓通常較清楚；雨後也可能帶來驚喜。</p>
+  <a class="mieru-fact-more" href="../zh-Hant/spots/sagami-fuji.html">查看照片與觀景指南 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="fuji" id="hour-fuji" aria-labelledby="view-fuji">
+  <header class="region-card-heading"><h3 id="view-fuji">新富士附近的富士山 <span>三島→新富士</span></h3>
+  <p class="mieru-fact-meta">從東京出發約43分鐘・E座（靠山側）・觀景距離約24公里</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/fuji.html" aria-label="查看照片與觀景指南：新富士附近的富士山"><img src="../images/20240211_fuji_michikusa.jpg" alt="新富士附近，城市上方積雪的富士山" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">這是5個區間中距離最近的一處，富士山可能在車窗外展開約3至4分鐘。山位於鐵路北側，白天的山坡通常能受到列車這一側的陽光照射。冬季積雪的山頂與夏季幾乎無雪的山，讓同一段旅程呈現不同面貌。</p>
+  <a class="mieru-fact-more" href="../zh-Hant/spots/fuji.html">查看照片與觀景指南 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="left-fuji" id="hour-left-fuji" aria-labelledby="view-left-fuji">
+  <header class="region-card-heading"><h3 id="view-left-fuji">左側的富士山 <span>通過靜岡站與安倍川後不久</span></h3>
+  <p class="mieru-fact-meta">從東京出發約54分鐘・A座（靠海側）・觀景距離約56公里</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/left-fuji.html" aria-label="查看照片與觀景指南：左側的富士山"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="從A座望見住宅後方的左富士" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">這是5個區間中唯一的A座景色。往新大阪方向行駛時，通過靜岡與安倍川後，鐵路的彎道讓富士山短暫出現在左手邊。只有幾秒鐘，請提早留意窗外。積雪的山頂比夏季霧靄中的輪廓，更容易在建築物之間辨認。</p>
+  <a class="mieru-fact-more" href="../zh-Hant/spots/left-fuji.html">查看照片與觀景指南 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="hamanako-fuji" id="hour-hamanako-fuji" aria-labelledby="view-hamanako-fuji">
+  <header class="region-card-heading"><h3 id="view-hamanako-fuji">濱名湖彼端的富士山 <span>濱松 → 豐橋</span></h3>
+  <p class="mieru-fact-meta">從東京出發約73分鐘・E座（靠山側）・觀景距離約128公里</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/hamanako.html#hamanako-fuji" aria-label="查看照片與觀景指南：濱名湖後方的富士山"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="濱名湖後方，遠處積雪的富士山" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">這是5個區間中距離最遠的一處，富士山小小地浮現在湖泊與周邊山丘後方。列車跨越濱名湖時，請從E座側望向遠處。必須有非常清澈的空氣才能看見，是偶爾遇見的驚喜，不是每趟旅程都能期待的景色。</p>
+  <a class="mieru-fact-more" href="../zh-Hant/spots/hamanako.html#hamanako-fuji">查看照片與觀景指南 →</a></div>
+</article></div><p>以下5處景色依東京往新大阪的行進順序排列。座位側與距離對應各觀景位置；從東京出發的時間為希望號、光號的大約值。請使用上方的列車選擇功能，查詢您所搭列車的通過時間。</p></section>
       <section class="mieru-answer"><h2>今天從新幹線看得到富士山嗎？</h2>
 <p>能否看見富士山，主要取決於兩個條件：山頂沒有被雲遮住，以及列車與山之間的空氣足夠清晰。上方工具會分別估算東海道新幹線沿線5個觀景區間的條件。</p>
 <p>乾燥的冬季與初春，通常能看見最清晰的景色。潮濕的夏天，即使天空晴朗，霧靄仍可能遮住遠方的山。雨後空氣變得清澈時，夏天也偶爾能看見富士山。</p>
 <p>遠方的景色通常在早晨比下午更清晰。較晚時，山可能呈現剪影，而不是清楚的山坡細節。逐時預報可協助比較您通過前後的天氣條件。</p>
-<p>其中4個區間位於E座、靠山側。往新大阪方向行駛時，通過靜岡後短暫出現的「左富士」是唯一的例外，位於A座、靠海側。如果富士山被雲遮住，也可以看看 <a href="../zh-Hant/guide.html#cloudy">陰天也能享受的車窗景色</a>.</p></section><div id="mieruStatus">氣象資料載入中…</div>
-      <div id="mieruSpots"></div><section class="mieru-factset"><h2>從新幹線欣賞富士山的5個區間</h2><p>以下5處景色依東京往新大阪的行進順序排列。座位側與距離對應各觀景位置；從東京出發的時間為希望號、光號的大約值。請使用上方的列車選擇功能，查詢您所搭列車的通過時間。</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
-  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/ota-fuji.html" aria-label="查看照片與觀景指南：大田的富士山"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="大田區附近，東京屋頂後方的富士山" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>大田的富士山 <span>品川 → 新橫濱（東京大田區）</span></h3>
-  <p class="mieru-fact-meta">從東京出發約10分鐘・E座（靠山側）・觀景距離約95公里</p><p class="mieru-fact-body">望向東京屋頂後方，尋找遠處小小的富士山。這裡相距約95公里，需要格外清澈的空氣才容易發現。它是旅程中富士山的第一個提示，與新富士附近的大景色截然不同。</p>
-  <a class="mieru-fact-more" href="../zh-Hant/spots/ota-fuji.html">查看照片與觀景指南 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="sagami-fuji">
-  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/sagami-fuji.html" aria-label="查看照片與觀景指南：相模平原後方的富士山"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="小田原附近，山丘後方積雪的富士山" width="735" height="414" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>相模平原後方的富士山 <span>新橫濱→小田原</span></h3>
-  <p class="mieru-fact-meta">從東京出發約25分鐘・E座（靠山側）・觀景距離約59公里</p><p class="mieru-fact-body">富士山出現在廣闊的相模平野與丹澤山稜後方。平野、山麓與富士山層層重疊，與新富士附近的構圖很不一樣。冬季與初春乾燥的早晨，山的輪廓通常較清楚；雨後也可能帶來驚喜。</p>
-  <a class="mieru-fact-more" href="../zh-Hant/spots/sagami-fuji.html">查看照片與觀景指南 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="fuji">
-  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/fuji.html" aria-label="查看照片與觀景指南：新富士附近的富士山"><img src="../images/20240211_fuji_michikusa.jpg" alt="新富士附近，城市上方積雪的富士山" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>新富士附近的富士山 <span>三島→新富士</span></h3>
-  <p class="mieru-fact-meta">從東京出發約43分鐘・E座（靠山側）・觀景距離約24公里</p><p class="mieru-fact-body">這是5個區間中距離最近的一處，富士山可能在車窗外展開約3至4分鐘。山位於鐵路北側，白天的山坡通常能受到列車這一側的陽光照射。冬季積雪的山頂與夏季幾乎無雪的山，讓同一段旅程呈現不同面貌。</p>
-  <a class="mieru-fact-more" href="../zh-Hant/spots/fuji.html">查看照片與觀景指南 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="left-fuji">
-  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/left-fuji.html" aria-label="查看照片與觀景指南：左側的富士山"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="從A座望見住宅後方的左富士" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>左側的富士山 <span>通過靜岡站與安倍川後不久</span></h3>
-  <p class="mieru-fact-meta">從東京出發約54分鐘・A座（靠海側）・觀景距離約56公里</p><p class="mieru-fact-body">這是5個區間中唯一的A座景色。往新大阪方向行駛時，通過靜岡與安倍川後，鐵路的彎道讓富士山短暫出現在左手邊。只有幾秒鐘，請提早留意窗外。積雪的山頂比夏季霧靄中的輪廓，更容易在建築物之間辨認。</p>
-  <a class="mieru-fact-more" href="../zh-Hant/spots/left-fuji.html">查看照片與觀景指南 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="hamanako-fuji">
-  <figure class="mieru-fact-photo"><a href="../zh-Hant/spots/hamanako.html#hamanako-fuji" aria-label="查看照片與觀景指南：濱名湖後方的富士山"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="濱名湖後方，遠處積雪的富士山" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>濱名湖彼端的富士山 <span>濱松 → 豐橋</span></h3>
-  <p class="mieru-fact-meta">從東京出發約73分鐘・E座（靠山側）・觀景距離約128公里</p><p class="mieru-fact-body">這是5個區間中距離最遠的一處，富士山小小地浮現在湖泊與周邊山丘後方。列車跨越濱名湖時，請從E座側望向遠處。必須有非常清澈的空氣才能看見，是偶爾遇見的驚喜，不是每趟旅程都能期待的景色。</p>
-  <a class="mieru-fact-more" href="../zh-Hant/spots/hamanako.html#hamanako-fuji">查看照片與觀景指南 →</a></div>
-</article></div></section>
+<p>其中4個區間位於E座、靠山側。往新大阪方向行駛時，通過靜岡後短暫出現的「左富士」是唯一的例外，位於A座、靠海側。如果富士山被雲遮住，也可以看看 <a href="../zh-Hant/guide.html#cloudy">陰天也能享受的車窗景色</a>.</p></section>
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         預報模型測試版：可見機率＝山頂未被雲遮住的機率×大氣能見度達到有效觀景距離的機率。視線會斜穿霾層向山頂延伸，因此有效距離比水平距離短；濕度越高，霾層越厚。氣象資料來源： <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
         未滿 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
         ，並換算為本站的機率估算。回溯比對車窗照片記錄時，模型將10個成功拍攝日中的9個判定為可見。通過時間為希望號的約略估算。天氣突然變化可能使預報不準確。陰天的觀景點子，請參閱 <a href="../zh-Hant/guide.html#cloudy">富士山導覽</a>.
@@ -205,9 +206,9 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=84653b67"></script>
-  <script src="../spot-page-shared.js?v=0c2df1c5"></script>
-  <script src="../data-runtime.js?v=f3036030"></script><script src="../zh-Hant/utility-data.js?v=d4139bc2"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
-  <script src="../mieru.js?v=7c431886"></script>
+  <script src="../spot-page-shared.js?v=52589b88"></script>
+  <script src="../data-runtime.js?v=f3036030"></script><script src="../zh-Hant/utility-data.js?v=eaf672a4"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
+  <script src="../mieru.js?v=90c2dc65"></script>
 
 
 
@@ -215,5 +216,5 @@
 <script type="application/json" id="mado-android-invite-config">{"language":"zh-Hant","pageContext":"feature","assetPrefix":"../","general":false}</script>
 <!-- ANDROID_APP_INVITE_END -->
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/zh-hant.shell.js","shared-ui/zh-hant.rail-mieru.js","shared-ui/zh-hant.cards.js"],"root":"../","lang":"zh-Hant","route":"mieru.html","mounts":[{"host":"chrome-0","component":"header-mieru","kind":"header","menu":"header-start-menu","menuRoute":"mieru.html"},{"host":"chrome-1","component":"rail-mieru","kind":"rail"},{"host":"chrome-2","component":"showcase-mieru","kind":"showcase"},{"host":"chrome-3","component":"content-sparkling-dreams","kind":"content"}]}</script>
-<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+<script src="../site-runtime-loader.js?v=0f466d8d" defer></script>
 </body></html>

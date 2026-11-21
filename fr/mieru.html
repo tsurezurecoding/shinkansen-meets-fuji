@@ -35,7 +35,7 @@
 }
 </script>
   <link rel="stylesheet" href="../style.css?v=2117933f">
-  <link rel="stylesheet" href="../mieru.css?v=96f08b57">
+  <link rel="stylesheet" href="../mieru.css?v=95e712a0">
   <!-- ANDROID_APP_INVITE_RESET_START -->
 <script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
 (function () {
@@ -125,70 +125,71 @@
       <h1>Prévision de visibilité du mont Fuji<small style="font-size:.55em;color:var(--accent);margin-left:8px">Bêta</small></h1>
       <p class="mieru-lead">Le mont Fuji sera-t-il visible depuis le Shinkansen aujourd’hui ? Comparez les nuages autour du sommet et la clarté de l’air dans cinq zones. Choisissez votre train, votre gare de départ et votre direction, ou saisissez une heure de départ, pour consulter les conditions à votre passage.</p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>Gare de départ <select id="mieruBoard"></select></label>
-          <label>Sens
-            <select id="mieruDir">
-              <option value="west">Vers Shin-Osaka / Hakata</option>
-              <option value="east">Vers Tokyo</option>
-            </select>
-          </label>
-          <label>Jour <select id="mieruDay"><option value="0">Aujourd'hui</option><option value="1">Demain</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="Choisir comment indiquer votre départ">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">Choisir un train</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">Saisir une heure</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>Départs à partir de <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">Rechercher des trains</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>Heure de départ approximative <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">Calcul en cours…</div>
-      </div>
+      <section class="weather-focus" aria-labelledby="focus-title">
+  <div class="weather-focus-head"><h2 id="focus-title">Visibilité près de Shin-Fuji</h2><p>Mishima à Shin-Fuji · Siège E · Mont Fuji à environ 24 km</p><div class="forecast-days" role="group" aria-label="Date des prévisions" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div>
+  <div class="weather-feature"><div class="weather-reading">
+    <p id="mieruStatus" role="status">Chargement des données météo…</p>
+    <div id="mieruForecastContext" aria-live="polite" hidden="">
+      <p class="weather-date" id="mieruForecastDate"></p>
+      <dl id="weather-periods" class="weather-periods"><div><dt>08:00</dt><dd><strong data-hour="8"></strong>%</dd></div><div><dt>12:00</dt><dd><strong data-hour="12"></strong>%</dd></div><div><dt>16:00</dt><dd><strong data-hour="16"></strong>%</dd></div></dl>
+    </div>
+    <a class="weather-hours-link" href="#hour-fuji">Voir les prévisions heure par heure <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure class="weather-photo"><img src="../images/thumbs/display/20240211_fuji_michikusa-ece7c5cc-640.webp" alt="Le mont Fuji enneigé au-dessus de la ville, près de Shin-Fuji" width="640" height="360" fetchpriority="high"><figcaption>Vue depuis le train près de Shin-Fuji</figcaption></figure></div>
+  <p id="mieruRetrievedAt" class="weather-stamp" hidden=""></p>
+</section>
+<details class="ride-panel" id="ride"><summary><span><strong>Voir les prévisions pour votre train</strong><small>Choisissez un train ou saisissez une heure de départ</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
+  <div class="ride-content"><div class="ride-modes" role="group" aria-label="Choisir comment indiquer votre départ"><button type="button" id="mieruModeTrain" aria-pressed="true">Choisir un train</button><button type="button" id="mieruModeTime" aria-pressed="false">Saisir une heure</button></div>
+  <div id="forecast-picker" class="setup-card"></div><p id="picker-status" role="status"></p><div id="mieruRide" aria-live="polite"></div></div>
+</details>
+<aside class="camera-note"><a href="https://www.city.fuji.shizuoka.jp/1005330000/p007780.html" target="_blank" rel="noopener noreferrer">Voir le mont Fuji en direct <span aria-hidden="true">↗</span></a><p>Vue depuis la mairie de Fuji. L’heure de la prise de vue figure sur la page (en japonais).</p></aside>
+      <section class="mieru-factset" aria-labelledby="region-title"><h2 id="region-title">Cinq endroits pour voir le mont Fuji depuis le train</h2><div class="region-controls"><div class="forecast-days" role="group" aria-label="Date des prévisions" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div><p class="region-note">Probabilité de voir le mont Fuji, de 6 h à 19 h (heure du Japon)</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji" id="hour-ota-fuji" aria-labelledby="view-ota-fuji">
+  <header class="region-card-heading"><h3 id="view-ota-fuji">Le mont Fuji depuis Ota <span>Shinagawa → Shin-Yokohama (Ōta, Tokyo)</span></h3>
+  <p class="mieru-fact-meta">Environ 10 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 95 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../fr/spots/ota-fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji depuis Ota"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="Le mont Fuji au-delà des toits de Tokyo, près d’Ōta" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">Cherchez un petit mont Fuji au loin, au-delà des toits de Tokyo. À environ 95 km, cette première apparition demande un air particulièrement clair. C’est un premier aperçu de la montagne, avant la vue bien plus imposante près de Shin-Fuji.</p>
+  <a class="mieru-fact-more" href="../fr/spots/ota-fuji.html">Voir les photos et les conseils →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="sagami-fuji" id="hour-sagami-fuji" aria-labelledby="view-sagami-fuji">
+  <header class="region-card-heading"><h3 id="view-sagami-fuji">Le mont Fuji au-delà de la plaine de Sagami <span>Shin-Yokohama → Odawara</span></h3>
+  <p class="mieru-fact-meta">Environ 25 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 59 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../fr/spots/sagami-fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji au-delà de la plaine de Sagami"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="Le mont Fuji enneigé derrière les collines, près d’Odawara" width="735" height="414" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">Le mont Fuji apparaît au-delà de la vaste plaine de Sagami et des crêtes du Tanzawa. La superposition de la plaine, des collines et de la montagne compose une vue très différente de celle de Shin-Fuji. Les matinées sèches d’hiver et du début du printemps offrent souvent des contours nets ; après la pluie, la vue peut aussi vous surprendre.</p>
+  <a class="mieru-fact-more" href="../fr/spots/sagami-fuji.html">Voir les photos et les conseils →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="fuji" id="hour-fuji" aria-labelledby="view-fuji">
+  <header class="region-card-heading"><h3 id="view-fuji">Le mont Fuji près de Shin-Fuji <span>Mishima → Shin-Fuji</span></h3>
+  <p class="mieru-fact-meta">Environ 43 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 24 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../fr/spots/fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji près de Shin-Fuji"><img src="../images/20240211_fuji_michikusa.jpg" alt="Le mont Fuji enneigé au-dessus de la ville, près de Shin-Fuji" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">C’est la plus proche des cinq vues : le mont Fuji peut remplir la fenêtre pendant environ trois à quatre minutes. La montagne se trouve au nord de la voie ferrée, et ses pentes sont généralement éclairées du côté du train en journée. Le sommet enneigé en hiver et presque sans neige en été donnent deux visages très différents à ce même trajet.</p>
+  <a class="mieru-fact-more" href="../fr/spots/fuji.html">Voir les photos et les conseils →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="left-fuji" id="hour-left-fuji" aria-labelledby="view-left-fuji">
+  <header class="region-card-heading"><h3 id="view-left-fuji">Le mont Fuji côté gauche <span>Juste après la gare de Shizuoka et la rivière Abe</span></h3>
+  <p class="mieru-fact-meta">Environ 54 min depuis Tokyo · Siège A (côté mer) · Distance de vue d’environ 56 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../fr/spots/left-fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji côté gauche"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="Le Fuji à gauche au-delà des maisons, depuis le siège A" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">C’est la seule vue du siège A parmi les cinq. En direction de Shin-Osaka, la courbe de la voie fait brièvement apparaître le mont Fuji à gauche, après Shizuoka et la rivière Abe. Cela ne dure que quelques secondes : commencez à regarder un peu avant. Le sommet enneigé se repère plus facilement entre les bâtiments qu’une silhouette estivale dans la brume.</p>
+  <a class="mieru-fact-more" href="../fr/spots/left-fuji.html">Voir les photos et les conseils →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="hamanako-fuji" id="hour-hamanako-fuji" aria-labelledby="view-hamanako-fuji">
+  <header class="region-card-heading"><h3 id="view-hamanako-fuji">Le mont Fuji au-delà du lac Hamana <span>Hamamatsu → Toyohashi</span></h3>
+  <p class="mieru-fact-meta">Environ 73 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 128 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../fr/spots/hamanako.html#hamanako-fuji" aria-label="Voir les photos et les conseils : Le mont Fuji au-delà du lac Hamana"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="Le mont Fuji enneigé au loin, au-delà du lac Hamana" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">La plus lointaine des cinq vues montre un petit mont Fuji au-delà du lac et des collines. Regardez au loin du côté du siège E pendant la traversée du lac Hamana. Un air très clair est indispensable : c’est une belle surprise occasionnelle, plutôt qu’une vue à attendre à chaque voyage.</p>
+  <a class="mieru-fact-more" href="../fr/spots/hamanako.html#hamanako-fuji">Voir les photos et les conseils →</a></div>
+</article></div><p>Ces cinq vues sont présentées dans l’ordre de Tokyo vers Shin-Osaka. Le côté du train et la distance correspondent à chaque point de vue ; les durées depuis Tokyo sont des repères approximatifs pour les Nozomi et Hikari. Utilisez le sélecteur de train ci-dessus pour connaître les heures de passage de votre service.</p></section>
       <section class="mieru-answer"><h2>Fuji sera-t-il visible depuis le Shinkansen aujourd'hui ?</h2>
 <p>Deux conditions comptent : le sommet doit être dégagé, et l’air entre votre train et la montagne suffisamment transparent. L’outil ci-dessus estime ces conditions pour chacune des cinq zones d’observation le long du Tokaido Shinkansen.</p>
 <p>Les journées sèches d’hiver et du début du printemps offrent souvent les vues les plus nettes. En été, l’humidité et la brume peuvent masquer une montagne lointaine même sous un ciel bleu. L’air plus clair après la pluie peut parfois permettre de l’apercevoir en été aussi.</p>
 <p>Les vues lointaines sont souvent plus nettes le matin que l’après-midi. Plus tard, la montagne peut se dessiner en silhouette plutôt que révéler les détails de ses pentes. Les prévisions horaires permettent de comparer les conditions autour de votre heure de passage.</p>
-<p>Quatre de ces vues se trouvent du côté montagne, siège E. En direction de Shin-Osaka, le bref « Fuji à gauche », juste après Shizuoka, fait exception du côté mer, siège A. Si les nuages cachent la montagne, découvrez les <a href="../fr/guide.html#cloudy">idées pour une journée nuageuse</a>.</p></section><div id="mieruStatus">Chargement des données météo…</div>
-      <div id="mieruSpots"></div><section class="mieru-factset"><h2>Cinq endroits pour voir le mont Fuji depuis le train</h2><p>Ces cinq vues sont présentées dans l’ordre de Tokyo vers Shin-Osaka. Le côté du train et la distance correspondent à chaque point de vue ; les durées depuis Tokyo sont des repères approximatifs pour les Nozomi et Hikari. Utilisez le sélecteur de train ci-dessus pour connaître les heures de passage de votre service.</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
-  <figure class="mieru-fact-photo"><a href="../fr/spots/ota-fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji depuis Ota"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="Le mont Fuji au-delà des toits de Tokyo, près d’Ōta" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>Le mont Fuji depuis Ota <span>Shinagawa → Shin-Yokohama (Ōta, Tokyo)</span></h3>
-  <p class="mieru-fact-meta">Environ 10 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 95 km</p><p class="mieru-fact-body">Cherchez un petit mont Fuji au loin, au-delà des toits de Tokyo. À environ 95 km, cette première apparition demande un air particulièrement clair. C’est un premier aperçu de la montagne, avant la vue bien plus imposante près de Shin-Fuji.</p>
-  <a class="mieru-fact-more" href="../fr/spots/ota-fuji.html">Voir les photos et les conseils →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="sagami-fuji">
-  <figure class="mieru-fact-photo"><a href="../fr/spots/sagami-fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji au-delà de la plaine de Sagami"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="Le mont Fuji enneigé derrière les collines, près d’Odawara" width="735" height="414" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>Le mont Fuji au-delà de la plaine de Sagami <span>Shin-Yokohama → Odawara</span></h3>
-  <p class="mieru-fact-meta">Environ 25 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 59 km</p><p class="mieru-fact-body">Le mont Fuji apparaît au-delà de la vaste plaine de Sagami et des crêtes du Tanzawa. La superposition de la plaine, des collines et de la montagne compose une vue très différente de celle de Shin-Fuji. Les matinées sèches d’hiver et du début du printemps offrent souvent des contours nets ; après la pluie, la vue peut aussi vous surprendre.</p>
-  <a class="mieru-fact-more" href="../fr/spots/sagami-fuji.html">Voir les photos et les conseils →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="fuji">
-  <figure class="mieru-fact-photo"><a href="../fr/spots/fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji près de Shin-Fuji"><img src="../images/20240211_fuji_michikusa.jpg" alt="Le mont Fuji enneigé au-dessus de la ville, près de Shin-Fuji" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>Le mont Fuji près de Shin-Fuji <span>Mishima → Shin-Fuji</span></h3>
-  <p class="mieru-fact-meta">Environ 43 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 24 km</p><p class="mieru-fact-body">C’est la plus proche des cinq vues : le mont Fuji peut remplir la fenêtre pendant environ trois à quatre minutes. La montagne se trouve au nord de la voie ferrée, et ses pentes sont généralement éclairées du côté du train en journée. Le sommet enneigé en hiver et presque sans neige en été donnent deux visages très différents à ce même trajet.</p>
-  <a class="mieru-fact-more" href="../fr/spots/fuji.html">Voir les photos et les conseils →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="left-fuji">
-  <figure class="mieru-fact-photo"><a href="../fr/spots/left-fuji.html" aria-label="Voir les photos et les conseils : Le mont Fuji côté gauche"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="Le Fuji à gauche au-delà des maisons, depuis le siège A" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>Le mont Fuji côté gauche <span>Juste après la gare de Shizuoka et la rivière Abe</span></h3>
-  <p class="mieru-fact-meta">Environ 54 min depuis Tokyo · Siège A (côté mer) · Distance de vue d’environ 56 km</p><p class="mieru-fact-body">C’est la seule vue du siège A parmi les cinq. En direction de Shin-Osaka, la courbe de la voie fait brièvement apparaître le mont Fuji à gauche, après Shizuoka et la rivière Abe. Cela ne dure que quelques secondes : commencez à regarder un peu avant. Le sommet enneigé se repère plus facilement entre les bâtiments qu’une silhouette estivale dans la brume.</p>
-  <a class="mieru-fact-more" href="../fr/spots/left-fuji.html">Voir les photos et les conseils →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="hamanako-fuji">
-  <figure class="mieru-fact-photo"><a href="../fr/spots/hamanako.html#hamanako-fuji" aria-label="Voir les photos et les conseils : Le mont Fuji au-delà du lac Hamana"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="Le mont Fuji enneigé au loin, au-delà du lac Hamana" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>Le mont Fuji au-delà du lac Hamana <span>Hamamatsu → Toyohashi</span></h3>
-  <p class="mieru-fact-meta">Environ 73 min depuis Tokyo · Siège E (côté montagne) · Distance de vue d’environ 128 km</p><p class="mieru-fact-body">La plus lointaine des cinq vues montre un petit mont Fuji au-delà du lac et des collines. Regardez au loin du côté du siège E pendant la traversée du lac Hamana. Un air très clair est indispensable : c’est une belle surprise occasionnelle, plutôt qu’une vue à attendre à chaque voyage.</p>
-  <a class="mieru-fact-more" href="../fr/spots/hamanako.html#hamanako-fuji">Voir les photos et les conseils →</a></div>
-</article></div></section>
+<p>Quatre de ces vues se trouvent du côté montagne, siège E. En direction de Shin-Osaka, le bref « Fuji à gauche », juste après Shizuoka, fait exception du côté mer, siège A. Si les nuages cachent la montagne, découvrez les <a href="../fr/guide.html#cloudy">idées pour une journée nuageuse</a>.</p></section>
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         Modèle de prévision bêta : chance de visibilité = probabilité que les nuages ne cachent pas le sommet × probabilité que la visibilité atmosphérique atteigne la distance effective d'observation. La ligne de vue montant en diagonale vers le sommet à travers la brume, cette distance est inférieure à la distance horizontale ; une humidité plus élevée épaissit la couche de brume. Données météo fournies par <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
         moins de <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
         et sont converties en notre propre estimation de probabilité. Lors d'une vérification rétrospective avec des photos à la fenêtre, le modèle a classé comme visibles 9 journées sur 10 où les prises de vue avaient réussi. Les heures de passage sont approximatives et basées sur les Nozomi. Des changements météo soudains peuvent fausser la prévision. Pour des idées par temps nuageux, consultez le <a href="../fr/guide.html#cloudy">Guide du mont Fuji</a>.
@@ -205,9 +206,9 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=84653b67"></script>
-  <script src="../spot-page-shared.js?v=0c2df1c5"></script>
-  <script src="../data-runtime.js?v=f3036030"></script><script src="../fr/utility-data.js?v=d3bf590f"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
-  <script src="../mieru.js?v=7c431886"></script>
+  <script src="../spot-page-shared.js?v=52589b88"></script>
+  <script src="../data-runtime.js?v=f3036030"></script><script src="../fr/utility-data.js?v=0d8c333f"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
+  <script src="../mieru.js?v=90c2dc65"></script>
 
 
 
@@ -215,5 +216,5 @@
 <script type="application/json" id="mado-android-invite-config">{"language":"fr","pageContext":"feature","assetPrefix":"../","general":false}</script>
 <!-- ANDROID_APP_INVITE_END -->
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/fr.shell.js","shared-ui/fr.rail-mieru.js","shared-ui/fr.cards.js"],"root":"../","lang":"fr","route":"mieru.html","mounts":[{"host":"chrome-0","component":"header-mieru","kind":"header","menu":"header-start-menu","menuRoute":"mieru.html"},{"host":"chrome-1","component":"rail-mieru","kind":"rail"},{"host":"chrome-2","component":"showcase-spots-fuji","kind":"showcase"},{"host":"chrome-3","component":"content-sparkling-dreams","kind":"content"}]}</script>
-<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+<script src="../site-runtime-loader.js?v=0f466d8d" defer></script>
 </body></html>

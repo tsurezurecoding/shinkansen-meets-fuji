@@ -165,7 +165,7 @@ expect(postSection.includes("WINDOW FINDS") && postSection.includes("みんな�
 expect(!/class="section-sub"/.test(postSection), "sparkling-dreams.html: X video section must not add editorial summary copy");
 expect(postBlocks.length === 12 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: expected exactly twelve official X blockquotes");
 expect((postSection.match(/class="sd-post-embed sd-x-embed/g) || []).length === 12, "sparkling-dreams.html: every X post must use the stable loading container");
-expect((postSection.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="[^"]+"><blockquote class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: every X blockquote must sit inside the shared 16:9 media frame");
+expect((postSection.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="[^"]+"><a class="feature-post-open"[^>]+><img class="feature-video-poster" src="https:\/\/pbs\.twimg\.com\/[^"]+?" loading="lazy" decoding="async" alt=""><span>Xの投稿を表示<\/span><\/a><template><blockquote class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: every X card must have a lazy poster from X and an official embed");
 expect((postSection.match(/<div class="sd-media-frame sd-youtube-frame" data-placeholder="[^"]+">/g) || []).length === 2, "sparkling-dreams.html: every YouTube player must use the same media frame as the X cards");
 expect(!/data-sd-media-fallback/.test(page), "sparkling-dreams.html: the obsolete JS fallback marker is still present");
 expect(postBlocks.every((block) => /data-dnt="true"/.test(block) && /data-media-max-width="560"/.test(block)), "sparkling-dreams.html: every X video must use privacy-enhanced official embed attributes");
@@ -205,8 +205,10 @@ expect(postIntro === `<p class="sd-post-intro"><span class="copy-chunk">XやYouT
 expect(!/(?:sd-video-card|sd-video-card-head|sd-video-fallback)/.test(page), "sparkling-dreams.html: redundant custom video card copy is still present");
 expect(widgetScripts.length === 0, "sparkling-dreams.html: X widgets.js must be loaded by the page controller, not a static duplicate loader");
 expect(localScriptIndex > postSectionIndex && calculatorScriptIndex > localScriptIndex, "sparkling-dreams.html: local embed-loading code must run after the video section");
-expect(!/(?:<video\b|\bposter\s*=|(?:pbs|video)\.twimg\.com|i\.ytimg\.com)/i.test(page), "sparkling-dreams.html: copied thumbnail, poster, or local video markup found");
-expect(!/<img\b[^>]+(?:https?:)?\/\//i.test(page), "sparkling-dreams.html: hotlinked image found");
+expect(!/(?:<video\b|\bposter\s*=|video\.twimg\.com)/i.test(postSection), "sparkling-dreams.html: standalone video markup found");
+const staticPosters = /<img class="feature-video-poster" src="https:\/\/pbs\.twimg\.com\/(?:amplify_video_thumb|ext_tw_video_thumb|tweet_video_thumb)\/[\w./-]+\?name=small" loading="lazy" decoding="async" alt="">/g;
+const withoutPosters = page.replace(postSection, postSection.replace(staticPosters, ""));
+expect(!/<img\b[^>]+(?:https?:)?\/\//i.test(withoutPosters), "sparkling-dreams.html: unexpected external image found");
 expect(!/(?:src|srcset)=["'][^"']*(?:disney|jr-central|tokyodisney)/i.test(page), "sparkling-dreams.html: external promotional image reference found");
 expect(CONTENT_METADATA["sparkling-dreams.html"].imageRights === "own" && page.includes(SITE + "/" + CONTENT_METADATA["sparkling-dreams.html"].image), "sparkling-dreams.html: page-specific owned OGP image is missing");
 expect(!/og-shinkansen-window\.png/.test(page), "sparkling-dreams.html: generic OGP image must not be used");

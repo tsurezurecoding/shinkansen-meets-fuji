@@ -35,7 +35,7 @@
 }
 </script>
   <link rel="stylesheet" href="../style.css?v=2117933f">
-  <link rel="stylesheet" href="../mieru.css?v=96f08b57">
+  <link rel="stylesheet" href="../mieru.css?v=95e712a0">
   <!-- ANDROID_APP_INVITE_RESET_START -->
 <script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
 (function () {
@@ -125,70 +125,71 @@
       <h1>พยากรณ์การมองเห็นภูเขาฟูจิ<small style="font-size:.55em;color:var(--accent);margin-left:8px">รุ่นทดลอง</small></h1>
       <p class="mieru-lead">วันนี้จะเห็นฟูจิจากชินคันเซ็นไหม? เปรียบเทียบเมฆรอบยอดเขาและความใสของอากาศในจุดชมทั้งห้า เลือกรถไฟ สถานีขึ้น และทิศทาง หรือระบุเวลาออกเดินทาง เพื่อดูสภาพอากาศเมื่อผ่านแต่ละจุด</p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>สถานีขึ้นรถ <select id="mieruBoard"></select></label>
-          <label>ทิศทาง
-            <select id="mieruDir">
-              <option value="west">มุ่งชินโอซาก้า / ฮากาตะ</option>
-              <option value="east">มุ่งโตเกียว</option>
-            </select>
-          </label>
-          <label>กลางวัน <select id="mieruDay"><option value="0">วันนี้</option><option value="1">พรุ่งนี้</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="เลือกวิธีกำหนดการออกเดินทาง">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">เลือกขบวนรถ</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">ระบุเวลา</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>ออกเดินทางหลัง <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">ค้นหารถไฟ</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>เวลาออกเดินทาง (โดยประมาณ) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">กำลังคำนวณ...</div>
-      </div>
+      <section class="weather-focus" aria-labelledby="focus-title">
+  <div class="weather-focus-head"><h2 id="focus-title">โอกาสเห็นฟูจิใกล้ชินฟูจิ</h2><p>มิชิมะถึงชินฟูจิ · ที่นั่ง E · ห่างจากภูเขาไฟฟูจิประมาณ 24 กม.</p><div class="forecast-days" role="group" aria-label="วันที่พยากรณ์" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div>
+  <div class="weather-feature"><div class="weather-reading">
+    <p id="mieruStatus" role="status">กำลังโหลดข้อมูลอากาศ...</p>
+    <div id="mieruForecastContext" aria-live="polite" hidden="">
+      <p class="weather-date" id="mieruForecastDate"></p>
+      <dl id="weather-periods" class="weather-periods"><div><dt>08:00</dt><dd><strong data-hour="8"></strong>%</dd></div><div><dt>12:00</dt><dd><strong data-hour="12"></strong>%</dd></div><div><dt>16:00</dt><dd><strong data-hour="16"></strong>%</dd></div></dl>
+    </div>
+    <a class="weather-hours-link" href="#hour-fuji">ดูพยากรณ์รายชั่วโมง <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure class="weather-photo"><img src="../images/thumbs/display/20240211_fuji_michikusa-ece7c5cc-640.webp" alt="ภูเขาฟูจิยอดหิมะเหนือเมืองใกล้ชินฟูจิ" width="640" height="360" fetchpriority="high"><figcaption>วิวจากหน้าต่างรถไฟใกล้ชินฟูจิ</figcaption></figure></div>
+  <p id="mieruRetrievedAt" class="weather-stamp" hidden=""></p>
+</section>
+<details class="ride-panel" id="ride"><summary><span><strong>ดูพยากรณ์สำหรับรถไฟของคุณ</strong><small>เลือกรถไฟหรือกรอกเวลาออกเดินทาง</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
+  <div class="ride-content"><div class="ride-modes" role="group" aria-label="เลือกวิธีกำหนดการออกเดินทาง"><button type="button" id="mieruModeTrain" aria-pressed="true">เลือกขบวนรถ</button><button type="button" id="mieruModeTime" aria-pressed="false">ระบุเวลา</button></div>
+  <div id="forecast-picker" class="setup-card"></div><p id="picker-status" role="status"></p><div id="mieruRide" aria-live="polite"></div></div>
+</details>
+<aside class="camera-note"><a href="https://www.city.fuji.shizuoka.jp/1005330000/p007780.html" target="_blank" rel="noopener noreferrer">ดูภูเขาไฟฟูจิผ่านกล้องถ่ายทอดสด <span aria-hidden="true">↗</span></a><p>ภาพจากศาลาว่าการเมืองฟูจิ ดูเวลาที่ถ่ายภาพได้ที่หน้าลิงก์ (ภาษาญี่ปุ่น)</p></aside>
+      <section class="mieru-factset" aria-labelledby="region-title"><h2 id="region-title">5 จุดชมภูเขาฟูจิจากรถไฟ</h2><div class="region-controls"><div class="forecast-days" role="group" aria-label="วันที่พยากรณ์" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div><p class="region-note">โอกาสเห็นภูเขาไฟฟูจิ 06:00–19:00 น. (เวลาญี่ปุ่น)</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji" id="hour-ota-fuji" aria-labelledby="view-ota-fuji">
+  <header class="region-card-heading"><h3 id="view-ota-fuji">ภูเขาไฟฟูจิจากโอตะ <span>ชินางาวะ → ชินโยโกฮามะ (โอตะ โตเกียว)</span></h3>
+  <p class="mieru-fact-meta">ประมาณ 10 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 95 กม.</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../th/spots/ota-fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิจากโอตะ"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="ภูเขาฟูจิเหนือหลังคาบ้านโตเกียวแถวโอตะ" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">มองเหนือหลังคาบ้านในโตเกียวเพื่อหาภูเขาฟูจิเล็ก ๆ ที่อยู่ไกลราว 95 กม. ช่วงต้นทางนี้เห็นได้ง่ายที่สุดเมื่ออากาศใสมาก ให้คิดว่าเป็นสัญญาณแรกของภูเขา ก่อนชมภาพที่ใหญ่กว่ามากแถวชินฟูจิ</p>
+  <a class="mieru-fact-more" href="../th/spots/ota-fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="sagami-fuji" id="hour-sagami-fuji" aria-labelledby="view-sagami-fuji">
+  <header class="region-card-heading"><h3 id="view-sagami-fuji">ภูเขาไฟฟูจิเหนือที่ราบซางามิ <span>ชินโยโกฮาม่า → โอดาวาระ</span></h3>
+  <p class="mieru-fact-meta">ประมาณ 25 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 59 กม.</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../th/spots/sagami-fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิเหนือที่ราบซากามิ"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="ภูเขาฟูจิยอดหิมะหลังแนวเขาใกล้โอดาวาระ" width="735" height="414" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">ภูเขาฟูจิปรากฏพ้นที่ราบซากามิอันกว้างใหญ่และสันเขาทันซาวะ ชั้นของที่ราบ เชิงเขา และภูเขาทำให้วิวนี้ต่างจากชินฟูจิ เช้าวันอากาศแห้งในฤดูหนาวและต้นใบไม้ผลิมักเห็นเค้าโครงชัด แต่หลังฝนก็อาจมีวิวที่น่าประหลาดใจเช่นกัน</p>
+  <a class="mieru-fact-more" href="../th/spots/sagami-fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="fuji" id="hour-fuji" aria-labelledby="view-fuji">
+  <header class="region-card-heading"><h3 id="view-fuji">ภูเขาฟูจิใกล้ชินฟูจิ <span>มิชิมะ → ชินฟูจิ</span></h3>
+  <p class="mieru-fact-meta">ประมาณ 43 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 24 กม.</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../th/spots/fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิใกล้ชินฟูจิ"><img src="../images/20240211_fuji_michikusa.jpg" alt="ภูเขาฟูจิยอดหิมะเหนือเมืองใกล้ชินฟูจิ" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">จุดนี้ใกล้ที่สุดในทั้งห้าแห่ง ฟูจิอาจเต็มกรอบหน้าต่างราว 3–4 นาที ภูเขาอยู่เหนือทางรถไฟ จึงมักได้รับแสงจากฝั่งรถไฟในเวลากลางวัน ยอดหิมะฤดูหนาวกับภูเขาแทบไร้หิมะในฤดูร้อนทำให้ช่วงเดียวกันนี้มีหน้าตาต่างกันมาก</p>
+  <a class="mieru-fact-more" href="../th/spots/fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="left-fuji" id="hour-left-fuji" aria-labelledby="view-left-fuji">
+  <header class="region-card-heading"><h3 id="view-left-fuji">ฟูจิฝั่งซ้าย <span>หลังผ่านสถานีชิซูโอกะและแม่น้ำอาเบะไม่นาน</span></h3>
+  <p class="mieru-fact-meta">ประมาณ 54 นาทีจากโตเกียว · ที่นั่ง A (ฝั่งทะเล) · ระยะมองเห็นประมาณ 56 กม.</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../th/spots/left-fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิฝั่งซ้าย"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="ฟูจิฝั่งซ้ายที่เห็นเหนือบ้านเรือนจากที่นั่ง A" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">นี่คือจุดเดียวในทั้งห้าที่อยู่ฝั่งที่นั่ง A เมื่อมุ่งชินโอซาก้า ทางรถไฟที่โค้งหลังชิซูโอกะและแม่น้ำอาเบะทำให้ฟูจิปรากฏทางซ้ายชั่วครู่ เห็นได้เพียงไม่กี่วินาที จึงควรเริ่มมองล่วงหน้า ยอดหิมะเห็นแทรกอาคารได้ง่ายกว่าเค้าโครงในหมอกแดดฤดูร้อน</p>
+  <a class="mieru-fact-more" href="../th/spots/left-fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="hamanako-fuji" id="hour-hamanako-fuji" aria-labelledby="view-hamanako-fuji">
+  <header class="region-card-heading"><h3 id="view-hamanako-fuji">ภูเขาไฟฟูจิไกลพ้นทะเลสาบฮามานะ <span>ฮามามัตสึ → โทโยฮาชิ</span></h3>
+  <p class="mieru-fact-meta">ประมาณ 73 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 128 กม.</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../th/spots/hamanako.html#hamanako-fuji" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิพ้นทะเลสาบฮามานะ"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="ภูเขาฟูจิยอดหิมะในระยะไกล ถัดจากทะเลสาบฮามานะ" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">จุดที่ไกลที่สุดในทั้งห้าแห่งเห็นฟูจิเล็ก ๆ พ้นทะเลสาบและเนินเขา มองไกลทางที่นั่ง E ขณะข้ามทะเลสาบฮามานะ ต้องอาศัยอากาศที่ใสมาก จึงเป็นรางวัลที่พบได้บางครั้ง ไม่ใช่วิวที่คาดหวังได้ทุกเที่ยว</p>
+  <a class="mieru-fact-more" href="../th/spots/hamanako.html#hamanako-fuji">ดูภาพและคู่มือชมวิว →</a></div>
+</article></div><p>วิวทั้งห้าจัดตามลำดับจากโตเกียวไปชินโอซาก้า ฝั่งที่นั่งและระยะทางอ้างอิงแต่ละจุด ส่วนเวลาจากโตเกียวเป็นค่าคร่าว ๆ ของโนโซมิ/ฮิคาริ ใช้ตัวเลือกรถไฟด้านบนดูเวลาผ่านของขบวนคุณ</p></section>
       <section class="mieru-answer"><h2>วันนี้จะมองเห็นภูเขาฟูจิจากชินคันเซ็นไหม?</h2>
 <p>มีสองปัจจัยสำคัญ: เมฆต้องไม่บังยอดเขา และอากาศระหว่างรถไฟกับภูเขาต้องใสพอ พยากรณ์ด้านบนประเมินสองเงื่อนไขนี้แยกกันสำหรับจุดชมทั้งห้าตามโทไคโดชินคันเซ็น</p>
 <p>วันอากาศแห้งในฤดูหนาวและต้นฤดูใบไม้ผลิมักมองเห็นได้ชัดที่สุด ความชื้นในฤดูร้อนอาจทำให้หมอกแดดบดบังภูเขาที่อยู่ไกล แม้ท้องฟ้าจะเป็นสีฟ้า แต่บางครั้งอากาศใสหลังฝนก็เปิดโอกาสให้เห็นในฤดูร้อนได้เช่นกัน</p>
 <p>ตอนเช้ามักมองเห็นระยะไกลชัดกว่าตอนบ่าย เมื่อวันคล้อย ภูเขาอาจเห็นเป็นเงาแทนรายละเอียดของลาดเขา พยากรณ์รายชั่วโมงช่วยเปรียบเทียบสภาพอากาศใกล้เวลาที่รถผ่านได้</p>
-<p>4 จุดอยู่ทางที่นั่ง E ฝั่งภูเขา ข้อยกเว้นสั้น ๆ คือฟูจิฝั่งซ้ายหลังผ่านชิซูโอกะเมื่อมุ่งชินโอซาก้า ซึ่งอยู่ทางที่นั่ง A ฝั่งทะเล หากเมฆบังภูเขา ลองสำรวจ <a href="../th/guide.html#cloudy">ไอเดียสำหรับวันเมฆมาก</a>.</p></section><div id="mieruStatus">กำลังโหลดข้อมูลอากาศ...</div>
-      <div id="mieruSpots"></div><section class="mieru-factset"><h2>5 จุดชมภูเขาฟูจิจากรถไฟ</h2><p>วิวทั้งห้าจัดตามลำดับจากโตเกียวไปชินโอซาก้า ฝั่งที่นั่งและระยะทางอ้างอิงแต่ละจุด ส่วนเวลาจากโตเกียวเป็นค่าคร่าว ๆ ของโนโซมิ/ฮิคาริ ใช้ตัวเลือกรถไฟด้านบนดูเวลาผ่านของขบวนคุณ</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
-  <figure class="mieru-fact-photo"><a href="../th/spots/ota-fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิจากโอตะ"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="ภูเขาฟูจิเหนือหลังคาบ้านโตเกียวแถวโอตะ" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>ภูเขาไฟฟูจิจากโอตะ <span>ชินางาวะ → ชินโยโกฮามะ (โอตะ โตเกียว)</span></h3>
-  <p class="mieru-fact-meta">ประมาณ 10 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 95 กม.</p><p class="mieru-fact-body">มองเหนือหลังคาบ้านในโตเกียวเพื่อหาภูเขาฟูจิเล็ก ๆ ที่อยู่ไกลราว 95 กม. ช่วงต้นทางนี้เห็นได้ง่ายที่สุดเมื่ออากาศใสมาก ให้คิดว่าเป็นสัญญาณแรกของภูเขา ก่อนชมภาพที่ใหญ่กว่ามากแถวชินฟูจิ</p>
-  <a class="mieru-fact-more" href="../th/spots/ota-fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="sagami-fuji">
-  <figure class="mieru-fact-photo"><a href="../th/spots/sagami-fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิเหนือที่ราบซากามิ"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="ภูเขาฟูจิยอดหิมะหลังแนวเขาใกล้โอดาวาระ" width="735" height="414" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>ภูเขาไฟฟูจิเหนือที่ราบซางามิ <span>ชินโยโกฮาม่า → โอดาวาระ</span></h3>
-  <p class="mieru-fact-meta">ประมาณ 25 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 59 กม.</p><p class="mieru-fact-body">ภูเขาฟูจิปรากฏพ้นที่ราบซากามิอันกว้างใหญ่และสันเขาทันซาวะ ชั้นของที่ราบ เชิงเขา และภูเขาทำให้วิวนี้ต่างจากชินฟูจิ เช้าวันอากาศแห้งในฤดูหนาวและต้นใบไม้ผลิมักเห็นเค้าโครงชัด แต่หลังฝนก็อาจมีวิวที่น่าประหลาดใจเช่นกัน</p>
-  <a class="mieru-fact-more" href="../th/spots/sagami-fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="fuji">
-  <figure class="mieru-fact-photo"><a href="../th/spots/fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิใกล้ชินฟูจิ"><img src="../images/20240211_fuji_michikusa.jpg" alt="ภูเขาฟูจิยอดหิมะเหนือเมืองใกล้ชินฟูจิ" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>ภูเขาฟูจิใกล้ชินฟูจิ <span>มิชิมะ → ชินฟูจิ</span></h3>
-  <p class="mieru-fact-meta">ประมาณ 43 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 24 กม.</p><p class="mieru-fact-body">จุดนี้ใกล้ที่สุดในทั้งห้าแห่ง ฟูจิอาจเต็มกรอบหน้าต่างราว 3–4 นาที ภูเขาอยู่เหนือทางรถไฟ จึงมักได้รับแสงจากฝั่งรถไฟในเวลากลางวัน ยอดหิมะฤดูหนาวกับภูเขาแทบไร้หิมะในฤดูร้อนทำให้ช่วงเดียวกันนี้มีหน้าตาต่างกันมาก</p>
-  <a class="mieru-fact-more" href="../th/spots/fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="left-fuji">
-  <figure class="mieru-fact-photo"><a href="../th/spots/left-fuji.html" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิฝั่งซ้าย"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="ฟูจิฝั่งซ้ายที่เห็นเหนือบ้านเรือนจากที่นั่ง A" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>ฟูจิฝั่งซ้าย <span>หลังผ่านสถานีชิซูโอกะและแม่น้ำอาเบะไม่นาน</span></h3>
-  <p class="mieru-fact-meta">ประมาณ 54 นาทีจากโตเกียว · ที่นั่ง A (ฝั่งทะเล) · ระยะมองเห็นประมาณ 56 กม.</p><p class="mieru-fact-body">นี่คือจุดเดียวในทั้งห้าที่อยู่ฝั่งที่นั่ง A เมื่อมุ่งชินโอซาก้า ทางรถไฟที่โค้งหลังชิซูโอกะและแม่น้ำอาเบะทำให้ฟูจิปรากฏทางซ้ายชั่วครู่ เห็นได้เพียงไม่กี่วินาที จึงควรเริ่มมองล่วงหน้า ยอดหิมะเห็นแทรกอาคารได้ง่ายกว่าเค้าโครงในหมอกแดดฤดูร้อน</p>
-  <a class="mieru-fact-more" href="../th/spots/left-fuji.html">ดูภาพและคู่มือชมวิว →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="hamanako-fuji">
-  <figure class="mieru-fact-photo"><a href="../th/spots/hamanako.html#hamanako-fuji" aria-label="ดูภาพและคู่มือชมวิว: ฟูจิพ้นทะเลสาบฮามานะ"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="ภูเขาฟูจิยอดหิมะในระยะไกล ถัดจากทะเลสาบฮามานะ" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>ภูเขาไฟฟูจิไกลพ้นทะเลสาบฮามานะ <span>ฮามามัตสึ → โทโยฮาชิ</span></h3>
-  <p class="mieru-fact-meta">ประมาณ 73 นาทีจากโตเกียว · ที่นั่ง E (ฝั่งภูเขา) · ระยะมองเห็นประมาณ 128 กม.</p><p class="mieru-fact-body">จุดที่ไกลที่สุดในทั้งห้าแห่งเห็นฟูจิเล็ก ๆ พ้นทะเลสาบและเนินเขา มองไกลทางที่นั่ง E ขณะข้ามทะเลสาบฮามานะ ต้องอาศัยอากาศที่ใสมาก จึงเป็นรางวัลที่พบได้บางครั้ง ไม่ใช่วิวที่คาดหวังได้ทุกเที่ยว</p>
-  <a class="mieru-fact-more" href="../th/spots/hamanako.html#hamanako-fuji">ดูภาพและคู่มือชมวิว →</a></div>
-</article></div></section>
+<p>4 จุดอยู่ทางที่นั่ง E ฝั่งภูเขา ข้อยกเว้นสั้น ๆ คือฟูจิฝั่งซ้ายหลังผ่านชิซูโอกะเมื่อมุ่งชินโอซาก้า ซึ่งอยู่ทางที่นั่ง A ฝั่งทะเล หากเมฆบังภูเขา ลองสำรวจ <a href="../th/guide.html#cloudy">ไอเดียสำหรับวันเมฆมาก</a>.</p></section>
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         แบบจำลองพยากรณ์รุ่นทดลอง: โอกาสมองเห็น = ความน่าจะเป็นที่เมฆไม่บังยอดเขา
         × ความน่าจะเป็นที่ทัศนวิสัยครอบคลุมระยะมองเห็นที่มีผลจริง
         เนื่องจากแนวสายตาพาดเฉียงผ่านชั้นหมอกแดดไปยังยอดเขา ระยะที่มีผลจริง
@@ -213,9 +214,9 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=84653b67"></script>
-  <script src="../spot-page-shared.js?v=0c2df1c5"></script>
-  <script src="../data-runtime.js?v=f3036030"></script><script src="../th/utility-data.js?v=ce592e56"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
-  <script src="../mieru.js?v=7c431886"></script>
+  <script src="../spot-page-shared.js?v=52589b88"></script>
+  <script src="../data-runtime.js?v=f3036030"></script><script src="../th/utility-data.js?v=a4bc351c"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
+  <script src="../mieru.js?v=90c2dc65"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/th.shell.js","shared-ui/th.rail-mieru.js","shared-ui/th.cards.js"],"root":"../","lang":"th","route":"mieru.html","mounts":[{"host":"chrome-0","component":"header-mieru","kind":"header","menu":"header-start-menu","menuRoute":"mieru.html"},{"host":"chrome-1","component":"rail-mieru","kind":"rail"},{"host":"chrome-2","component":"showcase-spots-fuji","kind":"showcase"},{"host":"chrome-3","component":"content-sparkling-dreams","kind":"content"}]}</script>
-<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+<script src="../site-runtime-loader.js?v=0f466d8d" defer></script>
 </body></html>

@@ -82,52 +82,18 @@
       <h1>富士山 見える予報<small style="font-size:.55em;color:var(--accent);margin-left:8px">β</small></h1>
       <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見える？</span><span class="copy-chunk">山頂の雲や空気の澄みかたをもとに、</span><span class="copy-chunk">列車が通るころの</span><span class="copy-chunk">富士山の見えやすさを推定します。</span></p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>乗車駅 <select id="mieruBoard"></select></label>
-          <label>方向
-            <select id="mieruDir">
-              <option value="west">下り (新大阪・博多方面ゆき)</option>
-              <option value="east">上り (東京ゆき)</option>
-            </select>
-          </label>
-          <label>日付 <select id="mieruDay"><option value="0">今日</option><option value="1">明日</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="出発の指定方法">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">列車で選ぶ</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">時刻を入力</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>この時刻以降 <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">列車をさがす</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>出発時刻(目安) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">計算中…</div>
-      </div>
-
-
-
+      <!--MIERU:UI-->
+      <!--MIERU:FACTS-->
       <section class="mieru-answer">
         <h2>予報の見かた</h2>
         <p><span class="copy-chunk">列車を選ぶか、</span><span class="copy-chunk">出発時刻を入力すると、</span><span class="copy-chunk">推定通過時刻に最も近い</span><span class="copy-chunk">1時間刻みの予報で</span><span class="copy-chunk">見えやすさを推定します。</span></p>
         <p>気象データの出典は <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> です。出発・通過・予報の時刻は日本時間（JST、UTC+9）です。</p>
-        <div id="mieruForecastContext" aria-live="polite" hidden>
-          <p id="mieruForecastDate"></p>
-          <p id="mieruRetrievedAt"></p>
-          <p>取得時刻はブラウザが気象予報を受け取った時刻です。気象モデルの更新時刻や現地の観測時刻とは異なります。</p>
-        </div>
       </section>
-      <div id="mieruStatus" role="status">気象データ取得中…</div>
-      <div id="mieruSpots"></div><!--MIERU:ANSWER--><!--MIERU:FACTS-->
+      <!--MIERU:ANSWER-->
 
 
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         予報モデルβ: 見える確率 = (山頂が雲に隠れていない確率) × (視程が実効距離に足りる確率)。
         視線は靄の層を斜めに抜けて山頂へ向かうため、実効距離は水平距離より短くなります(湿度が高いほど靄層が厚い)。
         気象データは <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
@@ -151,7 +117,6 @@
   <script src="spot-page-shared.js?v=4ecf6548"></script>
   <script src="data-runtime.js?v=96170e32"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
-  <!-- data/timetable.js（約300KB）は列車モードを実際に使う時点まで遅延読み込みする（ensureTimetableLoaded() 参照） -->
   <!--MIERU:RUNTIME-->
 
 

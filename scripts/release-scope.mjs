@@ -1205,28 +1205,130 @@ function timelineScope(changes, { assetVersionOnly }) {
   pageGenerators.push('scripts/generate-sanyo-castle-pages.mjs');
   const owners = new Set([...pageGenerators, 'scripts/templates/mieru-ja.html.tpl', 'scripts/templates/mieru-en.html.tpl',
     ...['en/besides-fuji', 'en/jr-pass-fuji', 'en/reflections', 'reflections'].map(route => 'scripts/templates/site-source/' + route + '.html.tpl'),
-    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'spot-page-shared.js', spotValidator, 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json']);
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'spot-page-shared.js', spotValidator, 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json',
+    'scripts/generate-mieru-page.mjs', 'scripts/shared/mieru-runtime.js', 'scripts/shared/mieru-copy.mjs',
+    'scripts/shared/utility-localization.mjs', 'scripts/validate-mieru.mjs', 'scripts/validate-train-select.mjs', 'scripts/validate-utility-locales.mjs', 'mieru.css', 'train-picker.js']);
   const timelinePage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:727-collection|arenani|besides-fuji|castles|ferris-wheels|hanabi|jr-pass-fuji|mieru|reflections|sparkling-dreams|window-moments|yakei|spots\/(?:himeji|okayama|fukuyama)-castle)\.html$/;
+  const forecast = files.has('scripts/shared/mieru-runtime.js');
+  const copy = /^(?:scripts\/locales\/utility-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json|(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js)$/;
   if (!changes.every(({path, status}) => status === 'M' && (owners.has(path) || railAsset.test(path) || timelinePage.test(path) ||
-      ((path.endsWith('.html') || path === 'mieru.js') && assetVersionOnly?.(path))))) return null;
+      (forecast && (copy.test(path) || path === 'mieru.js')) ||
+      ((path.endsWith('.html') || path.startsWith('scripts/templates/site-source/') && path.endsWith('.html.tpl') || path === 'mieru.js') && assetVersionOnly?.(path))))) return null;
   return {
-    scope: 'shared-timeline', needsDependencies: true, pagesCandidate: true,
-    reason: 'Check the shared spot/feature timeline, localized snapshots, and the versioned references in its consumers.',
+    scope: forecast ? 'forecast-and-timeline' : 'shared-timeline', needsDependencies: true, pagesCandidate: true,
+    reason: 'Check the shared spot/feature timeline, localized forecasts, and the versioned references in their consumers.',
     commands: [node('--test', 'scripts/release-scope.test.mjs'), node('--check', 'spot-page-shared.js'), node(spotValidator),
       ...[...pageGenerators, 'scripts/generate-mieru-page.mjs', 'scripts/generate-site-chrome.mjs', 'scripts/generate-site-runtime.mjs',
         'scripts/generate-spot-page-runtime.mjs'].map(generator => node(generator, '--check')),
       node(utilityGenerator, '--route', 'mieru.html', '--check'), node(castleGenerator, '--route', 'spots/okayama-castle.html', '--check'),
+      ...(forecast ? [node('scripts/validate-mieru.mjs'), node('scripts/validate-train-select.mjs')] : []),
       node('scripts/generate-sparkling-locales.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
+  };
+}
+
+const discoveryFeed = /^data\/discovery\/(?:ja|en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\.json$/;
+const discoveryPage = /^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:index|zukan)\.html$/;
+const discoveryArticle = /^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:rivers|factories)\.html$/;
+
+function discoveryScope(changes, options) {
+  const files = new Set(changes.map(change => change.path));
+  const sources = ['scripts/content-news.json', 'scripts/shared/content-news.mjs', 'scripts/generate-discovery.mjs',
+    'content-news.js', 'content-news.css', 'scripts/content-news.test.mjs'];
+  if (!sources.some(file => files.has(file))) return null;
+  const bridge = files.has('app-embedded.js');
+  const header = files.has('site-runtime-loader.js');
+  const owned = new Set([...sources, 'ARCHITECTURE.md', 'scripts/shared/utility-locales.mjs', 'scripts/shared/utility-localization.mjs',
+    'scripts/generate-content-manifest.mjs', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (header) for (const file of ['site-runtime-loader.js', 'site-runtime.json', 'scripts/generate-site-runtime.mjs',
+    'scripts/generate-site-runtime.test.mjs']) owned.add(file);
+  if (files.has('scripts/shared/story-window.mjs') && options.fileContents) {
+    const [before, after] = options.fileContents('scripts/shared/story-window.mjs');
+    if (after.replace('href="${prefix}${storyFile(lang)}" hreflang="${lang}" data-cta-track="zukan_theme_click"',
+        'href="${prefix}${storyFile(lang)}" data-cta-track="zukan_theme_click"') === before) owned.add('scripts/shared/story-window.mjs');
+  }
+  if (bridge) for (const file of ['app-embedded.js', 'scripts/app-embedded.test.mjs', 'scripts/generate-rivers-page.mjs',
+    'scripts/generate-factories-page.mjs']) owned.add(file);
+  if (files.has('package.json')) {
+    if (!options.packageBefore || !options.packageAfter) return null;
+    const parse = value => typeof value === 'string' ? JSON.parse(value) : structuredClone(value);
+    const before = parse(options.packageBefore), after = parse(options.packageAfter);
+    after.scripts['test:generator'] = after.scripts['test:generator']?.replace('scripts/content-news.test.mjs ', '');
+    if (!isDeepStrictEqual(before, after)) return null;
+    owned.add('package.json');
+  }
+  if (!changes.every(({path: file, status}) => ['A', 'M'].includes(status) && (owned.has(file) || discoveryFeed.test(file) ||
+    status === 'M' && (discoveryPage.test(file) || bridge && discoveryArticle.test(file) ||
+      (bridge || header) && file.endsWith('.html') && options.assetVersionOnly?.(file))))) return null;
+  const tests = ['scripts/content-news.test.mjs', 'scripts/zukan-adsense.test.mjs', 'scripts/release-scope.test.mjs'];
+  const routes = ['index.html', 'zukan.html'];
+  const articles = [];
+  if (header) {
+    tests.push('scripts/site-runtime-loader.test.mjs', 'scripts/generate-site-runtime.test.mjs');
+    routes.push('start.html', 'live/index.html', 'spots/fuji.html');
+    articles.push(node('scripts/generate-site-runtime.mjs', '--check'));
+  }
+  if (bridge) {
+    tests.push('scripts/app-embedded.test.mjs', 'scripts/factories-page.test.mjs');
+    routes.push('rivers.html', 'factories.html');
+    articles.push(node('scripts/generate-rivers-page.mjs', '--check'), node('scripts/generate-factories-page.mjs', '--check'));
+  }
+  return {scope:'content-news', needsDependencies:true, pagesCandidate:true,
+    reason:'Verify the localized entry pages, browser read state, Android discovery feeds and their distribution.',
+    commands:[...changes.filter(c => /\.(?:mjs|js)$/.test(c.path)).map(c => node('--check', c.path)),
+      node('--test', ...tests), ...articles,
+      ...['index.html','zukan.html'].map(route => node('scripts/generate-utility-locales.mjs', '--check', '--route', route)),
+      node('scripts/validate-site-navigation.mjs', ...routes.flatMap(route => ['--route', route])),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
+}
+
+function featureMediaScope(changes, { assetVersionOnly }) {
+  const controllers = ['feature-media.js', 'feature-media.css', 'scripts/shared/feature-media.mjs', 'scripts/shared/x-video-thumbnails.mjs'];
+  if (!changes.some(change => controllers.includes(change.path))) return null;
+  const generated = ['727', 'arenani', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei'];
+  const articles = ['727-collection', 'arenani', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei', 'reflections',
+    'stories/shinkalion', 'stories/shogun', 'stories/godzilla'].map(route => route + '.html');
+  const inputs = new Set([...controllers, ...articles, ...generated.map(name => 'scripts/generate-' + name + '-page.mjs'),
+    'spot-page-shared.js', 'sparkling-dreams.js', spotValidator, 'scripts/validate-sparkling-dreams.mjs',
+    'scripts/generate-spot-pages.mjs', 'scripts/generate-spot-page-shared-data.mjs',
+    'scripts/generate-story-window-pages.mjs', 'scripts/generate-content-manifest.mjs',
+    'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.mjs',
+    'scripts/release-scope.test.mjs', 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json']);
+  if (!changes.every(change => ['A', 'M'].includes(change.status) && (inputs.has(change.path) ||
+    (change.status === 'M' && (/^data\/spot-pages\/[\w-]+\.ja\.js$/.test(change.path) ||
+      (change.path.endsWith('.html') && assetVersionOnly?.(change.path))))))) return null;
+  return {
+    scope: 'feature-media', needsDependencies: true, pagesCandidate: true,
+    reason: 'Validate Japanese on-demand embeds, common spot photos, generated editions and distribution assets.',
+    commands: [
+      node('--check', 'feature-media.js'), node('--check', 'sparkling-dreams.js'), node('--check', 'spot-page-shared.js'),
+      node('--test', 'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs'),
+      ...generated.map(name => node('scripts/generate-' + name + '-page.mjs', '--check')),
+      node('scripts/generate-story-window-pages.mjs', '--lang', 'ja', '--check'), node('scripts/validate-story-window.mjs'),
+      node('scripts/validate-sparkling-dreams.mjs'), node('scripts/generate-spot-page-shared-data.mjs', '--check'),
+      node(spotValidator), node('scripts/generate-site-runtime.mjs', '--check'),
+      node('scripts/generate-spot-page-runtime.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'),
+      node('scripts/check-content-manifest.mjs'),
+    ],
   };
 }
 
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = timelineScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
   let plan = select(changes);
+  // A field-guide editor may change the derived feature order or copy without publishing news.
+  if (plan.scope === 'unmapped' && changes.some(c => discoveryFeed.test(c.path)) &&
+      changes.some(c => discoveryPage.test(c.path) && c.path.endsWith('zukan.html'))) {
+    const rest = select(changes.filter(c => !discoveryFeed.test(c.path) || c.status !== 'M'));
+    if (rest.pagesCandidate) {
+      const manifest = 'scripts/check-content-manifest.mjs';
+      plan = {...rest, needsDependencies:true, commands:rest.commands.some(args => args[1] === manifest)
+        ? rest.commands : [...rest.commands, node(manifest)]};
+    }
+  }
   const files = new Set(changes.map(change => change.path));
   let checkMoments = files.has(nightSpotList);
   const outputs = changes.filter(c => momentsPage.test(c.path));

@@ -2689,5 +2689,18 @@
   "NIGHT · 20 night scenes": "กลางคืน · 20 วิวยามค่ำ",
   "RIVERS & BRIDGES": "แม่น้ำและสะพาน",
   "Rivers by Shinkansen": "แม่น้ำจากหน้าต่างชินคันเซ็น",
-  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "จากโตเกียวถึงชินโอซาก้า ชมแม่น้ำและสะพานตามแนวรถไฟชินคันเซ็นสายโทไคโด"
+  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "จากโตเกียวถึงชินโอซาก้า ชมแม่น้ำและสะพานตามแนวรถไฟชินคันเซ็นสายโทไคโด",
+  "Choose a train or enter a departure time": "เลือกรถไฟหรือกรอกเวลาออกเดินทาง",
+  "Forecast date": "วันที่พยากรณ์",
+  "Mishima to Shin-Fuji · Seat E · About 24 km to Mt. Fuji": "มิชิมะถึงชินฟูจิ · ที่นั่ง E · ห่างจากภูเขาไฟฟูจิประมาณ 24 กม.",
+  "See Mt. Fuji on the live camera": "ดูภูเขาไฟฟูจิผ่านกล้องถ่ายทอดสด",
+  "See hourly forecast": "ดูพยากรณ์รายชั่วโมง",
+  "See the forecast for your train": "ดูพยากรณ์สำหรับรถไฟของคุณ",
+  "View from Fuji City Hall. Check when the image was taken on the linked page (Japanese).": "ภาพจากศาลาว่าการเมืองฟูจิ ดูเวลาที่ถ่ายภาพได้ที่หน้าลิงก์ (ภาษาญี่ปุ่น)",
+  "View from the train near Shin-Fuji": "วิวจากหน้าต่างรถไฟใกล้ชินฟูจิ",
+  "Visibility chance, 06:00–19:00 Japan time": "โอกาสเห็นภูเขาไฟฟูจิ 06:00–19:00 น. (เวลาญี่ปุ่น)",
+  "Visibility near Shin-Fuji": "โอกาสเห็นฟูจิใกล้ชินฟูจิ",
+  "Forecast for {0} · 06:00–19:00 Japan time (JST, UTC+9).": "พยากรณ์วันที่ {0} เวลา 06:00–19:00 น. ตามเวลาญี่ปุ่น (JST, UTC+9)",
+  "Weather data retrieved {0}, {1} JST. Reload to retrieve the forecast again.": "ได้รับข้อมูลสภาพอากาศวันที่ {0} เวลา {1} น. (JST) โหลดหน้าใหม่เพื่อรับพยากรณ์ล่าสุด",
+  "Weather data could not be loaded. No forecast is available. Please reload to try again.": "โหลดข้อมูลสภาพอากาศไม่สำเร็จ โปรดโหลดหน้าใหม่เพื่อลองอีกครั้ง"
 }

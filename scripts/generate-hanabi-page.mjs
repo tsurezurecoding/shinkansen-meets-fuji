@@ -1,3 +1,4 @@
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -696,7 +697,7 @@ ${t.hanabi_page}
 
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'hanabi.html' : 'en/hanabi.html');
-  const html = enhanceContentHead(render(lang), lang === 'ja' ? 'hanabi.html' : 'en/hanabi.html', root);
+  const html = enhanceContentHead(withFeatureMedia(render(lang), lang === 'ja' ? 'hanabi.html' : 'en/hanabi.html'), lang === 'ja' ? 'hanabi.html' : 'en/hanabi.html', root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('hanabi page out of date: ' + dest);
   } else {

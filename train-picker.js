@@ -130,7 +130,10 @@
       });
     }
     function renderBoard() {
-      var list = state.direction === "west" ? route.refStations.slice(0, -1) : route.refStations.slice(1).reverse();
+      var stations = route.refStations;
+      var list = state.direction === "west"
+        ? (opts.includeTerminal ? stations : stations.slice(0, -1))
+        : stations.slice(opts.includeTerminal ? 0 : 1).reverse();
       $("#boardStation").innerHTML = list.map(function (s) {
         return '<option value="' + esc(s.id) + '"' + (s.id === state.boardId ? " selected" : "") + ">" + esc(stationLabel(s.id)) + "</option>";
       }).join("");

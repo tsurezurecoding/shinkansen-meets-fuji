@@ -3,6 +3,8 @@
   "version": 1,
   "assets": {
     "android-app-invite.js": "dac49386",
+    "content-news.css": "233757c8",
+    "content-news.js": "abe43194",
     "shared-ui/de.cards.js": "ccf1cfbe",
     "shared-ui/de.rail-castles.js": "fbb6238f",
     "shared-ui/de.rail-drinks.js": "6b074adc",
@@ -87,7 +89,7 @@
     "spot-media-gallery.css": "e492da6a",
     "spot-media-gallery.js": "9f0b0fa6",
     "spot-page-shared-data.js": "84653b67",
-    "spot-page-shared.js": "0c2df1c5",
+    "spot-page-shared.js": "52589b88",
     "style.css": "2117933f"
   }
 }

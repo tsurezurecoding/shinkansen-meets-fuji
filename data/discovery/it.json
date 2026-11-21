@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "language": "it",
+  "features": [
+    {
+      "id": "guide",
+      "title": "Quando puoi vedere il Monte Fuji",
+      "description": "Da quale lato sederti e quanto tempo dopo Tokyo.",
+      "path": "/it/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "MONTE FUJI"
+    },
+    {
+      "id": "castles",
+      "title": "Castelli dallo Shinkansen",
+      "description": "Scoprite torrioni e colline dei castelli nelle fotografie dal finestrino.",
+      "path": "/it/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "CASTELLI"
+    },
+    {
+      "id": "rivers",
+      "title": "Fiumi dal finestrino",
+      "description": "Da Tokyo a Shin-Osaka, segui fiumi e ponti lungo la Tōkaidō Shinkansen.",
+      "path": "/it/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "FIUMI E PONTI"
+    },
+    {
+      "id": "arenani",
+      "title": "Che cosa c’è là fuori?",
+      "description": "Campi di tè, serre, enormi reti e altro ancora: partite da ciò che ha attirato il vostro sguardo.",
+      "path": "/it/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "GIAPPONE QUOTIDIANO"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "Il Giappone quotidiano",
+      "description": "Storie di cibo, bevande e campagna.",
+      "path": "/it/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "GIAPPONE QUOTIDIANO"
+    },
+    {
+      "id": "hanabi",
+      "title": "Fuochi d’artificio dal finestrino",
+      "description": "Otto festival, con il tratto e l’orario in cui guardare.",
+      "path": "/it/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "FUOCHI D’ARTIFICIO"
+    },
+    {
+      "id": "yakei",
+      "title": "Panorami notturni",
+      "description": "Scopri quale tratto è al buio in base al tuo orario di partenza.",
+      "path": "/it/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "DOPO IL TRAMONTO"
+    },
+    {
+      "id": "window_moments",
+      "title": "Il tempo visto dallo Shinkansen",
+      "description": "Arcobaleni, neve, nuvole e fulmini: cieli irripetibili.",
+      "path": "/it/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "ATTIMI DAL FINESTRINO"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "Shinkansen Disney",
+      "description": "Verifica se il tuo treno gli passerà accanto.",
+      "path": "/it/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "PERIODO LIMITATO"
+    },
+    {
+      "id": "reflections",
+      "title": "Il vostro treno nel vetro",
+      "description": "Dove il vostro Shinkansen si riflette nelle vetrate lungo i binari.",
+      "path": "/it/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "RIFLESSI"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "Trova le ruote panoramiche",
+      "description": "Cercate piccole ruote oltre la città.",
+      "path": "/it/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "RUOTE PANORAMICHE"
+    },
+    {
+      "id": "727_collection",
+      "title": "La collezione di insegne 727",
+      "description": "Le insegne che continuano a ricomparire lungo la linea.",
+      "path": "/it/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "INSEGNE LUNGO I BINARI"
+    },
+    {
+      "id": "story_window",
+      "title": "Storie oltre il finestrino",
+      "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball e Shinkalion: storie che conducono ai luoghi del Giappone.",
+      "path": "/it/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "Fabbriche dal finestrino",
+      "description": "Scopri quali prodotti di ogni giorno nascono negli edifici che vedi dal treno.",
+      "path": "/it/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "Altri quattro fiumi da vedere dallo Shinkansen",
+      "path": "/it/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "Altre tre fabbriche da avvistare a Odawara e nella prefettura di Shiga",
+      "path": "/it/factories.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "kind": "story",
+      "title": "I veri treni che hanno ispirato Shinkalion",
+      "path": "/it/stories/shinkalion.html"
+    }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
+  ]
+}

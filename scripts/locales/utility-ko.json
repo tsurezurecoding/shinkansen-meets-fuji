@@ -2615,5 +2615,18 @@
   "NIGHT · 20 night scenes": "밤 · 야경 20곳",
   "RIVERS & BRIDGES": "강과 다리",
   "Rivers by Shinkansen": "신칸센에서 바라보는 강",
-  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "도쿄에서 신오사카까지, 도카이도 신칸센을 따라 강과 다리를 찾아보세요."
+  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "도쿄에서 신오사카까지, 도카이도 신칸센을 따라 강과 다리를 찾아보세요.",
+  "Choose a train or enter a departure time": "열차를 선택하거나 출발 시각을 입력하세요",
+  "Forecast date": "예보 날짜",
+  "Mishima to Shin-Fuji · Seat E · About 24 km to Mt. Fuji": "미시마~신후지 · E석 · 후지산까지 약 24km",
+  "See Mt. Fuji on the live camera": "라이브 카메라로 후지산 보기",
+  "See hourly forecast": "시간대별 예보 보기",
+  "See the forecast for your train": "내가 탈 열차의 예보 보기",
+  "View from Fuji City Hall. Check when the image was taken on the linked page (Japanese).": "후지시청에서 바라본 모습입니다. 촬영 시각은 링크의 일본어 페이지에서 확인할 수 있습니다.",
+  "View from the train near Shin-Fuji": "신후지 부근의 차창 풍경",
+  "Visibility chance, 06:00–19:00 Japan time": "후지산이 보일 확률 · 06:00~19:00 (일본 시간)",
+  "Visibility near Shin-Fuji": "신후지 부근의 후지산 전망",
+  "Forecast for {0} · 06:00–19:00 Japan time (JST, UTC+9).": "{0} 예보 · 06:00~19:00 일본 시간(JST, UTC+9).",
+  "Weather data retrieved {0}, {1} JST. Reload to retrieve the forecast again.": "날씨 데이터 수신: {0} {1} (JST). 예보를 갱신하려면 페이지를 새로고침하세요.",
+  "Weather data could not be loaded. No forecast is available. Please reload to try again.": "날씨 데이터를 불러오지 못했습니다. 페이지를 새로고침해 다시 시도하세요."
 }

@@ -1,3 +1,4 @@
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import { readSiteSource } from './shared/site-chrome.mjs';
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -499,7 +500,7 @@ ${englishKintetsu.map(c => otherLineCard(c, 'en')).join('\n')}
 }
 
 const dest = path.join(root, 'arenani.html');
-const html = enhanceContentHead(render(), 'arenani.html', root);
+const html = enhanceContentHead(withFeatureMedia(render(), 'arenani.html'), 'arenani.html', root);
 const englishDest = path.join(root, 'en', 'arenani.html');
 const englishHtml = enhanceContentHead(renderEnglish(), 'en/arenani.html', root);
 if (process.argv.includes('--check')) {

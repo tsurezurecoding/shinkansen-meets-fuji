@@ -12,6 +12,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = 'https://www.michikusa-travel.com';
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const catalog = JSON.parse(read('scripts/factory-windows.json'));
+const riverLinks = Object.entries(JSON.parse(read('data/rivers/route.json')).links);
+const riverForFactory = new Map(riverLinks.flatMap(([river, target]) => {
+  const url = new URL(target, site);
+  return url.origin === site && url.pathname === '/factories.html' && url.hash ? [[url.hash.slice(1), river]] : [];
+}));
 const fileFor = lang => (lang === 'ja' ? '' : lang + '/') + 'factories.html';
 const cover = catalog.places.find(place => place.id === 'kirin');
 const check = process.argv.includes('--check');
@@ -47,6 +52,7 @@ function siteShell(lang, prefix) {
 function page(lang) {
   const copy = JSON.parse(read('scripts/locales/factory-windows/' + lang + '.json'));
   const {ui} = copy;
+  const rivers = JSON.parse(read('data/rivers/' + lang + '.json'));
   const prefix = lang === 'ja' ? '' : '../';
   const file = fileFor(lang);
   const shell = siteShell(lang, prefix);
@@ -70,6 +76,8 @@ function page(lang) {
       if (!fs.existsSync(path.join(root,route))) throw Error('Missing related feature: ' + route);
       related = href(prefix + route, e(text.related) + (code === lang ? '' : ' <small lang="' + code + '">(' + e(editions[code].label) + ')</small>') + ' →', ' hreflang="' + code + '"');
     }
+    const river = riverForFactory.get(place.id);
+    if (river) related += href('rivers.html#' + river, e((rivers.photos[river] || rivers.stops[river]).name) + ' →', ' hreflang="' + lang + '"');
     const map = href(place.map, e(ui.map) + ' ↗', ' class="ff-map" aria-label="' + e(text.name + ' · ' + ui.map) + '"');
     const sources = place.sources.map((url, i) => '<li>' + href(url,e(text.sources[i])) + '</li>').join('');
     return '<div class="ff-links">' + related + map + '<details class="ff-sources"><summary>' + e(ui.sources) +
@@ -133,7 +141,8 @@ function page(lang) {
     '<meta property="og:type" content="article"><meta property="og:title" content="' + e(title) + '"><meta property="og:description" content="' + e(ui.description) +
     '"><meta property="og:locale" content="' + editions[lang].og + '"><meta property="og:url" content="' + site + '/' + file + '"><meta property="og:image" content="' +
     site + '/' + cover.photo.src + '"><meta property="og:image:alt" content="' + e(copy.places[cover.id].alt) + '"><meta name="twitter:card" content="summary_large_image">' +
-    '<link rel="icon" href="' + prefix + 'favicon.ico">' + ['style.css','ferris-wheels.css','article-locales.css','factories.css'].map(asset => '<link rel="stylesheet" href="' + version(asset) + '">').join('') +
+    '<link rel="icon" href="' + prefix + 'favicon.ico"><script src="' + version('app-embedded.js') + '"></script>' +
+    ['app-embedded.css','style.css','ferris-wheels.css','article-locales.css','factories.css'].map(asset => '<link rel="stylesheet" href="' + version(asset) + '">').join('') +
     (lang === 'ja' ? '<script src="' + version('language-router.js') + '"></script>' : '') + ANALYTICS.withEmbeddedGuard;
   const html = '<!doctype html>\n<html lang="' + lang + '"><head>' + head + '</head><body id="top" class="spot-page spot-page-utility ff-page" data-article-localized>' +
     href('#article',e(ui.browse),' class="ff-skip"') + shell.header + '<main id="article" class="ff-main">' + hero +

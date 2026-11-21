@@ -297,9 +297,13 @@ async function forecastDom(lang) {
   window.eval(dataScript());
   if (lang !== 'en') { window.eval(read(`${lang}/utility-data.js`)); window.eval(read('utility-locale-runtime.js')); }
   window.eval(read('train-select.js'));
+  window.eval(read('data/timetable.js'));
+  window.eval(read('train-picker.js'));
   const code = window.document.querySelector('script[src*="mieru.js"]') ? read('mieru.js') : null;
   assert(Boolean(code), `${lang}/mieru.html`, 'shared forecast source missing');
   if (code) window.eval(code);
+  window.document.getElementById('ride').open = true;
+  window.document.getElementById('mieruModeTime').click();
   await new Promise(resolve => setImmediate(resolve));
   assert(Boolean(window.__mieru?.data.summit), `${lang}/mieru.html`, 'mock forecast fetch/render failed');
   return dom;
@@ -308,9 +312,11 @@ async function checkForecastParity() {
   const doms = await Promise.all(['en', ...LOCALES].map(forecastDom));
   for (const [day, time] of [[0,'06:00'],[0,'09:25'],[0,'18:10'],[1,'07:40'],[1,'12:05'],[1,'18:55']]) {
     const snapshots = doms.map(dom => {
-      const { window } = dom; window.document.getElementById('mieruModeTime').click(); window.document.getElementById('mieruDay').value = String(day); window.document.getElementById('mieruDep').value = time;
-      window.document.getElementById('mieruDay').dispatchEvent(new window.Event('change'));
-      window.document.getElementById('mieruDep').dispatchEvent(new window.Event('input'));
+      const { window } = dom;
+      window.document.querySelector('.region-controls [data-day="'+day+'"]').click();
+      const departure = window.document.getElementById('departTime');
+      departure.value = time;
+      departure.dispatchEvent(new window.Event('input'));
       assert(Object.keys(window.__mieru.results).length === 5, 'forecast manual mode', 'five calculated results missing');
       return JSON.parse(JSON.stringify(window.__mieru.results));
     });

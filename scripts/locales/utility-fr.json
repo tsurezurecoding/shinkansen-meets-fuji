@@ -2615,5 +2615,18 @@
   "NIGHT · 20 night scenes": "NUIT · 20 vues nocturnes",
   "RIVERS & BRIDGES": "RIVIÈRES ET PONTS",
   "Rivers by Shinkansen": "Les rivières vues du Shinkansen",
-  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "De Tokyo à Shin-Osaka, découvrez les rivières et les ponts de la ligne Tōkaidō."
+  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "De Tokyo à Shin-Osaka, découvrez les rivières et les ponts de la ligne Tōkaidō.",
+  "Choose a train or enter a departure time": "Choisissez un train ou saisissez une heure de départ",
+  "Forecast date": "Date des prévisions",
+  "Mishima to Shin-Fuji · Seat E · About 24 km to Mt. Fuji": "Mishima à Shin-Fuji · Siège E · Mont Fuji à environ 24 km",
+  "See Mt. Fuji on the live camera": "Voir le mont Fuji en direct",
+  "See hourly forecast": "Voir les prévisions heure par heure",
+  "See the forecast for your train": "Voir les prévisions pour votre train",
+  "View from Fuji City Hall. Check when the image was taken on the linked page (Japanese).": "Vue depuis la mairie de Fuji. L’heure de la prise de vue figure sur la page (en japonais).",
+  "View from the train near Shin-Fuji": "Vue depuis le train près de Shin-Fuji",
+  "Visibility chance, 06:00–19:00 Japan time": "Probabilité de voir le mont Fuji, de 6 h à 19 h (heure du Japon)",
+  "Visibility near Shin-Fuji": "Visibilité près de Shin-Fuji",
+  "Forecast for {0} · 06:00–19:00 Japan time (JST, UTC+9).": "Prévisions pour le {0}, de 6 h à 19 h, heure du Japon (JST, UTC+9).",
+  "Weather data retrieved {0}, {1} JST. Reload to retrieve the forecast again.": "Données météo reçues le {0} à {1} (JST). Rechargez la page pour actualiser les prévisions.",
+  "Weather data could not be loaded. No forecast is available. Please reload to try again.": "Les données météo n’ont pas pu être chargées. Rechargez la page pour réessayer."
 }

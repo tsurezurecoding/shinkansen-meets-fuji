@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "language": "zh-Hans",
+  "features": [
+    {
+      "id": "guide",
+      "title": "看富士山的时间",
+      "description": "坐哪一侧，以及东京出发后多久。",
+      "path": "/zh-Hans/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "富士山"
+    },
+    {
+      "id": "castles",
+      "title": "新干线车窗外的城堡",
+      "description": "在车窗照片中寻找天守与城山。",
+      "path": "/zh-Hans/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "城堡"
+    },
+    {
+      "id": "rivers",
+      "title": "新干线车窗看河流",
+      "description": "从东京到新大阪，沿东海道新干线寻找河流与桥梁。",
+      "path": "/zh-Hans/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "河流与桥梁"
+    },
+    {
+      "id": "arenani",
+      "title": "窗外那是什麽？",
+      "description": "茶田、温室、巨大球网与更多风景，从吸引目光的事物开始。",
+      "path": "/zh-Hans/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "日常日本"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "日常日本",
+      "description": "食物、饮料与乡间故事。",
+      "path": "/zh-Hans/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "日常日本"
+    },
+    {
+      "id": "hanabi",
+      "title": "车窗外的烟火",
+      "description": "沿线8场烟花活动，附观赏区间与时间。",
+      "path": "/zh-Hans/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "烟花"
+    },
+    {
+      "id": "yakei",
+      "title": "夜间景色",
+      "description": "依出发时间，查看哪一段会入夜。",
+      "path": "/zh-Hans/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "入夜之後"
+    },
+    {
+      "id": "window_moments",
+      "title": "新干线上看到的天气",
+      "description": "彩虹、雪、云与闪电：只出现一次的天空。",
+      "path": "/zh-Hans/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "车窗时刻"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "迪士尼新干线",
+      "description": "确认你的列车是否会经过。",
+      "path": "/zh-Hans/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "期间限定"
+    },
+    {
+      "id": "reflections",
+      "title": "玻璃中的你的列车",
+      "description": "自己的新干线，出现在沿线玻璃中的地方。",
+      "path": "/zh-Hans/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "倒影"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "寻找摩天轮",
+      "description": "在城市远方寻找小摩天轮。",
+      "path": "/zh-Hans/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "摩天轮"
+    },
+    {
+      "id": "727_collection",
+      "title": "727招牌收藏",
+      "description": "沿线反覆出现的招牌。",
+      "path": "/zh-Hans/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "沿线招牌"
+    },
+    {
+      "id": "story_window",
+      "title": "车窗外相连的故事",
+      "description": "哥斯拉、SHŌGUN、摇曳露营△、龙珠与新干线变形机器人：从故事走进日本的土地。",
+      "path": "/zh-Hans/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "新干线窗外的工厂",
+      "description": "从咖啡到化妆品，沿着新干线车窗寻找熟悉用品的生产地。",
+      "path": "/zh-Hans/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "新干线沿线的河流与桥梁新增四处",
+      "path": "/zh-Hans/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "新增小田原与滋贺的三座工厂",
+      "path": "/zh-Hans/factories.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "kind": "story",
+      "title": "探访《新干线变形机器人》里的真实列车",
+      "path": "/zh-Hans/stories/shinkalion.html"
+    }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
+  ]
+}

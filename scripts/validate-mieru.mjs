@@ -19,7 +19,15 @@ async function page(lang,query='',options={}){
  if(options.mutate) options.mutate(response);
  w.fetch=async()=>{if(options.fail)throw Error('network unavailable');return {ok:true,json:async()=>response};};
  const append=d.head.appendChild.bind(d.head);let loads=0;
- d.head.appendChild=function(el){if(el.tagName==='SCRIPT'&&el.src.includes('/data/timetable.js')){loads++;queueMicrotask(()=>{w.eval(read('data/timetable.js'));el.onload();});return el;}return append(el);};
+ d.head.appendChild=function(el){
+   const asset=el.tagName==='SCRIPT' && new URL(el.src).pathname.slice(1);
+   if(asset==='data/timetable.js' || asset==='train-picker.js'){
+     if(asset==='data/timetable.js')loads++;
+     queueMicrotask(()=>{ if(options.failTimetable && asset==='data/timetable.js'){el.onerror();return;} w.eval(read(asset));el.onload(); });
+     return el;
+   }
+   return append(el);
+ };
  w.eval(read('mieru.js'));await new Promise(r=>setImmediate(r));
  return {dom,w,d,loads:()=>loads};
 }
@@ -30,35 +38,39 @@ assert(!japanese.d.getElementById('mieruForecastContext').hidden,'Japanese forec
 assert(japanese.d.getElementById('mieruForecastDate').textContent.includes('2026年10月22日'),'Japanese forecast must show the API date in JST');
 const japaneseRetrieved=japanese.d.getElementById('mieruRetrievedAt').textContent;
 assert(japaneseRetrieved.includes('2026年10月22日 01:23 JST'),'Japanese retrieval must use Japan time across midnight');
-japanese.d.getElementById('mieruDay').value='1';japanese.d.getElementById('mieruDay').dispatchEvent(new japanese.w.Event('change'));
+japanese.d.querySelector('[data-day="1"]').click();
 assert(japanese.d.getElementById('mieruForecastDate').textContent.includes('2026年10月23日'),'Japanese date must follow the day selection');
 assert(japanese.d.getElementById('mieruRetrievedAt').textContent===japaneseRetrieved,'Changing date must preserve Japanese retrieval time');
 japanese.dom.window.close();
 const english=pages[langs.indexOf('en')];
 assert(!english.d.getElementById('mieruForecastContext').hidden,'English forecast date hidden');
 assert(english.d.getElementById('mieruForecastDate').textContent.includes('22 October 2026'),'Date must come from API, not the client calendar');
-assert(english.d.getElementById('mieruForecastDate').textContent.includes('JST, UTC+9'),'Explicit Japan timezone missing');
+assert(english.d.getElementById('mieruForecastDate').textContent.includes('JST'),'Explicit Japan timezone missing');
 const retrieved=english.d.getElementById('mieruRetrievedAt').textContent;
-english.d.getElementById('mieruDay').value='1';english.d.getElementById('mieruDay').dispatchEvent(new english.w.Event('change'));
+english.d.querySelector('.region-controls [data-day="1"]').click();
 assert(english.d.getElementById('mieruForecastDate').textContent.includes('23 October 2026'),'Tomorrow API date missing');
-assert(english.d.getElementById('mieruDay').options[0].textContent==='22 October 2026','Absolute dates must survive midnight without relabeling old data');
-assert(english.d.querySelector('.mieru-verdict').textContent.includes('23 October 2026'),'Best hour must use selected absolute date');
+assert(english.d.querySelector('[data-day="0"]').textContent==='22 October 2026','Absolute dates must survive midnight without relabeling old data');
+assert(english.d.querySelector('.region-chart-date').textContent.includes('23 October 2026'),'Each chart must use selected absolute date');
 assert(english.d.getElementById('mieruRetrievedAt').textContent===retrieved,'Changing date must not change data retrieval timestamp');
 assert(english.d.querySelector('a[href="#forecast-method"]')&&english.d.getElementById('forecast-method'),'Method link target missing');
 for(const opts of [{fail:true},{mutate:r=>delete r[0].hourly.time},{mutate:r=>r[1].hourly.time[24]='2026-10-24T00:00'},{mutate:r=>r[2].hourly.visibility[6]=null},{mutate:r=>r[0].hourly.time[0]='2026-02-30T00:00'}]){
  const p=await page('en','',opts);
  assert(p.d.getElementById('mieruForecastContext').hidden,'Failed data must not show retrieval success');
- assert(!p.d.querySelector('.mieru-spot')&&!Object.keys(p.w.__mieru.results).length,'Invalid data must not produce forecasts');
+ assert(!p.d.querySelector('.region-hours dd')&&!Object.keys(p.w.__mieru.results).length,'Invalid data must not produce forecasts');
  assert(p.d.getElementById('mieruStatus').textContent.includes('No forecast is available'),'Failure must be explicit');
  p.dom.window.close();
 }
 const invalidJapanese=await page('ja','',{mutate:r=>delete r[0].hourly.time});
 assert(invalidJapanese.d.getElementById('mieruForecastContext').hidden,'Invalid Japanese data must not show a retrieval time');
-assert(!invalidJapanese.d.querySelector('.mieru-spot')&&invalidJapanese.d.getElementById('mieruStatus').textContent.includes('予報を表示できません'),'Invalid Japanese data must show a failure and no forecast');
+assert(!invalidJapanese.d.querySelector('.region-hours dd')&&invalidJapanese.d.getElementById('mieruStatus').textContent.includes('予報を表示できません'),'Invalid Japanese data must show a failure and no forecast');
 invalidJapanese.dom.window.close();
 for(let li=0;li<langs.length;li++){
  const lang=langs[li],{d,w,loads}=pages[li];
- if(translated.includes(lang))assert(!d.getElementById('mieruForecastContext')&&!d.querySelector('[data-mieru-en-only]'),'Untranslated forecast context leaked into '+lang);
+ assert(!d.getElementById('mieruForecastContext').hidden,lang+': live forecast did not render');
+ if(translated.includes(lang))assert(!d.querySelector('[data-mieru-en-only]'),'English-only instructions leaked into '+lang);
+ assert(d.querySelector('.camera-note a')?.href==='https://www.city.fuji.shizuoka.jp/1005330000/p007780.html',lang+': camera link differs');
+ assert(d.querySelectorAll('.region-hours dd').length===70&&!d.querySelector('.mieru-fact details'),lang+': all 70 bars must always be visible');
+ assert(d.querySelector('a[href="#hour-fuji"]')&&d.querySelector('#hour-fuji .region-hours'),lang+': missing Shin-Fuji chart link');
  const cards=[...d.querySelectorAll('.mieru-fact')];assert(cards.length===5,lang+': five static explanations missing');
  assert(cards.map(x=>x.dataset.viewpoint).join('|')===ids.join('|'),lang+': viewpoint order differs');
  cards.forEach((card,i)=>{const photo=MIERU_CONTENT.photos[i],img=card.querySelector('img'),url=new URL(img.src);assert(url.pathname==='/'+photo.src,lang+': photo differs '+photo.id);assert(img.alt.trim()&&img.width>0&&img.height>0,lang+': photo alt/dimensions missing');assert(card.querySelector('.mieru-fact-body')?.textContent.length>50,lang+': explanation missing');if(photo.credit){const credit=card.querySelector('figcaption a');assert(credit?.textContent===photo.credit&&credit.href===photo.sourceUrl,lang+': attribution changed '+photo.id);}assert(fs.existsSync(path.join(root,new URL(card.querySelector('.mieru-fact-more').href).pathname.slice(1))),lang+': article destination missing');});
@@ -68,20 +80,49 @@ for(let li=0;li<langs.length;li++){
 }
 function snapshots(){return pages.map(({w})=>JSON.parse(JSON.stringify(w.__mieru.results)));}
 function compare(msg,expectedCount){const rows=snapshots();assert(Object.keys(rows[0]).length===expectedCount,msg+': expected nonempty calculated viewpoints');for(let i=1;i<rows.length;i++)assert(JSON.stringify(rows[i])===JSON.stringify(rows[0]),msg+': '+langs[i]+' numeric values differ from Japanese');scenarios++;}
-for(const [day,time,board,dir,count]of [[0,'09:25','Tokyo','west',5],[1,'12:05','Tokyo','west',5],[0,'08:00','Nagoya','east',5],[1,'10:10','Shizuoka','west',2],[0,'07:35','Odawara','east',2]]){
- for(const {d}of pages){d.getElementById('mieruModeTime').click();d.getElementById('mieruBoard').value=board;d.getElementById('mieruBoard').dispatchEvent(new d.defaultView.Event('change'));d.getElementById('mieruDir').value=dir;d.getElementById('mieruDir').dispatchEvent(new d.defaultView.Event('change'));d.getElementById('mieruDay').value=day;d.getElementById('mieruDay').dispatchEvent(new d.defaultView.Event('change'));d.getElementById('mieruDep').value=time;d.getElementById('mieruDep').dispatchEvent(new d.defaultView.Event('input'));}
+async function chooseJourney(page, board, dir, time) {
+ const {d,w}=page;
+ d.getElementById('ride').open=true;
+ d.getElementById('mieruModeTime').click();
+ await new Promise(r=>setImmediate(r));
+ d.querySelector('[data-dir="'+dir+'"]').click();
+ const station=d.getElementById('boardStation');
+ station.value=board;
+ station.dispatchEvent(new w.Event('change'));
+ const departure=d.getElementById('departTime');
+ departure.value=time;
+ departure.dispatchEvent(new w.Event('input'));
+}
+for(const [day,time,board,dir,count] of [[0,'09:25','Tokyo','west',5],[1,'12:05','Tokyo','west',5],[0,'08:00','Nagoya','east',5],[1,'10:10','Shizuoka','west',2],[0,'07:35','Odawara','east',2]]){
+ for(const p of pages){
+   await chooseJourney(p,board,dir,time);
+   p.d.querySelector('.region-controls [data-day="'+day+'"]').click();
+ }
  compare('manual '+board+'/'+dir+'/'+day,count);
 }
-for(const [board,dir]of [['Tokyo','west'],['Nagoya','east']]){
- for(const {d,w}of pages){d.getElementById('mieruBoard').value=board;d.getElementById('mieruBoard').dispatchEvent(new w.Event('change'));d.getElementById('mieruDir').value=dir;d.getElementById('mieruDir').dispatchEvent(new w.Event('change'));d.getElementById('mieruModeTrain').click();d.getElementById('mieruTrainSearchBtn').click();await new Promise(r=>setImmediate(r));const chip=d.querySelector('#mieruTrainResults button[data-i]');assert(chip,board+': no train candidates');chip.click();assert(d.querySelector('#mieruRide b'),board+': selected train forecast missing');}
+for(const [board,dir] of [['Tokyo','west'],['Nagoya','east']]){
+ for(const p of pages){
+   await chooseJourney(p,board,dir,'08:00');
+   const {d}=p;
+   d.getElementById('mieruModeTrain').click();
+   d.getElementById('findTrainsBtn').click();
+   const chip=d.querySelector('#trainResults button[data-train]');
+   assert(chip,board+': no train candidates');
+   chip.click();
+   assert(d.querySelector('#mieruRide b'),board+': selected train forecast missing');
+ }
  compare('train '+board+'/'+dir,5);
 }
+const fallback=await page('ja','?mode=time',{failTimetable:true});
+assert(fallback.d.getElementById('mieruModeTrain').disabled,'Unavailable timetable must disable the train mode');
+assert(Object.keys(fallback.w.__mieru.results).length===5,'Manual forecast must work without a timetable');
+fallback.dom.window.close();
 for(let i=0;i<pages.length;i++){
  const p=pages[i],href=p.w.madoMieruPageHref(langs[(i+1)%langs.length]),url=new URL(href);
  assert(url.searchParams.get('board')==='Nagoya'&&url.searchParams.get('dir')==='east'&&url.searchParams.get('train'),langs[i]+': selected train lost on language switch');
  const restored=await page(langs[(i+1)%langs.length],url.search);assert(restored.w.__mieru.state.selectedTrain?.tr.type===p.w.__mieru.state.selectedTrain.tr.type&&restored.w.__mieru.state.selectedTrain?.tr.number===p.w.__mieru.state.selectedTrain.tr.number,'train restoration changed');
  assert(JSON.stringify(restored.w.__mieru.results)===JSON.stringify(p.w.__mieru.results),'restored train forecast differs');restored.dom.window.close();
- p.d.getElementById('mieruBoard').value='Tokyo';p.d.getElementById('mieruBoard').dispatchEvent(new p.w.Event('change'));p.d.getElementById('mieruDir').value='east';p.d.getElementById('mieruDir').dispatchEvent(new p.w.Event('change'));
+ await chooseJourney(p,'Tokyo','east','09:00');
  assert(!Object.keys(p.w.__mieru.results).length,'stale forecast remains for no viewpoints');p.dom.window.close();
 }
 console.log(`Forecast PASS: ${langs.length} languages, ${langs.length * 5} static photo explanations/credits, ${scenarios} nonempty calculation scenarios, ${langs.length} train language restorations, lazy timetable and stale-result clearing.`);

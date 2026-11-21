@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "language": "en",
+  "features": [
+    {
+      "id": "guide",
+      "title": "When you can see Mt. Fuji",
+      "description": "Which side to sit on, and how long after Tokyo.",
+      "path": "/en/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "MOUNT FUJI"
+    },
+    {
+      "id": "castles",
+      "title": "Castles from the Shinkansen",
+      "description": "Explore keeps and castle hills in window photographs.",
+      "path": "/en/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "CASTLES"
+    },
+    {
+      "id": "rivers",
+      "title": "Rivers by Shinkansen",
+      "description": "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.",
+      "path": "/en/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "RIVERS & BRIDGES"
+    },
+    {
+      "id": "arenani",
+      "title": "What's that outside?",
+      "description": "Tea fields, greenhouses, giant nets and more — start with what caught your eye.",
+      "path": "/en/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "EVERYDAY JAPAN"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "Everyday Japan",
+      "description": "Food, drinks and countryside stories.",
+      "path": "/en/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "EVERYDAY JAPAN"
+    },
+    {
+      "id": "hanabi",
+      "title": "Fireworks from the window",
+      "description": "Eight festivals, with the stretch and time to watch.",
+      "path": "/en/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "FIREWORKS"
+    },
+    {
+      "id": "yakei",
+      "title": "Night views",
+      "description": "Which stretch is dark, from your departure time.",
+      "path": "/en/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "AFTER DARK"
+    },
+    {
+      "id": "window_moments",
+      "title": "Weather Seen from the Shinkansen",
+      "description": "Rainbows, snow, clouds and lightning: skies that happen only once.",
+      "path": "/en/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "WINDOW MOMENTS"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "Disney Shinkansen",
+      "description": "Work out whether your train will pass it.",
+      "path": "/en/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "LIMITED"
+    },
+    {
+      "id": "reflections",
+      "title": "Your train in the glass",
+      "description": "Where your own Shinkansen shows up in trackside glass.",
+      "path": "/en/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "REFLECTIONS"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "Find the ferris wheels",
+      "description": "Look for little wheels beyond the city.",
+      "path": "/en/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "FERRIS WHEELS"
+    },
+    {
+      "id": "727_collection",
+      "title": "The 727 sign collection",
+      "description": "The signs that keep reappearing along the line.",
+      "path": "/en/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "TRACKSIDE SIGNS"
+    },
+    {
+      "id": "story_window",
+      "title": "Stories Beyond the Window",
+      "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball and Shinkalion: stories that lead to places in Japan.",
+      "path": "/en/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "Factories from the Shinkansen",
+      "description": "Spot the factories behind everyday drinks, sweets and cosmetics from your Shinkansen window.",
+      "path": "/en/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "solar-ark-section-correction",
+      "date": "2026-11-19",
+      "kind": "spot-update",
+      "title": "Corrected the viewing segment for the Solar Ark",
+      "path": "/en/spots/solar-ark.html"
+    },
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "Four more river crossings from the Shinkansen",
+      "path": "/en/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "Three more factories to spot in Odawara and Shiga",
+      "path": "/en/factories.html"
+    },
+    {
+      "id": "tamaruya-wasabi-sign-added",
+      "date": "2026-11-14",
+      "kind": "spot",
+      "title": "Added Tamaruya’s wasabi sign",
+      "path": "/en/spots/tamaruya-wasabi-sign.html"
+    },
+    {
+      "id": "kizakura-sign-added",
+      "date": "2026-11-14",
+      "kind": "spot",
+      "title": "Added the Kizakura good-work sign",
+      "path": "/en/spots/kizakura-otsukaresama-sign.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "kind": "story",
+      "title": "Meet the real trains behind Shinkalion",
+      "path": "/en/stories/shinkalion.html"
+    }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
+  ]
+}
