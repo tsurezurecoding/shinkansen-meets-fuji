@@ -29,6 +29,7 @@ for (const language of languages) {
     assert.equal(feed.schema, 1);
     assert.equal(feed.language, language);
     assert.equal(new Set(feed.news.map(item => item.id)).size, feed.news.length);
+    assert.ok(feed.news.every(item => feed.newsBaseline.includes(item.id)));
     assert.deepEqual(feed.news.map(item => item.date), feed.news.map(item => item.date).sort().reverse());
     for (const route of ['zukan.html', 'index.html']) {
       const file = prefix + route;
@@ -96,6 +97,37 @@ test('first visit, later publication, activation and reopening share stable IDs 
     back.window.eval(script);
     assert.equal(back.window.document.querySelectorAll(selector).length, 0);
   } finally { home.window.close(); guide.window.close(); back.window.close(); }
+});
+
+test('the header shows a dated, categorized inbox and only opening an item changes its count', async () => {
+  const dom = page('index.html');
+  try {
+    const {window} = dom;
+    const document = window.document;
+    const feed = JSON.parse(read('data/discovery/ja.json'));
+    Object.defineProperty(document, 'currentScript', {value: {src: origin + 'content-news.js'}});
+    window.fetch = async () => ({ok: true, json: async () => feed});
+    const prototype = window.HTMLDialogElement.prototype;
+    prototype.showModal = function () { this.open = true; };
+    prototype.close = function () { this.open = false; this.dispatchEvent(new window.Event('close')); };
+    window.localStorage.setItem('mado-content-news.baseline.v1', JSON.stringify(feed.newsBaseline.slice(2)));
+    window.eval(script);
+    await new Promise(resolve => setTimeout(resolve, 0));
+    const bell = document.querySelector('.news-bell');
+    const badge = bell.querySelector('.news-count');
+    assert.equal(badge.textContent, '2');
+    bell.click();
+    const dialog = document.querySelector('#header-news-drawer');
+    assert.ok(dialog.open);
+    assert.equal(badge.textContent, '2');
+    assert.deepEqual([...dialog.querySelectorAll('time')].map(date => date.dateTime), ['2026-11-19', '2026-11-14']);
+    assert.deepEqual([...dialog.querySelectorAll('.news-kind')].map(kind => kind.textContent), ['スポット更新','機能','特集','特集','新スポット']);
+    dialog.querySelector('.news-item').addEventListener('click', event => event.preventDefault());
+    dialog.querySelector('.news-item').click();
+    assert.equal(badge.textContent, '1');
+    assert.equal(dialog.open, false);
+    assert.equal(dialog.querySelector('.news-more').href, origin + 'zukan.html#content-news');
+  } finally { dom.window.close(); }
 });
 
 test('the Android shell owns its mount and storage, and blocked Web storage leaves headlines readable', () => {

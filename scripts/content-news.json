@@ -1,7 +1,27 @@
 [
   {
+    "id": "solar-ark-section-correction",
+    "date": "2026-11-19",
+    "kind": "spot-update",
+    "route": "spots/solar-ark.html",
+    "titles": {
+      "ja": ["ソーラーアークの", "見える区間を訂正"],
+      "en": "Corrected the viewing segment for the Solar Ark"
+    }
+  },
+  {
+    "id": "spot-video-selection",
+    "date": "2026-11-19",
+    "kind": "function",
+    "route": "spots/ibuki.html",
+    "titles": {
+      "ja": ["記事で見たい車窓動画を", "選んで再生"]
+    }
+  },
+  {
     "id": "rivers-four-crossings",
     "date": "2026-11-19",
+    "kind": "feature",
     "route": "rivers.html",
     "titles": {
       "ja": ["川と橋の特集に", "4つの川を追加"],
@@ -19,6 +39,7 @@
   {
     "id": "factories-odawara-shiga",
     "date": "2026-11-19",
+    "kind": "feature",
     "route": "factories.html",
     "titles": {
       "ja": ["小田原と滋賀の", "工場3か所を追加"],
@@ -34,8 +55,29 @@
     }
   },
   {
+    "id": "tamaruya-wasabi-sign-added",
+    "date": "2026-11-14",
+    "kind": "spot",
+    "route": "spots/tamaruya-wasabi-sign.html",
+    "titles": {
+      "ja": ["田丸屋のわさび漬看板を", "追加"],
+      "en": "Added Tamaruya’s wasabi sign"
+    }
+  },
+  {
+    "id": "kizakura-sign-added",
+    "date": "2026-11-14",
+    "kind": "spot",
+    "route": "spots/kizakura-otsukaresama-sign.html",
+    "titles": {
+      "ja": ["黄桜のおつかれさま看板を", "追加"],
+      "en": "Added the Kizakura good-work sign"
+    }
+  },
+  {
     "id": "story-shinkalion",
     "date": "2026-11-08",
+    "kind": "story",
     "route": "stories/shinkalion.html",
     "titles": {
       "ja": ["シンカリオンと", "本物の新幹線をめぐる"],
@@ -53,6 +95,7 @@
   {
     "id": "artwork-727-hunt",
     "date": "2026-11-05",
+    "kind": "artwork",
     "route": "artworks/727-hunt/index.html",
     "titles": {
       "ja": ["車窓ゲームで", "「727」の看板を探す"]

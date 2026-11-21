@@ -119,20 +119,33 @@
     {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "新幹線沿線的河川與橋梁新增四處",
       "path": "/zh-Hant/rivers.html"
     },
     {
       "id": "factories-odawara-shiga",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "新增小田原與滋賀的三座工廠",
       "path": "/zh-Hant/factories.html"
     },
     {
       "id": "story-shinkalion",
       "date": "2026-11-08",
+      "kind": "story",
       "title": "走訪《新幹線變形機器人》的真實列車",
       "path": "/zh-Hant/stories/shinkalion.html"
     }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
   ]
 }

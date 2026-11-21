@@ -4,8 +4,9 @@
   var styles = ['style.css', 'spot-media-gallery.css'];
   var spotScripts = ['spot-page-shared-data.js', 'spot-page-shared.js', 'spot-media-gallery.js', 'spot-map.js'];
   var fixed = styles.concat(spotScripts, ['android-app-invite.js', 'site-chrome.js']);
+  var news = ['content-news.css', 'content-news.js'];
   function allowed(file) {
-    return fixed.indexOf(file) >= 0 || /^shared-ui\/[a-z][a-z0-9-]*\.[a-z][a-z0-9-]*\.js$/.test(file);
+    return fixed.indexOf(file) >= 0 || news.indexOf(file) >= 0 || /^shared-ui\/[a-z][a-z0-9-]*\.[a-z][a-z0-9-]*\.js$/.test(file);
   }
   function readVersions(data) {
     if (!data || data.schema !== 'mado-site-runtime' || data.version !== 1 || !data.assets || typeof data.assets !== 'object' || Array.isArray(data.assets)) throw new Error('Invalid site runtime manifest');
@@ -76,6 +77,12 @@
       }));
     }
     if (invite) optional.push(load('android-app-invite.js', versions));
+    if (chrome && chrome.mounts && chrome.mounts.some(function (mount) { return mount.kind === 'header'; }) &&
+        !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB) {
+      news.forEach(function (file) {
+        if (!document.querySelector('[data-mado-news-asset="' + file + '"]')) optional.push(load(file, versions));
+      });
+    }
     window.MADO_SITE_ENHANCEMENTS_READY = Promise.all(optional.map(function (p) { return p.catch(function () {}); }));
     return Promise.all(required).then(reveal);
   }).catch(function () {

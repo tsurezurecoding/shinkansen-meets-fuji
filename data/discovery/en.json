@@ -117,22 +117,56 @@
   ],
   "news": [
     {
+      "id": "solar-ark-section-correction",
+      "date": "2026-11-19",
+      "kind": "spot-update",
+      "title": "Corrected the viewing segment for the Solar Ark",
+      "path": "/en/spots/solar-ark.html"
+    },
+    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "Four more river crossings from the Shinkansen",
       "path": "/en/rivers.html"
     },
     {
       "id": "factories-odawara-shiga",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "Three more factories to spot in Odawara and Shiga",
       "path": "/en/factories.html"
     },
     {
+      "id": "tamaruya-wasabi-sign-added",
+      "date": "2026-11-14",
+      "kind": "spot",
+      "title": "Added Tamaruya’s wasabi sign",
+      "path": "/en/spots/tamaruya-wasabi-sign.html"
+    },
+    {
+      "id": "kizakura-sign-added",
+      "date": "2026-11-14",
+      "kind": "spot",
+      "title": "Added the Kizakura good-work sign",
+      "path": "/en/spots/kizakura-otsukaresama-sign.html"
+    },
+    {
       "id": "story-shinkalion",
       "date": "2026-11-08",
+      "kind": "story",
       "title": "Meet the real trains behind Shinkalion",
       "path": "/en/stories/shinkalion.html"
     }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
   ]
 }

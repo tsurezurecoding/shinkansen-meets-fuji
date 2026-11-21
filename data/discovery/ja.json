@@ -117,28 +117,70 @@
   ],
   "news": [
     {
+      "id": "solar-ark-section-correction",
+      "date": "2026-11-19",
+      "kind": "spot-update",
+      "title": "ソーラーアークの見える区間を訂正",
+      "path": "/spots/solar-ark.html"
+    },
+    {
+      "id": "spot-video-selection",
+      "date": "2026-11-19",
+      "kind": "function",
+      "title": "記事で見たい車窓動画を選んで再生",
+      "path": "/spots/ibuki.html"
+    },
+    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "川と橋の特集に4つの川を追加",
       "path": "/rivers.html"
     },
     {
       "id": "factories-odawara-shiga",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "小田原と滋賀の工場3か所を追加",
       "path": "/factories.html"
     },
     {
+      "id": "tamaruya-wasabi-sign-added",
+      "date": "2026-11-14",
+      "kind": "spot",
+      "title": "田丸屋のわさび漬看板を追加",
+      "path": "/spots/tamaruya-wasabi-sign.html"
+    },
+    {
+      "id": "kizakura-sign-added",
+      "date": "2026-11-14",
+      "kind": "spot",
+      "title": "黄桜のおつかれさま看板を追加",
+      "path": "/spots/kizakura-otsukaresama-sign.html"
+    },
+    {
       "id": "story-shinkalion",
       "date": "2026-11-08",
+      "kind": "story",
       "title": "シンカリオンと本物の新幹線をめぐる",
       "path": "/stories/shinkalion.html"
     },
     {
       "id": "artwork-727-hunt",
       "date": "2026-11-05",
+      "kind": "artwork",
       "title": "車窓ゲームで「727」の看板を探す",
       "path": "/artworks/727-hunt/index.html"
     }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
   ]
 }

@@ -119,20 +119,33 @@
     {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "เพิ่มแม่น้ำอีกสี่สายที่มองเห็นจากชินคันเซ็น",
       "path": "/th/rivers.html"
     },
     {
       "id": "factories-odawara-shiga",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "เพิ่มโรงงานสามแห่งในโอดาวาระและจังหวัดชิงะ",
       "path": "/th/factories.html"
     },
     {
       "id": "story-shinkalion",
       "date": "2026-11-08",
+      "kind": "story",
       "title": "พบรถไฟของจริงที่เป็นต้นแบบของชินคาเลียน",
       "path": "/th/stories/shinkalion.html"
     }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
   ]
 }

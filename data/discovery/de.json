@@ -119,20 +119,33 @@
     {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "Vier weitere Flussquerungen vom Shinkansen aus",
       "path": "/de/rivers.html"
     },
     {
       "id": "factories-odawara-shiga",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "Drei weitere Fabriken in Odawara und Shiga entdecken",
       "path": "/de/factories.html"
     },
     {
       "id": "story-shinkalion",
       "date": "2026-11-08",
+      "kind": "story",
       "title": "Die echten Züge hinter Shinkalion",
       "path": "/de/stories/shinkalion.html"
     }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
   ]
 }

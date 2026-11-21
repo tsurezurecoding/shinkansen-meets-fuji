@@ -5,16 +5,19 @@ import { escapeHTML } from './story-window.mjs';
 
 const records = JSON.parse(fs.readFileSync(new URL('../content-news.json', import.meta.url), 'utf8'));
 const ids = new Set();
-for (const { id, date, route, titles } of records) {
+const kinds = ['feature', 'spot', 'spot-update', 'function', 'story', 'artwork'];
+for (const { id, date, kind, route, titles } of records) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || ids.has(id)) throw Error('Invalid or duplicate news ID: ' + id);
   ids.add(id);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || new Date(date).toISOString().slice(0, 10) !== date) throw Error('Invalid publication date: ' + id);
-  if (!/^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.html$/.test(route)) throw Error('Invalid news route: ' + route);
+  if (!kinds.includes(kind)) throw Error('Invalid news category: ' + id);
+  if (!/^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(route)) throw Error('Invalid news route: ' + route);
   if (!Object.keys(titles).length || Object.entries(titles).some(([lang, title]) =>
     !languages.includes(lang) || !(Array.isArray(title) ? lang === 'ja' && title.length && title.every(part => typeof part === 'string' && part.trim()) : typeof title === 'string' && title.trim())
   )) throw Error('Missing or invalid news title: ' + id);
 }
 const newestFirst = [...records].sort((a, b) => b.date.localeCompare(a.date));
+export const newsBaseline = [...ids];
 const ui = {
   ja: ['新着', '新着をすべて見る', '未読'],
   en: ['What’s new', 'See all updates', 'Unread'],
@@ -30,11 +33,11 @@ const ui = {
 
 const edition = language => language === 'ja' ? '' : language + '/';
 export function newsFor(language) {
-  return newestFirst.filter(record => record.titles[language]).map(({id, date, route, titles, descriptions}) => {
+  return newestFirst.filter(record => record.titles[language]).map(({id, date, kind, route, titles, descriptions}) => {
     const text = titles[language];
     const title = Array.isArray(text) ? text.join('') : text;
     const description = descriptions?.[language];
-    return {id, date, title, ...(description ? {description} : {}), path: '/' + edition(language) + route};
+    return {id, date, kind, title, ...(description ? {description} : {}), path: '/' + edition(language) + route};
   });
 }
 
@@ -60,14 +63,14 @@ export function withContentNews(html, file) {
   const rows = (home ? news.slice(0, 2) : news).map(item => {
     const chunks = records.find(record => record.id === item.id).titles[language];
     const title = Array.isArray(chunks) ? chunks.map(part => '<span class="copy-chunk">' + escapeHTML(part) + '</span>').join('') : escapeHTML(item.title);
-    return '<li><a data-news-id="' + item.id + '" hreflang="' + language + '" href="' + prefix + item.path.slice(1) + '"><time datetime="' + item.date + '">' +
+    return '<li><a data-news-id="' + item.id + '" data-news-kind="' + item.kind + '" hreflang="' + language + '" href="' + prefix + item.path.slice(1) + '"><time datetime="' + item.date + '">' +
       escapeHTML(formatter.format(new Date(item.date))) + '</time><span class="content-news-text">' + title + ' <small data-news-unread hidden>' + unread +
       '</small></span><span class="content-news-arrow" aria-hidden="true">→</span></a></li>';
   }).join('\n');
   const more = home ? '<a class="content-news-all" hreflang="' + language + '" href="' + prefix + edition(language) + 'zukan.html#content-news">' + all + ' <span aria-hidden="true">→</span></a>' : '';
-  const block = '<!-- CONTENT-NEWS:START --><link rel="stylesheet" href="' + prefix + 'content-news.css?v=' + assetVersion('content-news.css') + '">' +
-    '<section id="content-news" class="content-news" aria-labelledby="content-news-title" data-news-baseline="' + [...ids].join(' ') + '">' +
+  const block = '<!-- CONTENT-NEWS:START --><link rel="stylesheet" data-mado-news-asset="content-news.css" href="' + prefix + 'content-news.css?v=' + assetVersion('content-news.css') + '">' +
+    '<section id="content-news" class="content-news" aria-labelledby="content-news-title" data-news-baseline="' + newsBaseline.join(' ') + '">' +
     '<div class="content-news-inner"><div class="content-news-head"><h2 id="content-news-title">' + heading + '</h2>' + more + '</div>' +
-    '<ul>' + rows + '</ul></div></section><script defer src="' + prefix + 'content-news.js?v=' + assetVersion('content-news.js') + '"></script><!-- CONTENT-NEWS:END -->';
+    '<ul>' + rows + '</ul></div></section><script defer data-mado-news-asset="content-news.js" src="' + prefix + 'content-news.js?v=' + assetVersion('content-news.js') + '"></script><!-- CONTENT-NEWS:END -->';
   return clean.slice(0, at) + block + clean.slice(at);
 }

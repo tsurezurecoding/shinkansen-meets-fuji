@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { JSDOM } from 'jsdom';
 import { languages } from './shared/locales.mjs';
-import { newsFor, withContentNews } from './shared/content-news.mjs';
+import { newsBaseline, newsFor, withContentNews } from './shared/content-news.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://www.michikusa-travel.com';
@@ -54,7 +54,7 @@ export function generateDiscovery({editions = languages, check = false} = {}) {
     const guide = prefix + 'zukan.html';
     const news = newsFor(language);
     for (const item of news) sitePath(origin + item.path, item.id);
-    const payload = {schema:1, language, features:featuresFor(guide), news};
+    const payload = {schema:1, language, features:featuresFor(guide), news, newsBaseline};
     const feed = 'data/discovery/' + language + '.json';
     output(feed, JSON.stringify(payload, null, 2) + '\n', check);
     assets.add(feed);

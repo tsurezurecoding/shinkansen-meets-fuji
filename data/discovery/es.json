@@ -119,20 +119,33 @@
     {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "Cuatro ríos más para ver desde el Shinkansen",
       "path": "/es/rivers.html"
     },
     {
       "id": "factories-odawara-shiga",
       "date": "2026-11-19",
+      "kind": "feature",
       "title": "Tres fábricas más que puedes ver en Odawara y Shiga",
       "path": "/es/factories.html"
     },
     {
       "id": "story-shinkalion",
       "date": "2026-11-08",
+      "kind": "story",
       "title": "Los trenes reales que inspiraron Shinkalion",
       "path": "/es/stories/shinkalion.html"
     }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
   ]
 }
