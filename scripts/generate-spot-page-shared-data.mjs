@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { thumbnailSrc, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 import { responsivePhotoPlan } from './shared/responsive-photos.mjs';
 import { withWindowArticle } from './shared/window-articles.mjs';
+import { xVideoThumbnail } from './shared/x-video-thumbnails.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(scriptDir, "..");
@@ -497,6 +498,7 @@ function projectMedia(spot, lang) {
       kind: String(video.kind || ""),
       orientation: video.orientation === "portrait" ? "portrait" : "",
       url: String(video.url || ""),
+      thumbnail: lang === "ja" && video.kind === "x" ? xVideoThumbnail(video.url) : undefined,
       mediaUrl: String(video.mediaUrl || ""),
       handle: String(video.handle || ""),
       accountName: localized(video.accountName, lang),

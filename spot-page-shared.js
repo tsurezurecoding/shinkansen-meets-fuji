@@ -864,7 +864,9 @@
         var post = "<blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote>";
         if (onDemand) {
           var xTitle = escapeHTML(video.accessibleTitle);
-          post = videoButtonHTML(xTitle + "の投稿を表示", xTitle, "", '<div class="spot-x-post" tabindex="-1">' + post + "</div>");
+          var xPoster = video.thumbnail ? '<img src="' + escapeHTML(video.thumbnail) +
+            '" loading="lazy" decoding="async" alt="">' : "";
+          post = videoButtonHTML(xTitle + "の投稿を表示", xTitle, xPoster, '<div class="spot-x-post" tabindex="-1">' + post + "</div>");
         }
         return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\">" + post + "</div>" + xComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
       }
