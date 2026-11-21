@@ -45,11 +45,6 @@ function deliveredUtilitySource(route) {
     doc.querySelectorAll('[data-mieru-en-only]').forEach(el => { if (el.previousSibling?.nodeType === 3 && !el.previousSibling.textContent.trim()) el.previousSibling.remove(); el.remove(); });
     doc.querySelectorAll('[data-mieru-locale-copy]').forEach(el => el.replaceWith(el.getAttribute('data-mieru-locale-copy')));
     doc.body.normalize();
-    doc.querySelector('.mieru-note')?.removeAttribute('id');
-    const status = doc.getElementById('mieruStatus');
-    status?.removeAttribute('role');
-    const answer = doc.querySelector('.mieru-answer');
-    if (status && answer) status.before(answer);
   } else if (route === 'live/index.html') {
     doc.querySelector('#btn-settings')?.setAttribute('title', sourceTables.live.settings);
     doc.querySelector('#btn-dir')?.setAttribute('title', sourceTables.live.dirL);

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "e2614d61b5c44d6b",
+  "contentVersion": "8a4dc503327eafd6",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1705,8 +1705,8 @@
     {
       "path": "de/reflections.html",
       "url": "https://www.michikusa-travel.com/de/reflections.html",
-      "bytes": 37840,
-      "sha256": "fc81e7eac8b3d1a34b287f8885a161fded48abe2b70b2f6dc6df09f2c69c58b0"
+      "bytes": 37839,
+      "sha256": "fdb25bd12361a6722e069fbab56377993e8d62ccaac7c4843eadfe6a060c6c3d"
     },
     {
       "path": "de/rivers.html",
@@ -2047,8 +2047,8 @@
     {
       "path": "de/window-moments.html",
       "url": "https://www.michikusa-travel.com/de/window-moments.html",
-      "bytes": 38217,
-      "sha256": "71f95997c381a835aae449e00667f85738bf4745f7759ebfd155d8cdde8fdf09"
+      "bytes": 38216,
+      "sha256": "78a8a0ba29e8658dabfa0e3843540eb207662bd5a3c6d05e526469d479dd42f6"
     },
     {
       "path": "de/yakei.html",
@@ -2467,8 +2467,8 @@
     {
       "path": "es/reflections.html",
       "url": "https://www.michikusa-travel.com/es/reflections.html",
-      "bytes": 38584,
-      "sha256": "22854d35ab9da11c2f79d41c25fb51a271c6b6529ce520dc3616b772f210736b"
+      "bytes": 38583,
+      "sha256": "42aa5964c0011bf67f5ec88e26d482d416571194d6179ee07b03d3fa5db0c84f"
     },
     {
       "path": "es/rivers.html",
@@ -2809,8 +2809,8 @@
     {
       "path": "es/window-moments.html",
       "url": "https://www.michikusa-travel.com/es/window-moments.html",
-      "bytes": 38229,
-      "sha256": "dbf41bff00b84652ef1d190144f61415d717bf81d657d05ba19a8a36dea7e213"
+      "bytes": 38228,
+      "sha256": "e1b09df63a1af1e723ee0e661032ea1840a450388062e19d869a23c49db7f30c"
     },
     {
       "path": "es/yakei.html",
@@ -3031,8 +3031,8 @@
     {
       "path": "fr/reflections.html",
       "url": "https://www.michikusa-travel.com/fr/reflections.html",
-      "bytes": 38978,
-      "sha256": "77b4cb02d4ac817e1ac82a3cde6a18cee6a019d7e6a04c011d6291a25b03b1a3"
+      "bytes": 38977,
+      "sha256": "96daca07afaba15cf5e1f29160575ba517a10bc2892e30604ec55cc30551f71f"
     },
     {
       "path": "fr/rivers.html",
@@ -3373,8 +3373,8 @@
     {
       "path": "fr/window-moments.html",
       "url": "https://www.michikusa-travel.com/fr/window-moments.html",
-      "bytes": 39005,
-      "sha256": "f46b70cf71511ecc10d2e4319f6feb28707e8827b1245819d02ab4d9688bc626"
+      "bytes": 39004,
+      "sha256": "a90fe9fcddebcb23bcd78b6be629cf103bbea34aa1dc2444db118c0876829bc1"
     },
     {
       "path": "fr/yakei.html",
@@ -6025,8 +6025,8 @@
     {
       "path": "it/reflections.html",
       "url": "https://www.michikusa-travel.com/it/reflections.html",
-      "bytes": 37681,
-      "sha256": "3f831c487c957606617e665a9593654f04c9d70db0ead4a9fe76cf00f39be887"
+      "bytes": 37680,
+      "sha256": "14438cada17952b1cfff5fc45ac223caececdd15cc2b8d8e6bbcc50e945adbda"
     },
     {
       "path": "it/rivers.html",
@@ -6367,8 +6367,8 @@
     {
       "path": "it/window-moments.html",
       "url": "https://www.michikusa-travel.com/it/window-moments.html",
-      "bytes": 37899,
-      "sha256": "ccad2532ebbf31bd4e83bb6e70a1f21739a7a4d80d83a46f99ed02e080846a2b"
+      "bytes": 37898,
+      "sha256": "08ba22c6ae189ab8f493dcb604015e15d68dc65d53876234335ca433a0357fd6"
     },
     {
       "path": "it/yakei.html",
@@ -6541,8 +6541,8 @@
     {
       "path": "ko/reflections.html",
       "url": "https://www.michikusa-travel.com/ko/reflections.html",
-      "bytes": 37992,
-      "sha256": "cf5ae2bc4a3615c2aea49b4f0af512fb77c07949a5531213f5d2651894b1f7da"
+      "bytes": 37991,
+      "sha256": "2a9a5a8cb5fa7fb41eabe4a00ca3bae10e296a2e5d244681dd0198f99ee3095e"
     },
     {
       "path": "ko/rivers.html",
@@ -6883,8 +6883,8 @@
     {
       "path": "ko/window-moments.html",
       "url": "https://www.michikusa-travel.com/ko/window-moments.html",
-      "bytes": 38674,
-      "sha256": "882fb29c30dae550ef173ba429f6d117d638881718625ca41f30807c13a99db2"
+      "bytes": 38673,
+      "sha256": "4c10403a420cf1314b46ffcc629f6193bbc20958b142913be37d8e5a64b32a6b"
     },
     {
       "path": "ko/yakei.html",
@@ -8629,8 +8629,8 @@
     {
       "path": "th/reflections.html",
       "url": "https://www.michikusa-travel.com/th/reflections.html",
-      "bytes": 52236,
-      "sha256": "191ecc7ad4b093bf367f1a07fe85c5ebdfc0d5ec0f2cec751b0717fd9505a9f0"
+      "bytes": 52235,
+      "sha256": "43c6a52668b93815f73368fda83976d528ef34cab7b404e11f1fc4594c3fdf92"
     },
     {
       "path": "th/rivers.html",
@@ -8971,8 +8971,8 @@
     {
       "path": "th/window-moments.html",
       "url": "https://www.michikusa-travel.com/th/window-moments.html",
-      "bytes": 47537,
-      "sha256": "98864beca08ffbdc599bdc49e78c8261d878bdf1425467145e896423b1b6e394"
+      "bytes": 47536,
+      "sha256": "21539e48953181ee0844e1444dab374640eb11e964df088ee9fb759870c146d4"
     },
     {
       "path": "th/yakei.html",
@@ -9325,8 +9325,8 @@
     {
       "path": "zh-Hans/reflections.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/reflections.html",
-      "bytes": 35624,
-      "sha256": "f8ac1c5345a7e85d7db0792788edf86088e5a414e1186573c2337575b5f541d2"
+      "bytes": 35623,
+      "sha256": "fed32d30b4c2ba3571308a24a69432ffc04b60311d41e9cf337214dad3f9ab4e"
     },
     {
       "path": "zh-Hans/rivers.html",
@@ -9667,8 +9667,8 @@
     {
       "path": "zh-Hans/window-moments.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/window-moments.html",
-      "bytes": 36801,
-      "sha256": "8d936d8d205d978e419e3417363cd363c4ba8dc752490c49cd988dbd801e6cc8"
+      "bytes": 36800,
+      "sha256": "821df8a37e9aa660b8f8369a6306385acd0a1d4018194287e46861bb499ff361"
     },
     {
       "path": "zh-Hans/yakei.html",
@@ -9817,8 +9817,8 @@
     {
       "path": "zh-Hant/reflections.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/reflections.html",
-      "bytes": 35624,
-      "sha256": "c3610313190b8561effd9ae2954fc8aa589a2cc0012efc8975ffdc8912637bd5"
+      "bytes": 35623,
+      "sha256": "116ea97b4f0faab52c810b7897446b028202bd4a5ebbf2344317a69afab8788a"
     },
     {
       "path": "zh-Hant/rivers.html",
@@ -10159,8 +10159,8 @@
     {
       "path": "zh-Hant/window-moments.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/window-moments.html",
-      "bytes": 36833,
-      "sha256": "f4a6ab0542c4ecfd19758ed3e2e1ece8d12af1792e1ae8ff16c090ab91ded5ea"
+      "bytes": 36832,
+      "sha256": "00e51be93a8de617b9e40be9b71a3704167e699fd3ef683951abcafeb14bfe34"
     },
     {
       "path": "zh-Hant/yakei.html",

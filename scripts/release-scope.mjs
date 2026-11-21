@@ -1220,7 +1220,8 @@ function timelineScope(changes, { assetVersionOnly }) {
     commands: [node('--test', 'scripts/release-scope.test.mjs'), node('--check', 'spot-page-shared.js'), node(spotValidator),
       ...[...pageGenerators, 'scripts/generate-mieru-page.mjs', 'scripts/generate-site-chrome.mjs', 'scripts/generate-site-runtime.mjs',
         'scripts/generate-spot-page-runtime.mjs'].map(generator => node(generator, '--check')),
-      node(utilityGenerator, '--route', 'mieru.html', '--check'), node(castleGenerator, '--route', 'spots/okayama-castle.html', '--check'),
+      ...['mieru.html', 'window-moments.html', 'reflections.html'].map(route => node(utilityGenerator, '--route', route, '--check')),
+      node(castleGenerator, '--route', 'spots/okayama-castle.html', '--check'),
       ...(forecast ? [node('scripts/validate-mieru.mjs'), node('scripts/validate-train-select.mjs')] : []),
       node('scripts/generate-sparkling-locales.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
   };
