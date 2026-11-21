@@ -126,7 +126,10 @@ if ((trainSelectSrc.match(new RegExp(CORE_LINE.replace(/[.*+?^${}()|[\]\\]/g, "\
 if (!/MTS\.trainCandidates\(/.test(appJsSrc)) fail("app.js does not appear to delegate trainCandidates() to MADO_TRAIN_SELECT (MTS)");
 if (!/MTS\.tokaidoStops\(/.test(appJsSrc)) fail("app.js does not appear to delegate tokaidoStops() to MADO_TRAIN_SELECT (MTS)");
 if (!/MTS\.interpolateSpot\(/.test(appJsSrc)) fail("app.js does not appear to delegate interpolateSpot() to MADO_TRAIN_SELECT (MTS)");
-if (!/MTS\.trainCandidates\(/.test(mieruRuntime)) fail("mieru.js must delegate trainCandidates to MADO_TRAIN_SELECT");
+const pickerSrc = await readFile(rel("train-picker.js"), "utf8");
+if (!/MADO_TRAIN_PICKER\.mount\(/.test(mieruRuntime) || !/MTS\.trainCandidates\(/.test(pickerSrc)) {
+  fail("mieru.js must delegate train candidates to the shared picker and MADO_TRAIN_SELECT");
+}
 if (!/MTS\.tokaidoStops\(/.test(mieruRuntime)) fail("mieru.js must delegate tokaidoStops to MADO_TRAIN_SELECT");
 if (!/MTS\.interpolateSpot\(/.test(mieruRuntime)) fail("mieru.js must delegate interpolateSpot to MADO_TRAIN_SELECT");
 

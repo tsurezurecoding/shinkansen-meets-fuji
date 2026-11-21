@@ -80,46 +80,15 @@
       <h1>Mt. Fuji Visibility Forecast<small style="font-size:.55em;color:var(--accent);margin-left:8px">Beta</small></h1>
       <p class="mieru-lead">Will Mt. Fuji be visible from the Shinkansen today? Compare clouds around the summit and the clarity of the air at five viewing areas. Choose your train, boarding station and direction, or enter a departure time, to check conditions when you pass each view.</p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>Boarding station <select id="mieruBoard"></select></label>
-          <label>Direction
-            <select id="mieruDir">
-              <option value="west">Toward Shin-Osaka / Hakata</option>
-              <option value="east">Toward Tokyo</option>
-            </select>
-          </label>
-          <label>Day <select id="mieruDay"><option value="0">Today</option><option value="1">Tomorrow</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="Choose how to set your departure">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">Choose a train</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">Enter a time</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>Departing after <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">Find trains</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>Departure time (estimate) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">Calculating...</div>
-      </div>
-
+      <!--MIERU:UI-->
+      <!--MIERU:FACTS-->
       <section class="mieru-answer" data-mieru-en-only="">
         <h2>How to read this forecast</h2>
         <p>Hourly estimates for five viewing areas along the Tokaido Shinkansen, using weather data around the summit and each viewpoint. These are forecasts, not live sightings; cloud and haze can change before your train arrives.</p>
         <p>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Visibility estimates: Shinkansen Window (beta). <a href="#forecast-method">How the estimate works</a>.</p>
         <p>All departure and forecast times are in Japan time (JST, UTC+9).</p>
-        <div id="mieruForecastContext" aria-live="polite" hidden="">
-          <p id="mieruForecastDate"></p>
-          <p id="mieruRetrievedAt"></p>
-        </div>
       </section>
-      <div id="mieruStatus" role="status">Loading weather data...</div>
-      <div id="mieruSpots"></div><!--MIERU:ANSWER--><!--MIERU:FACTS-->
+      <!--MIERU:ANSWER-->
 
       <p class="mieru-note" id="forecast-method">
         Forecast model beta: visibility chance = probability that the summit is not obscured by cloud
@@ -136,7 +105,6 @@
       </p>
       </article>
     </div>
-    <section data-spot-page-shared-module="mobile-promos"></section>
     <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>

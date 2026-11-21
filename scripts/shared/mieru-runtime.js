@@ -2,20 +2,17 @@
   "use strict";
   var lang = document.documentElement.lang || "ja";
   var U = window.MADO_UTILITY_LOCALE;
-  var C = U ? U.forecast : MADO_MIERU_COPY[lang] || MADO_MIERU_COPY.en;
+  var C = Object.assign({}, MADO_MIERU_COPY[lang] || MADO_MIERU_COPY.en, U && U.forecast);
   function format(key){ var args = Array.prototype.slice.call(arguments, 1); return C[key].replace(/\{(\d+)\}/g, function(_, i){ return args[Number(i)]; }); }
   var SP = (typeof SPOTS !== "undefined" && SPOTS) || window.SPOTS || [];
   var RT = (typeof ROUTE !== "undefined" && ROUTE) || window.ROUTE || null;
   var MTS = window.MADO_TRAIN_SELECT || null;
-  // data/timetable.js（約300KB）は遅延読み込み。読み込まれるまで TT は null。
-  // 読み込み状態は ensureTimetableLoaded() が管理する。
-  var TT = null;
   var SUMMIT = [35.3606, 138.7274];
   var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
   var H0 = 6, H1 = 19;
   var forecastContext = document.getElementById('mieruForecastContext');
   var forecastDates = [];
-  var displayLocale = lang === 'ja' ? 'ja-JP' : 'en-GB';
+  var displayLocale = lang === 'en' ? 'en-GB' : lang;
   var dateFormat = new Intl.DateTimeFormat(displayLocale, { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'long', year: 'numeric' });
   var timeFormat = new Intl.DateTimeFormat(displayLocale, { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   function forecastDateLabel(day){
@@ -40,15 +37,6 @@
     });
     forecastDates = [times[0].slice(0, 10), times[24].slice(0, 10)];
   }
-  function renderForecastContext(day){
-    if (!forecastContext) return;
-    document.getElementById('mieruForecastDate').textContent = format('forecastDate', forecastDateLabel(day));
-    // Absolute dates remain accurate when a visitor leaves the page open overnight.
-    Array.prototype.forEach.call(document.getElementById('mieruDay').options, function(option){ option.textContent = forecastDateLabel(Number(option.value)); });
-    forecastContext.hidden = false;
-  }
-  var TRAIN_NAMES = { Nozomi: C.nozomi, Hikari: C.hikari, Kodama: C.kodama };
-
   function hav(a, b){
     var R = 6371, dLa = (b[0]-a[0])*Math.PI/180, dLo = (b[1]-a[1])*Math.PI/180;
     var x = Math.sin(dLa/2)*Math.sin(dLa/2) +
@@ -72,27 +60,13 @@
      使って「どの列車に乗るか」から各スポットの実通過時刻を出す。
      tokaidoStops/interpolateSpot/trainCandidates の本体は train-select.js
      (window.MADO_TRAIN_SELECT) に一本化し、app.js と共有している（2026-08-17）。 */
-  var REFMIN = {}, REFJA = {}, TTJA = {};
-  if (RT) RT.refStations.forEach(function(s){ REFMIN[s.id] = s.min; REFJA[s.id] = s[lang] || s.en || s.ja; });
+  var REFMIN = {};
+  RT.refStations.forEach(function(s){ REFMIN[s.id] = s.min; });
 
-  function toMin(hhmm){ var p = String(hhmm).split(":"); return (+p[0])*60 + (+p[1]); }
-  function clockStr(t){
-    var tt = ((Math.round(t) % 1440) + 1440) % 1440;
-    return ("0"+Math.floor(tt/60)).slice(-2) + ":" + ("0"+(tt%60)).slice(-2);
+  function clockStr(minutes) {
+    var time = ((Math.round(minutes) % 1440) + 1440) % 1440;
+    return String(Math.floor(time / 60)).padStart(2, "0") + ":" + String(time % 60).padStart(2, "0");
   }
-  function tokaidoStops(train){
-    if (!RT || !MTS) return [];
-    return MTS.tokaidoStops(RT, train);
-  }
-  function interpolateSpot(spotRef, stops){
-    return MTS.interpolateSpot(spotRef, stops);
-  }
-  function trainCandidates(dir, board){
-    if (!TT || !MTS) return [];
-    return MTS.trainCandidates(TT, RT, dir, board);
-  }
-  function trainLabel(tr){ return (TRAIN_NAMES[tr.type] || tr.type) + (lang === "ja" ? "" : " ") + tr.number; }
-  function stationLabel(id){ return REFJA[id] || TTJA[id] || id; }
 
   function aheadSpots(dir, board){
     var b = REFMIN[board] != null ? REFMIN[board] : 0;
@@ -101,11 +75,11 @@
       .sort(function(x, y){ return dir === "west" ? x.min - y.min : y.min - x.min; });
   }
   function trainSpotClockFn(train, board){
-    var all = tokaidoStops(train);
+    var all = MTS.tokaidoStops(RT, train);
     var bi = all.findIndex(function(s){ return s.id === board; });
     if (bi < 0) return null;
     var stops = all.slice(bi);
-    return function(ref){ return interpolateSpot(ref, stops); };
+    return function(ref){ return MTS.interpolateSpot(ref, stops); };
   }
   function manualSpotClockFn(dir, board, depMin){
     var b = REFMIN[board] != null ? REFMIN[board] : 0;
@@ -153,289 +127,239 @@
   function verdictText(p){
     return p >= 0.8 ? C.visible : p >= 0.55 ? C.probable : p >= 0.3 ? C.chance : C.unlikely;
   }
-  function reason(r){
-    if (!r) return "";
-    if (r.pSummit < 0.4){
-      var c = r.mi >= r.lo && r.mi >= r.hi ? C.mid : (r.lo >= r.hi ? C.low : C.high);
-      return format("cloud", c, Math.round(r.lo), Math.round(r.mi), Math.round(r.hi));
-    }
-    if (r.pAir < 0.4) return format("haze", Math.round(r.V), Math.round(r.rh));
-    if (r.p >= 0.55) return format("clear", Math.round(r.V));
-    return C.balanced;
-  }
-
   var DATA = { summit: null, vps: {} };
-  var STATE = { mode: "train", dir: "west", board: "Tokyo", selectedTrain: null };
+  var q = new URLSearchParams(location.search);
+  var board = q.get("board");
+  var dir = q.get("dir") === "east" ? "east" : "west";
+  var requestedTrain = /^([A-Za-z]+)-(\d+)$/.exec(q.get("train") || "");
+  var requestedTime = q.get("dep");
+  var STATE = {
+    mode: q.get("mode") === "time" && !requestedTrain ? "time" : "train",
+    dir: dir,
+    board: Object.hasOwn(REFMIN, board) ? board : dir === "east" ? "Shin-Osaka" : "Tokyo",
+    time: /^([01]\d|2[0-3]):[0-5]\d$/.test(requestedTime || "") ? requestedTime : "09:00",
+    day: q.get("day") === "1" ? 1 : 0,
+    selectedTrain: null
+  };
   window.__mieru = { data: DATA, spots: SPOTS_M, results: {}, state: STATE };
+  var ride = document.getElementById("ride");
+  var pickerHost = document.getElementById("forecast-picker");
+  var rideOut = document.getElementById("mieruRide");
+  var pickerStatus = document.getElementById("picker-status");
+  var assetRoot = new URL("./", document.querySelector('script[src*="mieru.js"]').src);
+  var trainMode = document.getElementById("mieruModeTrain");
+  var timeMode = document.getElementById("mieruModeTime");
+  var dateButtons = document.querySelectorAll("[data-day]");
+  var picker, pickerLoading;
+  var lastDrawnDay;
 
-  /* ---- 時刻表の遅延読み込み ----
-     data/timetable.js は約300KB（mieru.html本体の約9倍）あり、検索からの初回訪問は
-     index.html を経由しないためキャッシュが効かない。静的本文とOpen-Meteoの確率表示は
-     時刻表なしで成立するため、列車モードを利用者が実際に使う時点（「列車をさがす」操作、
-     または ?train= 付きURLでの着地）まで読み込みを遅らせる。 */
-  var timetableLoading = false;
-  var timetableLoadFailed = false;
-  var timetableLoadPromise = null;
-  function ensureTimetableLoaded(){
-    if (TT) return Promise.resolve(TT);
-    if (timetableLoadPromise) return timetableLoadPromise;
-    timetableLoading = true;
-    timetableLoadFailed = false;
-    renderTrainResults(); // 「読み込み中」表示
-    timetableLoadPromise = new Promise(function(resolve){
-      var s = document.createElement("script");
-      s.src = new URL("data/timetable.js?v=__TIMETABLE_VERSION__", document.querySelector('script[src*="mieru.js"]').src).href;
-      s.onload = function(){
-        timetableLoading = false;
-        TT = window.SHINKANSEN_TIMETABLE || null;
-        if (TT && Array.isArray(TT.stations)) TT.stations.forEach(function(st){ TTJA[st.id] = lang === "ja" ? st.ja : (U ? U.stationName(st.en || st.id) : st.en || st.id); });
-        if (!TT){
-          // スクリプトは読み込めたが期待した形のデータが無い → 失敗扱いで静かにフォールバック
-          timetableLoadFailed = true;
-          setMode("time");
-        }
-        resolve(TT);
-      };
-      s.onerror = function(){
-        timetableLoading = false;
-        timetableLoadFailed = true;
-        TT = null;
-        setMode("time"); // 読み込み失敗時は時刻手入力モードへ静かにフォールバック
-        resolve(null);
-      };
-      document.head.appendChild(s);
+  function loadScript(path) {
+    return new Promise(function(resolve, reject) {
+      var script = document.createElement("script");
+      script.src = new URL(path, assetRoot).href;
+      script.onload = resolve;
+      script.onerror = function() { script.remove(); reject(Error(path)); };
+      document.head.appendChild(script);
     });
-    return timetableLoadPromise;
   }
 
-  /* ---- URL引き継ぎ ----
-     ?board=<駅ID>&dir=west|east&train=<Type>-<number>&dep=HH:MM&day=0|1 を受け取り初期化する。
-     別ページの列車選択を引き継ぐ本線の仕組み（app.js側でlocalStorageに永続化予定、実装中のため
-     ここでは未参照）とは接続していないが、駅IDはROUTE.refStations基準・列車表記は
-     "Type-number"（例: Nozomi-5）でapp.jsのtrack("train_selected", ...)が既に送っている
-     train_type/train_numberと同じ語彙なので、app.js側の永続化が固まった後にそのキーを
-     読み替えてこの関数に渡す形で無理なく接続できるはず。
-     ?train= が付いている場合だけ、時刻表を即座に読み込んで列車を復元する。 */
-  function applyUrlParams(){
-    var q;
-    try { q = new URLSearchParams(location.search); } catch (e) { return; }
-    var board = q.get("board");
-    if (board && REFMIN[board] != null) STATE.board = board;
-    var dir = q.get("dir");
-    if (dir === "west" || dir === "east") STATE.dir = dir;
-    var day = q.get("day");
-    if ((day === "0" || day === "1") && document.getElementById("mieruDay")) document.getElementById("mieruDay").value = day;
-    var dep = q.get("dep");
-    if (dep && /^\d{1,2}:\d{2}$/.test(dep)){
-      document.getElementById("mieruDep").value = dep;
-      document.getElementById("mieruTrainFrom").value = dep;
-    }
-    if (q.get("mode") === "time") STATE.mode = "time";
-    var trainParam = q.get("train");
-    if (trainParam){
-      var m = /^([A-Za-z]+)-(\d+)$/.exec(trainParam);
-      if (m){
-        ensureTimetableLoaded().then(function(tt){
-          if (!tt) return; // 失敗時はensureTimetableLoaded内で既に時刻手入力モードへフォールバック済み
-          var found = trainCandidates(STATE.dir, STATE.board).find(function(x){
-            return x.tr.type === m[1] && String(x.tr.number) === m[2];
-          });
-          if (found){
-            STATE.selectedTrain = found;
-            STATE.mode = "train";
-            setMode("train");
-            renderTrainResults();
-            render();
-          }
-        });
+  async function loadTimetable() {
+    if (!window.SHINKANSEN_TIMETABLE) await loadScript("data/timetable.js?v=__TIMETABLE_VERSION__");
+    var timetable = window.SHINKANSEN_TIMETABLE;
+    if (!timetable || !Array.isArray(timetable.trains)) throw Error("Missing timetable");
+    return timetable;
+  }
+
+  function updateJourney(journey) {
+    STATE.board = journey.boardId;
+    STATE.dir = journey.direction;
+    STATE.time = journey.time;
+  }
+
+  function mountPicker(timetable) {
+    picker = window.MADO_TRAIN_PICKER.mount(pickerHost, {
+      route: RT, timetable: timetable, lang: lang, direction: STATE.dir, boardId: STATE.board, time: STATE.time,
+      includeTerminal: true,
+      onChange: function(journey) {
+        updateJourney(journey);
+        STATE.selectedTrain = null;
+        picker.markActive(null);
+        renderRide();
+      },
+      onSelect: function(selection, journey) {
+        updateJourney(journey);
+        STATE.selectedTrain = selection;
+        renderRide();
+      }
+    });
+    if (timetable && requestedTrain) {
+      var found = picker.findCandidate(STATE.dir, STATE.board, requestedTrain[1], Number(requestedTrain[2]))
+        || picker.findCandidate(STATE.dir, STATE.board, requestedTrain[1], requestedTrain[2]);
+      if (found) {
+        STATE.selectedTrain = picker.showTrain(STATE.dir, STATE.board, found.tr);
+        STATE.time = clockStr(found.dep);
       }
     }
+    if (!timetable) {
+      STATE.mode = "time";
+      trainMode.disabled = true;
+      pickerStatus.textContent = C.trainError;
+    } else pickerStatus.textContent = "";
+    setMode(STATE.mode);
   }
 
-  // Carry the currently selected forecast journey through the language menu.
-  window.madoMieruPageHref = function(edition){
-    var assetRoot = new URL("./", document.querySelector('script[src*="mieru.js"]').src);
+  function openPicker() {
+    if (!ride.open || picker || pickerLoading) return;
+    pickerStatus.textContent = C.loadingTrains;
+    var script = window.MADO_TRAIN_PICKER ? Promise.resolve() : loadScript("train-picker.js?v=__PICKER_VERSION__");
+    pickerLoading = Promise.all([script, loadTimetable().catch(function() { return null; })])
+      .then(function(loaded) { mountPicker(loaded[1]); })
+      .catch(function() {
+        pickerStatus.textContent = C.trainError;
+        pickerLoading = null;
+      });
+  }
+
+  function setMode(mode) {
+    STATE.mode = mode;
+    trainMode.setAttribute("aria-pressed", String(mode === "train"));
+    timeMode.setAttribute("aria-pressed", String(mode === "time"));
+    pickerHost.classList.toggle("manual", mode === "time");
+    renderRide();
+  }
+
+  window.madoMieruPageHref = function(edition) {
     var url = new URL((edition === "ja" ? "" : edition + "/") + "mieru.html", assetRoot);
     url.search = location.search;
     url.hash = location.hash;
+    if (ride.open && !url.hash) url.hash = "ride";
     url.searchParams.set("board", STATE.board);
     url.searchParams.set("dir", STATE.dir);
-    url.searchParams.set("day", document.getElementById("mieruDay").value);
+    url.searchParams.set("day", String(STATE.day));
     url.searchParams.set("mode", STATE.mode);
-    url.searchParams.set("dep", document.getElementById(STATE.mode === "time" ? "mieruDep" : "mieruTrainFrom").value);
+    url.searchParams.set("dep", STATE.time);
     if (STATE.mode === "train" && STATE.selectedTrain) url.searchParams.set("train", STATE.selectedTrain.tr.type + "-" + STATE.selectedTrain.tr.number);
     else url.searchParams.delete("train");
     if (edition === "ja" || url.searchParams.has("lang")) url.searchParams.set("lang", edition);
     return url.href;
   };
 
-  function setMode(mode){
-    STATE.mode = mode;
-    var bt = document.getElementById("mieruModeTrain"), tt = document.getElementById("mieruModeTime");
-    bt.classList.toggle("is-active", mode === "train");
-    bt.setAttribute("aria-pressed", mode === "train" ? "true" : "false");
-    tt.classList.toggle("is-active", mode === "time");
-    tt.setAttribute("aria-pressed", mode === "time" ? "true" : "false");
-    document.getElementById("mieruTrainBlock").hidden = mode !== "train";
-    document.getElementById("mieruTimeBlock").hidden = mode !== "time";
+  function renderRide() {
+    rideOut.replaceChildren();
+    window.__mieru.results = {};
+    if (!DATA.summit || !picker) return;
+    var spots = aheadSpots(STATE.dir, STATE.board);
+    if (!spots.length) { rideOut.textContent = C.noSpots; return; }
+    var clockFn;
+    if (STATE.mode === "train") {
+      if (STATE.selectedTrain) clockFn = trainSpotClockFn(STATE.selectedTrain.tr, STATE.board);
+      else { rideOut.textContent = C.chooseTrain; return; }
+    } else {
+      var min = picker.departMin;
+      if (!Number.isFinite(min)) return;
+      clockFn = manualSpotClockFn(STATE.dir, STATE.board, min);
+    }
+    if (!clockFn) { rideOut.textContent = C.noClock; return; }
+    var list = document.createElement("ul");
+    spots.forEach(function(spot) {
+      var t = clockFn(spot.min);
+      if (t == null) return;
+      var hour = Math.min(23, Math.max(0, Math.round(t / 60)));
+      var result = prob(DATA.summit, DATA.vps[spot.id], STATE.day * 24 + hour, spot.d);
+      window.__mieru.results[spot.id] = result;
+      var item = document.createElement("li");
+      var label = document.createElement("span");
+      label.textContent = format("around", spot.name, clockStr(t));
+      var chance = document.createElement("b");
+      chance.textContent = Math.round(result.p * 100) + "%";
+      item.append(label, chance, " · " + verdictText(result.p));
+      list.append(item);
+    });
+    if (!list.childElementCount) { rideOut.textContent = C.noClock; return; }
+    var header = document.createElement("p");
+    header.textContent = format("forecastDate", forecastDateLabel(STATE.day));
+    rideOut.append(header, list);
   }
 
-  function renderBoardOptions(){
-    if (!RT) return;
-    var sel = document.getElementById("mieruBoard");
-    sel.innerHTML = RT.refStations.map(function(s){
-      return '<option value="' + s.id + '"' + (s.id === STATE.board ? " selected" : "") + '>' + stationLabel(s.id) + '</option>';
-    }).join("");
+  function chanceAt(spot, hour) {
+    return prob(DATA.summit, DATA.vps[spot.id], STATE.day * 24 + hour, spot.d).p;
   }
 
-  function renderTrainResults(){
-    var box = document.getElementById("mieruTrainResults");
-    if (!TT){
-      if (timetableLoading){
-        box.innerHTML = '<p class="mieru-train-empty">' + C.loadingTrains + '</p>';
-      } else if (timetableLoadFailed){
-        box.innerHTML = '<p class="mieru-train-empty">' + C.trainError + '</p>';
-      } else {
-        box.innerHTML = '<p class="mieru-train-empty">' + C.searchHint + '</p>';
+  function renderCharts() {
+    if (!DATA.summit || lastDrawnDay === STATE.day) return;
+    lastDrawnDay = STATE.day;
+    var dateLabel = forecastDateLabel(STATE.day);
+    document.getElementById("mieruForecastDate").textContent = dateLabel + " (JST)";
+    var shinFuji = SPOTS_M.find(function(spot) { return spot.id === "fuji"; });
+    document.querySelectorAll("#weather-periods [data-hour]").forEach(function(value) {
+      value.textContent = Math.round(chanceAt(shinFuji, Number(value.dataset.hour)) * 100);
+    });
+    dateButtons.forEach(function(button) {
+      var index = Number(button.dataset.day);
+      button.textContent = forecastDateLabel(index);
+      button.setAttribute("aria-pressed", String(index === STATE.day));
+      button.parentElement.hidden = false;
+    });
+    SPOTS_M.forEach(function(spot) {
+      var card = document.getElementById("hour-" + spot.id);
+      var date = card.querySelector(".region-chart-date");
+      date.textContent = dateLabel;
+      date.hidden = false;
+      var chart = card.querySelector(".region-hours");
+      var bars = document.createDocumentFragment();
+      for (var hour = H0; hour <= H1; hour++) {
+        var chance = chanceAt(spot, hour);
+        var cell = document.createElement("div");
+        var time = document.createElement("dt");
+        time.textContent = clockStr(hour * 60);
+        var value = document.createElement("dd");
+        value.textContent = Math.round(chance * 100) + "%";
+        value.style.setProperty("--score", chance * 100 + "%");
+        value.style.setProperty("--bar-color", col(chance));
+        cell.append(time, value);
+        bars.append(cell);
       }
-      return;
-    }
-    var fromVal = document.getElementById("mieruTrainFrom").value || "06:00";
-    var fromMin = toMin(fromVal);
-    var found = trainCandidates(STATE.dir, STATE.board).filter(function(x){ return x.dep >= fromMin; }).slice(0, 8);
-    if (!found.length){
-      box.innerHTML = '<p class="mieru-train-empty">' + C.noTrains + '</p>';
-      return;
-    }
-    box.innerHTML = found.map(function(x, i){
-      var active = STATE.selectedTrain && STATE.selectedTrain.tr.type === x.tr.type &&
-        STATE.selectedTrain.tr.number === x.tr.number && STATE.selectedTrain.dep === x.dep;
-      return '<button type="button" class="train-chip' + (active ? " active" : "") + '" data-i="' + i + '">' +
-        '<strong>' + trainLabel(x.tr) + '</strong>' +
-        '<span>' + format('departure', clockStr(x.dep), stationLabel(x.tr.destination)) + '</span></button>';
-    }).join("");
-    Array.prototype.forEach.call(box.querySelectorAll("[data-i]"), function(btn){
-      btn.addEventListener("click", function(){
-        STATE.selectedTrain = found[+btn.dataset.i];
-        renderTrainResults();
-        render();
-      });
+      chart.replaceChildren(bars);
     });
   }
 
-  omAll().then(function(res){
-    if (forecastContext) validateForecastDates(res);
-    DATA.summit = res[0].hourly;
-    SPOTS_M.forEach(function(s, i){ DATA.vps[s.id] = res[i+1].hourly; });
-    if (forecastContext) {
-      var retrievedAt = new Date();
-      document.getElementById('mieruRetrievedAt').textContent = format('retrievedAt', dateFormat.format(retrievedAt), timeFormat.format(retrievedAt));
-    }
-    document.getElementById("mieruStatus").textContent = "";
-    render();
-  }).catch(function(e){
+  dateButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      STATE.day = Number(button.dataset.day);
+      renderCharts();
+      renderRide();
+    });
+  });
+  trainMode.addEventListener("click", function() { setMode("train"); openPicker(); });
+  timeMode.addEventListener("click", function() { setMode("time"); openPicker(); });
+  ride.addEventListener("toggle", openPicker);
+  if (location.hash === "#ride" || requestedTrain || q.has("board") || STATE.mode === "time") ride.open = true;
+  setMode(STATE.mode);
+  openPicker();
+
+  var status = document.getElementById("mieruStatus");
+  omAll().then(function(response) {
+    validateForecastDates(response);
+    DATA.summit = response[0].hourly;
+    SPOTS_M.forEach(function(spot, index) { DATA.vps[spot.id] = response[index + 1].hourly; });
+    var retrieved = document.getElementById("mieruRetrievedAt");
+    var now = new Date();
+    retrieved.textContent = format("retrievedAt", dateFormat.format(now), timeFormat.format(now));
+    retrieved.hidden = false;
+    forecastContext.hidden = false;
+    status.hidden = true;
+    renderCharts();
+    renderRide();
+  }).catch(function() {
     DATA.summit = null;
     window.__mieru.results = {};
-    document.getElementById('mieruSpots').textContent = '';
-    if (forecastContext) {
-      forecastContext.hidden = true;
-      document.getElementById('mieruRide').textContent = '';
-    }
-    document.getElementById("mieruStatus").textContent = forecastContext ? C.forecastError : C.error;
+    forecastContext.hidden = true;
+    document.getElementById("mieruRetrievedAt").hidden = true;
+    dateButtons.forEach(function(button) { button.parentElement.hidden = true; });
+    document.querySelectorAll(".region-hours").forEach(function(chart) { chart.replaceChildren(); });
+    document.querySelectorAll(".region-chart-date").forEach(function(date) { date.hidden = true; });
+    rideOut.replaceChildren();
+    status.hidden = false;
+    status.textContent = C.forecastError;
   });
-
-  function render(){
-    if (!DATA.summit) return;
-    var day = +document.getElementById("mieruDay").value;
-    renderForecastContext(day);
-    var spots = aheadSpots(STATE.dir, STATE.board);
-    window.__mieru.results = {};
-
-    var clockFn = null;
-    if (STATE.mode === "train"){
-      if (STATE.selectedTrain) clockFn = trainSpotClockFn(STATE.selectedTrain.tr, STATE.board);
-    } else {
-      var dep = document.getElementById("mieruDep").value || "09:00";
-      clockFn = manualSpotClockFn(STATE.dir, STATE.board, toMin(dep));
-    }
-
-    var rideEl = document.getElementById("mieruRide");
-    if (!spots.length){
-      rideEl.textContent = C.noSpots;
-    } else if (!clockFn){
-      rideEl.textContent = C.chooseTrain;
-    } else {
-      var lines = [];
-      spots.forEach(function(s){
-        var t = clockFn(s.min);
-        if (t == null) return;
-        var hIdx = day*24 + Math.min(23, Math.max(0, Math.round(t/60)));
-        var r = prob(DATA.summit, DATA.vps[s.id], hIdx, s.d);
-        window.__mieru.results[s.id] = r;
-        lines.push('<span class="copy-chunk">' + format("around", s.name, clockStr(t)) + " <b>" +
-          Math.round(r.p*100) + "%</b> (" + verdictText(r.p) + ")</span>");
-      });
-      rideEl.innerHTML = lines.length
-        ? C.train + lines.join(" ／ ")
-        : C.noClock;
-    }
-
-    var root = document.getElementById("mieruSpots");
-    root.innerHTML = "";
-    spots.forEach(function(s){
-      var rows = [];
-      for (var h = H0; h <= H1; h++) rows.push(prob(DATA.summit, DATA.vps[s.id], day*24 + h, s.d));
-      var bestP = Math.max.apply(null, rows.map(function(r){ return r.p; }));
-      var bestI = rows.findIndex(function(r){ return r.p === bestP; });
-      var div = document.createElement("div");
-      div.className = "mieru-spot";
-      var bars = rows.map(function(r, i){
-        var pct = Math.round(r.p*100);
-        return '<div class="mieru-bar" title="' + format('bar', (H0+i) + ':00', pct) + '%">' +
-          '<span>' + pct + '</span>' +
-          '<i style="height:' + Math.max(4, r.p*100) + '%;background:' + col(r.p) + '"></i></div>';
-      }).join("");
-      var hl = rows.map(function(_, i){ return "<div>" + (H0+i) + "</div>"; }).join("");
-      div.innerHTML =
-        '<div class="mieru-head"><h2>' + s.name + '</h2>' +
-        '<span class="meta">' + format('meta', s.area, s.min, s.d, s.side) + '</span>' +
-        '<span class="mieru-verdict">' + format('best', forecastContext ? forecastDateLabel(day) : (day ? C.tomorrow : C.today), (H0+bestI) + ':00') + ' <b>' +
-          Math.round(bestP*100) + '%</b></span></div>' +
-        '<div class="mieru-bars">' + bars + '</div>' +
-        '<div class="mieru-hours">' + hl + '</div>' +
-        '<div class="mieru-reason">' + reason(rows[bestI]) + '</div>';
-      root.appendChild(div);
-    });
-  }
-
-  /* ---- イベント配線 ---- */
-  renderBoardOptions();
-  applyUrlParams();
-  renderBoardOptions();
-  document.getElementById("mieruDir").value = STATE.dir;
-  setMode(STATE.mode);
-  renderTrainResults();
-
-  document.getElementById("mieruBoard").addEventListener("change", function(){
-    STATE.board = this.value;
-    STATE.selectedTrain = null;
-    renderTrainResults();
-    render();
-  });
-  document.getElementById("mieruDir").addEventListener("change", function(){
-    STATE.dir = this.value;
-    STATE.selectedTrain = null;
-    renderTrainResults();
-    render();
-  });
-  document.getElementById("mieruDay").addEventListener("change", render);
-  document.getElementById("mieruDep").addEventListener("input", render);
-  document.getElementById("mieruModeTrain").addEventListener("click", function(){ setMode("train"); render(); });
-  document.getElementById("mieruModeTime").addEventListener("click", function(){ setMode("time"); render(); });
-  document.getElementById("mieruTrainSearchBtn").addEventListener("click", function(){
-    ensureTimetableLoaded().then(function(){
-      renderTrainResults();
-      render();
-    });
-  });
-  })();
+})();

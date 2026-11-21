@@ -81,21 +81,6 @@
       railPreviewTiming: function (minutes) { return "東京から約" + minutes + "分"; },
       railCta: "乗る列車でガイドを作る",
       railFoot: "車窓図鑑で写真から探す →",
-      railAppTitle: "Androidアプリ版",
-      railAppBody: "無料・登録不要。Google Playで公開中",
-      railLiveTitle: "GPS音声ガイド",
-      railLiveBody: "次の景色を音声で案内",
-      railAllFeatures: "特集をすべて見る →",
-      railFeatures: {
-        "727": { title: "727看板コレクション", body: function (count) { return "東京〜新大阪の沿線、全" + count + "地点を集める"; } },
-        castles: { title: "新幹線から見える城", body: "天守と城跡を写真で紹介" },
-        wheels: { title: "車窓の観覧車を集める", body: "街の向こうの、小さな輪を探す" },
-        arenani: { title: "あれ、何？", body: "車窓で気になった景色の正体を確かめる" },
-        hanabi: { title: "新幹線から見える花火", body: "沿線の花火大会と、車窓から見えた記録を集める" },
-        disney: { title: "ディズニー新幹線", body: "運転日・車窓の見どころ" },
-        yakei: { title: "新幹線の夜景", body: "どこから暗くなるかを調べて、夜だけの車窓を探す" },
-        moments: { title: "一度きりの車窓", body: "虹、雪、雲、雷。その日だけの空に出会う" }
-      },
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -140,21 +125,6 @@
       railPreviewTiming: function (minutes) { return "About " + minutes + " min from Tokyo"; },
       railCta: "Build my guide by train",
       railFoot: "Browse by photo →",
-      railAppTitle: "Android app",
-      railAppBody: "Free · No sign-up needed",
-      railLiveTitle: "GPS audio guide",
-      railLiveBody: "Hear the next view as you ride",
-      railAllFeatures: "See all features →",
-      railFeatures: {
-        "727": { title: "The 727 sign collection", body: function (count) { return "All " + count + " locations between Tokyo and Shin-Osaka"; } },
-        castles: { title: "Castles from the Shinkansen", body: "Keeps and castle hills, with seat sides and spotting tips" },
-        wheels: { title: "Find the ferris wheels", body: "Look for little wheels beyond the city" },
-        arenani: { title: "What's that outside?", body: "Everyday Japanese scenery, explained from the window" },
-        hanabi: { title: "Fireworks from the window", body: "Festivals along the line, and posts from people who saw them" },
-        disney: { title: "Disney Shinkansen", body: "Operating dates and window views" },
-        yakei: { title: "Shinkansen night views", body: "Find night scenery along your route" },
-        moments: { title: "Weather seen from the window", body: "Rainbows, snow, clouds and lightning: skies that happen only once" }
-      },
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -415,7 +385,7 @@
     return '<section class="sanyo-rail" aria-label="Sanyo Shinkansen"><p class="spot-page-rail-eyebrow">SANYO</p><ol>' + rows + '</ol><a class="sanyo-rail-all" href="' + escapeHTML(href(base, 'zukan.html')) + '#sanyo">' + (lang === 'en' ? 'Osaka–Hakata window views →' : '大阪〜博多間の車窓を見る →') + '</a></section>';
   }
 
-  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute, options) {
+  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, options) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
@@ -447,85 +417,12 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(railSpots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol>" + sanyoRailHTML(data, rootPath, lang, currentId) + "</div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(railSpots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol>" + sanyoRailHTML(data, rootPath, lang, currentId) + "</div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
-  // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
   // 地点数は生成データを唯一の出所にする。文言側に数字を直接書かない。
   function collection727Count(data) {
     return data && typeof data.collection727Count === "number" ? data.collection727Count : 0;
-  }
-
-  // 左ペインの案内は枠の数を固定する: アプリ1（アプリ内では非表示）＋音声ガイド1＋関連特集1＋時期の特集1＋「特集をすべて見る」。
-  // 特集を増やすときは RAIL_FEATURES に1行足すだけにする（描画は railFeatureHTML、選び方は pickRailFeatures が共通で持つ）。
-  //   spots:  関連枠でこの特集を出すスポット（今見ているスポットがこの中にあれば選ばれる）
-  //   months: 時期枠でこの特集を出す月（1〜12）。from / until: 期間限定（YYYY-MM-DD、両端を含む）
-  //   jaOnly: 英語版が無いので日本語ページだけに出す
-  // 並び順が優先順位。時期枠は上から最初に当てはまる1件で、関連枠に出した特集は時期枠に出さない。
-  var RAIL_FEATURES = [
-    { id: "727", route: "727-collection.html", icon: "images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
-    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "himeji-castle", "okayama-castle", "fukuyama-castle"] },
-    { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
-    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
-    { id: "hanabi", route: "hanabi.html", icon: "images/thumbs/hanabi-hero-pd.webp", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
-    { id: "disney", route: "sparkling-dreams.html", icon: "images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg", mod: "", track: "sparkling_dreams_entry_click", from: "2026-06-19", until: "2027-03-15" },
-    { id: "yakei", route: "yakei.html", icon: "images/20260629_2158_nagoya_station_night_michikusa.jpg", mod: " spot-page-rail-yakei", track: "yakei_entry_click", months: [9, 10, 11, 12, 1, 2, 3], spots: ["tokyo-tower", "musashi-kosugi-towers", "nagoya-station-skyline", "hinataoka"] },
-    { id: "moments", route: "window-moments.html", icon: "images/thumbs/wm-hero-snow.webp", mod: " spot-page-rail-moments", track: "window_moments_entry_click", months: [4, 5, 6] }
-  ];
-  // 関連枠の既定（今見ているスポットがどの特集にも入っていないとき）
-  var RAIL_DEFAULT_RELATED = { ja: "arenani", en: "arenani" };
-
-  function railFeatureAvailable(feature, lang, currentRoute) {
-    return feature.route !== currentRoute && !(feature.jaOnly && lang !== "ja");
-  }
-
-  function railFeatureInSeason(feature, today) {
-    var iso = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
-    if (feature.from || feature.until) return (!feature.from || iso >= feature.from) && (!feature.until || iso <= feature.until);
-    return !!feature.months && feature.months.indexOf(today.getMonth() + 1) !== -1;
-  }
-
-  function pickRailFeatures(lang, currentId, currentRoute, today) {
-    var usable = RAIL_FEATURES.filter(function (feature) { return railFeatureAvailable(feature, lang, currentRoute); });
-    var related = usable.filter(function (feature) { return feature.spots && feature.spots.indexOf(currentId) !== -1; })[0]
-      || usable.filter(function (feature) { return feature.id === RAIL_DEFAULT_RELATED[lang]; })[0]
-      || usable.filter(function (feature) { return !!feature.spots; })[0]
-      || null;
-    var seasonal = usable.filter(function (feature) { return feature !== related && railFeatureInSeason(feature, today); })[0] || null;
-    return { related: related, seasonal: seasonal };
-  }
-
-  function railFeatureHTML(feature, rootPath, lang, slot, count727) {
-    var copy = UI[lang].railFeatures[feature.id];
-    var body = typeof copy.body === "function" ? copy.body(count727) : copy.body;
-    return "<div class=\"spot-page-rail-disney" + feature.mod + "\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), feature.route)) + "\" data-cta-track=\"" + escapeHTML(feature.track) + "\" data-cta-id=\"spot_rail_" + slot + "_" + escapeHTML(feature.id) + "\"><img src=\"" + escapeHTML(href(rootPath, feature.icon)) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(copy.title) + "</strong><small>" + escapeHTML(body) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
-  }
-
-  function railLiveHTML(rootPath, lang) {
-    var ui = UI[lang];
-    return "<div class=\"spot-page-rail-app spot-page-rail-live\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), "live/")) + "\" data-cta-track=\"live_guide_entry_click\" data-cta-id=\"spot_rail_live\"><img src=\"" + escapeHTML(href(rootPath, "images/og-live-guide.jpg")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railLiveTitle) + "</strong><small>" + escapeHTML(ui.railLiveBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a><small class=\"spot-page-rail-map-credit\">Map: © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener noreferrer\">OpenStreetMap contributors</a></small></div>";
-  }
-
-  function railAllFeaturesHTML(rootPath, lang) {
-    return "<a class=\"spot-page-rail-all-features\" href=\"" + escapeHTML(href(basePath(rootPath, lang), "zukan.html")) + "\" data-cta-track=\"zukan_entry_click\" data-cta-id=\"spot_rail_all_features\">" + escapeHTML(UI[lang].railAllFeatures) + "</a>";
-  }
-
-  function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today, options) {
-    if (options && options.noPromos) return "";
-    var picked = pickRailFeatures(lang, currentId || "", currentRoute || "", today || new Date());
-    return railAppHTML(rootPath, lang) + (options && options.noLive ? "" : railLiveHTML(rootPath, lang)) +
-      (picked.related ? railFeatureHTML(picked.related, rootPath, lang, "related", count727) : "") +
-      (picked.seasonal ? railFeatureHTML(picked.seasonal, rootPath, lang, "seasonal", count727) : "") +
-      railAllFeaturesHTML(rootPath, lang);
-  }
-
-  function mobilePromosHTML(rootPath, lang, currentRoute, count727, currentId) {
-    return "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[lang].contentTitle) + "\">" + railPromosHTML(rootPath, lang, currentRoute, count727, currentId) + "</section>";
-  }
-
-  function railAppHTML(rootPath, lang) {
-    var ui = UI[lang];
-    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML("https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow") + "\" target=\"_blank\" rel=\"noopener noreferrer\" data-cta-track=\"android_app_guide_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {
@@ -979,15 +876,14 @@
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang, cardImageAttribute(lang));
-    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId, null, null, { noPromos: true, imageAttribute: cardImageAttribute(lang) });
-    var mobilePromos = "";
+    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId, null, { imageAttribute: cardImageAttribute(lang) });
     // Chrome has separate hosts so page-specific supplements keep their order.
     var references = "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section>";
     if (page.readingLayout) {
       var sources = (page.references || []).concat(page.bodyLinks || []).filter(function (item, index, all) { return all.findIndex(function (other) { return other.href === item.href; }) === index; });
       references = sources.length ? '<section class="spot-page-section spot-reading-sources" id="references" aria-labelledby="spotSourcesTitle">' + readingEyebrow(page, 'FURTHER READING') + '<h2 id="spotSourcesTitle">' + (lang === "ja" ? "参考リンク" : "References") + '</h2><p class="spot-reading-sources-lead">' + (lang === "ja" ? "公式案内・車窓の記録はこちら。" : "Official guidance and window-view records.") + '</p><ul>' + sources.map(function (item) { return '<li><a href="' + escapeHTML(item.href) + '" rel="noopener" target="_blank">' + escapeHTML(item.label) + '</a></li>'; }).join('') + '</ul></section>' : '';
     }
-    return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(page.eyebrow || ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + (page.factsAfterArticle ? "" : pageFactsHTML(page, lang)) + guideNotice + sharedGuideBefore + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + pageChaptersHTML(page, rootPath, lang, onDemand) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\">" + readingEyebrow(page, "PHOTO TIPS") + "<h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + (page.factsAfterArticle ? pageFactsHTML(page, lang) : "") + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang, onDemand) + (page.readingLayout ? readingCollectionHTML(page, rootPath, lang) : "") + references + "</article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
+    return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(page.eyebrow || ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + (page.factsAfterArticle ? "" : pageFactsHTML(page, lang)) + guideNotice + sharedGuideBefore + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + pageChaptersHTML(page, rootPath, lang, onDemand) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\">" + readingEyebrow(page, "PHOTO TIPS") + "<h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + (page.factsAfterArticle ? pageFactsHTML(page, lang) : "") + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang, onDemand) + (page.readingLayout ? readingCollectionHTML(page, rootPath, lang) : "") + references + "</article></div>" + showcase + "</main>" + pageLightboxHTML(lang);
   }
 
   function bindOnDemandVideos() {
@@ -1214,7 +1110,7 @@
       }
       // 左ペインの東海道タイムラインは回遊用に共用。山陽の時刻・ライブの案内はしない。
       if (document.body.getAttribute("data-spot-page-shared-context") === "sanyo") {
-        hosts = [findHost("topbar"), findHost("rail"), findHost("mobile-promos"), findHost("content-rail"), findHost("showcase")];
+        hosts = [findHost("topbar"), findHost("rail"), findHost("content-rail"), findHost("showcase")];
         var sanyoLang = document.body.getAttribute("data-spot-page-shared-lang");
         var sanyoRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
         var sanyoRoute = document.body.getAttribute("data-spot-page-shared-route");
@@ -1227,19 +1123,15 @@
         }
         hosts[0].outerHTML = siteHeaderHTML(sanyoRoot, sanyoLang, "", sanyoRoute, true);
         var sanyoId = document.body.getAttribute("data-spot-page-shared-id");
-        var promos = "";
-        hosts[1].outerHTML = railHTML(root[DATA_KEY], sanyoRoot, sanyoLang, sanyoId, basePath(sanyoRoot, sanyoLang) + "spots/", sanyoRoute, { noLive: true, noTrain: true, noPromos: true });
-        hosts[2].outerHTML = "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</section>";
-        hosts[3].outerHTML = discoveryContentRailHTML(sanyoRoot, sanyoLang);
-        hosts[4].outerHTML = showcaseHTML(root[DATA_KEY], sanyoRoot, sanyoLang);
+        hosts[1].outerHTML = railHTML(root[DATA_KEY], sanyoRoot, sanyoLang, sanyoId, basePath(sanyoRoot, sanyoLang) + "spots/", { noTrain: true });
+        hosts[2].outerHTML = discoveryContentRailHTML(sanyoRoot, sanyoLang);
+        hosts[3].outerHTML = showcaseHTML(root[DATA_KEY], sanyoRoot, sanyoLang);
         return;
       }
       if (document.body.getAttribute("data-spot-page-shared-context") === "utility") {
         // Full-width artworks use the common header and content rail without a side timeline.
         var wideUtility = document.body.getAttribute("data-spot-page-shared-layout") === "wide";
         hosts = [findHost("topbar"), wideUtility ? findOptionalHost("rail") : findHost("rail"), findHost("content-rail")];
-        var mobilePromosHost = findOptionalHost("mobile-promos");
-        if (mobilePromosHost) hosts.push(mobilePromosHost);
         var utilityShowcaseHost = findOptionalHost("showcase");
         if (utilityShowcaseHost) hosts.push(utilityShowcaseHost);
         var utilityLang = document.body.getAttribute("data-spot-page-shared-lang") || "";
@@ -1254,9 +1146,8 @@
           return;
         }
         hosts[0].outerHTML = siteHeaderHTML(utilityRoot, utilityLang, "", utilityRoute, UTILITY_ROUTES[utilityRoute].en);
-        if (hosts[1]) hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/", utilityRoute);
+        if (hosts[1]) hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/");
         hosts[2].outerHTML = contentRailHTML(utilityRoot, utilityLang);
-        if (mobilePromosHost) mobilePromosHost.outerHTML = mobilePromosHTML(utilityRoot, utilityLang, utilityRoute, collection727Count(utilityData));
         if (utilityShowcaseHost) utilityShowcaseHost.outerHTML = showcaseHTML(utilityData, utilityRoot, utilityLang);
         return;
       }

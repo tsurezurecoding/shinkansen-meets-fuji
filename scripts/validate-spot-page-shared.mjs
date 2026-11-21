@@ -129,28 +129,6 @@ async function runThinValidator() {
     }
   }
 
-  // 左ペインの枠（spot-page-shared.js の RAIL_FEATURES / pickRailFeatures）:
-  // アプリ1・音声ガイド1・関連特集1・時期の特集0〜1・「特集をすべて見る」1。
-  // 自分自身の特集へのカードは出さず、日英それぞれの関連特集を1件出す。
-  // 727の地点数は生成ペイロードを正本にする（文言に凍結した数字を持たない）。
-  function assertRailSlots(html, label, lang, { route = "", expectRelated = "" } = {}) {
-    const n = (re) => count(html, re);
-    if (n(/data-cta-id="spot_rail_android"/g) !== 1) fail(`${label}: rail must contain exactly one Android app card`);
-    if (n(/data-cta-id="spot_rail_live"/g) !== 1) fail(`${label}: rail must contain exactly one GPS audio guide card`);
-    if (n(/data-cta-id="spot_rail_related_[^"]+"/g) !== 1) fail(`${label}: rail must contain exactly one related feature card`);
-    if (n(/data-cta-id="spot_rail_seasonal_[^"]+"/g) > 1) fail(`${label}: rail must contain at most one seasonal feature card`);
-    if (n(/data-cta-id="spot_rail_all_features"/g) !== 1) fail(`${label}: rail must end with one link to all features`);
-    const picked = [...html.matchAll(/data-cta-id="spot_rail_(?:related|seasonal)_([^"]+)"/g)].map((match) => match[1]);
-    if (new Set(picked).size !== picked.length) fail(`${label}: the related and seasonal slots must not repeat a feature`);
-    if (route && new RegExp(`href="[^"]*${route.replace(/\./g, "\\.")}" data-cta-track=`).test(html)) fail(`${label}: rail must not link to its own feature page`);
-    if (lang === "en" && html.includes("727看板コレクション")) fail(`${label}: English rail must not carry the Japanese 727 label`);
-    if (expectRelated && !html.includes(`data-cta-id="spot_rail_related_${expectRelated}"`)) fail(`${label}: related slot must show ${expectRelated}`);
-    if (picked.includes("727")) {
-      const body = lang === "en" ? `All ${payload.collection727Count} locations between Tokyo and Shin-Osaka` : `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
-      if (!html.includes(body)) fail(`${label}: 727 card must carry the generated location count`);
-    }
-  }
-
   function assertDiscoveryRail(html, lang, rootPath, label) {
     const pattern = /<section\b(?=[^>]*\bclass="[^"]*\bcontent-rail-discovery\b)[^>]*>[\s\S]*?<\/section>/g;
     const matches = html.match(pattern) || [];
@@ -181,10 +159,18 @@ async function runThinValidator() {
     if (!newCards[2]?.includes(lang === "en" ? 'data-cta-track="arenani_entry_click" data-cta-id="discovery_arenani"' : 'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) fail(`${label}: the language-specific discovery card tracking contract is missing`);
   }
 
-  function assertSpotRailHasNoPromoSlots(html, label) {
+  function assertTimeline(html, label) {
+    if (count(html, /class="spot-page-rail-foot"><a href="[^"]*zukan\.html"/g) !== 1) fail(label + ": keep one photo atlas link below the timeline");
     if (/data-cta-id="spot_rail_(?:android|live|related_[^"]+|seasonal_[^"]+|all_features)"/.test(html) || /class="spot-page-rail-(?:app|live|disney|all-features)\b/.test(html)) {
-      fail(`${label}: legacy promotional CTAs must be absent from the spot rail`);
+      fail(`${label}: legacy promotional CTAs must be absent from the timeline`);
     }
+  }
+
+  // Translated feature pages can ship a saved rail or inline mobile markup.
+  const railAssets = fs.readdirSync(path.join(appDir, "shared-ui")).filter(name => name.includes(".rail-"));
+  const savedTimelines = railAssets.map(name => "shared-ui/" + name).concat(["fr/mieru.html", "es/arenani.html", "ko/sparkling-dreams.html"]);
+  for (const file of savedTimelines) {
+    if (/spot_rail_(?:android|live|all_features|related_|seasonal_)/.test(fs.readFileSync(path.join(appDir, file), "utf8"))) fail(file + ": stale timeline promotions");
   }
 
   function safeAsset(value) {
@@ -599,7 +585,7 @@ async function runThinValidator() {
       const desktopRailEnd = desktopRailStart >= 0 ? output.indexOf("</aside>", desktopRailStart) : -1;
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
-      assertSpotRailHasNoPromoSlots(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`);
+      assertTimeline(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`);
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
       if (page.inline.length && count(output, /spot-page-inline-figure/g) !== page.inline.length) fail(`${relativeFile} inline photo module count is invalid`);
@@ -637,13 +623,13 @@ async function runThinValidator() {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
     assertWheelRail(japaneseUtility.hosts.rail.outerHTML, "ja", "./", route);
-    assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });
-    assertRailSlots(japaneseUtility.hosts["mobile-promos"].outerHTML, `Japanese utility ${route} mobile promos`, "ja", { route });
+    assertTimeline(japaneseUtility.hosts.rail.outerHTML, "Japanese utility " + route + " rail");
+    if (japaneseUtility.hosts["mobile-promos"].outerHTML) fail("Japanese utility " + route + ": remove the duplicate mobile promotions");
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
     assertWheelRail(englishUtility.hosts.rail.outerHTML, "en", "../", route);
-    assertRailSlots(englishUtility.hosts.rail.outerHTML, `English utility ${route} rail`, "en", { route });
-    assertRailSlots(englishUtility.hosts["mobile-promos"].outerHTML, `English utility ${route} mobile promos`, "en", { route });
+    assertTimeline(englishUtility.hosts.rail.outerHTML, "English utility " + route + " rail");
+    if (englishUtility.hosts["mobile-promos"].outerHTML) fail("English utility " + route + ": remove the duplicate mobile promotions");
   }
 
   const reps = [

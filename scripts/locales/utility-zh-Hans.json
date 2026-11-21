@@ -2615,5 +2615,18 @@
   "NIGHT · 20 night scenes": "夜晚 · 20处夜景",
   "RIVERS & BRIDGES": "河流与桥梁",
   "Rivers by Shinkansen": "新干线车窗看河流",
-  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "从东京到新大阪，沿东海道新干线寻找河流与桥梁。"
+  "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen.": "从东京到新大阪，沿东海道新干线寻找河流与桥梁。",
+  "Choose a train or enter a departure time": "选择列车或输入出发时间",
+  "Forecast date": "预报日期",
+  "Mishima to Shin-Fuji · Seat E · About 24 km to Mt. Fuji": "三岛至新富士 · E 座 · 距离富士山约 24 公里",
+  "See Mt. Fuji on the live camera": "观看富士山实时画面",
+  "See hourly forecast": "查看逐小时预报",
+  "See the forecast for your train": "查看所乘列车的预报",
+  "View from Fuji City Hall. Check when the image was taken on the linked page (Japanese).": "画面来自富士市政府。拍摄时间请见链接页面（日语）。",
+  "View from the train near Shin-Fuji": "新富士附近的车窗风景",
+  "Visibility chance, 06:00–19:00 Japan time": "看到富士山的概率 · 06:00–19:00（日本时间）",
+  "Visibility near Shin-Fuji": "新富士附近能看到富士山的概率",
+  "Forecast for {0} · 06:00–19:00 Japan time (JST, UTC+9).": "{0}的预报 · 06:00–19:00（日本时间 JST，UTC+9）。",
+  "Weather data retrieved {0}, {1} JST. Reload to retrieve the forecast again.": "气象数据获取时间为 {0} {1}（JST）。重新加载页面即可更新预报。",
+  "Weather data could not be loaded. No forecast is available. Please reload to try again.": "无法加载气象数据。请重新加载页面后重试。"
 }

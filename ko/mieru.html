@@ -35,7 +35,7 @@
 }
 </script>
   <link rel="stylesheet" href="../style.css?v=2117933f">
-  <link rel="stylesheet" href="../mieru.css?v=96f08b57">
+  <link rel="stylesheet" href="../mieru.css?v=95e712a0">
   <!-- ANDROID_APP_INVITE_RESET_START -->
 <script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
 (function () {
@@ -125,70 +125,71 @@
       <h1>후지산 관람 예보<small style="font-size:.55em;color:var(--accent);margin-left:8px">베타</small></h1>
       <p class="mieru-lead">오늘 신칸센에서 후지산이 보일까요? 다섯 관람 구역의 정상 주변 구름과 공기의 맑기를 비교하세요. 열차·탑승역·방향을 선택하거나 출발 시간을 입력하면 각 풍경을 지날 때의 조건을 확인할 수 있습니다.</p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>탑승역 <select id="mieruBoard"></select></label>
-          <label>방향
-            <select id="mieruDir">
-              <option value="west">신오사카 / 하카타 방면</option>
-              <option value="east">도쿄 방면</option>
-            </select>
-          </label>
-          <label>낮 <select id="mieruDay"><option value="0">오늘</option><option value="1">내일</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="출발 정보 설정 방법 선택">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">열차 선택</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">시각 입력</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>이 시각 이후 출발 <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">열차 찾기</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>출발 시각 (예상) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">계산 중...</div>
-      </div>
+      <section class="weather-focus" aria-labelledby="focus-title">
+  <div class="weather-focus-head"><h2 id="focus-title">신후지 부근의 후지산 전망</h2><p>미시마~신후지 · E석 · 후지산까지 약 24km</p><div class="forecast-days" role="group" aria-label="예보 날짜" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div>
+  <div class="weather-feature"><div class="weather-reading">
+    <p id="mieruStatus" role="status">기상 데이터 불러오는 중...</p>
+    <div id="mieruForecastContext" aria-live="polite" hidden="">
+      <p class="weather-date" id="mieruForecastDate"></p>
+      <dl id="weather-periods" class="weather-periods"><div><dt>08:00</dt><dd><strong data-hour="8"></strong>%</dd></div><div><dt>12:00</dt><dd><strong data-hour="12"></strong>%</dd></div><div><dt>16:00</dt><dd><strong data-hour="16"></strong>%</dd></div></dl>
+    </div>
+    <a class="weather-hours-link" href="#hour-fuji">시간대별 예보 보기 <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure class="weather-photo"><img src="../images/thumbs/display/20240211_fuji_michikusa-ece7c5cc-640.webp" alt="신후지 부근 마을 위 눈 덮인 후지산" width="640" height="360" fetchpriority="high"><figcaption>신후지 부근의 차창 풍경</figcaption></figure></div>
+  <p id="mieruRetrievedAt" class="weather-stamp" hidden=""></p>
+</section>
+<details class="ride-panel" id="ride"><summary><span><strong>내가 탈 열차의 예보 보기</strong><small>열차를 선택하거나 출발 시각을 입력하세요</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
+  <div class="ride-content"><div class="ride-modes" role="group" aria-label="출발 정보 설정 방법 선택"><button type="button" id="mieruModeTrain" aria-pressed="true">열차 선택</button><button type="button" id="mieruModeTime" aria-pressed="false">시각 입력</button></div>
+  <div id="forecast-picker" class="setup-card"></div><p id="picker-status" role="status"></p><div id="mieruRide" aria-live="polite"></div></div>
+</details>
+<aside class="camera-note"><a href="https://www.city.fuji.shizuoka.jp/1005330000/p007780.html" target="_blank" rel="noopener noreferrer">라이브 카메라로 후지산 보기 <span aria-hidden="true">↗</span></a><p>후지시청에서 바라본 모습입니다. 촬영 시각은 링크의 일본어 페이지에서 확인할 수 있습니다.</p></aside>
+      <section class="mieru-factset" aria-labelledby="region-title"><h2 id="region-title">열차에서 후지산을 볼 수 있는 다섯 장소</h2><div class="region-controls"><div class="forecast-days" role="group" aria-label="예보 날짜" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div><p class="region-note">후지산이 보일 확률 · 06:00~19:00 (일본 시간)</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji" id="hour-ota-fuji" aria-labelledby="view-ota-fuji">
+  <header class="region-card-heading"><h3 id="view-ota-fuji">오타구에서 본 후지산 <span>시나가와 → 신요코하마 (도쿄 오타구)</span></h3>
+  <p class="mieru-fact-meta">도쿄에서 약 10분 · E석 (산 쪽) · 관람 거리 약 95 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../ko/spots/ota-fuji.html" aria-label="사진과 관람 안내 보기: 오타구에서 본 후지산"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="오타구 부근 도쿄 지붕 너머의 후지산" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">도쿄의 지붕 너머 작고 먼 후지산을 찾아보세요. 약 95 km 떨어진 곳에서 처음 보이는 모습으로, 공기가 유난히 맑을 때 가장 쉽게 볼 수 있습니다. 신후지 부근의 훨씬 큰 풍경에 앞서 산이 살짝 모습을 알리는 순간이라고 생각하세요.</p>
+  <a class="mieru-fact-more" href="../ko/spots/ota-fuji.html">사진과 관람 안내 보기 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="sagami-fuji" id="hour-sagami-fuji" aria-labelledby="view-sagami-fuji">
+  <header class="region-card-heading"><h3 id="view-sagami-fuji">사가미 평야 너머의 후지산 <span>신요코하마 → 오다와라</span></h3>
+  <p class="mieru-fact-meta">도쿄에서 약 25분 · E석 (산 쪽) · 관람 거리 약 59 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../ko/spots/sagami-fuji.html" aria-label="사진과 관람 안내 보기: 사가미 평야 너머 후지산"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="오다와라 부근 언덕 뒤 눈 덮인 후지산" width="735" height="414" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">넓은 사가미 평야와 단자와 산맥 능선 너머로 후지산이 나타납니다. 평야와 산기슭, 산이 겹겹이 이어져 신후지와는 사뭇 다른 풍경을 만듭니다. 건조한 겨울과 이른 봄 아침에 윤곽이 또렷한 경우가 많으며, 비가 그친 뒤에도 뜻밖의 모습을 보여 줍니다.</p>
+  <a class="mieru-fact-more" href="../ko/spots/sagami-fuji.html">사진과 관람 안내 보기 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="fuji" id="hour-fuji" aria-labelledby="view-fuji">
+  <header class="region-card-heading"><h3 id="view-fuji">신후지 부근의 후지산 <span>미시마 → 신후지</span></h3>
+  <p class="mieru-fact-meta">도쿄에서 약 43분 · E석 (산 쪽) · 관람 거리 약 24 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../ko/spots/fuji.html" aria-label="사진과 관람 안내 보기: 신후지 부근 후지산"><img src="../images/20240211_fuji_michikusa.jpg" alt="신후지 부근 마을 위 눈 덮인 후지산" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">다섯 풍경 중 가장 가까운 곳으로, 후지산이 약 3~4분 동안 차창을 채웁니다. 산은 선로 북쪽에 있어 낮에는 보통 열차 쪽 산비탈에 햇빛이 듭니다. 눈 덮인 겨울 정상과 거의 눈이 없는 여름 산이 같은 구간에서 전혀 다른 모습을 보여 줍니다.</p>
+  <a class="mieru-fact-more" href="../ko/spots/fuji.html">사진과 관람 안내 보기 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="left-fuji" id="hour-left-fuji" aria-labelledby="view-left-fuji">
+  <header class="region-card-heading"><h3 id="view-left-fuji">왼쪽 후지산 <span>시즈오카역과 아베강 직후</span></h3>
+  <p class="mieru-fact-meta">도쿄에서 약 54분 · A석 (바다 쪽) · 관람 거리 약 56 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../ko/spots/left-fuji.html" aria-label="사진과 관람 안내 보기: 왼쪽 후지산"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="A석에서 본 주택 너머의 왼쪽 후지산" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">다섯 풍경 중 유일한 A석 풍경입니다. 신오사카 방향에서 시즈오카와 아베강을 지나면 선로 곡선 때문에 후지산이 잠깐 왼쪽으로 나타납니다. 몇 초뿐이므로 미리 살펴보세요. 흐릿한 여름 윤곽보다 눈 덮인 정상이 건물 사이에서 찾기 쉽습니다.</p>
+  <a class="mieru-fact-more" href="../ko/spots/left-fuji.html">사진과 관람 안내 보기 →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="hamanako-fuji" id="hour-hamanako-fuji" aria-labelledby="view-hamanako-fuji">
+  <header class="region-card-heading"><h3 id="view-hamanako-fuji">하마나호 너머의 후지산 <span>하마마쓰 → 도요하시</span></h3>
+  <p class="mieru-fact-meta">도쿄에서 약 73분 · E석 (산 쪽) · 관람 거리 약 128 km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="../ko/spots/hamanako.html#hamanako-fuji" aria-label="사진과 관람 안내 보기: 하마나호 너머 후지산"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="하마나호 너머 멀리 눈을 덮은 후지산" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">다섯 풍경 중 가장 먼 곳은 호수와 주변 언덕 너머의 작은 후지산입니다. 열차가 하마나호를 건널 때 E석 쪽 멀리를 보세요. 공기가 매우 맑아야 하며, 매번 기대할 풍경보다는 가끔 받는 선물에 가깝습니다.</p>
+  <a class="mieru-fact-more" href="../ko/spots/hamanako.html#hamanako-fuji">사진과 관람 안내 보기 →</a></div>
+</article></div><p>다섯 풍경은 도쿄에서 신오사카 방향 순서로 나열되어 있습니다. 좌석 쪽과 거리는 각 관람 지점을 설명하며, 도쿄 기준 시간은 대략적인 Nozomi/Hikari 예상값입니다. 위의 열차 선택기로 내 열차의 통과 시각을 확인하세요.</p></section>
       <section class="mieru-answer"><h2>오늘 신칸센에서 후지산이 보일까요?</h2>
 <p>두 가지 조건이 중요합니다. 구름이 정상을 가리지 않아야 하고, 열차와 산 사이의 공기가 충분히 맑아야 합니다. 위 예보는 도카이도 신칸센을 따라 있는 다섯 관람 구역에서 이 두 조건을 각각 추정합니다.</p>
 <p>건조한 겨울과 이른 봄에 가장 또렷하게 보이는 경우가 많습니다. 습한 여름에는 하늘이 파랗더라도 연무가 먼 산을 가릴 수 있습니다. 비가 내린 뒤 공기가 맑아지면 여름에도 가끔 볼 수 있습니다.</p>
 <p>먼 풍경은 오후보다 아침에 더 또렷하게 보이는 경우가 많습니다. 늦은 시간에는 산비탈의 세부 모습 대신 실루엣으로 보일 수 있습니다. 시간별 예보로 통과 시각 전후의 조건을 비교해 보세요.</p>
-<p>다섯 풍경 중 네 곳은 E석, 산 쪽에서 보입니다. 신오사카로 가는 길 시즈오카 직후의 왼쪽 후지산만 A석, 바다 쪽에서 잠깐 보이는 예외입니다. 구름이 산을 가린다면 다음을 살펴보세요: <a href="../ko/guide.html#cloudy">흐린 날의 아이디어</a>.</p></section><div id="mieruStatus">기상 데이터 불러오는 중...</div>
-      <div id="mieruSpots"></div><section class="mieru-factset"><h2>열차에서 후지산을 볼 수 있는 다섯 장소</h2><p>다섯 풍경은 도쿄에서 신오사카 방향 순서로 나열되어 있습니다. 좌석 쪽과 거리는 각 관람 지점을 설명하며, 도쿄 기준 시간은 대략적인 Nozomi/Hikari 예상값입니다. 위의 열차 선택기로 내 열차의 통과 시각을 확인하세요.</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
-  <figure class="mieru-fact-photo"><a href="../ko/spots/ota-fuji.html" aria-label="사진과 관람 안내 보기: 오타구에서 본 후지산"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="오타구 부근 도쿄 지붕 너머의 후지산" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>오타구에서 본 후지산 <span>시나가와 → 신요코하마 (도쿄 오타구)</span></h3>
-  <p class="mieru-fact-meta">도쿄에서 약 10분 · E석 (산 쪽) · 관람 거리 약 95 km</p><p class="mieru-fact-body">도쿄의 지붕 너머 작고 먼 후지산을 찾아보세요. 약 95 km 떨어진 곳에서 처음 보이는 모습으로, 공기가 유난히 맑을 때 가장 쉽게 볼 수 있습니다. 신후지 부근의 훨씬 큰 풍경에 앞서 산이 살짝 모습을 알리는 순간이라고 생각하세요.</p>
-  <a class="mieru-fact-more" href="../ko/spots/ota-fuji.html">사진과 관람 안내 보기 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="sagami-fuji">
-  <figure class="mieru-fact-photo"><a href="../ko/spots/sagami-fuji.html" aria-label="사진과 관람 안내 보기: 사가미 평야 너머 후지산"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="오다와라 부근 언덕 뒤 눈 덮인 후지산" width="735" height="414" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>사가미 평야 너머의 후지산 <span>신요코하마 → 오다와라</span></h3>
-  <p class="mieru-fact-meta">도쿄에서 약 25분 · E석 (산 쪽) · 관람 거리 약 59 km</p><p class="mieru-fact-body">넓은 사가미 평야와 단자와 산맥 능선 너머로 후지산이 나타납니다. 평야와 산기슭, 산이 겹겹이 이어져 신후지와는 사뭇 다른 풍경을 만듭니다. 건조한 겨울과 이른 봄 아침에 윤곽이 또렷한 경우가 많으며, 비가 그친 뒤에도 뜻밖의 모습을 보여 줍니다.</p>
-  <a class="mieru-fact-more" href="../ko/spots/sagami-fuji.html">사진과 관람 안내 보기 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="fuji">
-  <figure class="mieru-fact-photo"><a href="../ko/spots/fuji.html" aria-label="사진과 관람 안내 보기: 신후지 부근 후지산"><img src="../images/20240211_fuji_michikusa.jpg" alt="신후지 부근 마을 위 눈 덮인 후지산" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>신후지 부근의 후지산 <span>미시마 → 신후지</span></h3>
-  <p class="mieru-fact-meta">도쿄에서 약 43분 · E석 (산 쪽) · 관람 거리 약 24 km</p><p class="mieru-fact-body">다섯 풍경 중 가장 가까운 곳으로, 후지산이 약 3~4분 동안 차창을 채웁니다. 산은 선로 북쪽에 있어 낮에는 보통 열차 쪽 산비탈에 햇빛이 듭니다. 눈 덮인 겨울 정상과 거의 눈이 없는 여름 산이 같은 구간에서 전혀 다른 모습을 보여 줍니다.</p>
-  <a class="mieru-fact-more" href="../ko/spots/fuji.html">사진과 관람 안내 보기 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="left-fuji">
-  <figure class="mieru-fact-photo"><a href="../ko/spots/left-fuji.html" aria-label="사진과 관람 안내 보기: 왼쪽 후지산"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="A석에서 본 주택 너머의 왼쪽 후지산" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>왼쪽 후지산 <span>시즈오카역과 아베강 직후</span></h3>
-  <p class="mieru-fact-meta">도쿄에서 약 54분 · A석 (바다 쪽) · 관람 거리 약 56 km</p><p class="mieru-fact-body">다섯 풍경 중 유일한 A석 풍경입니다. 신오사카 방향에서 시즈오카와 아베강을 지나면 선로 곡선 때문에 후지산이 잠깐 왼쪽으로 나타납니다. 몇 초뿐이므로 미리 살펴보세요. 흐릿한 여름 윤곽보다 눈 덮인 정상이 건물 사이에서 찾기 쉽습니다.</p>
-  <a class="mieru-fact-more" href="../ko/spots/left-fuji.html">사진과 관람 안내 보기 →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="hamanako-fuji">
-  <figure class="mieru-fact-photo"><a href="../ko/spots/hamanako.html#hamanako-fuji" aria-label="사진과 관람 안내 보기: 하마나호 너머 후지산"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="하마나호 너머 멀리 눈을 덮은 후지산" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>하마나호 너머의 후지산 <span>하마마쓰 → 도요하시</span></h3>
-  <p class="mieru-fact-meta">도쿄에서 약 73분 · E석 (산 쪽) · 관람 거리 약 128 km</p><p class="mieru-fact-body">다섯 풍경 중 가장 먼 곳은 호수와 주변 언덕 너머의 작은 후지산입니다. 열차가 하마나호를 건널 때 E석 쪽 멀리를 보세요. 공기가 매우 맑아야 하며, 매번 기대할 풍경보다는 가끔 받는 선물에 가깝습니다.</p>
-  <a class="mieru-fact-more" href="../ko/spots/hamanako.html#hamanako-fuji">사진과 관람 안내 보기 →</a></div>
-</article></div></section>
+<p>다섯 풍경 중 네 곳은 E석, 산 쪽에서 보입니다. 신오사카로 가는 길 시즈오카 직후의 왼쪽 후지산만 A석, 바다 쪽에서 잠깐 보이는 예외입니다. 구름이 산을 가린다면 다음을 살펴보세요: <a href="../ko/guide.html#cloudy">흐린 날의 아이디어</a>.</p></section>
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         예보 모델 베타: 관람 가능성 = 정상에 구름이 끼지 않을 확률 × 대기 시정이 유효 관람 거리에 도달할 확률. 시선은 연무층을 비스듬히 지나 정상으로 올라가므로 유효 거리는 수평 거리보다 짧습니다. 습도가 높을수록 연무층이 두꺼워집니다. 기상 데이터 제공: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
         미만 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>
         을 바탕으로 자체적인 확률을 추정합니다.
@@ -199,7 +200,6 @@
       </p>
       </article>
     </div>
-    <section class="spot-page-mobile-promos" aria-label="차창을 즐기는 더 많은 방법"><div class="spot-page-rail-app hide-in-app"><a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-cta-track="android_app_guide_click" data-cta-id="spot_rail_android"><img src="../images/android/app-icon-192.webp" alt="" width="36" height="36" loading="lazy" decoding="async"><span class="spot-page-rail-app-copy"><strong>Android 앱</strong><small>무료 · 가입 없이 이용</small></span><span class="spot-page-rail-app-arrow" aria-hidden="true">›</span></a></div><div class="spot-page-rail-app spot-page-rail-live"><a href="../ko/live/" data-cta-track="live_guide_entry_click" data-cta-id="spot_rail_live"><img src="../images/og-live-guide.jpg" alt="" width="36" height="36" loading="lazy" decoding="async"><span class="spot-page-rail-app-copy"><strong>GPS 음성 안내</strong><small>달리면서 다음 풍경 안내 듣기</small></span><span class="spot-page-rail-app-arrow" aria-hidden="true">›</span></a><small class="spot-page-rail-map-credit">지도: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap 기여자</a></small></div><div class="spot-page-rail-disney spot-page-rail-arenani"><a href="../ko/arenani.html" data-cta-track="arenani_entry_click" data-cta-id="spot_rail_related_arenani"><img src="../images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>창밖의 저것은 무엇일까요?</strong><small>차창에서 알아보는 일본의 일상 풍경</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div><div class="spot-page-rail-disney"><a href="../ko/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="spot_rail_seasonal_disney"><img src="../images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>디즈니 신칸센</strong><small>운행일과 차창 풍경</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div><a class="spot-page-rail-all-features" href="../ko/zukan.html" data-cta-track="zukan_entry_click" data-cta-id="spot_rail_all_features">모든 특집 보기 →</a></section>
     <section class="showcase spot-page-showcase" aria-labelledby="spotPageShowcaseTitle" data-site-chrome-host="chrome-2"></section>
     <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-3"></section>
   </main>
@@ -210,9 +210,9 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=84653b67"></script>
-  <script src="../spot-page-shared.js?v=7b39a8a1"></script>
-  <script src="../data-runtime.js?v=f3036030"></script><script src="../ko/utility-data.js?v=410266af"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
-  <script src="../mieru.js?v=8001d221"></script>
+  <script src="../spot-page-shared.js?v=52589b88"></script>
+  <script src="../data-runtime.js?v=f3036030"></script><script src="../ko/utility-data.js?v=81c8e180"></script><script src="../utility-locale-runtime.js?v=7206f1c7"></script><script src="../train-select.js?v=da34e26d"></script>
+  <script src="../mieru.js?v=90c2dc65"></script>
 
 
 

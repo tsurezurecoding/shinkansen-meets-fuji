@@ -47,6 +47,4 @@ export const MIERU_COPY = {
     audio: 'Audio is currently available in English.',
   },
 };
-// Only editions with the forecast context panel use these strings.
-export const FORECAST_COPY = Object.fromEntries(Object.entries(MIERU_COPY.en)
-  .filter(([key]) => !['forecastDate', 'retrievedAt', 'forecastError'].includes(key)));
+export const FORECAST_COPY = MIERU_COPY.en;

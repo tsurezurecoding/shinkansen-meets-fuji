@@ -361,7 +361,6 @@
       </article>
     </div>
 
-    <section data-spot-page-shared-module="mobile-promos"></section>
     <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
@@ -387,6 +386,6 @@
     });
   </script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"jr-pass-fuji.html","mounts":[{"host":"chrome-0","component":"footer-castles","kind":"footer"}]}</script>
-<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+<script src="../site-runtime-loader.js?v=0f466d8d" defer></script>
 </body>
 </html>

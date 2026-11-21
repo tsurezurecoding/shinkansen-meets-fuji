@@ -37,7 +37,7 @@
   </script>
   <script src="language-router.js?v=fb83e46e"></script>
   <link rel="stylesheet" href="style.css?v=2117933f">
-  <link rel="stylesheet" href="mieru.css?v=96f08b57">
+  <link rel="stylesheet" href="mieru.css?v=95e712a0">
   <!-- ANDROID_APP_INVITE_RESET_START -->
 <script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
 (function () {
@@ -127,85 +127,78 @@
       <h1>富士山 見える予報<small style="font-size:.55em;color:var(--accent);margin-left:8px">β</small></h1>
       <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見える？</span><span class="copy-chunk">山頂の雲や空気の澄みかたをもとに、</span><span class="copy-chunk">列車が通るころの</span><span class="copy-chunk">富士山の見えやすさを推定します。</span></p>
 
-      <div class="mieru-depart">
-        <div class="mieru-row">
-          <label>乗車駅 <select id="mieruBoard"></select></label>
-          <label>方向
-            <select id="mieruDir">
-              <option value="west">下り (新大阪・博多方面ゆき)</option>
-              <option value="east">上り (東京ゆき)</option>
-            </select>
-          </label>
-          <label>日付 <select id="mieruDay"><option value="0">今日</option><option value="1">明日</option></select></label>
-        </div>
-        <div class="mieru-row mieru-mode-row" role="group" aria-label="出発の指定方法">
-          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">列車で選ぶ</button>
-          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">時刻を入力</button>
-        </div>
-        <div id="mieruTrainBlock">
-          <div class="mieru-train-searchbar">
-            <label>この時刻以降 <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
-            <button type="button" id="mieruTrainSearchBtn">列車をさがす</button>
-          </div>
-          <div id="mieruTrainResults" class="train-results"></div>
-        </div>
-        <div id="mieruTimeBlock" hidden="">
-          <label>出発時刻(目安) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
-        </div>
-        <div id="mieruRide">計算中…</div>
-      </div>
-
-
-
+      <section class="weather-focus" aria-labelledby="focus-title">
+  <div class="weather-focus-head"><h2 id="focus-title">新富士付近の見え方</h2><p>三島〜新富士・E席・富士山まで約24km</p><div class="forecast-days" role="group" aria-label="予報の対象日" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div>
+  <div class="weather-feature"><div class="weather-reading">
+    <p id="mieruStatus" role="status">気象データ取得中…</p>
+    <div id="mieruForecastContext" aria-live="polite" hidden="">
+      <p class="weather-date" id="mieruForecastDate"></p>
+      <dl id="weather-periods" class="weather-periods"><div><dt>8時</dt><dd><strong data-hour="8"></strong>%</dd></div><div><dt>12時</dt><dd><strong data-hour="12"></strong>%</dd></div><div><dt>16時</dt><dd><strong data-hour="16"></strong>%</dd></div></dl>
+    </div>
+    <a class="weather-hours-link" href="#hour-fuji">時間別に見る <span aria-hidden="true">↓</span></a>
+  </div>
+  <figure class="weather-photo"><img src="images/thumbs/display/20240211_fuji_michikusa-ece7c5cc-640.webp" alt="新富士付近の街並み越しに大きく見える雪化粧の富士山" width="640" height="360" fetchpriority="high"><figcaption>新富士の車窓</figcaption></figure></div>
+  <p id="mieruRetrievedAt" class="weather-stamp" hidden=""></p>
+</section>
+<details class="ride-panel" id="ride"><summary><span><strong>自分の列車の予報を見る</strong><small>列車を選ぶ・出発時刻から調べる</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
+  <div class="ride-content"><div class="ride-modes" role="group" aria-label="出発の指定方法"><button type="button" id="mieruModeTrain" aria-pressed="true">列車を選ぶ</button><button type="button" id="mieruModeTime" aria-pressed="false">時刻を入力</button></div>
+  <div id="forecast-picker" class="setup-card"></div><p id="picker-status" role="status"></p><div id="mieruRide" aria-live="polite"></div></div>
+</details>
+<aside class="camera-note"><a href="https://www.city.fuji.shizuoka.jp/1005330000/p007780.html" target="_blank" rel="noopener noreferrer">今の富士山をカメラで見る <span aria-hidden="true">↗</span></a><p>富士市役所からの眺めです。撮影時刻はリンク先で確認できます。</p></aside>
+      <section class="mieru-factset" aria-labelledby="region-title"><h2 id="region-title">富士山が見える5つの区間</h2><div class="region-controls"><div class="forecast-days" role="group" aria-label="予報の対象日" hidden=""><button type="button" data-day="0" aria-pressed="true"></button><button type="button" data-day="1" aria-pressed="false"></button></div></div><p class="region-note">6時〜19時の見える確率（日本時間）</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji" id="hour-ota-fuji" aria-labelledby="view-ota-fuji">
+  <header class="region-card-heading"><h3 id="view-ota-fuji">都内からの富士山 <span>品川 → 新横浜（大田区付近）</span></h3>
+  <p class="mieru-fact-meta">東京から約10分 ・ E席（山側） ・ 視距離 約95km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="spots/ota-fuji.html" aria-label="写真と見どころを見る: 都内からの富士山"><img src="images/20260509_ota_fuji_t_yangyang.jpg" alt="大田区の街並み越しに見える富士山" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">富士山まで約95kmあり、都心のビル群や大田区の住宅地越しに小さく見えます。空気の乾いた冬の朝、視程が伸びている日に限られる、いわば「今日の透明度チェック」区間です。</p>
+  <a class="mieru-fact-more" href="spots/ota-fuji.html">写真と見どころを見る →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="sagami-fuji" id="hour-sagami-fuji" aria-labelledby="view-sagami-fuji">
+  <header class="region-card-heading"><h3 id="view-sagami-fuji">相模平野の富士山 <span>新横浜 → 小田原</span></h3>
+  <p class="mieru-fact-meta">東京から約25分 ・ E席（山側） ・ 視距離 約59km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="spots/sagami-fuji.html" aria-label="写真と見どころを見る: 相模平野の富士山"><img src="images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="小田原付近の山なみ越しに見える雪化粧の富士山" width="735" height="414" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">相模平野の向こうに丹沢山地の稜線を従えて、独立峰らしい鋭い三角形がのぞきます。冬から早春の乾いた朝がもっとも見えやすく、梅雨明け直後や台風後の空気が洗われた日にも姿を見せます。</p>
+  <a class="mieru-fact-more" href="spots/sagami-fuji.html">写真と見どころを見る →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="fuji" id="hour-fuji" aria-labelledby="view-fuji">
+  <header class="region-card-heading"><h3 id="view-fuji">富士山 <span>三島 → 新富士</span></h3>
+  <p class="mieru-fact-meta">東京から約43分 ・ E席（山側） ・ 視距離 約24km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="spots/fuji.html" aria-label="写真と見どころを見る: 富士山"><img src="images/20240211_fuji_michikusa.jpg" alt="新富士付近の街並み越しに大きく見える雪化粧の富士山" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">5区間でもっとも近く、車窓いっぱいに富士山が広がる約3〜4分間です。富士山は線路の北側にあるため日中はほぼ順光で、曇りさえしなければ朝でも午後でも山肌がよく見えます。初冠雪は例年9月末〜10月ごろ、真夏の7〜8月は雪がほとんど消えます。</p>
+  <a class="mieru-fact-more" href="spots/fuji.html">写真と見どころを見る →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="left-fuji" id="hour-left-fuji" aria-labelledby="view-left-fuji">
+  <header class="region-card-heading"><h3 id="view-left-fuji">左富士 <span>静岡駅を過ぎ、安倍川を渡ってまもなく</span></h3>
+  <p class="mieru-fact-meta">東京から約54分 ・ A席（海側） ・ 視距離 約56km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="spots/left-fuji.html" aria-label="写真と見どころを見る: 左富士"><img src="images/20240410_left_fuji_earlyretiremile.jpg" alt="A席から住宅街越しに見える左富士" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">5区間で唯一のA席ビュー。線路が南へ大きく膨らむこの短い区間だけ、進行方向左手に富士山が回り込みます。見えている時間はわずか数秒〜十数秒。冬から早春は雪化粧の輪郭が街並みの合間からでも見つけやすく、夏場は空の色に溶け込んで見つけにくくなります。</p>
+  <a class="mieru-fact-more" href="spots/left-fuji.html">写真と見どころを見る →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="hamanako-fuji" id="hour-hamanako-fuji" aria-labelledby="view-hamanako-fuji">
+  <header class="region-card-heading"><h3 id="view-hamanako-fuji">浜名湖越しの富士山 <span>浜松 → 豊橋</span></h3>
+  <p class="mieru-fact-meta">東京から約73分 ・ E席（山側） ・ 視距離 約128km</p></header>
+  <p class="region-chart-date" hidden=""></p><dl class="region-hours"></dl>
+  <figure class="mieru-fact-photo"><a href="spots/hamanako.html#hamanako-fuji" aria-label="写真と見どころを見る: 浜名湖越しの富士山"><img src="images/250111_hamanako_fuji_proboffin.jpg" alt="浜名湖と山なみの奥に見える遠くの雪化粧の富士山" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
+  <div class="mieru-fact-copy"><p class="mieru-fact-body">5区間でもっとも遠く、湖と空の境目に小さく浮かぶ一景です。空気が澄んだ冬の朝や、雨上がりで大気が洗われた日など、条件がそろった時だけ会える、見えたこと自体がうれしい富士山です。</p>
+  <a class="mieru-fact-more" href="spots/hamanako.html#hamanako-fuji">写真と見どころを見る →</a></div>
+</article></div><p>東京から新大阪方面へ向かう場合、次の5区間で富士山に出会うチャンスがあります。区間名・東京からの目安時間・座席・富士山までの視距離は、いずれも季節や天候にかかわらず変わらない固定の目安です（通過時刻はのぞみ・ひかり基準）。</p></section>
       <section class="mieru-answer">
         <h2>予報の見かた</h2>
         <p><span class="copy-chunk">列車を選ぶか、</span><span class="copy-chunk">出発時刻を入力すると、</span><span class="copy-chunk">推定通過時刻に最も近い</span><span class="copy-chunk">1時間刻みの予報で</span><span class="copy-chunk">見えやすさを推定します。</span></p>
         <p>気象データの出典は <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> です。出発・通過・予報の時刻は日本時間（JST、UTC+9）です。</p>
-        <div id="mieruForecastContext" aria-live="polite" hidden="">
-          <p id="mieruForecastDate"></p>
-          <p id="mieruRetrievedAt"></p>
-          <p>取得時刻はブラウザが気象予報を受け取った時刻です。気象モデルの更新時刻や現地の観測時刻とは異なります。</p>
-        </div>
       </section>
-      <div id="mieruStatus" role="status">気象データ取得中…</div>
-      <div id="mieruSpots"></div><section class="mieru-answer"><h2>今日、新幹線から富士山は見えるか</h2>
+      <section class="mieru-answer"><h2>今日、新幹線から富士山は見えるか</h2>
         <p>結論から言うと、条件は二つだけです。富士山の山頂に雲がかかっていないこと、そして視線が抜けるくらい空気が澄んでいること。上の予報ツールは、この二つを東海道新幹線の主要5区間ごとに数値化したものです。</p>
         <p>季節でいうと、空気が乾く冬から早春（12月〜3月）がもっとも見えやすい時期です。冬型の気圧配置で北風が吹いた朝は視程が伸び、富士山がくっきり見えます。逆に夏（6月〜9月）は湿度が高く靄がかかりやすいため、晴れていても霞んで見えないことが少なくありません。梅雨明け直後や台風通過の翌日は、大気が一気に洗われて夏でも意外とよく見えることがあります。</p>
         <p>時間帯では、朝のほうが午後より視程が伸びる傾向があります。午後は地表の熱で水蒸気が増え、遠くの景色がぼやけやすくなります。夕方は逆光で山肌がシルエット化しますが、輪郭そのものは意外とはっきり見えることもあります。</p>
-        <p>座席は、5区間のうち4区間がE席（山側）、静岡駅を過ぎ安倍川を渡った直後の「左富士」だけがA席（海側）です。曇りで富士山が隠れている日は、無理に窓の外を探すより<a href="guide.html#cloudy">曇りの日の楽しみ方</a>に切り替えるのも一つの手です。</p></section><section class="mieru-factset"><h2>富士山が見える5つの区間</h2><p>東京から新大阪方面へ向かう場合、次の5区間で富士山に出会うチャンスがあります。区間名・東京からの目安時間・座席・富士山までの視距離は、いずれも季節や天候にかかわらず変わらない固定の目安です（通過時刻はのぞみ・ひかり基準）。</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
-  <figure class="mieru-fact-photo"><a href="spots/ota-fuji.html" aria-label="写真と見どころを見る: 都内からの富士山"><img src="images/20260509_ota_fuji_t_yangyang.jpg" alt="大田区の街並み越しに見える富士山" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>都内からの富士山 <span>品川 → 新横浜（大田区付近）</span></h3>
-  <p class="mieru-fact-meta">東京から約10分 ・ E席（山側） ・ 視距離 約95km</p><p class="mieru-fact-body">富士山まで約95kmあり、都心のビル群や大田区の住宅地越しに小さく見えます。空気の乾いた冬の朝、視程が伸びている日に限られる、いわば「今日の透明度チェック」区間です。</p>
-  <a class="mieru-fact-more" href="spots/ota-fuji.html">写真と見どころを見る →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="sagami-fuji">
-  <figure class="mieru-fact-photo"><a href="spots/sagami-fuji.html" aria-label="写真と見どころを見る: 相模平野の富士山"><img src="images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="小田原付近の山なみ越しに見える雪化粧の富士山" width="735" height="414" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>相模平野の富士山 <span>新横浜 → 小田原</span></h3>
-  <p class="mieru-fact-meta">東京から約25分 ・ E席（山側） ・ 視距離 約59km</p><p class="mieru-fact-body">相模平野の向こうに丹沢山地の稜線を従えて、独立峰らしい鋭い三角形がのぞきます。冬から早春の乾いた朝がもっとも見えやすく、梅雨明け直後や台風後の空気が洗われた日にも姿を見せます。</p>
-  <a class="mieru-fact-more" href="spots/sagami-fuji.html">写真と見どころを見る →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="fuji">
-  <figure class="mieru-fact-photo"><a href="spots/fuji.html" aria-label="写真と見どころを見る: 富士山"><img src="images/20240211_fuji_michikusa.jpg" alt="新富士付近の街並み越しに大きく見える雪化粧の富士山" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
-  <div class="mieru-fact-copy"><h3>富士山 <span>三島 → 新富士</span></h3>
-  <p class="mieru-fact-meta">東京から約43分 ・ E席（山側） ・ 視距離 約24km</p><p class="mieru-fact-body">5区間でもっとも近く、車窓いっぱいに富士山が広がる約3〜4分間です。富士山は線路の北側にあるため日中はほぼ順光で、曇りさえしなければ朝でも午後でも山肌がよく見えます。初冠雪は例年9月末〜10月ごろ、真夏の7〜8月は雪がほとんど消えます。</p>
-  <a class="mieru-fact-more" href="spots/fuji.html">写真と見どころを見る →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="left-fuji">
-  <figure class="mieru-fact-photo"><a href="spots/left-fuji.html" aria-label="写真と見どころを見る: 左富士"><img src="images/20240410_left_fuji_earlyretiremile.jpg" alt="A席から住宅街越しに見える左富士" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>左富士 <span>静岡駅を過ぎ、安倍川を渡ってまもなく</span></h3>
-  <p class="mieru-fact-meta">東京から約54分 ・ A席（海側） ・ 視距離 約56km</p><p class="mieru-fact-body">5区間で唯一のA席ビュー。線路が南へ大きく膨らむこの短い区間だけ、進行方向左手に富士山が回り込みます。見えている時間はわずか数秒〜十数秒。冬から早春は雪化粧の輪郭が街並みの合間からでも見つけやすく、夏場は空の色に溶け込んで見つけにくくなります。</p>
-  <a class="mieru-fact-more" href="spots/left-fuji.html">写真と見どころを見る →</a></div>
-</article>
-<article class="mieru-fact" data-viewpoint="hamanako-fuji">
-  <figure class="mieru-fact-photo"><a href="spots/hamanako.html#hamanako-fuji" aria-label="写真と見どころを見る: 浜名湖越しの富士山"><img src="images/250111_hamanako_fuji_proboffin.jpg" alt="浜名湖と山なみの奥に見える遠くの雪化粧の富士山" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
-  <div class="mieru-fact-copy"><h3>浜名湖越しの富士山 <span>浜松 → 豊橋</span></h3>
-  <p class="mieru-fact-meta">東京から約73分 ・ E席（山側） ・ 視距離 約128km</p><p class="mieru-fact-body">5区間でもっとも遠く、湖と空の境目に小さく浮かぶ一景です。空気が澄んだ冬の朝や、雨上がりで大気が洗われた日など、条件がそろった時だけ会える、見えたこと自体がうれしい富士山です。</p>
-  <a class="mieru-fact-more" href="spots/hamanako.html#hamanako-fuji">写真と見どころを見る →</a></div>
-</article></div></section>
+        <p>座席は、5区間のうち4区間がE席（山側）、静岡駅を過ぎ安倍川を渡った直後の「左富士」だけがA席（海側）です。曇りで富士山が隠れている日は、無理に窓の外を探すより<a href="guide.html#cloudy">曇りの日の楽しみ方</a>に切り替えるのも一つの手です。</p></section>
 
 
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         予報モデルβ: 見える確率 = (山頂が雲に隠れていない確率) × (視程が実効距離に足りる確率)。
         視線は靄の層を斜めに抜けて山頂へ向かうため、実効距離は水平距離より短くなります(湿度が高いほど靄層が厚い)。
         気象データは <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
@@ -216,7 +209,6 @@
       </p>
       </article>
     </div>
-    <section data-spot-page-shared-module="mobile-promos"></section>
     <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
@@ -227,11 +219,10 @@
   </footer>
 
   <script src="spot-page-shared-data.js?v=84653b67"></script>
-  <script src="spot-page-shared.js?v=7b39a8a1"></script>
+  <script src="spot-page-shared.js?v=52589b88"></script>
   <script src="data-runtime.js?v=f3036030"></script>
   <script src="train-select.js?v=da34e26d"></script>
-  <!-- data/timetable.js（約300KB）は列車モードを実際に使う時点まで遅延読み込みする（ensureTimetableLoaded() 参照） -->
-  <script src="mieru.js?v=8001d221"></script>
+  <script src="mieru.js?v=90c2dc65"></script>
 
 
 

@@ -1197,6 +1197,36 @@ function spotVideoLoadingScope(changes, { assetVersionOnly }) {
   };
 }
 
+function timelineScope(changes, { assetVersionOnly }) {
+  const files = new Set(changes.map(change => change.path));
+  const railAsset = /^shared-ui\/[a-z-]+\.rail-[a-z0-9-]+\.js$/;
+  if (!files.has('spot-page-shared.js') || !files.has(spotValidator) || !changes.some(change => railAsset.test(change.path))) return null;
+  const pageGenerators = ['727', 'arenani', 'castle', 'ferris-wheel', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei'].map(name => 'scripts/generate-' + name + '-page.mjs');
+  pageGenerators.push('scripts/generate-sanyo-castle-pages.mjs');
+  const owners = new Set([...pageGenerators, 'scripts/templates/mieru-ja.html.tpl', 'scripts/templates/mieru-en.html.tpl',
+    ...['en/besides-fuji', 'en/jr-pass-fuji', 'en/reflections', 'reflections'].map(route => 'scripts/templates/site-source/' + route + '.html.tpl'),
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'spot-page-shared.js', spotValidator, 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json',
+    'scripts/generate-mieru-page.mjs', 'scripts/shared/mieru-runtime.js', 'scripts/shared/mieru-copy.mjs',
+    'scripts/shared/utility-localization.mjs', 'scripts/validate-mieru.mjs', 'scripts/validate-train-select.mjs', 'scripts/validate-utility-locales.mjs', 'mieru.css', 'train-picker.js']);
+  const timelinePage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:727-collection|arenani|besides-fuji|castles|ferris-wheels|hanabi|jr-pass-fuji|mieru|reflections|sparkling-dreams|window-moments|yakei|spots\/(?:himeji|okayama|fukuyama)-castle)\.html$/;
+  const forecast = files.has('scripts/shared/mieru-runtime.js');
+  const copy = /^(?:scripts\/locales\/utility-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json|(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js)$/;
+  if (!changes.every(({path, status}) => status === 'M' && (owners.has(path) || railAsset.test(path) || timelinePage.test(path) ||
+      (forecast && (copy.test(path) || path === 'mieru.js')) ||
+      ((path.endsWith('.html') || path.startsWith('scripts/templates/site-source/') && path.endsWith('.html.tpl') || path === 'mieru.js') && assetVersionOnly?.(path))))) return null;
+  return {
+    scope: forecast ? 'forecast-and-timeline' : 'shared-timeline', needsDependencies: true, pagesCandidate: true,
+    reason: 'Check the shared spot/feature timeline, localized forecasts, and the versioned references in their consumers.',
+    commands: [node('--test', 'scripts/release-scope.test.mjs'), node('--check', 'spot-page-shared.js'), node(spotValidator),
+      ...[...pageGenerators, 'scripts/generate-mieru-page.mjs', 'scripts/generate-site-chrome.mjs', 'scripts/generate-site-runtime.mjs',
+        'scripts/generate-spot-page-runtime.mjs'].map(generator => node(generator, '--check')),
+      ...['mieru.html', 'window-moments.html', 'reflections.html'].map(route => node(utilityGenerator, '--route', route, '--check')),
+      node(castleGenerator, '--route', 'spots/okayama-castle.html', '--check'),
+      ...(forecast ? [node('scripts/validate-mieru.mjs'), node('scripts/validate-train-select.mjs')] : []),
+      node('scripts/generate-sparkling-locales.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
+  };
+}
+
 const discoveryFeed = /^data\/discovery\/(?:ja|en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\.json$/;
 const discoveryPage = /^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:index|zukan)\.html$/;
 const discoveryArticle = /^(?:(?:en|zh-Hant|fr|de|es|zh-Hans|ko|it|th)\/)?(?:rivers|factories)\.html$/;
@@ -1285,7 +1315,7 @@ function featureMediaScope(changes, { assetVersionOnly }) {
 
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
