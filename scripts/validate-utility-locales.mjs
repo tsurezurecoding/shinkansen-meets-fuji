@@ -272,7 +272,7 @@ function checkDynamic(lang, route) {
   window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
   window.requestAnimationFrame = callback => window.setTimeout(callback, 0);
   window.MADO_ANALYTICS_DISABLED = true;
-  const allowed = new Set(['locales.js','data/timetable.js', 'data-runtime.js', 'track.js', 'spot-map.js', 'train-select.js', 'train-picker.js', 'app.js', 'utility-locale-runtime.js', `${lang}/utility-data.js`]);
+  const allowed = new Set(['locales.js','data/timetable.js', 'data-runtime.js', 'data/stamp-store.js', 'track.js', 'spot-map.js', 'train-select.js', 'train-picker.js', 'app.js', 'utility-locale-runtime.js', `${lang}/utility-data.js`]);
   for (const script of window.document.querySelectorAll('script[src]')) {
     const file = new URL(script.src).pathname.slice(1);
     if (allowed.has(file)) window.eval(file === 'data-runtime.js' ? dataScript() : read(file));
