@@ -8,7 +8,7 @@ const embeddedCss = fs.readFileSync(new URL('../app-embedded.css', import.meta.u
 const localeSource = fs.readFileSync(new URL('../locales.js', import.meta.url), 'utf8');
 const utilityLocaleSource = fs.readFileSync(new URL('../utility-locales.js', import.meta.url), 'utf8');
 const origin = 'https://www.michikusa-travel.com';
-const languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko'];
+const languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
 const prefix = language => language === 'ja' ? '/' : `/${language}/`;
 const capabilities = language => ({
   source: 'michikusa-native-host', version: 1, type: 'capabilities',
@@ -187,6 +187,35 @@ test('new articles keep public URL requests compatible with old hosts before and
     }
   }
 });
+
+
+for (const language of languages) {
+  test(language + ': river and factory articles announce readiness, cross-link and return to the app', () => {
+    for (const [path, related] of [['rivers.html', 'factories.html#meiji-pharmatech'], ['factories.html', 'rivers.html#sakawa']]) {
+      const file = prefix(language).slice(1) + path;
+      const html = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+      assert.ok(html.indexOf('app-embedded.js') >= 0 && html.indexOf('app-embedded.js') < html.indexOf('style.css'));
+      assert.ok(html.includes('app-embedded.css'));
+      const f = fixture({language, path, html});
+      try {
+        const ready = f.messages.find(entry => entry.message.type === 'content-ready').message.payload;
+        assert.equal(ready.language, language);
+        assert.equal(ready.content_path, prefix(language) + path);
+        f.ready(language);
+        const links = [...f.w.document.querySelectorAll('article a[href]')];
+        const crossLink = links.find(link => link.href === origin + prefix(language) + related);
+        const back = links.find(link => link.href === origin + prefix(language) + 'zukan.html');
+        assert.ok(crossLink && back);
+        assert.equal(f.clickElement(crossLink).handled, true);
+        assert.deepEqual(f.external().at(-1), {url: origin + prefix(language) + related});
+        assert.equal(f.clickElement(back).handled, true);
+        assert.deepEqual(f.navigation().at(-1), {kind:'native', screen:'gallery', hash:''});
+        f.click(prefix(language) + 'zukan.html#content-news');
+        assert.deepEqual(f.navigation().at(-1), {kind:'native', screen:'gallery', hash:'#content-news'});
+      } finally { f.close(); }
+    }
+  });
+}
 
 test('new article families accept only their published editions', () => {
   const f = fixture();

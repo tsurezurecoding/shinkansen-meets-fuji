@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "language": "de",
+  "features": [
+    {
+      "id": "guide",
+      "title": "Wann Sie den Fuji sehen können",
+      "description": "Auf welcher Seite Sie sitzen sollten und wie lange nach Tokio er erscheint.",
+      "path": "/de/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "FUJI"
+    },
+    {
+      "id": "castles",
+      "title": "Burgen vom Shinkansen aus",
+      "description": "Entdecken Sie Haupttürme und Burghügel auf Fotos aus dem Zugfenster.",
+      "path": "/de/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "BURGEN"
+    },
+    {
+      "id": "rivers",
+      "title": "Flüsse aus dem Shinkansen",
+      "description": "Zwischen Tokyo und Shin-Osaka: Flüsse und Brücken an der Tōkaidō-Linie.",
+      "path": "/de/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "FLÜSSE & BRÜCKEN"
+    },
+    {
+      "id": "arenani",
+      "title": "Was ist das da draußen?",
+      "description": "Teefelder, Gewächshäuser, riesige Netze und mehr – beginnen Sie mit dem, was Ihnen aufgefallen ist.",
+      "path": "/de/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "JAPANS ALLTAG"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "Japans Alltag",
+      "description": "Geschichten über Essen, Getränke und das Land.",
+      "path": "/de/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "JAPANS ALLTAG"
+    },
+    {
+      "id": "hanabi",
+      "title": "Feuerwerke aus dem Zugfenster",
+      "description": "Acht Feuerwerkveranstaltungen mit den passenden Streckenabschnitten und Zeiten.",
+      "path": "/de/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "FEUERWERK"
+    },
+    {
+      "id": "yakei",
+      "title": "Nächtliche Ausblicke",
+      "description": "Welcher Abschnitt ab Ihrer Abfahrtszeit im Dunkeln liegt.",
+      "path": "/de/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "NACH EINBRUCH DER DUNKELHEIT"
+    },
+    {
+      "id": "window_moments",
+      "title": "Wetter vom Shinkansen aus",
+      "description": "Regenbogen, Schnee, Wolken und Blitze: ein Himmel, den es nur einmal gibt.",
+      "path": "/de/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "MOMENTE AM ZUGFENSTER"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "Disney Shinkansen",
+      "description": "Ermitteln Sie, ob Ihr Zug daran vorbeifährt.",
+      "path": "/de/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "ZEITLICH BEGRENZT"
+    },
+    {
+      "id": "reflections",
+      "title": "Ihr Zug im Glas",
+      "description": "Wo Ihr eigener Shinkansen im Glas neben der Strecke erscheint.",
+      "path": "/de/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "SPIEGELUNGEN"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "Die Riesenräder finden",
+      "description": "Suchen Sie kleine Riesenräder hinter der Stadt.",
+      "path": "/de/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "RIESENRÄDER"
+    },
+    {
+      "id": "727_collection",
+      "title": "Die Sammlung der 727-Schilder",
+      "description": "Die Schilder, die entlang der Strecke immer wieder auftauchen.",
+      "path": "/de/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "SCHILDER AN DER STRECKE"
+    },
+    {
+      "id": "story_window",
+      "title": "Geschichten vor dem Zugfenster",
+      "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball und Shinkalion: Geschichten, die zu Orten in Japan führen.",
+      "path": "/de/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "Fabriken vor dem Zugfenster",
+      "description": "Entdecken Sie vom Shinkansen aus, wo Getränke, Süßigkeiten und Kosmetik für den Alltag entstehen.",
+      "path": "/de/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "Vier weitere Flussquerungen vom Shinkansen aus",
+      "path": "/de/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "Drei weitere Fabriken in Odawara und Shiga entdecken",
+      "path": "/de/factories.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "kind": "story",
+      "title": "Die echten Züge hinter Shinkalion",
+      "path": "/de/stories/shinkalion.html"
+    }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
+  ]
+}

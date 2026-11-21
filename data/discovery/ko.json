@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "language": "ko",
+  "features": [
+    {
+      "id": "guide",
+      "title": "후지산이 보이는 시간",
+      "description": "어느 쪽에 앉을지, 도쿄 출발 후 얼마나 지나야 할지.",
+      "path": "/ko/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "후지산"
+    },
+    {
+      "id": "castles",
+      "title": "신칸센에서 보이는 성",
+      "description": "차창 사진으로 천수각과 성이 있는 언덕을 살펴보세요.",
+      "path": "/ko/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "성"
+    },
+    {
+      "id": "rivers",
+      "title": "신칸센에서 바라보는 강",
+      "description": "도쿄에서 신오사카까지, 도카이도 신칸센을 따라 강과 다리를 찾아보세요.",
+      "path": "/ko/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "강과 다리"
+    },
+    {
+      "id": "arenani",
+      "title": "창밖의 저것은 무엇일까요?",
+      "description": "차밭과 온실, 거대한 그물과 더 많은 풍경. 눈길을 끈 것부터 시작하세요.",
+      "path": "/ko/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "일본의 일상"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "일본의 일상",
+      "description": "음식과 음료, 전원 이야기.",
+      "path": "/ko/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "일본의 일상"
+    },
+    {
+      "id": "hanabi",
+      "title": "차창에서 보는 불꽃놀이",
+      "description": "불꽃놀이 8개 행사와 관람 구간·시간을 안내합니다.",
+      "path": "/ko/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "불꽃놀이"
+    },
+    {
+      "id": "yakei",
+      "title": "밤 풍경",
+      "description": "출발 시간을 기준으로 어두워지는 구간을 확인하세요.",
+      "path": "/ko/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "어두워진 뒤"
+    },
+    {
+      "id": "window_moments",
+      "title": "신칸센에서 보는 날씨",
+      "description": "무지개와 눈, 구름, 번개. 한 번뿐인 하늘입니다.",
+      "path": "/ko/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "차창의 순간들"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "디즈니 신칸센",
+      "description": "내 열차가 마주칠지 확인해 보세요.",
+      "path": "/ko/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "기간 한정"
+    },
+    {
+      "id": "reflections",
+      "title": "유리에 비친 내 열차",
+      "description": "철길 옆 유리창에 내가 탄 신칸센이 나타나는 곳.",
+      "path": "/ko/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "반사 풍경"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "관람차 찾기",
+      "description": "도시 너머 작은 관람차를 찾아보세요.",
+      "path": "/ko/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "관람차"
+    },
+    {
+      "id": "727_collection",
+      "title": "727 간판 모음",
+      "description": "노선을 따라 계속 나타나는 간판.",
+      "path": "/ko/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "철길 옆 간판"
+    },
+    {
+      "id": "story_window",
+      "title": "차창 너머로 이어지는 이야기",
+      "description": "고질라, SHŌGUN, 유루캠△, 드래곤볼, 신카리온. 일본의 장소로 이어지는 이야기들.",
+      "path": "/ko/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "신칸센 창밖의 공장들",
+      "description": "커피부터 화장품까지, 신칸센 창밖에서 익숙한 생활용품의 생산지를 찾아보세요.",
+      "path": "/ko/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "신칸센에서 만나는 강 네 곳 추가",
+      "path": "/ko/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "오다와라와 시가의 공장 세 곳 추가",
+      "path": "/ko/factories.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "kind": "story",
+      "title": "신카리온에 등장하는 실제 신칸센을 만나다",
+      "path": "/ko/stories/shinkalion.html"
+    }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
+  ]
+}

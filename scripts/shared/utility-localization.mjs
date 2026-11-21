@@ -1,4 +1,5 @@
 import {stripStoryWindowLinks} from './story-window.mjs';
+import {stripContentNews} from './content-news.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -55,7 +56,7 @@ export function utilitySnapshot(root, route) {
     if (status && answer) status.before(answer);
     return dom;
   }
-  const dom = new JSDOM(stripStoryWindowLinks(readSiteSource(root, 'en/' + route)), {
+  const dom = new JSDOM(stripContentNews(stripStoryWindowLinks(readSiteSource(root, 'en/' + route))), {
     url: `https://www.michikusa-travel.com/en/${route}`, runScripts: 'outside-only',
   });
   if (route === 'live/index.html') {

@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const SITE_RUNTIME_ASSETS = Object.freeze([
   'style.css', 'spot-media-gallery.css', 'spot-page-shared-data.js',
   'spot-page-shared.js', 'spot-media-gallery.js', 'spot-map.js',
-  'android-app-invite.js', 'site-chrome.js',
+  'android-app-invite.js', 'site-chrome.js', 'content-news.css', 'content-news.js',
 ]);
 export const SITE_RUNTIME_BYTE_BUDGET = 16 * 1024;
 export function isSharedUiAsset(file) {

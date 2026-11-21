@@ -42,7 +42,7 @@ test('generation discovers locale bundles and check never repairs missing or sta
   assert.equal(missing.changed, true);
   await assert.rejects(stat(missing.outputPath), { code: 'ENOENT' });
   const generated = await generateSiteRuntime({ appDir });
-  assert.equal(generated.assets, 10);
+  assert.equal(generated.assets, Object.keys(fixture()).length);
   const output = await readFile(generated.outputPath, 'utf8');
   const timestamp = (await stat(generated.outputPath)).mtimeMs;
   assert.equal((await generateSiteRuntime({ appDir })).changed, false);

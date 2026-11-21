@@ -3,6 +3,8 @@
   "version": 1,
   "assets": {
     "android-app-invite.js": "dac49386",
+    "content-news.css": "233757c8",
+    "content-news.js": "abe43194",
     "shared-ui/de.cards.js": "ccf1cfbe",
     "shared-ui/de.rail-castles.js": "cb8782c3",
     "shared-ui/de.rail-drinks.js": "2d6709d9",

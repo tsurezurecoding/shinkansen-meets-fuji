@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "language": "th",
+  "features": [
+    {
+      "id": "guide",
+      "title": "คุณมองเห็นภูเขาไฟฟูจิได้เมื่อไร",
+      "description": "ควรนั่งฝั่งไหน และหลังออกจากโตเกียวนานเท่าไร",
+      "path": "/th/guide.html",
+      "image": "/images/thumbs/20240211_Mt.Fuji.webp",
+      "label": "ภูเขาไฟฟูจิ"
+    },
+    {
+      "id": "castles",
+      "title": "ปราสาทจากชินคันเซ็น",
+      "description": "ชมภาพหอปราสาทและเนินที่ตั้งปราสาทจากหน้าต่างรถไฟ",
+      "path": "/th/castles.html",
+      "image": "/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+      "label": "ปราสาท"
+    },
+    {
+      "id": "rivers",
+      "title": "แม่น้ำจากหน้าต่างชินคันเซ็น",
+      "description": "จากโตเกียวถึงชินโอซาก้า ชมแม่น้ำและสะพานตามแนวรถไฟชินคันเซ็นสายโทไคโด",
+      "path": "/th/rivers.html",
+      "image": "/images/rivers/tama.jpg",
+      "label": "แม่น้ำและสะพาน"
+    },
+    {
+      "id": "arenani",
+      "title": "นั่นอะไรอยู่ข้างนอก?",
+      "description": "ไร่ชา เรือนกระจก ตาข่ายขนาดใหญ่ และอีกมากมาย เริ่มจากสิ่งที่สะดุดตาคุณ",
+      "path": "/th/arenani.html",
+      "image": "/images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp",
+      "label": "ญี่ปุ่นในชีวิตประจำวัน"
+    },
+    {
+      "id": "everyday_japan",
+      "title": "ญี่ปุ่นในชีวิตประจำวัน",
+      "description": "เรื่องราวของอาหาร เครื่องดื่ม และชนบท",
+      "path": "/th/everyday-japan.html",
+      "image": "/images/foods/onigiri.webp",
+      "label": "ญี่ปุ่นในชีวิตประจำวัน"
+    },
+    {
+      "id": "hanabi",
+      "title": "ดอกไม้ไฟจากหน้าต่าง",
+      "description": "แปดงานเทศกาล พร้อมช่วงทางและเวลาที่ควรมอง",
+      "path": "/th/hanabi.html",
+      "image": "/images/thumbs/hanabi-hero-pd.webp",
+      "label": "ดอกไม้ไฟ"
+    },
+    {
+      "id": "yakei",
+      "title": "วิวยามค่ำคืน",
+      "description": "ดูว่าช่วงไหนมืดจากเวลาออกเดินทางของคุณ",
+      "path": "/th/yakei.html",
+      "image": "/images/thumbs/20260629_tokyo_tower_night_michikusa.webp",
+      "label": "หลังฟ้ามืด"
+    },
+    {
+      "id": "window_moments",
+      "title": "สภาพอากาศที่เห็นจากชินคันเซ็น",
+      "description": "รุ้ง หิมะ เมฆ และฟ้าแลบ ท้องฟ้าที่เกิดขึ้นเพียงครั้งเดียว",
+      "path": "/th/window-moments.html",
+      "image": "/images/thumbs/wm-hero-snow.webp",
+      "label": "ช่วงเวลาริมหน้าต่าง"
+    },
+    {
+      "id": "sparkling_dreams",
+      "title": "ดิสนีย์ชินคันเซ็น",
+      "description": "ตรวจสอบว่าขบวนรถของคุณจะผ่านหรือไม่",
+      "path": "/th/sparkling-dreams.html",
+      "image": "/images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp",
+      "label": "ช่วงจำกัด"
+    },
+    {
+      "id": "reflections",
+      "title": "รถไฟของคุณในกระจก",
+      "description": "จุดที่เห็นชินคันเซ็นขบวนที่คุณนั่งสะท้อนในกระจกริมทาง",
+      "path": "/th/reflections.html",
+      "image": "/images/reflections/shinagawa-1.webp",
+      "label": "ภาพสะท้อน"
+    },
+    {
+      "id": "ferris_wheels",
+      "title": "ตามหาชิงช้าสวรรค์",
+      "description": "มองหาชิงช้าสวรรค์เล็ก ๆ ที่อยู่ไกลออกไปจากเมือง",
+      "path": "/th/ferris-wheels.html",
+      "image": "/images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp",
+      "label": "ชิงช้าสวรรค์"
+    },
+    {
+      "id": "727_collection",
+      "title": "คอลเลกชันป้าย 727",
+      "description": "ป้ายที่ปรากฏซ้ำ ๆ ตามเส้นทาง",
+      "path": "/th/727-collection.html",
+      "image": "/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "label": "ป้ายริมทางรถไฟ"
+    },
+    {
+      "id": "story_window",
+      "title": "เรื่องราวที่เชื่อมต่อผ่านหน้าต่าง",
+      "description": "ก็อดซิลล่า SHŌGUN ยูรุแคมป์△ ดราก้อนบอล และชินคาเลียน เรื่องราวที่พาไปพบสถานที่ต่าง ๆ ในญี่ปุ่น",
+      "path": "/th/stories/index.html",
+      "image": "/images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "label": "STORIES"
+    },
+    {
+      "id": "factories",
+      "title": "โรงงานนอกหน้าต่างชินคันเซ็น",
+      "description": "มองอาคารนอกหน้าต่าง แล้วรู้จักแหล่งผลิตของคุ้นเคยในชีวิตประจำวัน",
+      "path": "/th/factories.html",
+      "image": "/images/factories/kirin-640.webp",
+      "label": "FACTORIES"
+    }
+  ],
+  "news": [
+    {
+      "id": "rivers-four-crossings",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "เพิ่มแม่น้ำอีกสี่สายที่มองเห็นจากชินคันเซ็น",
+      "path": "/th/rivers.html"
+    },
+    {
+      "id": "factories-odawara-shiga",
+      "date": "2026-11-19",
+      "kind": "feature",
+      "title": "เพิ่มโรงงานสามแห่งในโอดาวาระและจังหวัดชิงะ",
+      "path": "/th/factories.html"
+    },
+    {
+      "id": "story-shinkalion",
+      "date": "2026-11-08",
+      "kind": "story",
+      "title": "พบรถไฟของจริงที่เป็นต้นแบบของชินคาเลียน",
+      "path": "/th/stories/shinkalion.html"
+    }
+  ],
+  "newsBaseline": [
+    "solar-ark-section-correction",
+    "spot-video-selection",
+    "rivers-four-crossings",
+    "factories-odawara-shiga",
+    "tamaruya-wasabi-sign-added",
+    "kizakura-sign-added",
+    "story-shinkalion",
+    "artwork-727-hunt"
+  ]
+}

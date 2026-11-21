@@ -1,4 +1,5 @@
 import {withPageAndroidAppInvite} from './android-app-invite.mjs';
+import {withContentNews} from './content-news.mjs';
 import { fileURLToPath } from 'node:url';
 import { finalizeSiteChrome } from './site-chrome.mjs';
 import { assetVersion } from './asset-version.mjs';
@@ -10,6 +11,7 @@ export const publicPath = route => route === 'index.html' ? '' : route.replace('
 export function withUtilityLocales(html, file) {
   const route = stripEdition(file);
   if (!UTILITY_ROUTES.includes(route)) return html;
+  html = withContentNews(html, file);
   html = html.replaceAll('["ja","en","fr","zh-Hant"]', JSON.stringify(languages));
   const prefix = /<base\b/.test(html) ? '' : '../'.repeat(file.split('/').length - 1);
   html = html.replace(new RegExp('\\s*<link\\b[^>]*rel="alternate"[^>]*hreflang="(?:' + languages.filter(lang => !['ja', 'en'].includes(lang)).join('|') + ')"[^>]*>', 'g'), '');
