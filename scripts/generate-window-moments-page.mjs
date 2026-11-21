@@ -1,3 +1,4 @@
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import { withUtilityLocales } from './shared/utility-locales.mjs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
@@ -645,7 +646,7 @@ ${t.window_moments_page}
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html');
   const file = lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html';
-  const html = withUtilityLocales(enhanceContentHead(render(lang), file, root), file);
+  const html = withUtilityLocales(enhanceContentHead(withFeatureMedia(render(lang), file), file, root), file);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('window-moments page out of date: ' + dest);
   } else {

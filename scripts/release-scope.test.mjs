@@ -25,6 +25,22 @@ test('news registrations check both client projections and embedded articles add
   assert.equal(articles.scope, 'content-news');
   assert.ok(articles.commands.some(args => args.includes('scripts/app-embedded.test.mjs')));
   assert.equal(chooseReleaseScope([...files, change('app.js')]).scope, 'unmapped');
+  const sharedHeader = chooseReleaseScope([...files, change('site-runtime-loader.js'), change('spots/fuji.html')], {
+    assetVersionOnly: file => file === 'spots/fuji.html',
+  });
+  assert.equal(sharedHeader.scope, 'content-news');
+  assert.ok(sharedHeader.commands.some(args => args.includes('scripts/site-runtime-loader.test.mjs')));
+});
+
+test('feature media releases only the opted-in articles and version-only changes in other routes', () => {
+  const files = [{ path: 'feature-media.js', status: 'A' }, change('stories/shogun.html'), change('fr/guide.html')];
+  const options = { assetVersionOnly: file => file === 'fr/guide.html' };
+  const plan = chooseReleaseScope(files, options);
+  assert.equal(plan.scope, 'feature-media');
+  assert.ok(needsPagesCandidate(plan));
+  assert.ok(plan.commands.some(command => command.includes('scripts/feature-media.test.mjs')));
+  assert.notEqual(chooseReleaseScope(files, { assetVersionOnly: () => false }).scope, plan.scope);
+  assert.notEqual(chooseReleaseScope([...files, change('data.js')], options).scope, plan.scope);
 });
 
 test('river and factory photo updates check both guides and keep unrelated assets and metadata out of scope', () => {

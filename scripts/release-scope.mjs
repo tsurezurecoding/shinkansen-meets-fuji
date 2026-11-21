@@ -1207,8 +1207,11 @@ function discoveryScope(changes, options) {
     'content-news.js', 'content-news.css', 'scripts/content-news.test.mjs'];
   if (!sources.some(file => files.has(file))) return null;
   const bridge = files.has('app-embedded.js');
+  const header = files.has('site-runtime-loader.js');
   const owned = new Set([...sources, 'ARCHITECTURE.md', 'scripts/shared/utility-locales.mjs', 'scripts/shared/utility-localization.mjs',
     'scripts/generate-content-manifest.mjs', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (header) for (const file of ['site-runtime-loader.js', 'site-runtime.json', 'scripts/generate-site-runtime.mjs',
+    'scripts/generate-site-runtime.test.mjs']) owned.add(file);
   if (files.has('scripts/shared/story-window.mjs') && options.fileContents) {
     const [before, after] = options.fileContents('scripts/shared/story-window.mjs');
     if (after.replace('href="${prefix}${storyFile(lang)}" hreflang="${lang}" data-cta-track="zukan_theme_click"',
@@ -1225,10 +1228,16 @@ function discoveryScope(changes, options) {
     owned.add('package.json');
   }
   if (!changes.every(({path: file, status}) => ['A', 'M'].includes(status) && (owned.has(file) || discoveryFeed.test(file) ||
-    status === 'M' && (discoveryPage.test(file) || bridge && (discoveryArticle.test(file) || file.endsWith('.html') && options.assetVersionOnly?.(file)))))) return null;
+    status === 'M' && (discoveryPage.test(file) || bridge && discoveryArticle.test(file) ||
+      (bridge || header) && file.endsWith('.html') && options.assetVersionOnly?.(file))))) return null;
   const tests = ['scripts/content-news.test.mjs', 'scripts/zukan-adsense.test.mjs', 'scripts/release-scope.test.mjs'];
   const routes = ['index.html', 'zukan.html'];
   const articles = [];
+  if (header) {
+    tests.push('scripts/site-runtime-loader.test.mjs', 'scripts/generate-site-runtime.test.mjs');
+    routes.push('start.html', 'live/index.html', 'spots/fuji.html');
+    articles.push(node('scripts/generate-site-runtime.mjs', '--check'));
+  }
   if (bridge) {
     tests.push('scripts/app-embedded.test.mjs', 'scripts/factories-page.test.mjs');
     routes.push('rivers.html', 'factories.html');
@@ -1243,9 +1252,37 @@ function discoveryScope(changes, options) {
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
 }
 
+function featureMediaScope(changes, { assetVersionOnly }) {
+  const controllers = ['feature-media.js', 'feature-media.css', 'scripts/shared/feature-media.mjs'];
+  if (!changes.some(change => controllers.includes(change.path))) return null;
+  const generated = ['727', 'arenani', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei'];
+  const articles = ['727-collection', 'arenani', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei', 'reflections',
+    'stories/shinkalion', 'stories/shogun', 'stories/godzilla'].map(route => route + '.html');
+  const inputs = new Set([...controllers, ...articles, ...generated.map(name => 'scripts/generate-' + name + '-page.mjs'),
+    'spot-page-shared.js', 'sparkling-dreams.js', spotValidator, 'scripts/validate-sparkling-dreams.mjs',
+    'scripts/generate-spot-pages.mjs', 'scripts/generate-story-window-pages.mjs', 'scripts/generate-content-manifest.mjs',
+    'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.mjs',
+    'scripts/release-scope.test.mjs', 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json']);
+  if (!changes.every(change => ['A', 'M'].includes(change.status) && (inputs.has(change.path) ||
+    (change.status === 'M' && change.path.endsWith('.html') && assetVersionOnly?.(change.path))))) return null;
+  return {
+    scope: 'feature-media', needsDependencies: true, pagesCandidate: true,
+    reason: 'Validate Japanese on-demand embeds, common spot photos, generated editions and distribution assets.',
+    commands: [
+      node('--check', 'feature-media.js'), node('--check', 'sparkling-dreams.js'), node('--check', 'spot-page-shared.js'),
+      node('--test', 'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs'),
+      ...generated.map(name => node('scripts/generate-' + name + '-page.mjs', '--check')),
+      node('scripts/generate-story-window-pages.mjs', '--lang', 'ja', '--check'), node('scripts/validate-story-window.mjs'),
+      node('scripts/validate-sparkling-dreams.mjs'), node(spotValidator), node('scripts/generate-site-runtime.mjs', '--check'),
+      node('scripts/generate-spot-page-runtime.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'),
+      node('scripts/check-content-manifest.mjs'),
+    ],
+  };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = discoveryScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
