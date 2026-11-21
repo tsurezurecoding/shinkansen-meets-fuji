@@ -55,8 +55,10 @@
   // Android is a necessary platform condition, not an eligibility decision.
   // The module still owns browser, install, dismissal and privacy checks.
   var invite = document.getElementById('mado-android-invite-config') && /Android/i.test(navigator.userAgent || '');
+  var newsHeader = !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB &&
+    document.querySelector('.topbar, .live-header');
   // One small request per document, independent of how many common modules it uses.
-  var manifest = location.protocol === 'file:' || (!thin && !chrome && !invite) ? Promise.resolve({}) : fetch(base + 'site-runtime.json', { cache: 'no-cache' }).then(function (r) {
+  var manifest = location.protocol === 'file:' || (!thin && !chrome && !invite && !newsHeader) ? Promise.resolve({}) : fetch(base + 'site-runtime.json', { cache: 'no-cache' }).then(function (r) {
     if (!r.ok) throw new Error('Site runtime manifest unavailable');
     return r.json();
   }).then(readVersions).catch(function () { return {}; });
@@ -77,8 +79,7 @@
       }));
     }
     if (invite) optional.push(load('android-app-invite.js', versions));
-    if (chrome && chrome.mounts && chrome.mounts.some(function (mount) { return mount.kind === 'header'; }) &&
-        !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB) {
+    if (newsHeader) {
       news.forEach(function (file) {
         if (!document.querySelector('[data-mado-news-asset="' + file + '"]')) optional.push(load(file, versions));
       });
