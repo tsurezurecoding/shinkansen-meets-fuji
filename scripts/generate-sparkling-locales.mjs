@@ -10,6 +10,7 @@ import { withSparklingLocales } from './shared/sparkling-locales.mjs';
 import { UTILITY_ROUTES, publicPath } from './shared/utility-locales.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const origin='https://www.michikusa-travel.com';
@@ -59,6 +60,6 @@ for(const lang of requestedLang?[requestedLang]:SPARKLING_LOCALES){
  scripts[2].src='../'+`${lang}/sparkling-data.js`+'?v='+assetVersion(`${lang}/sparkling-data.js`);
  doc.querySelector('script[src*="data-runtime.js"]').after(...scripts);
  for(const el of doc.querySelectorAll('script[src],link[rel=stylesheet]')){const attr=el.tagName==='SCRIPT'?'src':'href',value=el.getAttribute(attr);if(/^(?:https?:|\/\/)/.test(value)||!/\.(?:js|css)\?v=/.test(value))continue;const asset=new URL(value,doc.baseURI).pathname.slice(1);el.setAttribute(attr,value.replace(/\?v=[^&#]+/,`?v=${assetVersion(asset)}`));}
- write(file,withSparklingLocales(dom.serialize(),file));dom.window.close();
+ write(file,withSparklingLocales(withFeatureMedia(dom.serialize(),file),file));dom.window.close();
 }
 console.log(`Disney locales: ${SPARKLING_LOCALES.length} translated calculators with preserved media attribution.`);

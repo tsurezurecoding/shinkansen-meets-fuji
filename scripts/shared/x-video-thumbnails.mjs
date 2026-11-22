@@ -64,7 +64,38 @@ const thumbnails = new Map([
   ['2091662293058953395', 'https://pbs.twimg.com/amplify_video_thumb/2091661542337220608/img/ElOgkru47eWcu29l.jpg?name=small'],
 ]);
 
+const compactRatios = new Map([
+  ['1540760036657737728', '1 / 1'],
+  ['1554787647805018118', '1 / 1'],
+  ['1687101353280389120', '197 / 180'],
+  ['1687777523978186752', '1 / 1'],
+  ['1730771332407976439', '1 / 1'],
+  ['1766963730494181879', '1 / 1'],
+  ['1771665809015750687', '1 / 1'],
+  ['1807362136295051274', '1 / 1'],
+  ['1819742476909052349', '1 / 1'],
+  ['1979531116848799804', '1 / 1'],
+  ['2013542376887984274', '1 / 1'],
+  ['2016315688563179757', '1 / 1'],
+  ['2048583311069761559', '1 / 1'],
+  ['2073360185918365881', '1 / 1'],
+  ['2078448699014074615', '1 / 1'],
+  ['2083503760480022644', '1 / 1'],
+  ['2088816264529772734', '30 / 17'],
+  ['2089317353054158913', '30 / 17'],
+  ['2091662293058953395', '30 / 17'],
+]);
+
+function postId(url) {
+  return /^https:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)(?:[/?#]|$)/i.exec(url)?.[1];
+}
+
 export function xVideoThumbnail(url) {
-  const id = /^https:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)(?:[/?#]|$)/i.exec(url)?.[1];
-  return thumbnails.get(id);
+  return thumbnails.get(postId(url));
+}
+
+// X draws portrait videos inside a square in its media-only player.
+export function xVideoRatio(url) {
+  const id = postId(url);
+  return thumbnails.has(id) && id !== '2081240004756381998' ? compactRatios.get(id) ?? '16 / 9' : '';
 }

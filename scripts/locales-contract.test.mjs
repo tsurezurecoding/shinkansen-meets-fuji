@@ -242,11 +242,14 @@ test('fireworks placeholders localize while deferred posts and video titles reta
   assert.ok([...doc.querySelectorAll('[data-placeholder]')].every(el=>el.dataset.placeholder.startsWith('FR ')));
   assert.deepEqual([...doc.querySelectorAll('.hb-media-frame template')].map(el=>el.innerHTML),posts);
   dom.window.IntersectionObserver=class { observe() {} };
-  dom.window.eval(read('hanabi.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+  dom.window.eval(read('feature-media.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   for (const [i,embed] of [...doc.querySelectorAll('[data-embed="youtube"]')].entries()) {
     embed.querySelector('button').click();const iframe=embed.querySelector('iframe');
     assert.equal(iframe.title,videos[i].title);
-    assert.equal(iframe.src,'https://www.youtube-nocookie.com/embed/'+videos[i].id+'?autoplay=1');
+    const url=new URL(iframe.src);
+    assert.equal(url.origin,'https://www.youtube-nocookie.com');
+    assert.equal(url.pathname,'/embed/'+videos[i].id);
+    assert.equal(url.searchParams.get('autoplay'),'1');
   }
   dom.window.close();
 });
@@ -291,18 +294,17 @@ test('seasonal and reflection utility boundaries translate controls while preser
     assert.deepEqual([...doc.querySelectorAll('iframe[title]')].map(el => el.title), actualTitles);
     if (route === 'window-moments.html') {
       const videos = [...doc.querySelectorAll('[data-embed="youtube"]')].map(el => ({ id: el.dataset.videoId, title: el.dataset.videoTitle }));
-      const observations = [];
-      dom.window.IntersectionObserver = class { constructor(callback) { this.callback = callback; } observe(target) { observations.push({target, observer:this}); } unobserve() {} };
-      dom.window.twttr = { widgets: { load: () => Promise.resolve() } };
-      dom.window.eval(read('window-moments.js'));
-      for (const card of doc.querySelectorAll('[data-embed="youtube"]')) card.querySelector('button').click();
-      assert.deepEqual([...doc.querySelectorAll('.wm-facade iframe')].map(el => ({id:new URL(el.src).pathname.split('/').pop(), title:el.title})), videos);
+      dom.window.IntersectionObserver = class { observe() {} };
+      dom.window.eval(read('feature-media.js'));
+      for (const [i, card] of [...doc.querySelectorAll('[data-embed="youtube"]')].entries()) {
+        card.querySelector('button').click();
+        const iframe = card.querySelector('iframe');
+        assert.deepEqual({id:new URL(iframe.src).pathname.split('/').pop(), title:iframe.title}, videos[i]);
+        assert.equal(doc.querySelectorAll('.wm-facade iframe').length, 1);
+      }
       for (const el of doc.querySelectorAll('[data-placeholder]')) assert.match(el.dataset.placeholder, /^FR /);
-      for (const {target, observer} of observations) observer.callback([{target, isIntersecting:true}]);
-      await new Promise(setImmediate);
-      assert.equal(doc.querySelectorAll('template').length, 0);
-      assert.equal(doc.querySelectorAll('.twitter-tweet').length, posts.length);
-      for (const el of doc.querySelectorAll('.twitter-tweet')) assert.ok(!el.textContent.includes('FR '));
+      assert.deepEqual([...doc.querySelectorAll('template')].map(el => el.innerHTML), posts);
+      assert.equal(doc.querySelectorAll('.twitter-tweet').length, 0);
     } else {
       for (const el of doc.querySelectorAll('[data-label]')) assert.equal(el.dataset.label, 'FR When');
     }

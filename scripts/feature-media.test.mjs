@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
 import { withFeatureMedia } from './shared/feature-media.mjs';
-import { xVideoThumbnail } from './shared/x-video-thumbnails.mjs';
+import { xVideoRatio, xVideoThumbnail } from './shared/x-video-thumbnails.mjs';
 
 const features = [
   ['sparkling-dreams', 12, 2], ['hanabi', 22, 4], ['window-moments', 6, 10], ['arenani', 4, 0],
@@ -34,6 +34,9 @@ test('Japanese feature controls keep the credited sources and official embed des
         assert.ok(poster, link.href);
         assert.equal(poster.src, xVideoThumbnail(link.href));
         assert.equal(new URL(poster.src).hostname, 'pbs.twimg.com');
+        const ratio = xVideoRatio(link.href);
+        assert.equal(link.parentElement.hasAttribute('data-feature-x-video'), Boolean(ratio));
+        if (ratio) assert.equal(link.parentElement.style.getPropertyValue('--feature-clip-ratio'), ratio);
         const source = link.parentElement.querySelector('template').content.querySelector('blockquote.twitter-tweet');
         assert.ok([...source.querySelectorAll('a')].some(a => a.href.startsWith(link.href)), link.href);
         assert.ok([...doc.links].some(a => a !== link && a.href.startsWith(link.href)), 'visible credit ' + link.href);
@@ -57,6 +60,8 @@ test('Japanese feature controls keep the credited sources and official embed des
     } finally { dom.window.close(); }
     const english = fs.readFileSync(new URL('../en/' + file, import.meta.url), 'utf8');
     assert.equal(withFeatureMedia(english, 'en/' + file), english);
-    assert.ok(!english.includes('feature-media.js'), 'English ' + route);
+    if (english.includes('feature-post-open') || english.includes(' srcdoc=')) {
+      assert.match(english, /"loading":"Loading…"/, 'English ' + route);
+    }
   }
 });
