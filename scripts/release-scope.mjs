@@ -1334,7 +1334,7 @@ function featureMediaScope(changes, { assetVersionOnly, fileContents }) {
 
 function spotNewsHeaderScope(changes, { assetVersionOnly }) {
   const inputs = new Set(['site-runtime-loader.js', 'scripts/site-runtime-loader.test.mjs',
-    'content-news.js', 'scripts/generate-discovery.mjs', 'data/discovery/local-news.js',
+    'content-news.js', 'scripts/generate-discovery.mjs', 'data/discovery/local-news.js', 'site-runtime.json',
     'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json']);
   if (!changes.some(change => change.path === 'site-runtime-loader.js')) return null;
   if (!changes.every(({path: file, status}) =>
