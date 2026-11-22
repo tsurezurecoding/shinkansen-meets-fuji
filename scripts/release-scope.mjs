@@ -1332,9 +1332,24 @@ function featureMediaScope(changes, { assetVersionOnly, fileContents }) {
   };
 }
 
+function spotNewsHeaderScope(changes, { assetVersionOnly }) {
+  const inputs = new Set(['site-runtime-loader.js', 'scripts/site-runtime-loader.test.mjs',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json']);
+  if (!changes.some(change => change.path === 'site-runtime-loader.js')) return null;
+  if (!changes.every(({path: file, status}) => status === 'M' &&
+    (inputs.has(file) || file.endsWith('.html') && assetVersionOnly?.(file)))) return null;
+  return {scope:'spot-news-header', needsDependencies:true, pagesCandidate:true,
+    reason:'Verify dynamically rendered spot headers, the shared loader and distributed asset versions.',
+    commands:[node('--check', 'site-runtime-loader.js'),
+      node('--test', 'scripts/site-runtime-loader.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('scripts/generate-site-runtime.mjs', '--check'),
+      node('scripts/validate-site-navigation.mjs', '--route', 'spots/fuji.html'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = spotNewsHeaderScope(inputs, options) || timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
