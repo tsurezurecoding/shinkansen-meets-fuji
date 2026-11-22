@@ -220,11 +220,6 @@
     if (updateBell) updateBell(items);
   }
   for (const link of links) {
-    const kind = kindLabel(lang, link.dataset.newsKind);
-    if (kind) {
-      const text = link.querySelector('.content-news-text');
-      text.before(node('small', 'content-news-kind', kind));
-    }
     function activate(event) {
       if (event.type !== 'auxclick' || event.button === 1) markRead(link.dataset.newsId);
     }
