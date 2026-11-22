@@ -208,7 +208,7 @@
     try { localStorage.setItem(readPrefix + id, '1'); } catch { /* Use the current page state. */ }
     refresh();
   }
-  const updateBell = root && createBell({lang, guideUrl: new URL(prefix + 'zukan.html#content-news', root).href,
+  const updateBell = root && createBell({lang, guideUrl: new URL(prefix + 'index.html#content-news', root).href,
     createLink(item) {
       const a = node('a');
       a.href = new URL(item.path, root).href;
@@ -220,11 +220,6 @@
     if (updateBell) updateBell(items);
   }
   for (const link of links) {
-    const kind = kindLabel(lang, link.dataset.newsKind);
-    if (kind) {
-      const text = link.querySelector('.content-news-text');
-      text.before(node('small', 'content-news-kind', kind));
-    }
     function activate(event) {
       if (event.type !== 'auxclick' || event.button === 1) markRead(link.dataset.newsId);
     }

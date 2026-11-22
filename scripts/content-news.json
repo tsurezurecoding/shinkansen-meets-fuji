@@ -10,15 +10,6 @@
     }
   },
   {
-    "id": "spot-video-selection",
-    "date": "2026-11-19",
-    "kind": "function",
-    "route": "spots/ibuki.html",
-    "titles": {
-      "ja": ["記事で見たい車窓動画を", "選んで再生"]
-    }
-  },
-  {
     "id": "rivers-four-crossings",
     "date": "2026-11-19",
     "kind": "feature",
