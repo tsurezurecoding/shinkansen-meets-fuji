@@ -12,6 +12,15 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('spot news header scope accepts only loader dependencies and version-only HTML changes', () => {
+  const files = ['site-runtime-loader.js', 'scripts/site-runtime-loader.test.mjs',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json', 'spots/fuji.html'].map(change);
+  const plan = chooseReleaseScope(files, {assetVersionOnly: file => file === 'spots/fuji.html'});
+  assert.equal(plan.scope, 'spot-news-header');
+  assert.ok(plan.commands.some(command => command.includes('scripts/site-runtime-loader.test.mjs')));
+  assert.equal(chooseReleaseScope([...files, change('data.js')], {assetVersionOnly: () => true}).scope, 'unmapped');
+});
+
 test('news registrations check both client projections and embedded articles add bridge validation', () => {
   const files = ['scripts/content-news.json', 'data/discovery/ja.json', 'index.html', 'en/zukan.html', 'content-manifest.json'].map(change);
   const news = chooseReleaseScope(files);
