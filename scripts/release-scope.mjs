@@ -1282,29 +1282,48 @@ function discoveryScope(changes, options) {
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
 }
 
-function featureMediaScope(changes, { assetVersionOnly }) {
+function featureMediaScope(changes, { assetVersionOnly, fileContents }) {
   const controllers = ['feature-media.js', 'feature-media.css', 'scripts/shared/feature-media.mjs', 'scripts/shared/x-video-thumbnails.mjs'];
   if (!changes.some(change => controllers.includes(change.path))) return null;
   const generated = ['727', 'arenani', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei'];
   const articles = ['727-collection', 'arenani', 'hanabi', 'sparkling-dreams', 'window-moments', 'yakei', 'reflections',
     'stories/shinkalion', 'stories/shogun', 'stories/godzilla'].map(route => route + '.html');
-  const inputs = new Set([...controllers, ...articles, ...generated.map(name => 'scripts/generate-' + name + '-page.mjs'),
-    'spot-page-shared.js', 'sparkling-dreams.js', spotValidator, 'scripts/validate-sparkling-dreams.mjs',
+  const editions = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?/;
+  const generatedFormatting = /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:castles|ferris-wheels|jr-pass-fuji)\.html$/;
+  function versionOrFormatting(file) {
+    if (assetVersionOnly?.(file)) return true;
+    if (!fileContents || !(generatedFormatting.test(file) || file === 'en/guide.html')) return false;
+    const [before, after] = fileContents(file).map(content => content.toString()
+      .replace(/\?v=[a-f0-9]{8}(?=["'&<\s])/g, '?v=VERSION')
+      .replace(/^[ \t]*\r?\n/gm, '')
+      .replace(/href="\.\//g, 'href="'));
+    return before === after;
+  }
+  const inputs = new Set([...controllers, ...generated.map(name => 'scripts/generate-' + name + '-page.mjs'),
+    'spot-page-shared.js', 'spot-media-gallery.css', 'sparkling-dreams.js', spotValidator, 'scripts/validate-sparkling-dreams.mjs',
     'scripts/generate-spot-pages.mjs', 'scripts/generate-spot-page-shared-data.mjs',
     'scripts/generate-story-window-pages.mjs', 'scripts/generate-content-manifest.mjs',
+    'scripts/generate-castle-locales.mjs', 'scripts/generate-utility-locales.mjs', 'scripts/generate-sparkling-locales.mjs',
+    'scripts/shared/utility-localization.mjs', 'scripts/shared/sparkling-localization.mjs',
+    'scripts/locales-contract.test.mjs', 'scripts/validate-utility-locales.mjs', 'scripts/validate-sparkling-locales.mjs',
     'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.mjs',
     'scripts/release-scope.test.mjs', 'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json']);
   if (!changes.every(change => ['A', 'M'].includes(change.status) && (inputs.has(change.path) ||
-    (change.status === 'M' && (/^data\/spot-pages\/[\w-]+\.ja\.js$/.test(change.path) ||
-      (change.path.endsWith('.html') && assetVersionOnly?.(change.path))))))) return null;
+    (change.status === 'M' && (articles.includes(change.path.replace(editions, '')) ||
+      /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/spots\/[\w-]+\.html$/.test(change.path) ||
+      /^data\/spot-pages\/[\w-]+\.(?:ja|en)\.js$/.test(change.path) ||
+      (change.path.endsWith('.html') && versionOrFormatting(change.path))))))) return null;
   return {
     scope: 'feature-media', needsDependencies: true, pagesCandidate: true,
-    reason: 'Validate Japanese on-demand embeds, common spot photos, generated editions and distribution assets.',
+    reason: 'Validate compact video embeds, translated feature and spot editions, and distribution assets.',
     commands: [
       node('--check', 'feature-media.js'), node('--check', 'sparkling-dreams.js'), node('--check', 'spot-page-shared.js'),
-      node('--test', 'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('--test', 'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'scripts/content-news.test.mjs', 'scripts/factories-page.test.mjs'),
       ...generated.map(name => node('scripts/generate-' + name + '-page.mjs', '--check')),
-      node('scripts/generate-story-window-pages.mjs', '--lang', 'ja', '--check'), node('scripts/validate-story-window.mjs'),
+      node('scripts/generate-story-window-pages.mjs', '--check'), node('scripts/validate-story-window.mjs'),
+      node('scripts/generate-castle-locales.mjs', '--check'), node('scripts/generate-sparkling-locales.mjs', '--check'),
+      ...['window-moments.html', 'reflections.html'].map(route => node('scripts/generate-utility-locales.mjs', '--route', route, '--check')),
+      node('scripts/validate-utility-locales.mjs'), node('scripts/validate-sparkling-locales.mjs'),
       node('scripts/validate-sparkling-dreams.mjs'), node('scripts/generate-spot-page-shared-data.mjs', '--check'),
       node(spotValidator), node('scripts/generate-site-runtime.mjs', '--check'),
       node('scripts/generate-spot-page-runtime.mjs', '--check'), node('scripts/sync-asset-versions.mjs', '--check'),

@@ -345,6 +345,8 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
       assert.equal(new URL(frames[0].src).pathname, '/embed/' + videos[index].id);
       assert.equal(new URL(frames[0].src).searchParams.get('autoplay'), '1');
       assert.equal(frames[0].title, videos[index].title);
+      assert.equal(button.hidden, false);
+      frames[0].dispatchEvent(new dom.window.Event('load'));
       assert.deepEqual(buttons.filter(item => item.hidden), [button]);
     }
   } finally { dom.window.close(); }
@@ -352,7 +354,10 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
     const control = renderedArticle(id, lang);
     try {
       const doc = control.window.document;
-      assert.equal(doc.querySelector('link[rel="preload"][href$="chrome.css"], .spot-video-play'), null);
+      assert.equal(doc.querySelector('link[rel="preload"][href$="chrome.css"], .spot-page-video-card iframe'), null);
+      const button = doc.querySelector('.spot-video-play');
+      assert.ok(button);
+      button.click();
       assert.ok(doc.querySelector('.spot-page-video-card iframe[src*="youtube-nocookie.com/embed/"]'));
     } finally { control.window.close(); }
   }
@@ -365,7 +370,7 @@ test('Japanese Solar Ark preloads the imported CSS and activates only the select
   } finally { single.window.close(); }
 });
 
-test('Japanese videos across sections share one selection and load an X post only while selected', () => {
+test('Spot videos keep the selected thumbnail until the X video frame is ready', async () => {
   const dom = renderedArticle('ibuki', 'ja', false, page => {
     page.chapters = [{ id: 'video-chapter', kind: 'background', heading: '車窓', paragraphs: [],
       media: { ...page.media, videos: page.media.videos.slice(0, 1) } }];
@@ -381,18 +386,30 @@ test('Japanese videos across sections share one selection and load an X post onl
     post.click();
     const firstPost = doc.querySelector('.spot-x-post');
     assert.ok(firstPost.querySelector('blockquote a[href]'));
+    assert.ok(firstPost.classList.contains('spot-video-pending'));
+    assert.equal(post.hidden, false);
     const script = widgetScript();
     assert.ok(script);
     youtube.click();
+    doc.querySelector('.spot-page-video-card iframe').dispatchEvent(new dom.window.Event('load'));
     assert.ok(!firstPost.isConnected && !post.hidden && youtube.hidden);
     const rendered = [];
     dom.window.twttr = { widgets: { load: target => rendered.push(target) } };
     script.dispatchEvent(new dom.window.Event('load'));
+    await new Promise(resolve => setImmediate(resolve));
     assert.deepEqual(rendered, []);
     post.click();
-    assert.deepEqual(rendered, [doc.querySelector('.spot-x-post')]);
+    await new Promise(resolve => setImmediate(resolve));
+    const selected = doc.querySelector('.spot-x-post');
+    assert.deepEqual(rendered, [selected]);
     assert.equal(doc.querySelector('.spot-page-video-card iframe'), null);
     assert.equal(widgetScript(), script);
+    assert.ok(!post.hidden && !youtube.hidden);
+    const frame = doc.createElement('iframe');
+    frame.style.height = '156px';
+    frame.style.visibility = 'visible';
+    selected.append(frame);
+    await new Promise(resolve => setImmediate(resolve));
     assert.ok(post.hidden && !youtube.hidden);
   } finally { dom.window.close(); }
 });

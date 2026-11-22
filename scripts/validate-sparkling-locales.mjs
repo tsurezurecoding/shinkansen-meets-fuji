@@ -68,6 +68,8 @@ for(const lang of editions){
   const attributes=document=>[...document.querySelectorAll('*')].filter(el=>!el.closest(SPARKLING_EXCLUDE+',.utility-lang-menu')).flatMap(el=>SPARKLING_ATTRS.filter(attr=>el.hasAttribute(attr)).map(attr=>[el.tagName,attr,el.getAttribute(attr)]));
   compare(attributes(doc),attributes(sourceDoc).map(([tag,attr,value])=>[tag,attr,tr(value)]),label,'translated accessibility/media attributes differ');
   compare(sources(doc),sources(sourceDoc),label,'English PV/media URLs or original video titles changed');
+  const embedPosts=document=>[...document.querySelectorAll('.sd-x-frame template')].map(template=>template.innerHTML);
+  compare(embedPosts(doc),embedPosts(sourceDoc),label,'deferred X post markup changed');
   compare(credits(doc),credits(sourceDoc),label,'embedded post/byline/credit changed');counts.media+=sources(doc).length;
   assert(doc.querySelector('noscript')?.innerHTML.includes(dictionary[noscriptKey]),label,'noscript fallback untranslated');
   for(const a of doc.querySelectorAll('a[href]')){if(a.closest('blockquote,.utility-lang-menu')||/^(?:#|mailto:|tel:)/.test(a.getAttribute('href')))continue;const url=new URL(a.href);if(url.origin!==origin)continue;const route=url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'),'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');assert(url.pathname.startsWith(`/${supported(route).includes(lang)?lang:'en'}/`),label,'internal route leaves expected language '+url.pathname);}

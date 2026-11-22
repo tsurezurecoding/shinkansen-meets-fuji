@@ -14,8 +14,12 @@ export { UTILITY_ROUTES, LOCALES } from './utility-locales.mjs';
 export const ATTRS = [...TRANSLATABLE_ATTRIBUTES, 'placeholder'];
 export const FEATURE_UTILITY_ROUTES = ['window-moments.html', 'reflections.html'];
 // An iframe title is the source video's actual title, rather than interface copy.
-export const utilityAttributes = (el, route) => FEATURE_UTILITY_ROUTES.includes(route) ? [...ATTRS, 'data-placeholder', 'data-label'].filter(attr => attr !== 'title' || el.tagName !== 'IFRAME') : ATTRS;
-export const preservedUtilityText = (node, route) => FEATURE_UTILITY_ROUTES.includes(route) && Boolean(node.parentElement.closest('.wm-card-by'));
+export const utilityAttributes = (el, route) => {
+  if (!FEATURE_UTILITY_ROUTES.includes(route)) return ATTRS;
+  if (el.closest('.feature-post-open')) return [];
+  return [...ATTRS, 'data-placeholder', 'data-label'].filter(attr => attr !== 'title' || el.tagName !== 'IFRAME');
+};
+export const preservedUtilityText = (node, route) => FEATURE_UTILITY_ROUTES.includes(route) && Boolean(node.parentElement.closest('.wm-card-by,.feature-post-open'));
 export const EXTRA_COPY = ['Open {name} in Google Maps', '{name}. {hook} Look around {area}.', 'YOUR TRAIN', 'Mt. Fuji', 'Seats A/E', 'Use Audio Guide while riding', 'More:', 'More', 'Browse every view in this stretch', 'Learn more', 'Related'];
 export function englishTables(root) {
   function table(file, indent) {

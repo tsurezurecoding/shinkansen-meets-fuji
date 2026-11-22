@@ -86,10 +86,10 @@
     "shared-ui/zh-hant.shell.js": "8303da4d",
     "site-chrome.js": "d5554c31",
     "spot-map.js": "1ed79613",
-    "spot-media-gallery.css": "e492da6a",
+    "spot-media-gallery.css": "f4338e6b",
     "spot-media-gallery.js": "9f0b0fa6",
     "spot-page-shared-data.js": "84653b67",
-    "spot-page-shared.js": "52589b88",
+    "spot-page-shared.js": "e9e78a47",
     "style.css": "2117933f"
   }
 }

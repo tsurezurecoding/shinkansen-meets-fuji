@@ -7,6 +7,7 @@ import { setImmediate } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 import { UTILITY_ROUTES, LOCALES, utilityAttributes, FEATURE_UTILITY_ROUTES, preservedUtilityText, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
+import { withFeatureMedia } from './shared/feature-media.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 import { withUtilityLocales, publicPath } from './shared/utility-locales.mjs';
@@ -185,7 +186,8 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       const asset = new URL(href, doc.baseURI).pathname.slice(1).replace(/^en\/(utility-data\.js)$/, `${lang}/$1`);
       el.setAttribute(attr, href.replace(/\?v=[^&#]+/, `?v=${assetVersion(asset)}`));
     }
-    let html = withUtilityLocales(dom.serialize(), file);
+    const localized = dom.serialize();
+    const html = withUtilityLocales(FEATURE_UTILITY_ROUTES.includes(route) ? withFeatureMedia(localized, file) : localized, file);
     write(file, html);
     dom.window.close();
     await setImmediate();
