@@ -77,6 +77,14 @@ test('thin loading gate hides fallback until readiness and cancels the head dead
   await h.settle();
 });
 
+test('spot pages request news assets for the dynamically rendered header', async t => {
+  const h = harness(t, { thinHeader: true });
+  await h.settle();
+  assert.ok(files(h).includes('content-news.css'));
+  assert.ok(files(h).includes('content-news.js'));
+  assert.equal(h.w.MADO_SPOT_PAGE_RENDERED, true);
+});
+
 test('required failure releases the loading gate while preserving readable fallback', async t => {
   const h = harness(t, { autoLoad: false, bootHTML: await actualBootHTML() });
   await flush();
@@ -168,14 +176,14 @@ function harness(t, {
   protocol = 'https:', scriptSrc = protocol === 'file:' ? 'file:///C:/site/site-runtime-loader.js?v=entry' : BASE + 'site-runtime-loader.js?v=entry',
   autoLoad = true, failFiles = [], spotPayloadAvailable = true, spotRendered = true,
   chromeRendered = true, lang = 'ja', userAgent = 'Mozilla/5.0 (Linux; Android 15) Chrome/130.0.0.0 Mobile Safari/537.36',
-  extraArticle = '', bootHTML = '',
+  extraArticle = '', bootHTML = '', thinHeader = false,
 } = {}) {
   const attributes = mode === 'thin' ? 'data-spot-page-shared-mode="page"'
     : mode === 'translated' ? 'data-spot-page-shared-mode="page" data-article-localized="fr"'
       : mode === 'other-mode' ? 'data-spot-page-shared-mode="rail"' : '';
   const originalArticle = '<h1>Existing title</h1><p>Existing lead</p><a href="../start.html">Train search</a>' + extraArticle;
   const hostAttribute = mode === 'thin' ? ' data-spot-page-shared-module="page"' : '';
-  const dom = new JSDOM(`<html lang="${lang}"><head>${bootHTML || '<style id="spot-page-boot-style">.spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; }</style>'}</head><body class="${mode === 'thin' ? 'spot-page' : ''}" ${attributes}><header id="page-header"><a href="../index.html">Original navigation</a></header><main id="article"${hostAttribute}>${originalArticle}</main><footer id="page-footer"><a href="../zukan.html">Original footer</a></footer></body></html>`, {
+  const dom = new JSDOM(`<html lang="${lang}"><head>${bootHTML || '<style id="spot-page-boot-style">.spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; }</style>'}</head><body class="${mode === 'thin' ? 'spot-page' : ''}" ${attributes}>${thinHeader ? '<div data-spot-page-shared-module="topbar"></div>' : ''}<header id="page-header"><a href="../index.html">Original navigation</a></header><main id="article"${hostAttribute}>${originalArticle}</main><footer id="page-footer"><a href="../zukan.html">Original footer</a></footer></body></html>`, {
     url: protocol === 'file:' ? 'file:///C:/site/spots/fuji.html' : 'https://example.test/spots/fuji.html',
     runScripts: 'outside-only',
   });
