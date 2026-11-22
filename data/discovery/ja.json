@@ -124,13 +124,6 @@
       "path": "/spots/solar-ark.html"
     },
     {
-      "id": "spot-video-selection",
-      "date": "2026-11-19",
-      "kind": "function",
-      "title": "記事で見たい車窓動画を選んで再生",
-      "path": "/spots/ibuki.html"
-    },
-    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
       "kind": "feature",
@@ -175,7 +168,6 @@
   ],
   "newsBaseline": [
     "solar-ark-section-correction",
-    "spot-video-selection",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",

@@ -208,7 +208,7 @@
     try { localStorage.setItem(readPrefix + id, '1'); } catch { /* Use the current page state. */ }
     refresh();
   }
-  const updateBell = root && createBell({lang, guideUrl: new URL(prefix + 'zukan.html#content-news', root).href,
+  const updateBell = root && createBell({lang, guideUrl: new URL(prefix + 'index.html#content-news', root).href,
     createLink(item) {
       const a = node('a');
       a.href = new URL(item.path, root).href;

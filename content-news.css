@@ -23,12 +23,6 @@
   font-size: clamp(1.35rem, 2.6vw, 2rem);
   line-height: 1.3;
 }
-.content-news-all {
-  color: inherit;
-  font-size: .92rem;
-  text-decoration: underline;
-  text-underline-offset: .2em;
-}
 .content-news ul { list-style: none; padding: 0; margin: 0; }
 .content-news li { border-bottom: 1px solid var(--line, #d9d5ca); }
 .content-news li a {
