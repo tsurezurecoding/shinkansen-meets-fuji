@@ -1318,7 +1318,7 @@ function featureMediaScope(changes, { assetVersionOnly, fileContents }) {
     reason: 'Validate compact video embeds, translated feature and spot editions, and distribution assets.',
     commands: [
       node('--check', 'feature-media.js'), node('--check', 'sparkling-dreams.js'), node('--check', 'spot-page-shared.js'),
-      node('--test', 'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs'),
+      node('--test', 'scripts/feature-media.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'scripts/content-news.test.mjs', 'scripts/factories-page.test.mjs'),
       ...generated.map(name => node('scripts/generate-' + name + '-page.mjs', '--check')),
       node('scripts/generate-story-window-pages.mjs', '--check'), node('scripts/validate-story-window.mjs'),
       node('scripts/generate-castle-locales.mjs', '--check'), node('scripts/generate-sparkling-locales.mjs', '--check'),
