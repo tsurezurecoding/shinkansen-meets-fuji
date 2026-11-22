@@ -36,6 +36,9 @@
 .content-news-text { font-size: .875rem; line-height: 1.4; font-weight: 600; overflow-wrap: anywhere; }
 .content-news-text .copy-chunk { display: inline-block; max-width: 100%; }
 .content-news small { color: #8b3926; font-size: .77em; font-weight: 700; white-space: nowrap; }
+.content-news-more summary { min-height: 44px; display: flex; align-items: center; gap: .4rem; cursor: pointer; font-size: .875rem; font-weight: 600; }
+.content-news-more summary::before { content: "▸"; }
+.content-news-more[open] summary::before { content: "▾"; }
 @media (max-width: 600px) {
   .content-news li a { grid-template-columns: minmax(0, 6.25rem) minmax(0, 1fr) auto; }
 }

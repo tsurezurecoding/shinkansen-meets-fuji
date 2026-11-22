@@ -65,7 +65,7 @@ Register each announced feature, spot, function, artwork, or story once in `scri
 
 Run `node scripts/generate-content-manifest.mjs` after the affected article or field-guide generators. It refreshes the top page, the field guide and `data/discovery/<language>.json` in all ten editions, then hashes the distributed files. `node scripts/generate-discovery.mjs --check` checks the projections without writing. The feed takes its feature titles, descriptions, labels, images and order directly from the localized field-guide cards.
 
-The home page shows the full list. The shared Web header bell shows up to five entries grouped by publication date and links to the same edition’s `index.html#content-news`. A browser records the IDs already published on its first visit and marks later entries as read when opened. IDs are shared across pages and editions. Android uses the shared bell and its own local read state, with bundled announcements available offline.
+The home page shows the newest three entries and expands to show earlier updates. The shared Web header bell shows up to five entries grouped by publication date and links to the same edition’s `index.html#content-news`. A browser records the IDs already published on its first visit and marks later entries as read when opened. IDs are shared across pages and editions. Android uses the shared bell and its own local read state, with bundled announcements available offline.
 
 Android consumes a frozen copy of selected Web assets described by `content-manifest.json`. Web work must not silently update the Android bundle. The Android repository owns its copied assets, version, AAB, and release checks.
 
