@@ -1337,13 +1337,14 @@ function spotNewsHeaderScope(changes, { assetVersionOnly }) {
     'content-news.js', 'scripts/generate-discovery.mjs', 'data/discovery/local-news.js',
     'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json']);
   if (!changes.some(change => change.path === 'site-runtime-loader.js')) return null;
-  if (!changes.every(({path: file, status}) => status === 'M' &&
-    (inputs.has(file) || file.endsWith('.html') && assetVersionOnly?.(file)))) return null;
+  if (!changes.every(({path: file, status}) =>
+    status === 'A' && file === 'data/discovery/local-news.js' ||
+    status === 'M' && (inputs.has(file) || file.endsWith('.html') && assetVersionOnly?.(file)))) return null;
   return {scope:'spot-news-header', needsDependencies:true, pagesCandidate:true,
     reason:'Verify dynamically rendered spot headers, the shared loader and distributed asset versions.',
     commands:[node('--check', 'site-runtime-loader.js'),
       node('--test', 'scripts/site-runtime-loader.test.mjs', 'scripts/release-scope.test.mjs'),
-      node('scripts/generate-site-runtime.mjs', '--check'),
+      node('scripts/generate-site-runtime.mjs', '--check'), node('scripts/generate-discovery.mjs', '--check'),
       node('scripts/validate-site-navigation.mjs', '--route', 'spots/fuji.html'),
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
 }
