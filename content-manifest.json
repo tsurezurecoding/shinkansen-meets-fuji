@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d3d1f184a6a231b9",
+  "contentVersion": "57106ae6b7103aea",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1531,8 +1531,8 @@
     {
       "path": "data/omamori-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/omamori-photo-sources.json",
-      "bytes": 1150,
-      "sha256": "ea7b5c8e946aa8ffbd560f014ca3109c830ce0440704ba26f4b3a01002cf70eb"
+      "bytes": 2171,
+      "sha256": "86c1c767b5fa5f9007938adf8c29ba6841b2d2d43dd6c254bfc33e26796469bd"
     },
     {
       "path": "data/ramen-photo-sources.json",
@@ -1699,8 +1699,8 @@
     {
       "path": "de/omamori.html",
       "url": "https://www.michikusa-travel.com/de/omamori.html",
-      "bytes": 31330,
-      "sha256": "1a73c51dde58e100a54b464edfb949a5d7853989010373f1562703ec70bfbcc2"
+      "bytes": 37258,
+      "sha256": "19f43428ef4cd64cdf2c4bbc2f439a0fc067dcebdb21d9b0f402da6e7ac562f2"
     },
     {
       "path": "de/ramen.html",
@@ -2209,8 +2209,8 @@
     {
       "path": "en/omamori.html",
       "url": "https://www.michikusa-travel.com/en/omamori.html",
-      "bytes": 28030,
-      "sha256": "b7044fa7d8dc74c34bfb8191a03cf946b1bef173dfa4f4fd382986c8e5b62924"
+      "bytes": 33805,
+      "sha256": "c9f2c7cd04475f5d79920a34ade481800fd9024762c98f5a6729e258517f2078"
     },
     {
       "path": "en/ramen.html",
@@ -2461,8 +2461,8 @@
     {
       "path": "es/omamori.html",
       "url": "https://www.michikusa-travel.com/es/omamori.html",
-      "bytes": 30627,
-      "sha256": "a1ce7e8694705006bb069a857eba9d5a204b13141bb7307a6806c97062280fb6"
+      "bytes": 36788,
+      "sha256": "2d07e1236a553aece9d7f795753cbbd85624187f9fae34504cf0992a03a6889a"
     },
     {
       "path": "es/ramen.html",
@@ -3025,8 +3025,8 @@
     {
       "path": "fr/omamori.html",
       "url": "https://www.michikusa-travel.com/fr/omamori.html",
-      "bytes": 31465,
-      "sha256": "bbdaef2047f0e645a9ad7e9fd1987b708d23e4b440b3eaffb168b958ea48dcb6"
+      "bytes": 37851,
+      "sha256": "009b061b86543eb710250616beeb88e3c670c840cb913200c8948c50a3db4b05"
     },
     {
       "path": "fr/ramen.html",
@@ -4979,6 +4979,12 @@
       "sha256": "d74c123751f33befee2e7650f036b048f7c5745780c602697c8b7bf915b49fd3"
     },
     {
+      "path": "images/omamori/goshuin-kongorinji.jpg",
+      "url": "https://www.michikusa-travel.com/images/omamori/goshuin-kongorinji.jpg",
+      "bytes": 420396,
+      "sha256": "ebcda8d4328e8fe89f27967b93210817af6a5c336053e7a505164aa9330527e2"
+    },
+    {
       "path": "images/omamori/omamori-meiji.jpg",
       "url": "https://www.michikusa-travel.com/images/omamori/omamori-meiji.jpg",
       "bytes": 1582912,
@@ -4989,6 +4995,12 @@
       "url": "https://www.michikusa-travel.com/images/omamori/omamori-various.jpg",
       "bytes": 453763,
       "sha256": "39c797d5ede767416f70b0625395ff5bd5bf2e7877640d3d1d512bebfc57bfb1"
+    },
+    {
+      "path": "images/omamori/omikuji-cylinder.jpg",
+      "url": "https://www.michikusa-travel.com/images/omamori/omikuji-cylinder.jpg",
+      "bytes": 84649,
+      "sha256": "054aa3330e4da5b6cb5bdf953e4c17ca4c9a4e6105fd628851078ccd7ea36386"
     },
     {
       "path": "images/ramen/aburasoba.webp",
@@ -6019,8 +6031,8 @@
     {
       "path": "it/omamori.html",
       "url": "https://www.michikusa-travel.com/it/omamori.html",
-      "bytes": 30499,
-      "sha256": "7b4875bfa2691d3c46dad37bceae44ed16ca60b70f2a798b3c31bfdbd74e5457"
+      "bytes": 36506,
+      "sha256": "7706abf45e56c5dcdee8177dffd7755c3f65bf12579183fd0eb2c45b4d55f965"
     },
     {
       "path": "it/ramen.html",
@@ -6535,8 +6547,8 @@
     {
       "path": "ko/omamori.html",
       "url": "https://www.michikusa-travel.com/ko/omamori.html",
-      "bytes": 31129,
-      "sha256": "64005f969b19011b6ee74ea4625a685b8319e61dfcdbb2a0075d9440b6328653"
+      "bytes": 37519,
+      "sha256": "537d884135ea09d35c818a03a5daa33ef757a93e5e05cfeef2f83939914766d3"
     },
     {
       "path": "ko/ramen.html",
@@ -6955,14 +6967,14 @@
     {
       "path": "omamori.css",
       "url": "https://www.michikusa-travel.com/omamori.css",
-      "bytes": 6862,
-      "sha256": "665564a5f37e37d790c8d421ed2f231977f9ca505245eea7e35544eb5471c198"
+      "bytes": 9867,
+      "sha256": "4384571d692f58fe7690f0903297f281146439f0d6d9f3910d01f2a32309a82e"
     },
     {
       "path": "omamori.html",
       "url": "https://www.michikusa-travel.com/omamori.html",
-      "bytes": 28629,
-      "sha256": "c94aa9d4f2908e32cca0f0520f63496307384deb071e1a5e2281c2cafc889959"
+      "bytes": 34871,
+      "sha256": "9175ac60336d6db14a2b156a8c358b309a51272f18663ac58f27411e01407fb9"
     },
     {
       "path": "omamori.js",
@@ -8617,8 +8629,8 @@
     {
       "path": "th/omamori.html",
       "url": "https://www.michikusa-travel.com/th/omamori.html",
-      "bytes": 45330,
-      "sha256": "cc6e4c3c3deb69cdbf3566f363d45cab6d8597cfd2702bbe21a0491e26cb6c39"
+      "bytes": 57018,
+      "sha256": "6938934d604ce9efd4d2f54c019f5a57129b186923b45b45872b82790690fcb4"
     },
     {
       "path": "th/ramen.html",
@@ -9313,8 +9325,8 @@
     {
       "path": "zh-Hans/omamori.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/omamori.html",
-      "bytes": 28546,
-      "sha256": "f476756bbe0eb06b2aa57af31a8053690b99ad19d072c84f8e37e909ae966c94"
+      "bytes": 34617,
+      "sha256": "bbacdce1a96a4f18714d40d75e6fc98848cb734d470062558d25a76f76c2e965"
     },
     {
       "path": "zh-Hans/ramen.html",
@@ -9805,8 +9817,8 @@
     {
       "path": "zh-Hant/omamori.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/omamori.html",
-      "bytes": 28187,
-      "sha256": "b38d55343629c2bf71cf4ef6872f8ac44ee885558282bd28271cc79c4f9c9f20"
+      "bytes": 34166,
+      "sha256": "57b3a85f987118fda20372ec68cf2b358de2b99ed41fd171e4c42944c3500591"
     },
     {
       "path": "zh-Hant/ramen.html",

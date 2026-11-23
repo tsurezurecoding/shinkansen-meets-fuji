@@ -1,7 +1,7 @@
 {
   "title": "Omamori: un pequeño amuleto, un deseo personal.",
-  "metaTitle": "Omamori: los amuletos japoneses y los deseos que representan",
-  "description": "¿Qué son los omamori? Conoce estos pequeños amuletos de los santuarios y templos de Japón, cómo elegirlos y llevarlos contigo, y qué tener en cuenta después del viaje.",
+  "metaTitle": "Omamori: amuletos japoneses, junto con omikuji y goshuin",
+  "description": "¿Qué son los omamori? Conoce estos pequeños amuletos de los santuarios y templos de Japón, cómo elegirlos, llevarlos y qué hacer tras el viaje, además de lo esencial sobre los omikuji, los goshuin y el goshuincho.",
   "eyebrow": "EVERYDAY JAPAN · OMAMORI",
   "definition": "Los omamori son amuletos que se reciben en santuarios sintoístas y templos budistas de Japón. Se llevan cerca del cuerpo como una oración de protección o por un deseo concreto.",
   "lead": "«Que mi viaje termine sin contratiempos». «Que pueda dar lo mejor de mí en los exámenes». En una pequeña bolsita caben deseos como estos.",
@@ -60,6 +60,16 @@
       "paragraphs": [
         "Un omamori puede seguir acompañándote al volver a casa. Si te preguntas qué hacer cuando haya pasado un año o no puedes regresar a Japón, empieza por estas orientaciones."
       ]
+    },
+    {
+      "id": "companions",
+      "label": "Omikuji y goshuin",
+      "kicker": "06 · También en santuarios y templos",
+      "title": "Omikuji y goshuin en los mismos lugares",
+      "intro": "Otras dos tradiciones que suelen verse en el mismo recinto.",
+      "paragraphs": [
+        "Al visitar un santuario o un templo en Japón, es habitual encontrar omikuji y goshuin justo al lado de los omamori. Ambos forman parte de la cultura de estos lugares de culto, pero cumplen una función y siguen unas costumbres distintas a las de los omamori."
+      ]
     }
   ],
   "compareLabel": "Tres formas de expresar un deseo",
@@ -74,7 +84,9 @@
       "kanji": "おみくじ",
       "romaji": "omikuji",
       "title": "Recibir unas palabras y leerlas",
-      "text": "Una predicción escrita de la fortuna, a menudo acompañada de consejos para los días que vienen."
+      "text": "Una predicción escrita de la fortuna, a menudo acompañada de consejos para los días que vienen.",
+      "href": "#omikuji",
+      "linkLabel": "Ver omikuji"
     },
     {
       "kanji": "絵馬",
@@ -83,6 +95,59 @@
       "text": "Una tablilla de madera en la que se escribe un deseo o una oración y que se deja en un santuario o templo."
     }
   ],
+  "companions": {
+    "items": [
+      {
+        "id": "omikuji",
+        "kanji": "おみくじ",
+        "romaji": "omikuji",
+        "title": "Recibir una predicción y unas palabras de guía",
+        "photos": [
+          "omikuji-cylinder"
+        ],
+        "summary": "Un papel de predicción presente tanto en santuarios como en templos, que no solo indica un nivel de fortuna, sino también consejos para el día a día.",
+        "points": [
+          {
+            "term": "Significado",
+            "text": "Más allá del grado de fortuna —como daikichi (gran fortuna) o kichi (fortuna)—, se leen el poema, la enseñanza y los consejos del texto como orientación para los días que vienen."
+          },
+          {
+            "term": "Cómo sacar uno",
+            "text": "Primero presenta tus respetos y luego deposita la cantidad indicada. El método varía según el lugar: en unos se agita un cilindro para sacar una varilla numerada y recoger el papel correspondiente; en otros se toma el papel directamente de una caja."
+          },
+          {
+            "term": "Atarlo o guardarlo",
+            "text": "Puedes atarlo en el espacio habilitado dentro del recinto o llevártelo a casa para releerlo. La costumbre sobre atarlo o conservarlo cambia según el santuario o templo, así que sigue las indicaciones del lugar."
+          }
+        ]
+      },
+      {
+        "id": "goshuin",
+        "kanji": "御朱印",
+        "romaji": "goshuin",
+        "title": "Recibir un registro escrito de tu visita",
+        "photos": [
+          "goshuin-kongorinji"
+        ],
+        "summary": "No es un sello turístico de recuerdo, sino una caligrafía a pincel y sellos bermellón que se reciben como constancia de haber acudido a orar.",
+        "points": [
+          {
+            "term": "Constancia de oración",
+            "text": "Su origen se remonta a la acreditación de haber entregado sutras copiados a mano, y todavía hoy se trata con respeto como testimonio de una visita de oración."
+          },
+          {
+            "term": "Cómo recibir uno",
+            "text": "Presenta siempre tus respetos antes de dirigirte al mostrador correspondiente, como el juyosho (授与所) o el nokyosho (納経所). Puede escribirse directamente en tu cuaderno o entregarse en una hoja ya preparada llamada kakioki (書き置き). Algunos lugares no ofrecen goshuin, y los horarios y las ofrendas varían."
+          },
+          {
+            "term": "Goshuincho",
+            "text": "Se espera llevar un cuaderno específico llamado goshuincho (御朱印帳); las libretas comunes o los blocs de notas pueden rechazarse. Muchos santuarios y templos también ofrecen goshuincho. Llevar cuadernos separados para santuarios y templos depende del criterio de cada lugar."
+          }
+        ]
+      }
+    ],
+    "note": "Tanto para los omikuji como para los goshuin, las costumbres, la disponibilidad, las ofrendas y las normas sobre fotografía varían entre santuarios, templos y recintos concretos. Sigue siempre los carteles y las indicaciones del personal del lugar."
+  },
   "receiveSteps": [
     {
       "title": "Primero, presenta tus respetos",
@@ -155,6 +220,7 @@
     "title": "Un año no es una fecha de caducidad válida para todos los omamori.",
     "text": "Algunas personas reciben uno nuevo al llegar el Año Nuevo. Jinja Honcho explica que puedes seguir llevando un omamori hasta que tu deseo se cumpla. Consulta las indicaciones del lugar donde recibiste el tuyo."
   },
+  "faqOpen": true,
   "faqs": [
     {
       "question": "¿Qué pasa si no puedo regresar a Japón?",
@@ -200,6 +266,18 @@
       "caption": "El mostrador juyosho de Meiji Jingu, fotografiado en 2018. Los objetos ofrecidos y los importes actuales pueden ser diferentes.",
       "fullCaption": "El mostrador juyosho de Meiji Jingu, fotografiado en 2018. Los objetos ofrecidos y los importes actuales pueden diferir de los que aparecen en la imagen.",
       "openLabel": "Ampliar la fotografía del mostrador de Meiji Jingu"
+    },
+    "omikuji-cylinder": {
+      "alt": "Un cilindro metálico hexagonal con la inscripción «mikuji» en rojo mientras se agita para sacar una varilla numerada, junto a cajones de madera numerados.",
+      "caption": "Omikuji en el que se agita un cilindro para sacar una varilla numerada.",
+      "fullCaption": "Modalidad de omikuji en la que se agita un cilindro para obtener una varilla numerada y recoger el papel correspondiente.",
+      "openLabel": "Ampliar la fotografía del cilindro de omikuji"
+    },
+    "goshuin-kongorinji": {
+      "alt": "Un goshuin del templo Kongorin-ji con caligrafía a pincel en tinta negra, sellos bermellón con un loto y el nombre del templo, y la fecha de la visita.",
+      "caption": "Un goshuin con caligrafía a pincel y sellos bermellón (templo Kongorin-ji).",
+      "fullCaption": "Goshuin del templo Kongorin-ji, en la prefectura de Shiga, con caligrafía a pincel, sellos bermellón y fecha de la visita.",
+      "openLabel": "Ampliar la fotografía del goshuin del templo Kongorin-ji"
     }
   },
   "photoClose": "Cerrar fotografía",

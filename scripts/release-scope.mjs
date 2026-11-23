@@ -439,7 +439,7 @@ function selectExistingScope(changes, options = {}) {
   if (editorial) return editorial;
   const omamoriFiles=new Set(['scripts/generate-omamori-page.mjs','scripts/omamori-page.test.mjs','scripts/shared/omamori-entry.mjs',
     'omamori.html','en/omamori.html','omamori.css','omamori.js','data/omamori/ja.json','data/omamori/en.json','data/omamori-photo-sources.json',
-    'images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg',
+    'images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg','images/omamori/omikuji-cylinder.jpg','images/omamori/goshuin-kongorinji.jpg',
     'scripts/generate-everyday-page.mjs','scripts/shared/everyday-related.mjs','scripts/shared/castle-localization.mjs',
     'scripts/generate-food-country-ja.mjs','scripts/generate-content-manifest.mjs','scripts/generate-spot-pages.mjs',
     'scripts/validate-language-pages.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs','scripts/drinks-locales.test.mjs',
@@ -463,14 +463,28 @@ function selectExistingScope(changes, options = {}) {
     }
     omamoriPackage=isDeepStrictEqual(before,after);
   }
+  const omamoriSeriesChromeFiles = new Set(['scripts/shared/omamori-entry.mjs','scripts/generate-everyday-page.mjs',
+    'scripts/shared/everyday-related.mjs','scripts/shared/castle-localization.mjs','scripts/generate-food-country-ja.mjs',
+    'scripts/generate-castle-locales.mjs','scripts/generate-drinks-locales.mjs','spot-page-shared.js','locales.js',
+    'language-router.js','site-runtime.json','spot-page-runtime.json','foods.html','countryside.html',
+    'en/foods.html','en/drinks.html','en/everyday-japan.html','shared-ui/ja.rail-countryside.js']);
+  const omamoriTouchesChromeOrSeries = files.some(file => omamoriSeriesChromeFiles.has(file)
+    || file.startsWith('shared-ui/') || /\/(?:foods|drinks|everyday-japan|jr-pass-fuji)\.html$/.test(file));
   if(files.includes('scripts/generate-omamori-page.mjs')&&omamoriPackage&&changes.every(({path:file,status})=>status!=='D'&&(omamoriFiles.has(file)||file.endsWith('.html')&&assetVersionOnly(file))))return {
     scope:'omamori-everyday',needsDependencies:true,pagesCandidate:true,
-    reason:'Omamori across ten existing languages, localized Everyday Japan/food/drink entry cards, Japanese reached only through language selection, shared chrome and Web distribution.',
-    commands:[...syntax,node('--test','scripts/omamori-page.test.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/food-country-locales.test.mjs','scripts/drinks-locales.test.mjs'),
-      ...['generate-omamori-page','generate-foods-page','generate-drinks-page','generate-everyday-page','generate-food-country-ja','generate-drinks-locales','generate-site-chrome','generate-site-runtime'].map(name=>node(`scripts/${name}.mjs`,'--check')),
-      node('scripts/generate-castle-locales.mjs','--route','foods.html','--check'),node('scripts/generate-castle-locales.mjs','--route','everyday-japan.html','--check'),
-      node('scripts/validate-site-navigation.mjs','--route','omamori.html','--route','foods.html','--route','drinks.html','--route','everyday-japan.html','--route','jr-pass-fuji.html'),
-      node('scripts/validate-language-pages.mjs'),node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')]
+    reason:omamoriTouchesChromeOrSeries
+      ?'Omamori across ten existing languages, localized Everyday Japan/food/drink entry cards, Japanese reached only through language selection, shared chrome and Web distribution.'
+      :'Omamori article editions, copy, styles, photos, metadata and Web distribution; shared chrome and other Everyday Japan pages are unchanged.',
+    commands:omamoriTouchesChromeOrSeries
+      ?[...syntax,node('--test','scripts/omamori-page.test.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/food-country-locales.test.mjs','scripts/drinks-locales.test.mjs'),
+        ...['generate-omamori-page','generate-foods-page','generate-drinks-page','generate-everyday-page','generate-food-country-ja','generate-drinks-locales','generate-site-chrome','generate-site-runtime'].map(name=>node(`scripts/${name}.mjs`,'--check')),
+        node('scripts/generate-castle-locales.mjs','--route','foods.html','--check'),node('scripts/generate-castle-locales.mjs','--route','everyday-japan.html','--check'),
+        node('scripts/validate-site-navigation.mjs','--route','omamori.html','--route','foods.html','--route','drinks.html','--route','everyday-japan.html','--route','jr-pass-fuji.html'),
+        node('scripts/validate-language-pages.mjs'),node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')]
+      :[...syntax,node('--test','scripts/omamori-page.test.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs'),
+        node('scripts/generate-omamori-page.mjs','--check'),
+        node('scripts/validate-site-navigation.mjs','--route','omamori.html'),
+        node('scripts/validate-language-pages.mjs'),node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')]
   };
   const editorialFiles=new Set(['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','scripts/shared/story-editorial.test.mjs',
     'scripts/validate-story-window.mjs','scripts/generate-content-manifest.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs',
