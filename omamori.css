@@ -10,7 +10,8 @@
 .omamori-page .om-hero-story { font-size:13px; line-height:1.9; color:var(--ink-soft); max-width:440px; margin-bottom:24px; }
 .omamori-page .hero-footnote a { color:inherit; text-underline-offset:4px; }
 .omamori-page .food-chapters { grid-template-columns:repeat(5,minmax(0,1fr)); }
-.omamori-page .food-chapters a { gap:5px; padding:8px 3px; font-size:12px; }
+.omamori-page .food-chapters[data-chapter-count="6"] { grid-template-columns:repeat(6,minmax(0,1fr)); }
+.omamori-page .food-chapters a { gap:5px; padding:8px 3px; font-size:12px; text-align:center; }
 .omamori-page .copy-chunk { display:inline-block; }
 .om-reading { max-width:700px; margin:0 auto; }
 .om-reading > p,.om-reading li,.om-receive-body > p { font-size:14px; line-height:1.95; margin-bottom:17px; }
@@ -21,7 +22,9 @@
 .om-compare .om-kanji { font-family:var(--font-serif); font-size:28px; margin-bottom:4px; }
 .om-compare small { font-size:10px; color:var(--ink-soft); letter-spacing:.13em; }
 .om-compare h3 { font-family:var(--font-serif); font-size:18px; line-height:1.5; margin:13px 0 8px; }
-.om-compare p:last-child { font-size:13px; line-height:1.85; color:var(--ink-soft); }
+.om-compare p:not(.om-kanji):not(.om-compare-link) { font-size:13px; line-height:1.85; color:var(--ink-soft); }
+.om-compare-link { margin:10px 0 0; font-size:12px; line-height:1.6; }
+.om-compare-link a { color:#945036; text-underline-offset:4px; }
 .om-receive { display:grid; grid-template-columns:1fr 1.1fr; gap:28px; align-items:start; }
 .om-steps { padding:0; list-style:none; counter-reset:step; }
 .om-steps li { position:relative; padding-left:35px; counter-increment:step; margin-bottom:20px; }
@@ -48,6 +51,17 @@
 .om-faq details { border-bottom:1px solid var(--line); padding:0 2px; }
 .om-faq summary { cursor:pointer; font-size:15px; line-height:1.7; padding:18px 0; font-weight:600; }
 .om-faq details p { font-size:14px; line-height:1.95; padding:0 0 20px; }
+.om-companions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin:24px 0 18px; }
+.om-companion-card { min-width:0; border:1px solid var(--line); border-top:3px solid var(--accent-soft); border-radius:12px; background:var(--card); padding:24px 22px; scroll-margin-top:calc(var(--food-header-height,58px) + 74px); }
+.om-companion-head .om-kanji { font-family:var(--font-serif); font-size:28px; line-height:1.25; margin:0 0 4px; }
+.om-companion-head small { display:block; font-size:10px; color:var(--ink-soft); letter-spacing:.12em; }
+.om-companion-head h3 { font-family:var(--font-serif); font-size:20px; line-height:1.5; margin:12px 0 10px; }
+.om-companion-summary { font-size:13.5px; line-height:1.9; color:var(--ink-soft); margin:0 0 18px; }
+.om-companion-points { margin:0; padding:16px 0 0; border-top:1px solid var(--line); display:grid; gap:14px; }
+.om-companion-points > div { margin:0; }
+.om-companion-points dt { font-size:12px; font-weight:700; color:#9b5033; letter-spacing:.03em; margin:0 0 4px; }
+.om-companion-points dd { margin:0; font-size:13.5px; line-height:1.85; color:var(--ink); }
+.om-companions-note { max-width:700px; margin:0 auto; }
 .om-ending { text-align:center; padding:64px 0 38px; }
 .om-ending .eyebrow { color:#9b5033; font-size:10px; margin-bottom:12px; }
 .om-ending h2 { font-family:var(--font-serif); font-size:clamp(26px,3vw,34px); line-height:1.5; margin:0 0 20px; }
@@ -67,16 +81,23 @@
 @media(max-width:700px) {
   .omamori-page .food-hero-inner { gap:26px; }
   .omamori-page .food-hero h1 { font-size:clamp(32px,8.5vw,43px); }
+  .omamori-page .food-chapters[data-chapter-count="6"] { grid-template-columns:repeat(3,minmax(0,1fr)); }
   .omamori-page .food-chapters a { flex-direction:column; gap:4px; font-size:11px; min-height:61px; }
+  .omamori-page .food-chapters[data-chapter-count="6"] a { min-height:50px; padding:6px 4px; }
   .om-receive { grid-template-columns:1fr; gap:22px; }
   .om-compare { gap:12px; }
   .om-compare .om-kanji { font-size:24px; }
   .om-compare h3 { font-size:16px; }
+  .om-companions { grid-template-columns:1fr; gap:16px; }
+  .om-companion-card { padding:20px 16px; scroll-margin-top:calc(var(--food-header-height,58px) + 122px); }
+  .om-companion-head .om-kanji { font-size:25px; }
+  .om-companion-head h3 { font-size:18px; }
   .om-word-picker { padding:18px 14px; }
   .om-word-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
   .om-word-grid strong { font-size:23px; }
   .om-word-result h3 { font-size:22px; }
   .om-note-card { padding:20px; }
   .omamori-page .food-section { scroll-margin-top:calc(var(--food-header-height,58px) + 78px); }
+  .omamori-page .food-chapters[data-chapter-count="6"] ~ .food-section { scroll-margin-top:calc(var(--food-header-height,58px) + 122px); }
 }
 @media(max-width:380px) { .om-compare { grid-template-columns:1fr; gap:20px; } .om-compare article { padding-top:14px; } }

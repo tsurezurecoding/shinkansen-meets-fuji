@@ -18,7 +18,17 @@ for(const [i,file] of editions.entries())test(`${file}: complete localized artic
   assert.equal(doc.querySelector('link[rel=canonical]').href,site+file);
   assert.deepEqual([...doc.querySelectorAll('link[rel=alternate]')].map(x=>[x.hreflang,x.href]).sort(),[...languages.map((lang,i)=>[lang,site+editions[i]]),['x-default',site+'en/omamori.html']].sort());
   assert.ok(doc.body.getAttribute('data-spot-page-shared-root'),'Legacy utility renderer requires a nonempty relative root');
-  assert.equal(doc.querySelectorAll('.food-section').length,5);
+  assert.equal(doc.querySelectorAll('.food-section').length,copy.chapters.length);
+  if(copy.companions){
+    assert.ok(doc.querySelector('#companions'),file+' is missing companions chapter');
+    assert.ok(doc.querySelector('#omikuji'),file+' is missing omikuji card');
+    assert.ok(doc.querySelector('#goshuin'),file+' is missing goshuin card');
+    assert.equal(doc.querySelectorAll('.om-companion-card').length,copy.companions.items.length);
+    for(const item of copy.companions.items){
+      const card=doc.querySelector(`#${item.id}`);
+      assert.equal(card.querySelectorAll('.om-companion-points dt').length,item.points.length);
+    }
+  }
   assert.equal(doc.querySelectorAll('[data-omamori-word]').length,6);
   assert.equal(doc.querySelectorAll('[data-omamori-word][aria-pressed=true]').length,1);
   assert.equal(doc.querySelectorAll('.om-faq details').length,4);
