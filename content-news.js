@@ -211,7 +211,7 @@
   const updateBell = root && createBell({lang, guideUrl: new URL(prefix + 'index.html#content-news', root).href,
     createLink(item) {
       const a = node('a');
-      a.href = new URL(item.path, root).href;
+      a.href = new URL(location.protocol === 'file:' ? item.path.replace(/^\//, '') : item.path, root).href;
       return a;
     }, isUnread, markRead});
 
@@ -230,7 +230,18 @@
   window.addEventListener('storage', event => { if (event.key?.startsWith(readPrefix)) refresh(); });
   refresh();
 
-  if (root && location.protocol !== 'file:') {
+  if (root && location.protocol === 'file:') {
+    const fallback = document.createElement('script');
+    fallback.src = new URL('data/discovery/local-news.js', root).href;
+    fallback.onload = () => {
+      const data = window.MADO_LOCAL_NEWS;
+      if (!Array.isArray(data?.editions?.[lang])) return;
+      items = data.editions[lang];
+      establishBaseline(Array.isArray(data.newsBaseline) ? data.newsBaseline : items.map(item => item.id));
+      refresh();
+    };
+    document.head.append(fallback);
+  } else if (root) {
     fetch(new URL('data/discovery/' + lang + '.json', root), {cache: 'no-cache'})
       .then(response => response.ok ? response.json() : null)
       .then(feed => {

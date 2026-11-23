@@ -56,7 +56,7 @@
   // The module still owns browser, install, dismissal and privacy checks.
   var invite = document.getElementById('mado-android-invite-config') && /Android/i.test(navigator.userAgent || '');
   var newsHeader = !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB &&
-    document.querySelector('.topbar, .live-header');
+    document.querySelector('.topbar, .live-header, [data-spot-page-shared-module="topbar"]');
   // One small request per document, independent of how many common modules it uses.
   var manifest = location.protocol === 'file:' || (!thin && !chrome && !invite && !newsHeader) ? Promise.resolve({}) : fetch(base + 'site-runtime.json', { cache: 'no-cache' }).then(function (r) {
     if (!r.ok) throw new Error('Site runtime manifest unavailable');

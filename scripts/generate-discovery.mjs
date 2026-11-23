@@ -48,6 +48,9 @@ function featuresFor(file) {
 
 export function generateDiscovery({editions = languages, check = false} = {}) {
   const assets = new Set();
+  const localNews = Object.fromEntries(languages.map(language => [language, newsFor(language)]));
+  output('data/discovery/local-news.js', 'window.MADO_LOCAL_NEWS = ' + JSON.stringify({newsBaseline, editions:localNews}).replace(/</g, '\\u003c') + ';\n', check);
+  assets.add('data/discovery/local-news.js');
   for (const language of editions) {
     if (!languages.includes(language)) throw Error('Unknown discovery edition: ' + language);
     const prefix = language === 'ja' ? '' : language + '/';
