@@ -31,7 +31,7 @@ for(const [i,file] of editions.entries())test(`${file}: complete localized artic
   }
   assert.equal(doc.querySelectorAll('[data-omamori-word]').length,6);
   assert.equal(doc.querySelectorAll('[data-omamori-word][aria-pressed=true]').length,1);
-  assert.equal(doc.querySelectorAll('.om-faq details').length,4);
+  assert.equal(doc.querySelectorAll(copy.faqOpen?'.om-faq .om-faq-item':'.om-faq details').length,4);
   assert.equal(doc.querySelectorAll('noscript dd').length,5);
   for(const el of doc.querySelectorAll('.om-photo img')){
     assert.ok(el.alt.length>10);assert.ok(fs.existsSync(path.join(root,new URL(el.src).pathname.slice(1))));
