@@ -1,7 +1,7 @@
 {
   "title": "Omamori: un piccolo amuleto, un desiderio personale.",
-  "metaTitle": "Omamori: amuleti giapponesi e i desideri che custodiscono",
-  "description": "Che cosa sono gli omamori? Scopri questi piccoli amuleti dei santuari shintoisti e dei templi buddisti giapponesi, come sceglierne e portarne uno e cosa considerare dopo il viaggio.",
+  "metaTitle": "Omamori: amuleti giapponesi, omikuji e goshuin nei santuari e templi",
+  "description": "Che cosa sono gli omamori? Scopri questi piccoli amuleti dei santuari e dei templi giapponesi, come sceglierli, portarli e cosa fare dopo il viaggio, insieme a omikuji, goshuin e goshuincho.",
   "eyebrow": "EVERYDAY JAPAN · OMAMORI",
   "definition": "Gli omamori sono amuleti ricevuti nei santuari shintoisti e nei templi buddisti del Giappone, da tenere con sé come preghiera per la protezione o per un desiderio particolare.",
   "lead": "«Che il viaggio si concluda senza incidenti.» «Che gli esami vadano bene.» Un piccolo sacchetto può custodire desideri come questi.",
@@ -14,14 +14,46 @@
     {"id":"receive","label":"Dove riceverne uno","kicker":"02 · In un santuario o in un tempio","title":"Cercalo in un santuario o in un tempio","intro":"","paragraphs":["Gli omamori si trovano in luoghi come il juyosho (授与所) di un santuario o di un tempio, il banco dove vengono offerti gli oggetti sacri. Un santuario è un luogo di culto shintoista; un tempio è un luogo di culto buddista. Entrambi possono offrire omamori."]},
     {"id":"choose","label":"Parole e desideri","kicker":"03 · Leggi le parole","title":"Leggi le parole sul sacchetto","intro":"Colori e forme simili possono custodire desideri diversi. Scegli una parola che attira la tua attenzione.","paragraphs":[]},
     {"id":"carry","label":"Come portarlo con sé","kicker":"04 · Tienilo vicino","title":"Portalo con cura","intro":"","paragraphs":["C'è chi indossa l'omamori e chi lo tiene in una borsa che usa spesso. Se il luogo in cui l'hai ricevuto fornisce indicazioni su come portarlo o dove collocarlo, segui quelle istruzioni.","Di solito il sacchetto di stoffa si tiene chiuso. Per scoprirne lo scopo, leggi le parole all'esterno o consulta le spiegazioni del santuario o del tempio."]},
-    {"id":"after","label":"Dopo il viaggio","kicker":"05 · Una volta tornato a casa","title":"Che cosa fare dopo il viaggio?","intro":"","paragraphs":["Puoi tenere l'omamori anche dopo essere tornato a casa. Se ti chiedi cosa fare dopo un anno o non puoi tornare in Giappone, inizia consultando le indicazioni qui sotto."]}
+    {"id":"after","label":"Dopo il viaggio","kicker":"05 · Una volta tornato a casa","title":"Che cosa fare dopo il viaggio?","intro":"","paragraphs":["Puoi tenere l'omamori anche dopo essere tornato a casa. Se ti chiedi cosa fare dopo un anno o non puoi tornare in Giappone, inizia consultando le indicazioni qui sotto."]},
+    {"id":"companions","label":"Omikuji e Goshuin","kicker":"06 · Anche nei santuari e nei templi","title":"Omikuji e goshuin negli stessi luoghi","intro":"Due esperienze che si incontrano spesso accanto agli omamori.","paragraphs":["Quando visiti un santuario o un tempio in Giappone, vicino agli omamori potresti incontrare anche gli omikuji e i goshuin. Entrambi appartengono alla cultura dei luoghi di culto, ma hanno ruoli e consuetudini diversi rispetto agli omamori."]}
   ],
   "compareLabel":"Tre modi per esprimere un desiderio",
   "comparisons":[
     {"kanji":"お守り","romaji":"omamori","title":"Portarlo con sé come augurio","text":"Un oggetto da tenere vicino mentre si prega per qualcosa, per esempio la sicurezza o la buona salute."},
-    {"kanji":"おみくじ","romaji":"omikuji","title":"Ricevere parole da leggere","text":"Un responso scritto, spesso accompagnato da consigli per i giorni a venire."},
+    {"kanji":"おみくじ","romaji":"omikuji","title":"Ricevere parole da leggere","text":"Un responso scritto, spesso accompagnato da consigli per i giorni a venire.","href":"#omikuji","linkLabel":"Scopri gli omikuji"},
     {"kanji":"絵馬","romaji":"ema","title":"Scrivere un desiderio e offrirlo","text":"Una tavoletta di legno su cui si scrive un desiderio o una preghiera e che si lascia in un santuario o in un tempio."}
   ],
+  "companions":{
+    "items":[
+      {
+        "id":"omikuji",
+        "kanji":"おみくじ",
+        "romaji":"omikuji",
+        "title":"Ricevere un responso e parole di guida",
+        "photos":["omikuji-cylinder"],
+        "summary":"Non indica solo la buona o cattiva sorte: riporta anche versi e consigli per la vita di tutti i giorni. Si trova sia nei santuari sia nei templi.",
+        "points":[
+          {"term":"Significato","text":"Oltre al grado di fortuna, come daikichi (grande fortuna) o kichi (fortuna), conta leggere con attenzione la poesia e i consigli scritti sul foglio come guida per i giorni a venire."},
+          {"term":"Come si pesca","text":"Rendi omaggio per prima cosa, poi lascia l'offerta indicata. Il metodo varia da un luogo all'altro: in alcuni si scuote un cilindro per far uscire un bastoncino numerato, in altri si estrae direttamente un foglietto da una scatola."},
+          {"term":"Legarlo o portarlo con sé","text":"Puoi legare il foglietto nell'apposita area del santuario o del tempio, oppure portarlo a casa per rileggerlo. Le indicazioni su quando legarlo o tenerlo cambiano da luogo a luogo, quindi segui le istruzioni sul posto."}
+        ]
+      },
+      {
+        "id":"goshuin",
+        "kanji":"御朱印",
+        "romaji":"goshuin",
+        "title":"Un attestato di visita in calligrafia e timbro vermiglio",
+        "photos":["goshuin-kongorinji"],
+        "summary":"Non è un timbro souvenir turistico, ma una calligrafia a pennello con timbri in inchiostro vermiglio ricevuta come attestato della propria visita e preghiera.",
+        "points":[
+          {"term":"Significato come attestato di preghiera","text":"Ha origine come ricevuta per l'offerta di sutra copiati a mano, ed è ancora oggi custodito con cura come testimonianza della visita a un santuario o a un tempio."},
+          {"term":"Come riceverlo","text":"Rendi sempre omaggio prima di rivolgerti al banco, come il juyosho o il nokyosho. Può essere scritto direttamente sul libretto oppure consegnato su un foglio già preparato (kakioki), e alcuni luoghi non offrono goshuin. Orari e offerte variano a seconda del posto."},
+          {"term":"Il goshuincho","text":"Di norma serve un libretto dedicato chiamato goshuincho: quaderni comuni o blocchi per appunti possono essere rifiutati. Molti santuari e templi offrono anche goshuincho; quanto al tenere separati quelli dei santuari da quelli dei templi, le usanze variano da luogo a luogo."}
+        ]
+      }
+    ],
+    "note":"Sia per gli omikuji sia per i goshuin, le usanze, la disponibilità, le offerte e le regole sulle fotografie cambiano tra santuari, templi e singoli luoghi. Segui sempre i cartelli e le indicazioni del personale sul posto."
+  },
   "receiveSteps":[
     {"title":"Rendi omaggio per prima cosa","text":"Segui le indicazioni del luogo e raccogliti in preghiera. Le consuetudini cambiano tra santuari e templi."},
     {"title":"Scegli un desiderio","text":"Leggi le parole e le descrizioni al juyosho (授与所), il banco dove vengono offerti gli oggetti sacri. Se hai dubbi, chiedi."},
@@ -42,6 +74,7 @@
   "wordNote":"Sono indicazioni generali. Desideri e spiegazioni possono variare da un santuario o tempio all'altro: consulta anche le informazioni del luogo.",
   "carryGift":{"title":"Un piccolo regalo per qualcuno","text":"«Che l'esame vada bene» oppure «Che il viaggio sia sicuro». Racconta il significato e il pensiero dietro la tua scelta, rispettando i desideri e le convinzioni dell'altra persona."},
   "afterHighlight":{"label":"Un buon punto di partenza","title":"Un anno non è una data di scadenza valida per ogni omamori.","text":"Alcune persone ne ricevono uno nuovo intorno al Capodanno. La Jinja Honcho spiega che puoi continuare a portare un omamori finché il tuo desiderio non si avvera. Controlla le indicazioni del luogo che te lo ha offerto."},
+  "faqOpen":true,
   "faqs":[
     {"question":"E se non posso tornare in Giappone?","answer":"Non è detto che tu debba liberartene solo perché è passato un anno. Se desideri restituirlo, contatta il santuario o il tempio dove l'hai ricevuto. Alcuni accettano restituzioni per posta: prima di spedire, verifica l'indirizzo, gli oggetti ammessi e la procedura."},
     {"question":"Posso restituirlo a un altro santuario o tempio?","answer":"Le regole di accettazione variano. Non dare per scontato che lo accetti un luogo vicino o un'istituzione religiosa nel tuo paese. Informati prima presso il luogo che te lo ha offerto e chiedi anche all'altro luogo se pensi di restituirlo lì."},
@@ -52,7 +85,7 @@
   "sourcesTitle":"Fonti e note sulle foto",
   "sourcesIntro":"Questa è un'introduzione generale per chi scopre gli omamori per la prima volta. Per le pratiche di offerta e restituzione, consulta le indicazioni di ogni santuario o tempio.",
   "sourceLabels":{"jnto":"Ente Nazionale del Turismo Giapponese: omamori e luoghi di culto","jinja":"Associazione dei Santuari Shintoisti: amuleti e talismani (in giapponese)","seimei":"Santuario Seimei: offerte e domande frequenti (in cinese tradizionale)","sugiyama":"Santuario Hoshikawa Sugiyama: restituzione degli omamori (in giapponese)","pamphlet":"Associazione dei Santuari Shintoisti: guida agli omamori (in cinese tradizionale)"},
-  "photos":{"various":{"alt":"Una collezione di sacchetti omamori colorati con cordoncini, tra cui iscrizioni per la buona sorte, lo studio e la protezione.","caption":"Forme e iscrizioni diverse. La collezione comprende oggetti provenienti da santuari in Giappone e negli Stati Uniti.","fullCaption":"Omamori di vario tipo provenienti da santuari in Giappone e negli Stati Uniti.","openLabel":"Apri la foto degli omamori ingrandita"},"meiji":{"alt":"Visitatori scelgono omamori e altre offerte al banco juyosho del santuario Meiji Jingu.","caption":"Il banco juyosho del Meiji Jingu, fotografato nel 2018. Le offerte e i prezzi attuali potrebbero essere diversi.","fullCaption":"Il banco juyosho del Meiji Jingu, fotografato nel 2018. Le offerte e i prezzi attuali potrebbero essere diversi da quelli mostrati.","openLabel":"Apri ingrandita la foto del banco del Meiji Jingu"}},
+  "photos":{"various":{"alt":"Una collezione di sacchetti omamori colorati con cordoncini, tra cui iscrizioni per la buona sorte, lo studio e la protezione.","caption":"Forme e iscrizioni diverse. La collezione comprende oggetti provenienti da santuari in Giappone e negli Stati Uniti.","fullCaption":"Omamori di vario tipo provenienti da santuari in Giappone e negli Stati Uniti.","openLabel":"Apri la foto degli omamori ingrandita"},"meiji":{"alt":"Visitatori scelgono omamori e altre offerte al banco juyosho del santuario Meiji Jingu.","caption":"Il banco juyosho del Meiji Jingu, fotografato nel 2018. Le offerte e i prezzi attuali potrebbero essere diversi.","fullCaption":"Il banco juyosho del Meiji Jingu, fotografato nel 2018. Le offerte e i prezzi attuali potrebbero essere diversi da quelli mostrati.","openLabel":"Apri ingrandita la foto del banco del Meiji Jingu"},"omikuji-cylinder":{"alt":"Una mano scuote un cilindro metallico esagonale con la scritta rossa mikuji per estrarre un bastoncino numerato accanto a cassetti di legno numerati.","caption":"Un omikuji in cui si scuote il cilindro per estrarre un bastoncino numerato.","fullCaption":"Un modo di pescare l'omikuji: si scuote un cilindro metallico esagonale per estrarre un bastoncino numerato e si ritira il foglio dal cassetto corrispondente.","openLabel":"Apri ingrandita la foto del cilindro degli omikuji"},"goshuin-kongorinji":{"alt":"Goshuin del tempio Kongorin-ji nella prefettura di Shiga, con calligrafia nera a pennello, timbri in inchiostro vermiglio e la data della visita.","caption":"Un goshuin con calligrafia a pennello e timbri vermigli (tempio Kongorin-ji).","fullCaption":"Goshuin del tempio Kongorin-ji nella prefettura di Shiga, con calligrafia a pennello, timbri vermigli e data della visita.","openLabel":"Apri ingrandita la foto del goshuin del tempio Kongorin-ji"}},
   "photoClose":"Chiudi la foto","photoZoom":"Ingrandisci la foto","photoCredits":"Crediti fotografici","photoOriginal":"Visualizza la foto originale","photoLicense":"Licenza fotografica","relatedTitle":"Un'altra scoperta in Giappone","relatedRead":"Leggi","backTop":"Torna all'inizio","photoCreditLabel":"Foto","relatedPhotoLabel":"Fotografie",
   "relatedStories":[
     {"route":"foods.html","image":"foods/onigiri.webp","label":"UN PRIMO ASSAGGIO","title":"Piccoli cibi per il viaggio","note":"Polpette di riso, panini caldi e soste golose."},

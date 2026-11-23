@@ -439,7 +439,7 @@ function selectExistingScope(changes, options = {}) {
   if (editorial) return editorial;
   const omamoriFiles=new Set(['scripts/generate-omamori-page.mjs','scripts/omamori-page.test.mjs','scripts/shared/omamori-entry.mjs',
     'omamori.html','en/omamori.html','omamori.css','omamori.js','data/omamori/ja.json','data/omamori/en.json','data/omamori-photo-sources.json',
-    'images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg',
+    'images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg','images/omamori/omikuji-cylinder.jpg','images/omamori/goshuin-kongorinji.jpg',
     'scripts/generate-everyday-page.mjs','scripts/shared/everyday-related.mjs','scripts/shared/castle-localization.mjs',
     'scripts/generate-food-country-ja.mjs','scripts/generate-content-manifest.mjs','scripts/generate-spot-pages.mjs',
     'scripts/validate-language-pages.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs','scripts/drinks-locales.test.mjs',

@@ -1,7 +1,7 @@
 {
   "title": "Omamori: a small charm, a personal wish.",
-  "metaTitle": "Omamori: Japanese charms and the wishes they carry",
-  "description": "What are omamori? Learn about these small charms from Japanese shrines and temples, how to choose and carry one, and what to consider after your trip.",
+  "metaTitle": "Omamori: Japanese charms, plus omikuji and goshuin",
+  "description": "What are omamori? Learn about these small charms from Japanese shrines and temples, how to choose and carry one, what to consider after your trip, and the basics of omikuji, goshuin, and goshuincho.",
   "eyebrow": "EVERYDAY JAPAN · OMAMORI",
   "definition": "Omamori are charms received at Shinto shrines and Buddhist temples in Japan, carried close as a prayer for protection or a particular wish.",
   "lead": "“May I finish my journey safely.” “May I do my best in my exams.” A small pouch can hold wishes like these.",
@@ -60,6 +60,16 @@
       "paragraphs": [
         "An omamori may stay with you after you return home. If you are wondering what to do after a year, or cannot travel back to Japan, start by checking the guidance below."
       ]
+    },
+    {
+      "id": "companions",
+      "label": "Omikuji & Goshuin",
+      "kicker": "06 · Also at shrines and temples",
+      "title": "Omikuji and goshuin at the same shrines and temples",
+      "intro": "Two other traditions you will often encounter on the same grounds.",
+      "paragraphs": [
+        "When you visit a shrine or temple in Japan, you may notice omikuji and goshuin right beside the omamori. Both belong to these places of worship, but each has its own role and customs."
+      ]
     }
   ],
   "compareLabel": "Three ways to express a wish",
@@ -74,7 +84,9 @@
       "kanji": "おみくじ",
       "romaji": "omikuji",
       "title": "Receive words and read them",
-      "text": "A written fortune, often with advice for the days ahead."
+      "text": "A written fortune, often with advice for the days ahead.",
+      "href": "#omikuji",
+      "linkLabel": "About omikuji"
     },
     {
       "kanji": "絵馬",
@@ -83,6 +95,59 @@
       "text": "A wooden plaque on which people write a wish or prayer and leave at a shrine or temple."
     }
   ],
+  "companions": {
+    "items": [
+      {
+        "id": "omikuji",
+        "kanji": "おみくじ",
+        "romaji": "omikuji",
+        "title": "Receive a fortune and words to reflect on",
+        "photos": [
+          "omikuji-cylinder"
+        ],
+        "summary": "A paper fortune found at both shrines and temples, offering not just a level of luck but words of advice for daily life.",
+        "points": [
+          {
+            "term": "Meaning",
+            "text": "Rather than focusing only on the fortune level—such as daikichi (great blessing) or kichi (blessing)—people read the poem, teaching, and advice written on the slip as guidance for the days ahead."
+          },
+          {
+            "term": "How to draw",
+            "text": "Pay your respects first, then offer the displayed amount. How you draw varies by shrine or temple: some use a cylinder that you shake for a numbered stick to match a paper slip, while others let you draw a slip directly from a box."
+          },
+          {
+            "term": "Tie it or keep it",
+            "text": "You may tie the slip at a designated tying area on the grounds, or take it home to reread. Ideas about tying versus keeping vary by place, so follow the local guidance."
+          }
+        ]
+      },
+      {
+        "id": "goshuin",
+        "kanji": "御朱印",
+        "romaji": "goshuin",
+        "title": "Receive a handwritten record of your visit",
+        "photos": [
+          "goshuin-kongorinji"
+        ],
+        "summary": "Not a tourist souvenir stamp, but brush calligraphy and vermilion seals received as a record of praying at a shrine or temple.",
+        "points": [
+          {
+            "term": "A record of worship",
+            "text": "Goshuin are said to have originated as proof of offering hand-copied sutras. Today, they are still treated with care as a record of visiting to pray to the deities or Buddhas."
+          },
+          {
+            "term": "How to receive one",
+            "text": "Always pay your respects first, then ask at the designated counter, such as the juyosho (授与所) or nokyosho (納経所). It may be written directly in your book or offered on a pre-written sheet called kakioki (書き置き). Some places do not offer goshuin, and hours and offering amounts vary."
+          },
+          {
+            "term": "Goshuincho",
+            "text": "A dedicated stamp book called a goshuincho (御朱印帳) is expected—ordinary notebooks or memo pads may be declined. Many shrines and temples also offer goshuincho. Whether to keep separate books for shrines and temples depends on each site’s policy."
+          }
+        ]
+      }
+    ],
+    "note": "Customs, hours, offering amounts, and photography rules for both omikuji and goshuin vary between shrines, temples, and individual sites. Follow the posted signs and staff guidance wherever you visit."
+  },
   "receiveSteps": [
     {
       "title": "Pay your respects first",
@@ -155,6 +220,7 @@
     "title": "One year is not an expiry date that applies to every omamori.",
     "text": "Some people receive a new one around the New Year. Jinja Honcho says you may keep carrying an omamori until your wish comes true. Check the guidance from the place that offered yours."
   },
+  "faqOpen": true,
   "faqs": [
     {
       "question": "What if I cannot return to Japan?",
@@ -200,6 +266,18 @@
       "caption": "The juyosho counter at Meiji Jingu, photographed in 2018. Current offerings and prices may differ.",
       "fullCaption": "The juyosho counter at Meiji Jingu, photographed in 2018. Current offerings and prices may differ from those shown.",
       "openLabel": "View the Meiji Jingu counter photo larger"
+    },
+    "omikuji-cylinder": {
+      "alt": "A person shaking a hexagonal metal cylinder marked mikuji in red to draw a numbered stick, beside wooden drawers with numbers.",
+      "caption": "Drawing an omikuji by shaking a cylinder for a numbered stick.",
+      "fullCaption": "A style of omikuji in which you shake a cylinder to draw a numbered stick and take the matching paper fortune.",
+      "openLabel": "View the omikuji cylinder photo larger"
+    },
+    "goshuin-kongorinji": {
+      "alt": "A goshuin from Kongorin-ji Temple with black brush calligraphy, vermilion seals including a lotus and temple name, and the visit date.",
+      "caption": "A goshuin with brush calligraphy and vermilion seals (Kongorin-ji Temple).",
+      "fullCaption": "A goshuin from Kongorin-ji Temple in Shiga Prefecture, showing brush calligraphy, vermilion seals, and the visit date.",
+      "openLabel": "View the Kongorin-ji goshuin photo larger"
     }
   },
   "photoClose": "Close photo",

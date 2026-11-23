@@ -683,7 +683,7 @@ test('train inline invitation scope covers all editions and rejects unrelated ch
  assert.equal(chooseReleaseScope([...files.map(change),{path:'it/start.html',status:'D'}]).scope,'unmapped');
 });
 test('omamori editions use focused checks and reject unrelated content or dependencies',()=>{
-  const files=['scripts/generate-omamori-page.mjs','data/omamori/en.json','omamori.html','en/omamori.html','images/omamori/omamori-various.jpg','spot-page-shared.js','content-manifest.json'];
+  const files=['scripts/generate-omamori-page.mjs','data/omamori/en.json','omamori.html','en/omamori.html','images/omamori/omamori-various.jpg','images/omamori/omikuji-cylinder.jpg','images/omamori/goshuin-kongorinji.jpg','spot-page-shared.js','content-manifest.json'];
   const plan=chooseReleaseScope(files.map(change));
   assert.equal(plan.scope,'omamori-everyday');
   assert.ok(plan.commands.some(command=>command.includes('scripts/validate-language-pages.mjs')));

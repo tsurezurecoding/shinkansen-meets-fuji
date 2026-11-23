@@ -43,6 +43,7 @@ for(const [i,file] of editions.entries())test(`${file}: complete localized artic
   assert.match(doc.querySelector('#credit-various').textContent,/Leongboy1/);
   assert.match(doc.querySelector('#credit-meiji').textContent,/Pocsywe/);
   assert.match(doc.querySelector('#credit-meiji').textContent,/2018/);
+  if(copy.photos['goshuin-kongorinji'])assert.match(doc.querySelector('#credit-goshuin-kongorinji').textContent,/先従隗始/);
   assert.equal(doc.querySelector('#omamori-title').textContent,copy.title.replaceAll('|',''));
   assert.ok(!read(file).includes('Original files are used without visual retouching'));
   assert.ok(doc.querySelector('link[href*="foods.css"]'));
@@ -74,6 +75,6 @@ test('English entries are removed before the existing translation dictionaries r
 });
 test('sitemap and Web distribution include all ten editions and their resources',()=>{
   const manifest=read('content-manifest.json');
-  for(const asset of [...editions,'omamori.css','omamori.js','images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg'])assert.ok(manifest.includes('"'+asset+'"'),asset);
+  for(const asset of [...editions,'omamori.css','omamori.js','images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg','images/omamori/omikuji-cylinder.jpg','images/omamori/goshuin-kongorinji.jpg'])assert.ok(manifest.includes('"'+asset+'"'),asset);
   const sitemap=read('sitemap.xml');for(const file of editions)assert.ok(sitemap.includes('<loc>'+site+file+'</loc>'));
 });
