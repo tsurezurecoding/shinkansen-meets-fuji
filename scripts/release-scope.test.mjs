@@ -699,6 +699,9 @@ test('omamori editions use focused checks and reject unrelated content or depend
   assert.ok(!plan.commands.some(command=>command.includes('verify')));
   assert.equal(chooseReleaseScope([...files,'data/omamori/th.json','th/omamori.html','th/everyday-japan.html','locales.js','scripts/generate-castle-locales.mjs','scripts/generate-drinks-locales.mjs'].map(change)).scope,'omamori-everyday');
   assert.ok(plan.commands.find(command=>command.includes('scripts/validate-site-navigation.mjs')).includes('omamori.html'));
+  const articleOnly=chooseReleaseScope(['scripts/generate-omamori-page.mjs','data/omamori/ja.json','omamori.html','omamori.css','images/omamori/omikuji-cylinder.jpg','content-manifest.json'].map(change));
+  assert.equal(articleOnly.scope,'omamori-everyday');
+  assert.ok(!articleOnly.commands.some(command=>command.includes('scripts/generate-site-chrome.mjs')));
   assert.notEqual(chooseReleaseScope([...files,'data/omamori/ar.json'].map(change)).scope,'omamori-everyday');
   assert.notEqual(chooseReleaseScope([...files,'data.js'].map(change)).scope,'omamori-everyday');
   const before={scripts:{'build:pages':'node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};
