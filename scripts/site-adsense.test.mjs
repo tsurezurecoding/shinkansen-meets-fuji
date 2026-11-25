@@ -93,16 +93,12 @@ test('PC (>=1100px): mounts right after left rail header/CTA and hides bottom sl
   assert.equal(showcase.previousElementSibling, showcaseAd);
   assert.ok(showcaseAd.classList.contains('site-ad-mobile-only'));
   assert.ok(h.doc.getElementById('mado-site-ad-style').textContent.includes('@media(min-width:1100px){.site-ad-mobile-only{display:none}}'));
+  assert.ok(h.doc.getElementById('mado-site-ad-style').textContent.includes('.site-ad-rail .site-ad-unit{display:block;width:200px;height:200px;margin:0 auto}'));
   assert.equal(railAd.querySelector('small').textContent, '広告');
   assert.equal(showcaseAd.querySelector('small').textContent, '広告');
 
-  for (const ad of [railAd, showcaseAd]) {
-    const ins = ad.querySelector('ins.adsbygoogle');
-    assert.equal(ins.getAttribute('data-ad-client'), 'ca-pub-5756673901202661');
-    assert.equal(ins.getAttribute('data-ad-slot'), '6439684093');
-    assert.equal(ins.getAttribute('data-full-width-responsive'), 'false');
-  }
-
+  // No <ins class="adsbygoogle"> is inserted before a visible slot actually requests an ad.
+  assert.equal(h.doc.querySelectorAll('ins.adsbygoogle').length, 0);
   assert.equal(h.sdkCount(), 0);
   assert.equal(h.root.adsbygoogle, undefined);
   assert.equal(h.observers.length, 2);
@@ -114,13 +110,19 @@ test('PC (>=1100px): mounts right after left rail header/CTA and hides bottom sl
   assert.equal(h.root.adsbygoogle.length, 1, 'Only the visible PC rail slot pushes on >=1100px');
   assert.equal(railAd.getAttribute('data-site-ad-requested'), '1');
   assert.equal(showcaseAd.getAttribute('data-site-ad-requested'), null);
+  assert.equal(railAd.querySelectorAll('ins.adsbygoogle').length, 1);
+  assert.equal(showcaseAd.querySelectorAll('ins.adsbygoogle').length, 0, 'Hidden bottom slot never adds <ins class="adsbygoogle">');
+  const railIns = railAd.querySelector('ins.adsbygoogle');
+  assert.equal(railIns.getAttribute('data-ad-client'), 'ca-pub-5756673901202661');
+  assert.equal(railIns.getAttribute('data-ad-slot'), '6439684093');
+  assert.equal(railIns.getAttribute('data-full-width-responsive'), 'false');
 
   h.run();
   assert.equal(h.doc.querySelectorAll('#mado-site-ad-rail').length, 1);
   assert.equal(h.doc.querySelectorAll('#mado-site-ad-showcase').length, 1);
 });
 
-test('Mobile (<1100px): hidden left rail (width 0) never requests while visible bottom slot requests once', t => {
+test('Mobile (<1100px): hidden left rail never adds <ins> so visible bottom slot gets the AdSense push', t => {
   const h = harness({ railWidth: 0, showcaseWidth: 358 });
   t.after(() => h.close());
   assert.ok(h.doc.getElementById('mado-site-ad-rail'));
@@ -129,7 +131,9 @@ test('Mobile (<1100px): hidden left rail (width 0) never requests while visible 
   assert.equal(h.sdkCount(), 1);
   assert.equal(h.root.adsbygoogle.length, 1);
   assert.equal(h.doc.getElementById('mado-site-ad-rail').getAttribute('data-site-ad-requested'), null);
+  assert.equal(h.doc.getElementById('mado-site-ad-rail').querySelectorAll('ins.adsbygoogle').length, 0);
   assert.equal(h.doc.getElementById('mado-site-ad-showcase').getAttribute('data-site-ad-requested'), '1');
+  assert.equal(h.doc.getElementById('mado-site-ad-showcase').querySelectorAll('ins.adsbygoogle').length, 1);
 });
 
 test('rail pages without MORE TO SEE (e.g. ramen, Everyday Japan, factories) fall back to before-content-rail or before-footer on mobile', t => {

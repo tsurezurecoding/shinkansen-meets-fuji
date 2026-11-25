@@ -36,13 +36,14 @@
     style.textContent =
       '.site-ad-rail{width:100%;max-width:234px;margin:18px auto;padding:14px 0 16px;border-top:1px solid var(--line,#e2e8f0);border-bottom:1px solid var(--line,#e2e8f0);text-align:center;box-sizing:border-box}' +
       '.site-ad-rail>small,.site-ad-showcase>small{display:block;margin-bottom:8px;color:var(--muted,#6b7280);font-size:11px;letter-spacing:.08em;text-align:center}' +
-      '.site-ad-rail .site-ad-space{min-height:250px}' +
-      '.site-ad-rail .site-ad-unit{display:block;width:100%;height:250px}' +
+      '.site-ad-rail .site-ad-space{min-height:200px}' +
+      '.site-ad-rail .site-ad-unit{display:block;width:200px;height:200px;margin:0 auto}' +
       '.site-ad-showcase{width:100%;max-width:760px;margin:32px auto;padding:0 16px;box-sizing:border-box;text-align:center}' +
       '.site-ad-showcase .site-ad-space{min-height:250px}' +
       '.site-ad-showcase .site-ad-unit{display:block;width:100%;height:250px}' +
       '@media(min-width:768px){.site-ad-showcase .site-ad-space{min-height:90px}.site-ad-showcase .site-ad-unit{height:90px}}' +
       '@media(min-width:1100px){.site-ad-mobile-only{display:none}}' +
+      '.site-ad-rail:has(ins[data-ad-status="unfilled"]),.site-ad-showcase:has(ins[data-ad-status="unfilled"]){display:none}' +
       'html.mado-embedded-web .site-ad-rail,html.mado-embedded-web .site-ad-showcase,html.is-native-app .site-ad-rail,html.is-native-app .site-ad-showcase{display:none!important}';
     doc.head.appendChild(style);
   }
@@ -64,13 +65,16 @@
     var space = doc.createElement('div');
     space.className = 'site-ad-space';
     box.appendChild(space);
+    return box;
+  }
+
+  function createUnit() {
     var unit = doc.createElement('ins');
     unit.className = 'adsbygoogle site-ad-unit';
     unit.setAttribute('data-ad-client', CLIENT);
     unit.setAttribute('data-ad-slot', SLOT);
     unit.setAttribute('data-full-width-responsive', 'false');
-    space.appendChild(unit);
-    return box;
+    return unit;
   }
 
   function observeBox(box) {
@@ -81,6 +85,8 @@
       if (box.getAttribute('data-site-ad-requested') === '1' || !box.getBoundingClientRect().width) return;
       box.setAttribute('data-site-ad-requested', '1');
       if (observer) observer.disconnect();
+      var space = box.querySelector('.site-ad-space');
+      if (space && !space.querySelector('ins.adsbygoogle')) space.appendChild(createUnit());
       if (!doc.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]')) {
         var sdk = doc.createElement('script');
         sdk.async = true;
