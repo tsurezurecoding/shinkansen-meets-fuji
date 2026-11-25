@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "57106ae6b7103aea",
+  "contentVersion": "acd36ddde931bfca",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1537,8 +1537,8 @@
     {
       "path": "data/ramen-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/ramen-photo-sources.json",
-      "bytes": 9260,
-      "sha256": "0123a9ae258a689a864febaa5d1dc1a7fe1a6e97bc8e7f5291ac7a297cdc3f7a"
+      "bytes": 11226,
+      "sha256": "fba131188c43863b364fa3aea8639b743b293973d4ce3061d5d830a92cba7570"
     },
     {
       "path": "data/stamp-store.js",
@@ -1705,8 +1705,8 @@
     {
       "path": "de/ramen.html",
       "url": "https://www.michikusa-travel.com/de/ramen.html",
-      "bytes": 38983,
-      "sha256": "bccdbde455fbbc8072385e1c2870a21f4ed61d8204f20e26c4167333c562fe0f"
+      "bytes": 42055,
+      "sha256": "91e418a67763659ec2d8bee5a6dd31fb42387854da385b635d9cfb23bc16dd6f"
     },
     {
       "path": "de/reflections.html",
@@ -2215,8 +2215,8 @@
     {
       "path": "en/ramen.html",
       "url": "https://www.michikusa-travel.com/en/ramen.html",
-      "bytes": 37066,
-      "sha256": "4ac84442111f2b27c945386657e97e09af7d888d3837142fc13d1560cfa2ec8b"
+      "bytes": 40102,
+      "sha256": "aad152688c0ae82485ee9aab91135f65dd0448fc403f1deb1fcd0bc45e558509"
     },
     {
       "path": "en/reflections.html",
@@ -2467,8 +2467,8 @@
     {
       "path": "es/ramen.html",
       "url": "https://www.michikusa-travel.com/es/ramen.html",
-      "bytes": 38427,
-      "sha256": "07863b6298937096c6481c683c258e0799977bd49bbc85eee28b7be841910310"
+      "bytes": 41474,
+      "sha256": "77b384cca232589a2120b4ed81642b008dce7c49b8b63177c7397d60e5c0090a"
     },
     {
       "path": "es/reflections.html",
@@ -3031,8 +3031,8 @@
     {
       "path": "fr/ramen.html",
       "url": "https://www.michikusa-travel.com/fr/ramen.html",
-      "bytes": 39702,
-      "sha256": "b07dd3da64fb0ce7ba762c46f5ffccf13c4958ac2ad61dcc73f1960f8c1c5b47"
+      "bytes": 42904,
+      "sha256": "ad5deb6349f3d577578c5671bbc2c4df0529943e66b35d821fefe9d973376497"
     },
     {
       "path": "fr/reflections.html",
@@ -5045,6 +5045,18 @@
       "sha256": "3c8b89897b4f06ae9bb00045aa1b8fd3352e49954298fdb37eef81108451ad7c"
     },
     {
+      "path": "images/ramen/kishimen-bowl.webp",
+      "url": "https://www.michikusa-travel.com/images/ramen/kishimen-bowl.webp",
+      "bytes": 156192,
+      "sha256": "bf1f8915bee72a493a67837cadbe686d014ad52e6dad9aea90d1781850d5b8a7"
+    },
+    {
+      "path": "images/ramen/kishimen-shop.webp",
+      "url": "https://www.michikusa-travel.com/images/ramen/kishimen-shop.webp",
+      "bytes": 171428,
+      "sha256": "77fc47981fb572f61f58278a9b65a0652ab1f18af81ae2635ad66509ed0940b6"
+    },
+    {
       "path": "images/ramen/miso.webp",
       "url": "https://www.michikusa-travel.com/images/ramen/miso.webp",
       "bytes": 86994,
@@ -6037,8 +6049,8 @@
     {
       "path": "it/ramen.html",
       "url": "https://www.michikusa-travel.com/it/ramen.html",
-      "bytes": 38670,
-      "sha256": "8f0b52e0c536899d38edfb513d896f72e9b4b901a735e9b9e2bc4d391a904d86"
+      "bytes": 41761,
+      "sha256": "1800322c22211560e4919b256c4332e116f225b5b9a650312d203996fa62794e"
     },
     {
       "path": "it/reflections.html",
@@ -6553,8 +6565,8 @@
     {
       "path": "ko/ramen.html",
       "url": "https://www.michikusa-travel.com/ko/ramen.html",
-      "bytes": 39863,
-      "sha256": "eecf082c7a1a14c401b34f2b93f53c579f29941d6814462bbc2bb19fd016fff4"
+      "bytes": 43261,
+      "sha256": "2c39cac778bad02761795180ca4ce7beaf4ea36390ad24ebf8173d9de4f8dfbc"
     },
     {
       "path": "ko/reflections.html",
@@ -7681,14 +7693,14 @@
     {
       "path": "ramen.css",
       "url": "https://www.michikusa-travel.com/ramen.css",
-      "bytes": 4905,
-      "sha256": "316d228e387596a815a58f096f0b06a637136f889e436dc38042e838be3d9440"
+      "bytes": 5553,
+      "sha256": "8c6b54abf7dd18d97093866c24db76aa85351bb791eb5921f30773a1f6b4bae0"
     },
     {
       "path": "ramen.html",
       "url": "https://www.michikusa-travel.com/ramen.html",
-      "bytes": 39110,
-      "sha256": "8ef0eef698dddab121a2d96ac86093658fdfe6d8d3c767d4a0c17fc8b1d36090"
+      "bytes": 42583,
+      "sha256": "15357a33b77bce8122c1b84e9d427e4a405fa8fa9365659993fa9b944cad74fe"
     },
     {
       "path": "reflections.css",
@@ -8635,8 +8647,8 @@
     {
       "path": "th/ramen.html",
       "url": "https://www.michikusa-travel.com/th/ramen.html",
-      "bytes": 59243,
-      "sha256": "e1707736c6112ebdb1717f65c60f827b063be637371a4c62717ec396c2a6dd15"
+      "bytes": 64956,
+      "sha256": "2219065a917435d936f8dd96086b2f5048651bf69f65f7e1b2d4c4e40b432105"
     },
     {
       "path": "th/reflections.html",
@@ -9331,8 +9343,8 @@
     {
       "path": "zh-Hans/ramen.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/ramen.html",
-      "bytes": 35618,
-      "sha256": "76b2b873700567a31d8039f350db4ba1f80b65e43cda3ef448a5fbd32f4f889b"
+      "bytes": 38453,
+      "sha256": "8ab898ac727e00df30c544f0ae8d30c3dc803aeade13efd1e305f81d9fb2c816"
     },
     {
       "path": "zh-Hans/reflections.html",
@@ -9823,8 +9835,8 @@
     {
       "path": "zh-Hant/ramen.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/ramen.html",
-      "bytes": 35615,
-      "sha256": "eb41ff10b150fa392a8a36ac4af01390001f14e0db4f21e239ccc7f5e0749e19"
+      "bytes": 38444,
+      "sha256": "f7c3df635dc9a06de6114acae1b58f6b04268c5d3a74f057c4743ae26d92eaf5"
     },
     {
       "path": "zh-Hant/reflections.html",
