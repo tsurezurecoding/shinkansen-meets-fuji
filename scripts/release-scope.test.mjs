@@ -12,6 +12,20 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('shared site AdSense scope accepts only runtime dependencies and version-only HTML changes', () => {
+  const files = [
+    { path: 'site-adsense.js', status: 'A' },
+    { path: 'scripts/site-adsense.test.mjs', status: 'A' },
+    ...['site-runtime-loader.js', 'site-runtime.json', 'scripts/site-runtime-loader.test.mjs',
+      'scripts/generate-site-runtime.mjs', 'scripts/generate-content-manifest.mjs',
+      'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json', 'package.json', 'spots/fuji.html'].map(change),
+  ];
+  const plan = chooseReleaseScope(files, { assetVersionOnly: file => file === 'spots/fuji.html' });
+  assert.equal(plan.scope, 'site-adsense-shared');
+  assert.ok(plan.commands.some(command => command.includes('scripts/site-adsense.test.mjs')));
+  assert.notEqual(chooseReleaseScope([...files, change('data.js')], { assetVersionOnly: () => true }).scope, 'site-adsense-shared');
+});
+
 test('spot news header scope accepts only loader dependencies and version-only HTML changes', () => {
   const files = ['site-runtime-loader.js', 'scripts/site-runtime-loader.test.mjs',
     'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json', 'spots/fuji.html'].map(change);

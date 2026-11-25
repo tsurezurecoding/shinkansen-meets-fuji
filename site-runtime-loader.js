@@ -5,8 +5,9 @@
   var spotScripts = ['spot-page-shared-data.js', 'spot-page-shared.js', 'spot-media-gallery.js', 'spot-map.js'];
   var fixed = styles.concat(spotScripts, ['android-app-invite.js', 'site-chrome.js']);
   var news = ['content-news.css', 'content-news.js'];
+  var ads = 'site-adsense.js';
   function allowed(file) {
-    return fixed.indexOf(file) >= 0 || news.indexOf(file) >= 0 || /^shared-ui\/[a-z][a-z0-9-]*\.[a-z][a-z0-9-]*\.js$/.test(file);
+    return fixed.indexOf(file) >= 0 || news.indexOf(file) >= 0 || file === ads || /^shared-ui\/[a-z][a-z0-9-]*\.[a-z][a-z0-9-]*\.js$/.test(file);
   }
   function readVersions(data) {
     if (!data || data.schema !== 'mado-site-runtime' || data.version !== 1 || !data.assets || typeof data.assets !== 'object' || Array.isArray(data.assets)) throw new Error('Invalid site runtime manifest');
@@ -57,8 +58,13 @@
   var invite = document.getElementById('mado-android-invite-config') && /Android/i.test(navigator.userAgent || '');
   var newsHeader = !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB &&
     document.querySelector('.topbar, .live-header, [data-spot-page-shared-module="topbar"]');
+  var sharedAds = !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB && (
+    thin ||
+    (chrome && Array.isArray(chrome.mounts) && chrome.mounts.some(function (m) { return m.kind === 'rail' || m.kind === 'showcase'; })) ||
+    !!document.querySelector('.spot-page-rail, .spot-page-showcase, [data-spot-page-shared-module="rail"], [data-spot-page-shared-module="showcase"]')
+  );
   // One small request per document, independent of how many common modules it uses.
-  var manifest = location.protocol === 'file:' || (!thin && !chrome && !invite && !newsHeader) ? Promise.resolve({}) : fetch(base + 'site-runtime.json', { cache: 'no-cache' }).then(function (r) {
+  var manifest = location.protocol === 'file:' || (!thin && !chrome && !invite && !newsHeader && !sharedAds) ? Promise.resolve({}) : fetch(base + 'site-runtime.json', { cache: 'no-cache' }).then(function (r) {
     if (!r.ok) throw new Error('Site runtime manifest unavailable');
     return r.json();
   }).then(readVersions).catch(function () { return {}; });
@@ -84,6 +90,7 @@
         if (!document.querySelector('[data-mado-news-asset="' + file + '"]')) optional.push(load(file, versions));
       });
     }
+    if (sharedAds) optional.push(load(ads, versions));
     window.MADO_SITE_ENHANCEMENTS_READY = Promise.all(optional.map(function (p) { return p.catch(function () {}); }));
     return Promise.all(required).then(reveal);
   }).catch(function () {
