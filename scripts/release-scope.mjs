@@ -1363,9 +1363,25 @@ function spotNewsHeaderScope(changes, { assetVersionOnly }) {
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
 }
 
+function siteAdsenseScope(changes, { assetVersionOnly }) {
+  const inputs = new Set(['site-adsense.js', 'site-runtime-loader.js', 'site-runtime.json',
+    'scripts/site-adsense.test.mjs', 'scripts/site-runtime-loader.test.mjs',
+    'scripts/generate-site-runtime.mjs', 'scripts/generate-content-manifest.mjs',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json', 'package.json']);
+  if (!changes.some(change => change.path === 'site-adsense.js')) return null;
+  if (!changes.every(({path: file, status}) =>
+    ['A', 'M'].includes(status) && (inputs.has(file) || status === 'M' && file.endsWith('.html') && assetVersionOnly?.(file)))) return null;
+  return {scope:'site-adsense-shared', needsDependencies:true, pagesCandidate:true,
+    reason:'Verify shared rail/showcase AdSense module, runtime loader, asset versions and distribution inventory.',
+    commands:[node('--check', 'site-adsense.js'), node('--check', 'site-runtime-loader.js'),
+      node('--test', 'scripts/site-adsense.test.mjs', 'scripts/spot-adsense.test.mjs', 'scripts/site-runtime-loader.test.mjs', 'scripts/generate-site-runtime.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('scripts/generate-site-runtime.mjs', '--check'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]};
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = spotNewsHeaderScope(inputs, options) || timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = siteAdsenseScope(inputs, options) || spotNewsHeaderScope(inputs, options) || timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };

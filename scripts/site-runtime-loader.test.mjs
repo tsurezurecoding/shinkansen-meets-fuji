@@ -8,13 +8,14 @@ const source = fs.readFileSync(new URL('../site-runtime-loader.js', import.meta.
 const STYLES = ['style.css', 'spot-media-gallery.css'];
 const SPOT_SCRIPTS = ['spot-page-shared-data.js', 'spot-page-shared.js', 'spot-media-gallery.js', 'spot-map.js'];
 const FIXED = [...STYLES, ...SPOT_SCRIPTS, 'android-app-invite.js', 'site-chrome.js'];
+const ADS = 'site-adsense.js';
 const CHROME_ASSET = 'shared-ui/fr.discovery.js';
 const EXTRA_ASSET = 'shared-ui/zh-hant.guide-reader.js';
 const BASE = 'https://example.test/assets/';
 function manifestFixture() {
   return {
     schema: 'mado-site-runtime', version: 1,
-    assets: Object.fromEntries([...FIXED, CHROME_ASSET, EXTRA_ASSET].map((file, index) => [file, (index + 1).toString(16).repeat(8)])),
+    assets: Object.fromEntries([...FIXED, ADS, CHROME_ASSET, EXTRA_ASSET].map((file, index) => [file, (index + 1).toString(16).repeat(8)])),
   };
 }
 const defaultChrome = { asset: CHROME_ASSET, root: '../', route: 'fr/guide.html', lang: 'fr', mounts: [] };
@@ -73,7 +74,7 @@ test('thin loading gate hides fallback until readiness and cancels the head dead
   assert.equal(h.document.documentElement.classList.contains('spot-page-loading'), false);
   assert.deepEqual(h.clearedTimers, [1]);
   assert.equal(h.state.ready, true);
-  for (const file of SPOT_SCRIPTS.slice(2)) h.finish(file);
+  for (const file of [...SPOT_SCRIPTS.slice(2), ADS]) h.finish(file);
   await h.settle();
 });
 
@@ -82,7 +83,32 @@ test('spot pages request news assets for the dynamically rendered header', async
   await h.settle();
   assert.ok(files(h).includes('content-news.css'));
   assert.ok(files(h).includes('content-news.js'));
+  assert.ok(files(h).includes(ADS));
   assert.equal(h.w.MADO_SPOT_PAGE_RENDERED, true);
+});
+
+test('shared AdSense module loads only on pages with rail or showcase and skips ordinary/ride/native pages', async t => {
+  const chromeRail = harness(t, {
+    mode: 'translated',
+    chromeConfig: { ...defaultChrome, mounts: [{ host: 'chrome-0', kind: 'rail', component: 'rail-fuji' }] },
+  });
+  await chromeRail.settle();
+  assert.ok(files(chromeRail).includes(ADS));
+
+  const chromeHeaderOnly = harness(t, {
+    mode: 'translated',
+    chromeConfig: { ...defaultChrome, mounts: [{ host: 'chrome-0', kind: 'header', component: 'header-start' }] },
+  });
+  await chromeHeaderOnly.settle();
+  assert.ok(!files(chromeHeaderOnly).includes(ADS));
+
+  const staticRail = harness(t, { mode: 'ordinary', extraArticle: '<aside class="spot-page-rail"></aside>' });
+  await staticRail.settle();
+  assert.deepEqual(files(staticRail), [ADS]);
+
+  const ordinaryNoRail = harness(t, { mode: 'ordinary' });
+  await ordinaryNoRail.settle();
+  assert.deepEqual(files(ordinaryNoRail), []);
 });
 
 test('required failure releases the loading gate while preserving readable fallback', async t => {
@@ -92,7 +118,7 @@ test('required failure releases the loading gate while preserving readable fallb
   assert.equal(h.w.getComputedStyle(h.document.querySelector('h1')).visibility, 'visible');
   assertReadingEntrances(h); assert.deepEqual(h.clearedTimers, [1]);
   assert.equal(h.document.documentElement.classList.contains('spot-page-loading'), false);
-  for (const file of ['spot-media-gallery.css', ...SPOT_SCRIPTS]) h.finish(file, false);
+  for (const file of ['spot-media-gallery.css', ...SPOT_SCRIPTS, ADS]) h.finish(file, false);
   await h.settle();
 });
 
@@ -129,7 +155,7 @@ test('thin boot keeps explicitly visible descendants hidden until required CSS f
   assert.equal(h.w.getComputedStyle(preview).visibility, 'hidden', 'Child visibility must not escape the pending CSS gate');
   h.finish('spot-media-gallery.css'); await h.w.MADO_SITE_RUNTIME_READY;
   assert.equal(h.w.getComputedStyle(preview).visibility, 'visible');
-  for (const file of SPOT_SCRIPTS.slice(2)) h.finish(file);
+  for (const file of [...SPOT_SCRIPTS.slice(2), ADS]) h.finish(file);
   await h.settle();
 });
 
@@ -145,7 +171,7 @@ test('desktop and iOS never fetch Android code or an otherwise unused manifest',
     assert.equal(translated.fetchCalls.length, 1);
     const thin = harness(t, { mode: 'thin', invite: true, userAgent });
     await thin.settle();
-    assert.deepEqual(files(thin), [...STYLES, ...SPOT_SCRIPTS]);
+    assert.deepEqual(files(thin), [...STYLES, ...SPOT_SCRIPTS, ADS]);
   }
 });
 
@@ -284,7 +310,7 @@ function assertReadingEntrances(h) {
 
 test('thin pages fetch one small no-cache manifest and version only their fixed assets', async t => {
   const h = harness(t); await h.settle();
-  assertUrls(h, [...STYLES, ...SPOT_SCRIPTS]);
+  assertUrls(h, [...STYLES, ...SPOT_SCRIPTS, ADS]);
   assert.equal(h.fetchCalls.length, 1);
   assert.equal(h.fetchCalls[0].url, BASE + 'site-runtime.json');
   assert.equal(h.fetchCalls[0].options.cache, 'no-cache');
@@ -331,24 +357,24 @@ test('thin detection requires page mode and absence of the article-localized mar
 
 test('thin articles and invitations share one manifest and do not wait for optional assets', async t => {
   const h = harness(t, { invite: true, autoLoad: false }); await flush();
-  assertUrls(h, [...STYLES, ...SPOT_SCRIPTS, 'android-app-invite.js']);
+  assertUrls(h, [...STYLES, ...SPOT_SCRIPTS, 'android-app-invite.js', ADS]);
   assert.equal(h.fetchCalls.length, 1);
   for (const file of [...STYLES, ...SPOT_SCRIPTS.slice(0, 2)]) h.finish(file);
   await h.w.MADO_SITE_RUNTIME_READY;
   assert.equal(h.state.ready, true); assert.equal(h.reveals.length, 1);
   assert.deepEqual(h.executions, SPOT_SCRIPTS.slice(0, 2));
-  for (const file of [...SPOT_SCRIPTS.slice(2), 'android-app-invite.js']) h.finish(file);
+  for (const file of [...SPOT_SCRIPTS.slice(2), 'android-app-invite.js', ADS]) h.finish(file);
   await h.settle(); assertReadingEntrances(h);
 });
 
 test('asset downloads start together while classic-script execution stays ordered and CSS gates reveal', async t => {
   const h = harness(t, { invite: true, autoLoad: false }); await flush();
-  assert.equal(h.events.length, 7); assert.equal(h.downloads.length, 0);
+  assert.equal(h.events.length, 8); assert.equal(h.downloads.length, 0);
   assert.ok(h.events.filter(event => event.tag === 'script').every(event => event.element.async === false));
-  for (const file of ['android-app-invite.js', 'spot-map.js', 'spot-media-gallery.js', 'spot-page-shared.js']) h.finish(file);
+  for (const file of [ADS, 'android-app-invite.js', 'spot-map.js', 'spot-media-gallery.js', 'spot-page-shared.js']) h.finish(file);
   assert.deepEqual(h.executions, []);
   h.finish('spot-page-shared-data.js'); await flush();
-  assert.deepEqual(h.executions, [...SPOT_SCRIPTS, 'android-app-invite.js']);
+  assert.deepEqual(h.executions, [...SPOT_SCRIPTS, 'android-app-invite.js', ADS]);
   assert.equal(h.state.ready, false); assert.equal(h.reveals.length, 0);
   h.finish('style.css'); await flush(); assert.equal(h.reveals.length, 0);
   h.finish('spot-media-gallery.css'); await h.settle(); assert.equal(h.reveals.length, 1);
@@ -357,7 +383,7 @@ test('asset downloads start together while classic-script execution stays ordere
 test('file URLs never fetch JSON and preserve relative fallback loading for every page profile', async t => {
   for (const mode of ['thin', 'ordinary', 'translated']) {
     const h = harness(t, { mode, invite: true, protocol: 'file:' }); await h.settle();
-    const wanted = mode === 'thin' ? [...STYLES, ...SPOT_SCRIPTS, 'android-app-invite.js']
+    const wanted = mode === 'thin' ? [...STYLES, ...SPOT_SCRIPTS, 'android-app-invite.js', ADS]
       : mode === 'translated' ? [CHROME_ASSET, 'site-chrome.js', 'android-app-invite.js'] : ['android-app-invite.js'];
     assert.equal(h.fetchCalls.length, 0); assertUrls(h, wanted, { versioned: false, base: 'file:///C:/site/' });
     assertReadingEntrances(h);
@@ -380,7 +406,7 @@ test('invalid schema or hashes reject the complete manifest instead of partially
     { ...manifestFixture(), version: 2 }, { ...manifestFixture(), version: '1' },
     { ...manifestFixture(), assets: [] }, badHash, shortHash, objectHash]) {
     const h = harness(t, { manifest }); await h.settle();
-    assertUrls(h, [...STYLES, ...SPOT_SCRIPTS], { versioned: false });
+    assertUrls(h, [...STYLES, ...SPOT_SCRIPTS, ADS], { versioned: false });
     assert.equal(h.document.querySelector('.spot-page-load-error'), null);
   }
 });
@@ -389,7 +415,7 @@ test('missing any required fixed asset invalidates all manifest hashes', async t
   for (const file of FIXED) {
     const manifest = manifestFixture(); delete manifest.assets[file];
     const h = harness(t, { manifest }); await h.settle();
-    assertUrls(h, [...STYLES, ...SPOT_SCRIPTS], { versioned: false });
+    assertUrls(h, [...STYLES, ...SPOT_SCRIPTS, ADS], { versioned: false });
   }
 });
 
@@ -450,14 +476,14 @@ test('translated payload or renderer failure leaves static article and navigatio
   }
 });
 
-test('optional invitation, gallery or map failures keep the rendered article and other enhancements', async t => {
-  for (const file of ['android-app-invite.js', ...SPOT_SCRIPTS.slice(2)]) {
+test('optional invitation, gallery, ad or map failures keep the rendered article and other enhancements', async t => {
+  for (const file of ['android-app-invite.js', ADS, ...SPOT_SCRIPTS.slice(2)]) {
     const h = harness(t, { invite: true, failFiles: [file] }); await h.settle();
     assert.equal(h.w.MADO_SPOT_PAGE_RENDERED, true);
     assert.ok(h.document.querySelector('#article[data-rendered]'));
     assert.equal(h.document.querySelector('.spot-page-load-error'), null);
     assertReadingEntrances(h); assert.equal(h.reveals.length, 1);
-    for (const other of ['android-app-invite.js', ...SPOT_SCRIPTS.slice(2)].filter(value => value !== file)) assert.ok(h.executions.includes(other));
+    for (const other of ['android-app-invite.js', ADS, ...SPOT_SCRIPTS.slice(2)].filter(value => value !== file)) assert.ok(h.executions.includes(other));
   }
 });
 
@@ -466,7 +492,7 @@ test('early CSS rejection handles later required and optional failures without u
   h.finish('style.css', false); await h.w.MADO_SITE_RUNTIME_READY;
   assertReadingEntrances(h); assert.equal(h.reveals.length, 1);
   h.finish('spot-media-gallery.css', false);
-  for (const file of [...SPOT_SCRIPTS, 'android-app-invite.js']) h.finish(file, false);
+  for (const file of [...SPOT_SCRIPTS, 'android-app-invite.js', ADS]) h.finish(file, false);
   await h.settle();
   assert.equal(h.document.querySelectorAll('.spot-page-load-error').length, 1);
 });

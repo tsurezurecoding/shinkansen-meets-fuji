@@ -182,6 +182,7 @@ const contentFiles = [
   "journal.html",
   "spot-map.js",
   "spot-adsense.js",
+  "site-adsense.js",
   "spot-page-shared.js",
   "spot-page-loader.js",
   "spot-media-gallery.js",
