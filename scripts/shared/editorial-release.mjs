@@ -11,7 +11,7 @@ const seriesTests = ['food-country-locales', 'omamori-page', 'drinks-locales'];
 const commonInputs = ['scripts/generate-everyday-page.mjs', 'scripts/shared/everyday-related.mjs', 'scripts/generate-foods-page.mjs',
   'scripts/generate-castle-locales.mjs', 'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
   'scripts/generate-content-manifest.mjs', 'scripts/validate-language-pages.mjs',
-  'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs',
+  'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', articleReleaseHelper,
   'site-runtime.json', 'spot-page-runtime.json', 'content-manifest.json', 'sitemap.xml'];
 const slug = /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/;
 const list = values => Array.isArray(values) && new Set(values).size === values.length
@@ -98,8 +98,14 @@ function onlyOwnDeclaration(id, registry, statuses, versions, own, declarationOn
     && previous.companionArticles.every(other => current.companionArticles.includes(other));
 }
 
-function articleCommands(id, companions, routes, syntax) {
+function articleCommands(id, companions, routes, syntax, articleOnly = false) {
   const node = (...args) => ['node', ...args];
+  if (articleOnly) {
+    return [...syntax, node('--test', ownTest(id), 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs'),
+      node(ownGenerator(id), '--check'),
+      node('scripts/validate-site-navigation.mjs', '--route', id + '.html'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')];
+  }
   const relatedGenerators = ['generate-foods-page', 'generate-everyday-page', 'generate-drinks-page', 'generate-beer-page',
     'generate-countryside-page', 'generate-drinks-locales', 'generate-omamori-page', 'generate-site-chrome', 'generate-site-runtime'];
   const spotAndMap = "import fs from 'node:fs'; import assert from 'node:assert/strict'; import {planSpotPage,finalPageOutput,sitemapXML} from './scripts/generate-spot-pages.mjs'; const page=planSpotPage('gamagori-greenhouses','en',{requireExisting:true,preserveHead:true}); assert.equal(fs.readFileSync(page.outputPath,'utf8'),finalPageOutput(page.outputPath,page.generatedHTML)); assert.equal(fs.readFileSync('sitemap.xml','utf8'),sitemapXML());";
@@ -155,9 +161,15 @@ export function selectEditorialRelease(changes, options, syntax, special) {
       return file.endsWith('.html') && (options[id + 'AssetVersionOnly']?.(file) ??
         (options.fileContents && onlyArticleAssetReferencesChanged(...options.fileContents(file))));
     });
-    if (matches) return { scope: id + '-everyday', needsDependencies: true, pagesCandidate: !declarationOnly,
-      reason: 'Check the ten editions of ' + id + ', the linked Everyday Japan articles, their photographs and Web distribution.',
-      commands: articleCommands(id, companions, routes, syntax) };
+    if (matches) {
+      const ownOnlyFiles = new Set([...own, articleRegistryPath, articleReleaseHelper, 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+      const articleOnly = !declarationOnly && changes.every(c => ownOnlyFiles.has(c.path));
+      return { scope: id + '-everyday', needsDependencies: true, pagesCandidate: !declarationOnly,
+        reason: articleOnly
+          ? 'Check the ten editions of ' + id + ', its photographs and Web distribution; shared chrome and other Everyday Japan pages are unchanged.'
+          : 'Check the ten editions of ' + id + ', the linked Everyday Japan articles, their photographs and Web distribution.',
+        commands: articleCommands(id, companions, routes, syntax, articleOnly) };
+    }
   }
   return null;
 }
