@@ -196,5 +196,41 @@
     "filename": "images/ramen/jiro-detail.webp",
     "credit": "michikusa",
     "candidateId": "CP-0351"
+  },
+  {
+    "id": "kishimen-shop",
+    "file": "PXL_20261124_030413139.MP_きしめん.jpg",
+    "asset": "images/ramen/kishimen-shop.webp",
+    "name": "名古屋駅・新幹線ホームのきしめん住よし",
+    "alt": "名古屋駅の新幹線ホームにある立ち食いきしめん店「住よし」の店頭。頭上に電光案内板があり、右奥に新幹線N700Sの車両が見える。",
+    "caption": "名古屋駅・新幹線ホームの「きしめん 住よし」。列車のすぐそばで一杯。",
+    "width": 1440,
+    "height": 810,
+    "source": "myphoto\\ラーメン\\PXL_20261124_030413139.MP_きしめん.jpg",
+    "creditJa": "michikusa",
+    "creditEn": "michikusa",
+    "permission": "approved: owner supplied the photographs and requested multilingual product integration and release on 2026-11-25",
+    "status": "local integration, unpublished",
+    "filename": "images/ramen/kishimen-shop.webp",
+    "credit": "michikusa",
+    "candidateId": "CP-0358"
+  },
+  {
+    "id": "kishimen-bowl",
+    "file": "PXL_20261124_031112446.MP_きしめん2.jpg",
+    "asset": "images/ramen/kishimen-bowl.webp",
+    "name": "住よしのかき揚げきしめん",
+    "alt": "濃い色のつゆに、かき揚げ、たっぷりの花かつお、刻みねぎをのせたきしめんの丼。幅広の平打ち麺を箸で持ち上げている。",
+    "caption": "かき揚げきしめん。幅広の平打ち麺に、たっぷりの花かつおとだしが香る。",
+    "width": 1440,
+    "height": 810,
+    "source": "myphoto\\ラーメン\\PXL_20261124_031112446.MP_きしめん2.jpg",
+    "creditJa": "michikusa",
+    "creditEn": "michikusa",
+    "permission": "approved: owner supplied the photographs and requested multilingual product integration and release on 2026-11-25",
+    "status": "local integration, unpublished",
+    "filename": "images/ramen/kishimen-bowl.webp",
+    "credit": "michikusa",
+    "candidateId": "CP-0359"
   }
 ]

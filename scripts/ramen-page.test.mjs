@@ -16,19 +16,19 @@ const documentFor = file => new JSDOM(expandDeliveredSiteChromeHTML({appDir: roo
 const pathname = link => new URL(link.href).pathname;
 const photos = JSON.parse(read('data/ramen-photo-sources.json'));
 const photoPaths = photos.map(photo => photo.filename).sort();
-const chapterIds = ['styles', 'noodles', 'jiro', 'inspired', 'order'];
-const tocIds = ['styles', 'noodles', 'jiro', 'order'];
+const chapterIds = ['styles', 'noodles', 'jiro', 'inspired', 'order', 'kishimen'];
+const tocIds = ['styles', 'noodles', 'jiro', 'order', 'kishimen'];
 const companionRoutes = ['foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'donburi.html'];
 const entryRoutes = ['everyday-japan.html', ...companionRoutes];
 const saburo = /さぶ(?:郎|ろう)|サブ(?:郎|ロウ)|sabur[oō]/iu;
 const price = /(?:[¥￥$€£₩฿]\s*\p{N})|(?:\p{N}[\p{N}.,\s]*\s*(?:円|圓|日元|日圓|엔|เยน))|(?:\p{N}[\p{N}.,\s]*\s*(?:yen|jpy|euros?|dollars?|usd|eur|krw|thb)\b)/iu;
 
-test('ramen has exactly the ten reviewed language editions and eleven owner-approved photos', () => {
+test('ramen has exactly the ten reviewed language editions and thirteen owner-approved photos', () => {
   assert.deepEqual([...languages].sort(), ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'].sort());
   assert.deepEqual(supported('ramen.html'), languages);
-  assert.equal(photos.length, 11);
-  assert.equal(new Set(photos.map(photo => photo.id)).size, 11);
-  assert.equal(new Set(photoPaths).size, 11);
+  assert.equal(photos.length, 13);
+  assert.equal(new Set(photos.map(photo => photo.id)).size, 13);
+  assert.equal(new Set(photoPaths).size, 13);
   for (const photo of photos) {
     assert.equal(photo.credit, 'michikusa', photo.filename);
     assert.match(photo.permission, /approved/i, photo.filename);
@@ -88,7 +88,7 @@ for (const lang of languages) test(`${edition(lang)}: localized travel article, 
     if (lang !== 'ja') assert.equal(doc.querySelectorAll('.copy-chunk').length, 0, 'Japanese line-break chunks must not constrain another language');
 
     const images = [...hero.querySelectorAll('img'), ...article.querySelectorAll('img')];
-    assert.equal(images.length, 11, 'Keep all eleven selected ramen photographs');
+    assert.equal(images.length, 13, 'Keep all thirteen selected ramen and kishimen photographs');
     assert.deepEqual(images.map(img => new URL(img.src).pathname.slice(1)).sort(), photoPaths);
     const buttons = [...hero.querySelectorAll('[data-photo-id]'), ...article.querySelectorAll('[data-photo-id]')];
     assert.deepEqual(buttons.map(button => button.dataset.photoId).sort(), photos.map(photo => photo.id).sort());
@@ -108,6 +108,7 @@ for (const lang of languages) test(`${edition(lang)}: localized travel article, 
     }
     assert.equal(hero.querySelector('[data-photo-id]')?.dataset.photoId, 'jiro', 'Lead with the approved Jiro photograph');
     assert.equal(article.querySelector('#jiro [data-photo-id]')?.dataset.photoId, 'jiro-detail', 'Introduce the Jiro section with its detail photograph');
+    assert.deepEqual([...article.querySelectorAll('#kishimen [data-photo-id]')].map(button => button.dataset.photoId), ['kishimen-shop', 'kishimen-bowl'], 'Include both Nagoya platform kishimen photographs');
     const dialog = doc.querySelector('dialog.don-lightbox');
     assert.ok(dialog?.querySelector('img') && doc.getElementById(dialog.getAttribute('aria-labelledby')));
     assert.equal(dialog.querySelector('.don-close').getAttribute('aria-label'), copy.closePhoto);

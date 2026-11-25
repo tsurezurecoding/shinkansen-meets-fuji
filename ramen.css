@@ -6,6 +6,10 @@
 .ramen-page .don-article a { color:#81543e; }
 .ramen-page .don-article a:hover { color:var(--ink); }
 .ramen-page .don-article > .don-section { padding-top:58px; }
+.ramen-page .don-section-heading,
+.ramen-page #order > .don-eyebrow,
+.ramen-page #order > h2,
+.ramen-page .don-ending > h2 { text-align:center; }
 .ramen-page .don-prose h3 { margin:30px 0 15px; font:700 23px/1.6 var(--font-serif); }
 .ramen-styles { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 32px; margin-top:25px; }
 .ramen-styles > section { min-width:0; padding:28px 0; border-top:1px solid var(--line); }
@@ -52,9 +56,15 @@
 .ramen-inspired-grid p:not(.don-romaji,.don-source) { font-size:14px; line-height:2; margin:0 0 15px; }
 .ramen-jiro-photo { max-width:680px; margin:26px auto 30px; }
 .ramen-jiro-photo img { width:100%; aspect-ratio:4/3; object-fit:cover; }
+.ramen-page .food-chapters { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.ramen-kishimen-photos { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px; margin:28px 0 10px; }
+.ramen-kishimen-photos figure { min-width:0; margin:0; }
+.ramen-kishimen-photos .don-photo img { width:100%; aspect-ratio:16/9; object-fit:cover; }
 @media(max-width:680px) {
  .ramen-page .food-hero h1 { font-size:31px; }
- .ramen-styles,.ramen-methods,.ramen-photo-note { grid-template-columns:1fr; }
+ .ramen-styles,.ramen-methods,.ramen-photo-note,.ramen-kishimen-photos { grid-template-columns:1fr; }
+ .ramen-kishimen-photos { gap:22px; }
+ .ramen-page .food-chapters a { padding:10px 2px; word-break:keep-all; overflow-wrap:anywhere; }
  .ramen-styles { gap:0; }
  .ramen-styles > section { padding:25px 0; }
  .ramen-methods { gap:18px; }
