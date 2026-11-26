@@ -1063,6 +1063,33 @@ function guidePageStructure(html) {
   return [head, ...(html.slice(head.length).match(tags) || [])];
 }
 
+function journalEkiStampScope(changes, options) {
+  const templates = new Set(['scripts/templates/site-source/journal.html.tpl', 'scripts/templates/site-source/en/journal.html.tpl']);
+  const page = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?journal\.html$/;
+  const localeAsset = /^(?:scripts\/locales\/utility-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json|(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js)$/;
+  const controls = new Set(['style.css', 'app.js', 'content-manifest.json', 'site-runtime.json', 'spot-page-runtime.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (!changes.some(({ path: file }) => templates.has(file) || page.test(file))) return null;
+  if (!changes.every(({ path: file, status }) => {
+    if (status !== 'M') return false;
+    if (controls.has(file) || templates.has(file) || page.test(file) || localeAsset.test(file)) return true;
+    if (/\.html$/.test(file) && (options.assetVersionOnly?.(file) || options.versionOnly?.(file))) return true;
+    return false;
+  })) return null;
+  return {
+    scope: 'journal-eki-stamp',
+    needsDependencies: true,
+    pagesCandidate: true,
+    reason: 'All 10 journal editions, real eki stamp section, collection photo cards, and synced asset versions',
+    commands: [
+      node('--test', 'scripts/stamp-store.test.mjs', 'scripts/release-scope.test.mjs'),
+      node(utilityGenerator, '--check', '--route', 'journal.html'),
+      node('scripts/sync-asset-versions.mjs', '--check'),
+      node('scripts/check-content-manifest.mjs'),
+      node('scripts/validate-content.mjs'),
+    ],
+  };
+}
+
 function guidePageScope(changes, { fileContents }) {
   const templates = new Set(['zukan.html', 'journal.html', 'en/journal.html'].map(file => `scripts/templates/site-source/${file}.tpl`));
   const page = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:zukan|journal)\.html$/;
@@ -1381,7 +1408,7 @@ function siteAdsenseScope(changes, { assetVersionOnly }) {
 
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = siteAdsenseScope(inputs, options) || spotNewsHeaderScope(inputs, options) || timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || timetableScope(inputs, options)
+    const existing = siteAdsenseScope(inputs, options) || spotNewsHeaderScope(inputs, options) || timelineScope(inputs, options) || discoveryScope(inputs, options) || featureMediaScope(inputs, options) || spotVideoLoadingScope(inputs, options) || solarArkSectionScope(inputs, options) || guidePageScope(inputs, options) || journalEkiStampScope(inputs, options) || timetableScope(inputs, options)
       || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };

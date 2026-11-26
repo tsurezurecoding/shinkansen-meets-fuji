@@ -61,7 +61,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer="" src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -85,8 +85,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">เหมือนสะสมตราประทับสถานี</span> <span class="copy-chunk">บันทึกฟูจิ ปราสาท ทะเลสาบ และป้ายจากหน้าต่างโทไคโดชินคันเซ็น</span> <span class="copy-chunk">เปลี่ยนเป็นเกมมองหาวิวของครอบครัว</span> <span class="copy-chunk">หรือบันทึกทริปเดินทางคนเดียว</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="th/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">สร้างคู่มือของฉัน</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="th/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">คืออะไร?</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="th/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">ดูแผงแสตมป์</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="th/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">สะสมตราประทับวิวหน้าต่าง</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="th/journal.html#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">หาตราประทับสถานี</a>
         </div>
       </div>
     </section>
@@ -131,10 +131,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">แสตมป์ทั้งหมด</h3>
       <div class="stampboard" id="stampboard"></div>
-        <aside class="journal-collection-callout">
-          <div><p class="eyebrow">ชิงช้าสวรรค์</p><h3>รวมชิงช้าสวรรค์เล็ก ๆ</h3><p>ชมชิงช้าสวรรค์ตามเส้นทางในคู่มือเฉพาะ</p></div>
-          <a class="inline-cta" href="th/ferris-wheels.html">สำรวจชิงช้าสวรรค์<span aria-hidden="true">→</span></a>
-        </aside>
+      <div class="journal-collection-grid" aria-label="คอลเลกชันตามธีม">
+        <a class="journal-collection-card" href="th/727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="ป้ายโฆษณา 727 Cosmetics สีแดงขาวตั้งอยู่กลางทุ่งนาในเมืองฟูจิซาวะ" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">สะสมป้าย 727</p>
+            <h3>สะสมป้าย 727</h3>
+            <p>บันทึกตำแหน่งป้ายแต่ละจุดและเหรียญรางวัลตามระดับได้ในคู่มือเฉพาะทาง</p>
+            <span class="journal-collection-cta">ดูคอลเลกชัน <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="th/ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="ชิงช้าสวรรค์สวนสนุกฮิราคาตะพาร์คเปิดไฟยามพลบค่ำมองจากหน้าต่างชินคันเซ็น" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">ชิงช้าสวรรค์</p>
+            <h3>สะสมชิงช้าสวรรค์</h3>
+            <p>สำรวจชิงช้าสวรรค์ตลอดเส้นทางในคู่มือเฉพาะทาง</p>
+            <span class="journal-collection-cta">ดูคอลเลกชัน <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">การรีเซ็ตจะลบทั้งตราประทับและรายการโปรด</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">รีเซ็ตแสตมป์</button>
@@ -160,22 +180,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">คอลเลกชันระหว่างทาง</span> <span class="copy-chunk">สำหรับคนชอบตราประทับสถานี</span></h3>
-          <p data-i18n="journalStationBody">หากชอบสะสมแสตมป์สถานี ลองสะสมทิวทัศน์ระหว่างสถานีเป็นคอลเลกชันการเดินทางอีกแบบ</p>
+          <p data-i18n="journalStationBody">หากชอบสะสมตราประทับกระดาษตามสถานี (eki stamp) ลองสะสมวิวระหว่างทางเป็นความทรงจำอีกรูปแบบหนึ่งดูสิ</p>
+          <a class="journal-eki-jump" href="th/journal.html#eki-stamp">หาตราประทับสถานี <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="th/zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">สำรวจคู่มือชมวิวจากหน้าต่าง</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">เกมเล่นคู่กัน</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">เหมาะสำหรับเด็ก</span> <span class="copy-chunk">เกมชินคันเซ็น</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">หากต้องการกิจกรรมชินคันเซ็นบนหน้าจอ ลองเว็บไซต์ทางการ “Shinkansen de asobo!” ของ JR Central ซึ่งมีเกมสำหรับเด็ก เช่น หาสัตว์และแก้ปริศนา หน้าต่างชินคันเซ็นเล่นอีกแบบ: เปลี่ยนวิวจริงข้างนอกให้เป็นเกมระหว่างโดยสาร</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">เปิดเกมทางการ</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">ตราประทับสถานีจริง</p>
+        <h2 id="journalEkiTitle">ตราประทับกระดาษที่สถานี</h2>
+        <p class="section-sub">หลายสถานีในญี่ปุ่นมีตรายางที่ระลึก (“eki stamp”) รูปอาคารสถานีหรือสถานที่สำคัญประจำท้องถิ่น ระหว่างนั่งรถไฟเก็บตราประทับดิจิทัลจากวิวหน้าต่าง และก่อนขึ้นหรือหลังลงรถแวะปั๊มตราประทับกระดาษที่สถานีได้ทั้งสองแบบ</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>สถานีโตเกียว</h3>
+            <span class="journal-eki-badge is-out">นอกประตูตรวจตั๋ว</span>
+          </div>
+          <p class="journal-eki-where">JR East · ด้านนอกทางออกทิศใต้มารุโนะอุจิ</p>
+          <p class="journal-eki-body">ลวดลายเป็นอาคารอิฐแดงมารุโนะอุจิและระฆังเงิน ไม่มีตราประทับถาวรในเขตชินคันเซ็น ให้เดินไปฝั่งมารุโนะอุจิก่อนขึ้นรถหรือหลังลงรถ</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>สถานีเกียวโต</h3>
+            <span class="journal-eki-badge is-local">ในเขตสายท้องถิ่น</span>
+          </div>
+          <p class="journal-eki-where">JR West · ด้านในประตูสายท้องถิ่น (ใกล้ทางออกกลาง / ทางออกตะวันตก)</p>
+          <p class="journal-eki-body">ลวดลายเป็นอาคารสถานีเกียวโตและหอคอยเกียวโต ตั้งอยู่ในเขตสายท้องถิ่นของ JR West ไม่ใช่ฝั่งชินคันเซ็น เหมาะแวะปั๊มตอนต่อรถหรือลงจากรถ</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>สถานีชินโอซาก้า</h3>
+            <span class="journal-eki-badge is-counter">เคาน์เตอร์สายท้องถิ่น</span>
+          </div>
+          <p class="journal-eki-where">JR West · เคาน์เตอร์ประตูฝั่งตะวันออก (สอบถามเจ้าหน้าที่) หรือใกล้ห้องจำหน่ายตั๋วทางออกตะวันออก</p>
+          <p class="journal-eki-body">บางครั้งต้องแจ้งเจ้าหน้าที่เคาน์เตอร์เพื่อขอปั๊ม ฝั่งชินคันเซ็นของ JR Central ไม่มีแบบถาวร ยกเว้นช่วงแคมเปญพิเศษ</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>สถานีนาโกย่า</h3>
+            <span class="journal-eki-badge is-none">ไม่มีแบบถาวร</span>
+          </div>
+          <p class="journal-eki-where">ไม่มีตราประทับถาวรของ JR</p>
+          <p class="journal-eki-body">สถานีชินคันเซ็นสายโทไคโดของ JR Central ส่วนใหญ่ไม่มีตราประทับถาวร สถานีนาโกย่ามักตั้งวางเฉพาะช่วงกิจกรรมพิเศษเท่านั้น</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">พกสมุดบันทึกหรือกระดาษเปล่าไปด้วยจะปั๊มได้คมชัด ตำแหน่งและการตั้งวางอาจเปลี่ยนแปลงได้โดยไม่แจ้งล่วงหน้า หากหาไม่พบให้สอบถามเจ้าหน้าที่สถานี<span class="journal-eki-src">แหล่งอ้างอิง (ภาษาญี่ปุ่น ตรวจสอบ พ.ย. 2026): <a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">โตเกียว</a> · <a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">เกียวโต</a> · <a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">ชินโอซาก้า</a> · <a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">นาโกย่า</a> (Tabi no Stamp-cho)</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden="">
@@ -237,12 +291,12 @@
     <p class="footer-credit" data-i18n="footerCredit">Michikusa — เดินทางอย่างไม่เร่งรีบ และพบสิ่งที่ไม่คาดคิด</p>
   </footer>
 
-  <script src="data-runtime.js?v=f3036030"></script><script src="th/utility-data.js?v=a4bc351c"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=f3036030"></script><script src="th/utility-data.js?v=500756fe"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/th.shell.js"],"root":"","lang":"th","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu","menuRoute":"journal.html","mainLinks":[{"index":4,"text":"บันทึกการเดินทาง"},{"index":5,"text":"บันทึกการเดินทาง"}]}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body></html>

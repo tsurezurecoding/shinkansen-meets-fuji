@@ -61,7 +61,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer="" src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -85,8 +85,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">Comme on collectionne les tampons de gare,</span> <span class="copy-chunk">gardez le mont Fuji, les châteaux, les lacs et les panneaux vus depuis le Tokaido Shinkansen.</span> <span class="copy-chunk">faites-en un jeu d’observation en famille</span> <span class="copy-chunk">ou un carnet pour un trajet en solo.</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="fr/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">Créer mon guide</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="fr/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">Qu'est-ce que c'est ?</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="fr/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">Voir la collection de tampons</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="fr/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">Collectionner les tampons de fenêtre</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="fr/journal.html#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">Trouver les tampons de gare</a>
         </div>
       </div>
     </section>
@@ -131,10 +131,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">Tous les tampons</h3>
       <div class="stampboard" id="stampboard"></div>
-        <aside class="journal-collection-callout">
-          <div><p class="eyebrow">GRANDES ROUES</p><h3>Une collection de petites grandes roues</h3><p>Découvrez les grandes roues le long du trajet dans un guide à part.</p></div>
-          <a class="inline-cta" href="fr/ferris-wheels.html">Découvrir les grandes roues<span aria-hidden="true">→</span></a>
-        </aside>
+      <div class="journal-collection-grid" aria-label="Collections thématiques">
+        <a class="journal-collection-card" href="fr/727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="Un panneau rouge et blanc 727 Cosmetics dressé au bord des rizières à Fujisawa" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">COLLECTION 727</p>
+            <h3>Collectionner les panneaux 727</h3>
+            <p>Suivez chaque panneau et les médailles d’étape dans le guide dédié.</p>
+            <span class="journal-collection-cta">Voir la collection <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="fr/ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="La grande roue de Hirakata Park illuminée au crépuscule depuis la fenêtre du Shinkansen" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">GRANDES ROUES</p>
+            <h3>Collectionner les grandes roues</h3>
+            <p>Explorez les grandes roues le long du trajet dans un guide dédié.</p>
+            <span class="journal-collection-cta">Voir la collection <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">La réinitialisation efface à la fois vos tampons et vos favoris.</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">Réinitialiser les tampons</button>
@@ -160,22 +180,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">Une collection en mouvement</span> <span class="copy-chunk">pour les amateurs de tampons de gare</span></h3>
-          <p data-i18n="journalStationBody">Si vous aimez collectionner les tampons de gare, essayez les paysages entre les gares : une autre collection de voyage.</p>
+          <p data-i18n="journalStationBody">Si vous aimez collectionner les tampons papier en gare (eki stamps), essayez aussi de récolter les paysages entre deux arrêts comme autre souvenir de voyage.</p>
+          <a class="journal-eki-jump" href="fr/journal.html#eki-stamp">Trouver les tampons de gare <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="fr/zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">Parcourir le guide de la fenêtre</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">UN JEU COMPLÉMENTAIRE</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">Un jeu de Shinkansen</span> <span class="copy-chunk">adapté aux enfants</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">Pour une activité Shinkansen sur écran, essayez le site officiel de JR Central « Shinkansen de asobo! », avec des jeux pour enfants comme chercher des animaux ou résoudre des énigmes. Shinkansen Window transforme quant à lui le vrai paysage extérieur en jeu pendant le trajet.</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">Ouvrir le jeu officiel</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">VRAIS EKI STAMPS</p>
+        <h2 id="journalEkiTitle">Tampons papier en gare</h2>
+        <p class="section-sub">De nombreuses gares japonaises proposent un tampon commémoratif (« eki stamp ») illustrant le bâtiment ou les symboles locaux. Collectionnez les tampons numériques par la fenêtre à bord, et les tampons papier en gare avant ou après le trajet.</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Gare de Tokyo</h3>
+            <span class="journal-eki-badge is-out">Hors des portiques</span>
+          </div>
+          <p class="journal-eki-where">JR East · Hors des portiques, sortie sud Marunouchi</p>
+          <p class="journal-eki-body">Représente la façade en briques rouges de Marunouchi et la Cloche d’argent. Il n’y a pas de tampon permanent dans la zone Shinkansen : passez côté Marunouchi avant le départ ou après l’arrivée.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Gare de Kyoto</h3>
+            <span class="journal-eki-badge is-local">Dans la zone locale</span>
+          </div>
+          <p class="journal-eki-where">JR West · Dans la zone des lignes locales (près des sorties Centrale / Ouest)</p>
+          <p class="journal-eki-body">Représente la gare de Kyoto et la tour de Kyoto. Situé côté lignes locales JR West plutôt que côté Shinkansen : pratique lors d’une correspondance ou à la sortie.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Gare de Shin-Osaka</h3>
+            <span class="journal-eki-badge is-counter">Guichet lignes locales</span>
+          </div>
+          <p class="journal-eki-where">JR West · Guichet de la porte Est (demander au personnel) ou près du guichet de la sortie Est</p>
+          <p class="journal-eki-body">Parfois conservé au guichet sur demande. JR Central ne propose pas de tampon permanent côté Shinkansen, sauf lors de campagnes temporaires.</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>Gare de Nagoya</h3>
+            <span class="journal-eki-badge is-none">Pas de tampon permanent</span>
+          </div>
+          <p class="journal-eki-where">Pas de tampon JR permanent</p>
+          <p class="journal-eki-body">La plupart des gares du Tokaido Shinkansen (JR Central) n’ont pas de tampon permanent ; la gare de Nagoya n’en propose généralement que lors d’opérations temporaires.</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">Apportez un carnet ou du papier uni pour une empreinte nette. L’emplacement et la disponibilité peuvent changer sans préavis : demandez au personnel de la gare si vous ne le trouvez pas.<span class="journal-eki-src">Sources (japonais, vérifié nov. 2026) : <a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">Tokyo</a> · <a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">Kyoto</a> · <a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">Shin-Osaka</a> · <a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">Nagoya</a> (Tabi no Stamp-cho)</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden="">
@@ -237,12 +291,12 @@
     <p class="footer-credit" data-i18n="footerCredit">Michikusa — Voyages tranquilles et découvertes au hasard.</p>
   </footer>
 
-  <script src="data-runtime.js?v=f3036030"></script><script src="fr/utility-data.js?v=0d8c333f"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=f3036030"></script><script src="fr/utility-data.js?v=04f5221d"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/fr.shell.js"],"root":"","lang":"fr","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu","menuRoute":"journal.html","mainLinks":[{"index":1,"text":"Recherche de trains"},{"index":4,"text":"Carnet"},{"index":5,"text":"Carnet"}]}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body></html>

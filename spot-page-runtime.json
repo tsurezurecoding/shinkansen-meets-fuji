@@ -2,7 +2,7 @@
   "schema": "mado-spot-page-runtime",
   "version": 1,
   "assets": {
-    "style.css": "2117933f5f2bc8b49b060bf07a08bd36a259e1cf7cf0a593c9379654092a6d58",
+    "style.css": "af06eb1d868265dddcea1cca647b92851213400753c3842246a4f83e93babfc0",
     "spot-media-gallery.css": "f4338e6b75013a10e1c32b3cf15a8daa690e622e307086c8fd538c80099bd192",
     "spot-page-shared-data.js": "84653b676f853c82d9291d38e251695be4493aafcf9f25d211a2eb0045be086a",
     "spot-page-shared.js": "e9e78a47f0a9f388b521596377d5c29a6857168837d675d3d4f38a664a99cbef",

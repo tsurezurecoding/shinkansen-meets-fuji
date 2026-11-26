@@ -61,7 +61,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer="" src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -85,8 +85,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">Como coleccionar sellos de estaciones,</span> <span class="copy-chunk">guarda el monte Fuji, castillos, lagos y carteles desde el Tokaido Shinkansen.</span> <span class="copy-chunk">Jugad en familia a descubrir el paisaje</span> <span class="copy-chunk">o en un diario de un viaje a solas.</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="es/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">Crear mi guía</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="es/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">¿Qué es?</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="es/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">Ver el tablero de sellos</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="es/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">Coleccionar sellos de ventanilla</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="es/journal.html#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">Buscar sellos de estación</a>
         </div>
       </div>
     </section>
@@ -131,10 +131,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">Todos los sellos</h3>
       <div class="stampboard" id="stampboard"></div>
-        <aside class="journal-collection-callout">
-          <div><p class="eyebrow">NORIAS</p><h3>Una colección de pequeñas norias</h3><p>Explora las norias de la ruta en una guía visual independiente.</p></div>
-          <a class="inline-cta" href="es/ferris-wheels.html">Explora las norias<span aria-hidden="true">→</span></a>
-        </aside>
+      <div class="journal-collection-grid" aria-label="Colecciones temáticas">
+        <a class="journal-collection-card" href="es/727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="Un cartel rojo y blanco de 727 Cosmetics frente a los arrozales de Fujisawa" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">COLECCIÓN 727</p>
+            <h3>Coleccionar carteles 727</h3>
+            <p>Registra cada ubicación y las medallas de progreso en la guía dedicada.</p>
+            <span class="journal-collection-cta">Ver colección <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="es/ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="La noria de Hirakata Park iluminada al atardecer desde la ventanilla del Shinkansen" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">NORIAS</p>
+            <h3>Coleccionar norias</h3>
+            <p>Descubre las norias a lo largo de la ruta en una guía dedicada.</p>
+            <span class="journal-collection-cta">Ver colección <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">Al restablecer, se borran tanto tus sellos como tus favoritos.</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">Borrar sellos</button>
@@ -160,22 +180,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">Una colección en movimiento</span> <span class="copy-chunk">para fans de los sellos de estaciones</span></h3>
-          <p data-i18n="journalStationBody">Si te gusta coleccionar sellos de estaciones, prueba a reunir paisajes entre estaciones como otra colección de viaje.</p>
+          <p data-i18n="journalStationBody">Si te gusta coleccionar sellos de papel en las estaciones (eki stamps), prueba a reunir paisajes entre paradas como otra forma de recordar el viaje.</p>
+          <a class="journal-eki-jump" href="es/journal.html#eki-stamp">Buscar sellos de estación <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="es/zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">Explora la guía visual desde el tren</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">UN JUEGO COMPLEMENTARIO</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">Para los más pequeños</span> <span class="copy-chunk">Juego de Shinkansen</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">Si buscas una actividad del Shinkansen en pantalla, prueba la web oficial «Shinkansen de asobo!» de JR Central. Incluye juegos para niños, como encontrar animales y resolver rompecabezas. Shinkansen Window funciona de otra manera: convierte las vistas reales del exterior en un juego mientras viajas.</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">Abrir el juego oficial</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">SELLOS REALES DE ESTACIÓN</p>
+        <h2 id="journalEkiTitle">Sellos de papel en la estación</h2>
+        <p class="section-sub">Muchas estaciones japonesas tienen un sello conmemorativo de goma («eki stamp») con el edificio o monumentos locales. Colecciona sellos digitales de ventanilla durante el trayecto y estampa los de papel antes de subir o al bajar.</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Estación de Tokio</h3>
+            <span class="journal-eki-badge is-out">Fuera de los tornos</span>
+          </div>
+          <p class="journal-eki-where">JR East · Fuera de la salida sur de Marunouchi</p>
+          <p class="journal-eki-body">Muestra el edificio de ladrillo rojo de Marunouchi y la Campana de Plata. No hay sello permanente dentro de los tornos del Shinkansen; ve al lado Marunouchi antes de salir o al llegar.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Estación de Kioto</h3>
+            <span class="journal-eki-badge is-local">Dentro de líneas locales</span>
+          </div>
+          <p class="journal-eki-where">JR West · Dentro de los tornos de líneas locales (cerca de las salidas Central / Oeste)</p>
+          <p class="journal-eki-body">Muestra el edificio de la estación de Kioto y la Torre de Kioto. Está en la zona de líneas locales de JR West, no en el Shinkansen; útil al hacer transbordo o salir.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Estación de Shin-Osaka</h3>
+            <span class="journal-eki-badge is-counter">Ventanilla local</span>
+          </div>
+          <p class="journal-eki-where">JR West · Ventanilla de la puerta este (pedir al personal) o junto a la taquilla de la salida este</p>
+          <p class="journal-eki-body">A veces se guarda en ventanilla bajo petición. JR Central no mantiene sello permanente en el lado del Shinkansen salvo en campañas temporales.</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>Estación de Nagoya</h3>
+            <span class="journal-eki-badge is-none">Sin sello fijo</span>
+          </div>
+          <p class="journal-eki-where">Sin sello permanente de JR</p>
+          <p class="journal-eki-body">La mayoría de las estaciones del Tokaido Shinkansen de JR Central no tienen sellos permanentes; en Nagoya suelen estar disponibles solo durante campañas temporales.</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">Lleva un cuaderno o papel liso para obtener un buen sello. La ubicación y disponibilidad pueden cambiar sin aviso; si no lo encuentras, pregunta al personal de la estación.<span class="journal-eki-src">Fuentes (japonés, verificado nov. 2026): <a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">Tokyo</a> · <a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">Kyoto</a> · <a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">Shin-Osaka</a> · <a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">Nagoya</a> (Tabi no Stamp-cho)</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden="">
@@ -237,12 +291,12 @@
     <p class="footer-credit" data-i18n="footerCredit">Michikusa — Viajes sin prisas y descubrimientos casuales.</p>
   </footer>
 
-  <script src="data-runtime.js?v=f3036030"></script><script src="es/utility-data.js?v=4ded6854"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=f3036030"></script><script src="es/utility-data.js?v=aa690a37"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/es.shell.js"],"root":"","lang":"es","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu","menuRoute":"journal.html","mainLinks":[{"index":4,"text":"Diario"},{"index":5,"text":"Diario"}]}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body></html>

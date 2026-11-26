@@ -62,7 +62,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -85,8 +85,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">駅スタンプを集めるように、</span><span class="copy-chunk">富士山、城、湖、看板など、</span><span class="copy-chunk">東海道新幹線の車窓を</span><span class="copy-chunk">デジタルスタンプに。</span><span class="copy-chunk">親子の景色探しにも、</span><span class="copy-chunk">一人旅の記録にも。</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">乗る列車でガイドをつくる</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">スタンプを見る</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">車窓スタンプを集める</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">駅スタンプを探す</a>
         </div>
       </div>
     </section>
@@ -131,22 +131,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">すべてのスタンプ</h3>
       <div class="stampboard" id="stampboard"></div>
-      <aside class="journal-collection-callout">
-        <div>
-          <p class="eyebrow">727 COLLECTION</p>
-          <h3>727看板を集める</h3>
-          <p>沿線の個別地点と段階メダルは、専用ページでまとめて記録できます。</p>
-        </div>
-        <a class="inline-cta" href="727-collection.html">727看板コレクションを見る<span aria-hidden="true">→</span></a>
-      </aside>
-      <aside class="journal-collection-callout">
-        <div>
-          <p class="eyebrow">FERRIS WHEELS</p>
-          <h3>車窓の観覧車を集める</h3>
-          <p><span class="copy-chunk">沿線の小さな輪を、</span><span class="copy-chunk">専用の図鑑で探せます。</span></p>
-        </div>
-        <a class="inline-cta" href="ferris-wheels.html">観覧車コレクションを見る<span aria-hidden="true">→</span></a>
-      </aside>
+      <div class="journal-collection-grid" aria-label="テーマ別コレクション">
+        <a class="journal-collection-card" href="727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="田んぼの向こうに立つ藤沢市用田の727看板" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">727 COLLECTION</p>
+            <h3><span class="copy-chunk">727看板を</span><span class="copy-chunk">集める</span></h3>
+            <p>沿線の個別地点と段階メダルは、専用ページでまとめて記録できます。</p>
+            <span class="journal-collection-cta">コレクションを見る <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="夕暮れの新幹線から見えるひらかたパークの観覧車" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">FERRIS WHEELS</p>
+            <h3><span class="copy-chunk">車窓の観覧車を</span><span class="copy-chunk">集める</span></h3>
+            <p><span class="copy-chunk">沿線の小さな輪を、</span><span class="copy-chunk">専用の図鑑で探せます。</span></p>
+            <span class="journal-collection-cta">コレクションを見る <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">リセットすると、スタンプとお気に入りが両方消えます。</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">スタンプをリセット</button>
@@ -172,22 +180,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">駅スタンプ好きなら、</span><span class="copy-chunk">車窓コレクションに</span></h3>
-          <p data-i18n="journalStationBody">駅で押すスタンプとは別の楽しみとして、乗車中に景色を集める感覚で使えます。</p>
+          <p data-i18n="journalStationBody">駅で紙に押す駅スタンプ（eki stamp）とは別の楽しみとして、乗車中に景色を集める感覚で使えます。</p>
+          <a class="journal-eki-jump" href="#eki-stamp">駅スタンプを探す <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">車窓図鑑で、見つける景色を見る</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">A COMPLEMENTARY GAME</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">子ども向けの、</span><span class="copy-chunk">しんかんせんであそぼ！</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">画面の中でも新幹線を楽しみたいときは、JR東海公式「しんかんせんであそぼ！」へ。動物探しやパズルなど、子ども向けのゲームで遊べます。「新幹線の窓」は、実際に乗って窓の外を探すゲームとして一緒に楽しめます。</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">公式サイトで遊ぶ</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">REAL EKI STAMPS</p>
+        <h2 id="journalEkiTitle"><span class="copy-chunk">駅で押す、</span><span class="copy-chunk">紙の駅スタンプ</span></h2>
+        <p class="section-sub">日本の駅には、駅舎や名物を描いた記念のゴム印「駅スタンプ（eki stamp）」が置かれていることがあります。乗っている間は車窓のデジタルスタンプを、乗る前・降りた後は駅で紙に押して、ふたつの楽しみ方で旅の記録を残せます。</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>東京駅</h3>
+            <span class="journal-eki-badge is-out">改札外</span>
+          </div>
+          <p class="journal-eki-where">JR東日本・丸の内南口の改札外</p>
+          <p class="journal-eki-body">図柄は丸の内駅舎と銀の鈴。新幹線の改札内にはないため、出発前か到着後に赤れんが駅舎の側へ回って探します。</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>京都駅</h3>
+            <span class="journal-eki-badge is-local">在来線改札内</span>
+          </div>
+          <p class="journal-eki-where">JR西日本・在来線の改札内（中央口・西口付近など）</p>
+          <p class="journal-eki-body">図柄は京都駅ビルや京都タワーなど。新幹線ではなく在来線の改札内にあるため、在来線へ乗り継ぐときや下車時に。</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>新大阪駅</h3>
+            <span class="journal-eki-badge is-counter">在来線窓口</span>
+          </div>
+          <p class="journal-eki-where">JR西日本・在来線の東改札窓口／東口改札外のみどりの窓口付近</p>
+          <p class="journal-eki-body">駅係員に声をかけて出す運用のことがあります。JR東海の新幹線側に常設はなく、期間限定の企画時のみ設置されます。</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>名古屋駅</h3>
+            <span class="journal-eki-badge is-none">常設なし</span>
+          </div>
+          <p class="journal-eki-where">JRの常設スタンプはありません</p>
+          <p class="journal-eki-body">東海道新幹線（JR東海）の駅は常設を持たない駅が多く、名古屋駅も期間限定のスタンプラリー時のみの設置です。</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">ノートや無地の紙を持参するときれいに押せます。設置場所や有無は変更・撤去されることがあるため、見つからないときは駅係員にお尋ねください。<span class="journal-eki-src">参考：<a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">東京</a>・<a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">京都</a>・<a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">新大阪</a>・<a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">名古屋</a>（旅のスタンプ帳／2026年11月確認）</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden>
@@ -211,7 +253,7 @@
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu-2","menuRoute":"journal.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body>
