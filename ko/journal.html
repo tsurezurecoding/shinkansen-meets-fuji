@@ -61,7 +61,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer="" src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -85,8 +85,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">역 스탬프를 모으듯,</span> <span class="copy-chunk">도카이도 신칸센 창밖으로 만나는 후지산·성·호수·표지판을 기록하세요.</span> <span class="copy-chunk">가족과 함께 풍경 찾기 놀이로 즐겨 보세요</span> <span class="copy-chunk">또는 혼자 하는 여행의 기록으로.</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="ko/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">내 안내 만들기</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="ko/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">무엇일까요?</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="ko/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">스탬프 보드 보기</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="ko/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">차창 스탬프 모으기</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="ko/journal.html#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">역 스탬프 찾기</a>
         </div>
       </div>
     </section>
@@ -131,10 +131,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">모든 스탬프</h3>
       <div class="stampboard" id="stampboard"></div>
-        <aside class="journal-collection-callout">
-          <div><p class="eyebrow">관람차</p><h3>작은 관람차 모음</h3><p>별도의 풍경 도감에서 노선의 관람차를 살펴보세요.</p></div>
-          <a class="inline-cta" href="ko/ferris-wheels.html">관람차 둘러보기<span aria-hidden="true">→</span></a>
-        </aside>
+      <div class="journal-collection-grid" aria-label="테마별 컬렉션">
+        <a class="journal-collection-card" href="ko/727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="후지사와 논밭 너머에 서 있는 빨간색과 흰색 727 화장품 간판" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">727 컬렉션</p>
+            <h3>727 간판 모으기</h3>
+            <p>노선별 간판 위치와 단계별 메달을 전용 가이드에서 기록할 수 있습니다.</p>
+            <span class="journal-collection-cta">컬렉션 보기 <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="ko/ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="신칸센 차창 너머로 보이는 해 질 녘 히라카타 파크 관람차" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">관람차</p>
+            <h3>관람차 모으기</h3>
+            <p>노선을 따라 보이는 관람차를 전용 도감에서 찾아보세요.</p>
+            <span class="journal-collection-cta">컬렉션 보기 <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">초기화하면 스탬프와 즐겨찾기가 모두 삭제됩니다.</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">스탬프 초기화</button>
@@ -160,22 +180,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">움직이는 풍경 수집</span> <span class="copy-chunk">역 스탬프를 좋아하는 분께</span></h3>
-          <p data-i18n="journalStationBody">역 스탬프를 모으는 것을 좋아한다면, 역과 역 사이의 풍경을 또 다른 여행 수집품으로 모아 보세요.</p>
+          <p data-i18n="journalStationBody">역에서 종이에 찍는 역 스탬프(eki stamp)를 좋아한다면, 이동 중 차창 풍경을 모으는 또 다른 여행 기록도 즐겨 보세요.</p>
+          <a class="journal-eki-jump" href="ko/journal.html#eki-stamp">역 스탬프 찾기 <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="ko/zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">차창 풍경 도감 보기</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">함께 즐기는 놀이</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">아이도 즐기는</span> <span class="copy-chunk">신칸센 놀이</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">화면으로 즐기는 신칸센 놀이를 찾는다면 JR 도카이 공식 '신칸센으로 놀자!' 사이트를 이용해 보세요. 동물 찾기와 퍼즐 등 아이가 즐길 수 있는 게임이 있습니다. Shinkansen Window는 실제로 달리는 동안 창밖 풍경을 놀이로 즐기게 해 줍니다.</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">공식 게임 열기</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">실물 역 스탬프</p>
+        <h2 id="journalEkiTitle">역에서 찍는 종이 역 스탬프</h2>
+        <p class="section-sub">일본의 많은 역에는 역사 건물이나 지역 명소를 그린 기념 고무도장 ‘역 스탬프(eki stamp)’가 비치되어 있습니다. 열차를 탄 동안에는 차창 디지털 스탬프를 모으고, 타기 전과 내린 뒤에는 역에서 종이 스탬프를 찍어 두 가지 방식으로 여행을 기록해 보세요.</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>도쿄역</h3>
+            <span class="journal-eki-badge is-out">개찰구 밖</span>
+          </div>
+          <p class="journal-eki-where">JR 동일본 · 마루노우치 남쪽 출구 개찰구 밖</p>
+          <p class="journal-eki-body">마루노우치 역사 건물과 은방울이 그려져 있습니다. 신칸센 개찰구 안에는 상설 스탬프가 없으므로 출발 전이나 도착 후 붉은 벽돌 마루노우치 쪽으로 이동하세요.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>교토역</h3>
+            <span class="journal-eki-badge is-local">재래선 개찰구 안</span>
+          </div>
+          <p class="journal-eki-where">JR 서일본 · 재래선 개찰구 안(중앙 출구·서쪽 출구 부근)</p>
+          <p class="journal-eki-body">교토역 빌딩과 교토 타워가 새겨져 있습니다. 신칸센 구역이 아니라 JR 서일본 재래선 개찰구 안에 있어 환승하거나 내릴 때 들르기 좋습니다.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>신오사카역</h3>
+            <span class="journal-eki-badge is-counter">재래선 창구</span>
+          </div>
+          <p class="journal-eki-where">JR 서일본 · 재래선 동쪽 개찰구 창구(역무원 문의) 또는 동쪽 출구 밖 매표소 부근</p>
+          <p class="journal-eki-body">역무원에게 요청해 꺼내 찍는 방식으로 운영되기도 합니다. JR 도카이 신칸센 구역에는 기간 한정 행사 외 상설 스탬프가 없습니다.</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>나고야역</h3>
+            <span class="journal-eki-badge is-none">상설 없음</span>
+          </div>
+          <p class="journal-eki-where">JR 상설 스탬프 없음</p>
+          <p class="journal-eki-body">JR 도카이의 도카이도 신칸센 역은 상설 스탬프가 없는 곳이 많으며, 나고야역도 기간 한정 스탬프 랠리 때만 설치되는 경우가 일반적입니다.</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">수첩이나 무지 종이를 챙기면 깔끔하게 찍을 수 있습니다. 설치 위치와 운영 여부는 예고 없이 바뀔 수 있으니, 보이지 않으면 역무원에게 문의하세요.<span class="journal-eki-src">참고(일본어, 2026년 11월 확인): <a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">도쿄</a> · <a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">교토</a> · <a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">신오사카</a> · <a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">나고야</a> (다비노 스탬프초)</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden="">
@@ -237,12 +291,12 @@
     <p class="footer-credit" data-i18n="footerCredit">Michikusa — 서두르지 않는 여행과 우연한 발견.</p>
   </footer>
 
-  <script src="data-runtime.js?v=f3036030"></script><script src="ko/utility-data.js?v=81c8e180"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=f3036030"></script><script src="ko/utility-data.js?v=effb9879"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ko.shell.js"],"root":"","lang":"ko","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu","menuRoute":"journal.html","mainLinks":[{"index":4,"text":"여행 기록"},{"index":5,"text":"여행 기록"}]}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body></html>

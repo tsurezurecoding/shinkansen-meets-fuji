@@ -63,7 +63,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -87,8 +87,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">Like collecting station stamps,</span> <span class="copy-chunk">save Mt. Fuji, castles, lakes and signs from the Tokaido Shinkansen window.</span> <span class="copy-chunk">Make it a family spotting game</span> <span class="copy-chunk">or a journal for a solo ride.</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="en/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">Build my guide</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="en/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">What is it?</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="en/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">See the stamp board</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="en/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">Collect window stamps</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="en/journal.html#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">Find eki stamps</a>
         </div>
       </div>
     </section>
@@ -133,10 +133,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">All stamps</h3>
       <div class="stampboard" id="stampboard"></div>
-        <aside class="journal-collection-callout">
-          <div><p class="eyebrow">FERRIS WHEELS</p><h3>A collection of little wheels</h3><p>Explore the wheels along the route in a separate field guide.</p></div>
-          <a class="inline-cta" href="en/ferris-wheels.html">Explore ferris wheels<span aria-hidden="true">→</span></a>
-        </aside>
+      <div class="journal-collection-grid" aria-label="Themed collections">
+        <a class="journal-collection-card" href="en/727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="A red-and-white 727 Cosmetics billboard standing across rice fields in Fujisawa" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">727 COLLECTION</p>
+            <h3>Collect 727 signs</h3>
+            <p>Track individual billboard locations and milestone medals on the dedicated guide.</p>
+            <span class="journal-collection-cta">Explore collection <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="en/ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="The Hirakata Park Ferris wheel lit at dusk from the Shinkansen window" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">FERRIS WHEELS</p>
+            <h3>Collect ferris wheels</h3>
+            <p>Explore the little wheels along the route in a separate field guide.</p>
+            <span class="journal-collection-cta">Explore collection <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">Resetting removes both your stamps and your favorites.</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">Reset stamps</button>
@@ -162,22 +182,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">A moving collection</span> <span class="copy-chunk">for station-stamp fans</span></h3>
-          <p data-i18n="journalStationBody">If you love collecting station stamps, try gathering scenery between stations as a different kind of travel collection.</p>
+          <p data-i18n="journalStationBody">If you love collecting paper eki stamps at stations, try gathering scenery between stations as a different kind of travel collection.</p>
+          <a class="journal-eki-jump" href="en/journal.html#eki-stamp">Find eki stamps <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="en/zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">Browse the window field guide</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">A COMPLEMENTARY GAME</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">A child-friendly</span> <span class="copy-chunk">Shinkansen game</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">For an on-screen Shinkansen activity, try JR Central’s official “Shinkansen de asobo!” site. It includes child-friendly games such as finding animals and solving puzzles. Shinkansen Window works differently: it turns the real view outside into a game while you ride.</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">Open the official game</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">REAL EKI STAMPS</p>
+        <h2 id="journalEkiTitle">Paper eki stamps at the station</h2>
+        <p class="section-sub">Many Japanese stations keep a commemorative rubber stamp ("eki stamp") depicting the station building or local landmarks. Collect digital window stamps while you ride, and press paper eki stamps before you board or after you step off.</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Tokyo Station</h3>
+            <span class="journal-eki-badge is-out">Outside gates</span>
+          </div>
+          <p class="journal-eki-where">JR East · Outside Marunouchi South Exit</p>
+          <p class="journal-eki-body">Features the Marunouchi Station Building and Silver Bell. There is no permanent stamp inside the Shinkansen gates—head to the red-brick Marunouchi side before departure or after arrival.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Kyoto Station</h3>
+            <span class="journal-eki-badge is-local">Inside local gates</span>
+          </div>
+          <p class="journal-eki-where">JR West · Inside conventional-line gates (near Central / West Exits)</p>
+          <p class="journal-eki-body">Features the Kyoto Station Building and Kyoto Tower. Located on the JR West local-line side rather than the Shinkansen concourse—handy when transferring or exiting.</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>Shin-Osaka Station</h3>
+            <span class="journal-eki-badge is-counter">Local ticket counter</span>
+          </div>
+          <p class="journal-eki-where">JR West · East Gate counter (ask staff) or near the East Exit ticket office</p>
+          <p class="journal-eki-body">Sometimes kept behind the counter on request. JR Central does not keep a permanent stamp on the Shinkansen side, except during limited-time campaigns.</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>Nagoya Station</h3>
+            <span class="journal-eki-badge is-none">No permanent stamp</span>
+          </div>
+          <p class="journal-eki-where">No permanent JR station stamp</p>
+          <p class="journal-eki-body">Most JR Central Tokaido Shinkansen stations do not keep permanent stamps; Nagoya Station generally offers them only during limited-time stamp rallies.</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">Bring a notebook or blank paper for a clean impression. Stamp locations and availability can change without notice—ask station staff if you cannot find one.<span class="journal-eki-src">Sources (Japanese, checked Nov 2026): <a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">Tokyo</a> · <a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">Kyoto</a> · <a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">Shin-Osaka</a> · <a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">Nagoya</a> (Tabi no Stamp-cho)</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden>
@@ -244,7 +298,7 @@
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"","lang":"en","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu-2","menuRoute":"journal.html","mainLinks":[{"index":0,"href":"__MADO_ROOT__en/index.html"},{"index":1,"text":"Train Search"},{"index":4,"text":"Journal"},{"index":5,"text":"Journal"}]}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body>

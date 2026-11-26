@@ -61,7 +61,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=2117933f">
+  <link rel="stylesheet" href="style.css?v=af06eb1d">
   <script defer="" src="utility-locales.js?v=8a1a6810"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
@@ -85,8 +85,8 @@
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">就像收集車站印章一樣，</span> <span class="copy-chunk">把東海道新幹線車窗外的富士山、城堡、湖泊和看板保存下來。</span> <span class="copy-chunk">可以當作全家一起找景色的遊戲，</span> <span class="copy-chunk">也可以當作一個人旅行的紀錄。</span></p>
         <div class="journal-hero-actions">
           <a class="btn btn-primary" href="zh-Hant/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">建立我的導覽</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="zh-Hant/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">這是什麼？</a>
-          <a class="btn btn-ghost journal-hero-secondary" href="zh-Hant/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">查看印章收藏板</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="zh-Hant/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">收集車窗印章</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="zh-Hant/journal.html#eki-stamp" data-cta-track="journal_eki_stamp_click" data-cta-id="journal-hero-eki-stamp">尋找車站印章</a>
         </div>
       </div>
     </section>
@@ -131,10 +131,30 @@
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">所有印章</h3>
       <div class="stampboard" id="stampboard"></div>
-        <aside class="journal-collection-callout">
-          <div><p class="eyebrow">摩天輪</p><h3>小小摩天輪收藏</h3><p>在另一本圖鑑中，探索沿線的摩天輪。</p></div>
-          <a class="inline-cta" href="zh-Hant/ferris-wheels.html">探索摩天輪<span aria-hidden="true">→</span></a>
-        </aside>
+      <div class="journal-collection-grid" aria-label="主題收藏">
+        <a class="journal-collection-card" href="zh-Hant/727-collection.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="藤澤稻田對面矗立的紅白727化妝品看板" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">727收藏</p>
+            <h3>收集727看板</h3>
+            <p>可在專屬頁面記錄沿線各處看板位置與階段徽章。</p>
+            <span class="journal-collection-cta">查看專題收藏 <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="journal-collection-card" href="zh-Hant/ferris-wheels.html">
+          <div class="journal-collection-thumb">
+            <img src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="傍晚從新幹線車窗望見點燈的枚方公園摩天輪" loading="lazy" decoding="async">
+          </div>
+          <div class="journal-collection-body">
+            <p class="eyebrow">摩天輪</p>
+            <h3>收集車窗摩天輪</h3>
+            <p>在專屬圖鑑中尋找沿線車窗外的摩天輪。</p>
+            <span class="journal-collection-cta">查看專題收藏 <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
       <p class="journal-intro" id="journal-reset-help">重設會同時清除所有印章與最愛。</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">重設印章</button>
@@ -160,22 +180,56 @@
         <article class="journal-use-card">
           <span class="journal-use-number" aria-hidden="true">03</span>
           <h3 data-i18n="journalStationTitle"><span class="copy-chunk">移動中的收藏</span> <span class="copy-chunk">給車站印章迷</span></h3>
-          <p data-i18n="journalStationBody">喜歡收集車站印章的你，也可以把車站之間的景色收藏起來，成為另一種旅行記錄。</p>
+          <p data-i18n="journalStationBody">如果你喜歡在車站蓋紙本車站印章（eki stamp），乘車途中不妨把窗外風景也當成另一種旅行收藏。</p>
+          <a class="journal-eki-jump" href="zh-Hant/journal.html#eki-stamp">尋找車站印章 <span aria-hidden="true">↓</span></a>
         </article>
       </div>
       <div class="journal-after-actions">
         <a class="inline-cta journal-zukan-cta" href="zh-Hant/zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">瀏覽車窗圖鑑</span><span aria-hidden="true">→</span></a>
       </div>
-      <div class="journal-official" aria-labelledby="journalOfficialTitle">
-        <div>
-          <p class="eyebrow" data-i18n="journalOfficialEyebrow">旅途中的小遊戲</p>
-          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">適合孩子的</span> <span class="copy-chunk">新幹線遊戲</span></h2>
-        </div>
-        <div class="journal-official-copy">
-          <p data-i18n="journalOfficialBody">若想在螢幕上玩新幹線遊戲，可以試試JR東海官方「新幹線であそぼ！」網站，有找動物、解謎等適合孩子的遊戲。新幹線之窗則讓搭車時真實的窗外風景，成為旅行遊戲。</p>
-          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">開啟官方遊戲</span><span aria-hidden="true">↗</span></a>
-        </div>
+    </section>
+
+    <section class="section journal-eki-section" id="eki-stamp" aria-labelledby="journalEkiTitle">
+      <div class="section-head">
+        <p class="eyebrow">實體車站印章</p>
+        <h2 id="journalEkiTitle">在車站蓋紙本車站印章</h2>
+        <p class="section-sub">日本許多車站都設有描繪站舍或在地名勝的紀念橡皮章「車站印章（eki stamp）」。搭車時收集車窗數位印章，上車前或下車後在車站蓋紙本印章，用兩種方式留下旅途印記。</p>
       </div>
+      <div class="journal-eki-grid">
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>東京站</h3>
+            <span class="journal-eki-badge is-out">剪票口外</span>
+          </div>
+          <p class="journal-eki-where">JR東日本 · 丸之內南口剪票口外</p>
+          <p class="journal-eki-body">圖案為丸之內紅磚站舍與銀之鈴。新幹線剪票口內沒有常設印章，請於出發前或抵達後前往丸之內一側尋找。</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>京都站</h3>
+            <span class="journal-eki-badge is-local">在來線剪票口內</span>
+          </div>
+          <p class="journal-eki-where">JR西日本 · 在來線剪票口內（中央口、西口附近等）</p>
+          <p class="journal-eki-body">圖案包含京都車站大樓與京都塔。設於JR西日本在來線剪票口內而非新幹線區域，轉乘或出站時順路即可蓋章。</p>
+        </article>
+        <article class="journal-eki-card">
+          <div class="journal-eki-card-head">
+            <h3>新大阪站</h3>
+            <span class="journal-eki-badge is-counter">在來線窗口</span>
+          </div>
+          <p class="journal-eki-where">JR西日本 · 在來線東剪票口窗口（洽詢站務員）或東口剪票口外售票處附近</p>
+          <p class="journal-eki-body">有時需向站務員開口借出蓋章。JR東海新幹線一側無常設印章，僅於特別活動期間設置。</p>
+        </article>
+        <article class="journal-eki-card is-none">
+          <div class="journal-eki-card-head">
+            <h3>名古屋站</h3>
+            <span class="journal-eki-badge is-none">無常設</span>
+          </div>
+          <p class="journal-eki-where">無JR常設車站印章</p>
+          <p class="journal-eki-body">JR東海的東海道新幹線車站多半沒有常設印章，名古屋站通常也僅於期間限定集章活動時設置。</p>
+        </article>
+      </div>
+      <p class="journal-eki-note">自備筆記本或空白紙張能蓋得更清晰。印章位置與設置狀況可能隨時調整，找不到時請向站務人員詢問。<span class="journal-eki-src">參考資訊（日語，2026年11月確認）： <a href="https://stamp.funakiya.com/jr-tokyo.html" target="_blank" rel="noopener">東京</a> · <a href="https://stamp.funakiya.com/jr-kyoto.html" target="_blank" rel="noopener">京都</a> · <a href="https://stamp.funakiya.com/jr-shinosaka.html" target="_blank" rel="noopener">新大阪</a> · <a href="https://stamp.funakiya.com/jr-nagoya.html" target="_blank" rel="noopener">名古屋</a> （旅之印章冊）</span></p>
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden="">
@@ -237,12 +291,12 @@
     <p class="footer-credit" data-i18n="footerCredit">道草——從容旅行，遇見偶然的發現。</p>
   </footer>
 
-  <script src="data-runtime.js?v=f3036030"></script><script src="zh-Hant/utility-data.js?v=eaf672a4"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=f3036030"></script><script src="zh-Hant/utility-data.js?v=d9c3d7d2"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=da34e26d"></script>
   <script src="data/stamp-store.js?v=a9dc7a1d"></script>
-  <script src="app.js?v=0d67c79c"></script>
+  <script src="app.js?v=45389329"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/zh-hant.shell.js"],"root":"","lang":"zh-Hant","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu","menuRoute":"journal.html","mainLinks":[{"index":1,"text":"列車查詢"},{"index":4,"text":"旅程紀錄"},{"index":5,"text":"旅程紀錄"}]}]}</script>
 <script src="site-runtime-loader.js?v=ca339d7d" defer></script>
 </body></html>
