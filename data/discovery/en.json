@@ -117,11 +117,32 @@
   ],
   "news": [
     {
-      "id": "solar-ark-section-correction",
-      "date": "2026-11-19",
-      "kind": "spot-update",
-      "title": "Corrected the viewing segment for the Solar Ark",
-      "path": "/en/spots/solar-ark.html"
+      "id": "eki-stamp-guide",
+      "date": "2026-11-26",
+      "kind": "feature",
+      "title": "How to collect station stamps, with real examples",
+      "path": "/en/journal.html#eki-stamp"
+    },
+    {
+      "id": "nagoya-platform-kishimen",
+      "date": "2026-11-25",
+      "kind": "feature",
+      "title": "Try kishimen noodles on the platform at Nagoya Station",
+      "path": "/en/ramen.html#kishimen"
+    },
+    {
+      "id": "omikuji-goshuin-guide",
+      "date": "2026-11-24",
+      "kind": "feature",
+      "title": "A guide to omikuji fortunes and goshuin seals, with photos",
+      "path": "/en/omamori.html#omikuji"
+    },
+    {
+      "id": "fuji-hourly-forecast",
+      "date": "2026-11-21",
+      "kind": "function",
+      "title": "See the Mt. Fuji visibility forecast by hour",
+      "path": "/en/mieru.html"
     },
     {
       "id": "rivers-four-crossings",
@@ -136,6 +157,13 @@
       "kind": "feature",
       "title": "Three more factories to spot in Odawara and Shiga",
       "path": "/en/factories.html"
+    },
+    {
+      "id": "donburi-guide",
+      "date": "2026-11-15",
+      "kind": "feature",
+      "title": "A guide to Japan’s donburi rice bowls",
+      "path": "/en/donburi.html"
     },
     {
       "id": "tamaruya-wasabi-sign-added",
@@ -157,15 +185,27 @@
       "kind": "story",
       "title": "Meet the real trains behind Shinkalion",
       "path": "/en/stories/shinkalion.html"
+    },
+    {
+      "id": "solar-ark-dismantling-media",
+      "date": "2026-11-07",
+      "kind": "spot-update",
+      "title": "New photos and video of the Solar Ark being dismantled",
+      "path": "/en/spots/solar-ark.html"
     }
   ],
   "newsBaseline": [
-    "solar-ark-section-correction",
+    "eki-stamp-guide",
+    "nagoya-platform-kishimen",
+    "omikuji-goshuin-guide",
+    "fuji-hourly-forecast",
+    "donburi-guide",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",
     "kizakura-sign-added",
     "story-shinkalion",
+    "solar-ark-dismantling-media",
     "artwork-727-hunt"
   ]
 }

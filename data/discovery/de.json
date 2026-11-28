@@ -117,6 +117,34 @@
   ],
   "news": [
     {
+      "id": "eki-stamp-guide",
+      "date": "2026-11-26",
+      "kind": "feature",
+      "title": "Bahnhofsstempel sammeln: Tipps und Beispiele",
+      "path": "/de/journal.html#eki-stamp"
+    },
+    {
+      "id": "nagoya-platform-kishimen",
+      "date": "2026-11-25",
+      "kind": "feature",
+      "title": "Kishimen-Nudeln direkt am Bahnsteig in Nagoya",
+      "path": "/de/ramen.html#kishimen"
+    },
+    {
+      "id": "omikuji-goshuin-guide",
+      "date": "2026-11-24",
+      "kind": "feature",
+      "title": "Omikuji und Goshuin: ein Ratgeber mit Fotos",
+      "path": "/de/omamori.html#omikuji"
+    },
+    {
+      "id": "fuji-hourly-forecast",
+      "date": "2026-11-21",
+      "kind": "function",
+      "title": "Stündliche Vorhersage zur Sicht auf den Fuji",
+      "path": "/de/mieru.html"
+    },
+    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
       "kind": "feature",
@@ -131,20 +159,39 @@
       "path": "/de/factories.html"
     },
     {
+      "id": "donburi-guide",
+      "date": "2026-11-15",
+      "kind": "feature",
+      "title": "Ein Guide zu Donburi, Japans Reisgerichten in der Schüssel",
+      "path": "/de/donburi.html"
+    },
+    {
       "id": "story-shinkalion",
       "date": "2026-11-08",
       "kind": "story",
       "title": "Die echten Züge hinter Shinkalion",
       "path": "/de/stories/shinkalion.html"
+    },
+    {
+      "id": "solar-ark-dismantling-media",
+      "date": "2026-11-07",
+      "kind": "spot-update",
+      "title": "Neue Fotos und ein Video vom Rückbau der Solar Ark",
+      "path": "/de/spots/solar-ark.html"
     }
   ],
   "newsBaseline": [
-    "solar-ark-section-correction",
+    "eki-stamp-guide",
+    "nagoya-platform-kishimen",
+    "omikuji-goshuin-guide",
+    "fuji-hourly-forecast",
+    "donburi-guide",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",
     "kizakura-sign-added",
     "story-shinkalion",
+    "solar-ark-dismantling-media",
     "artwork-727-hunt"
   ]
 }

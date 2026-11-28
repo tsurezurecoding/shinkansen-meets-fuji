@@ -117,6 +117,34 @@
   ],
   "news": [
     {
+      "id": "eki-stamp-guide",
+      "date": "2026-11-26",
+      "kind": "feature",
+      "title": "วิธีสะสมตราประทับสถานีพร้อมตัวอย่างจริง",
+      "path": "/th/journal.html#eki-stamp"
+    },
+    {
+      "id": "nagoya-platform-kishimen",
+      "date": "2026-11-25",
+      "kind": "feature",
+      "title": "ลองชิมคิชิเม็งบนชานชาลาสถานีนาโกย่า",
+      "path": "/th/ramen.html#kishimen"
+    },
+    {
+      "id": "omikuji-goshuin-guide",
+      "date": "2026-11-24",
+      "kind": "feature",
+      "title": "คู่มือพร้อมภาพสำหรับใบเสี่ยงทายโอมิคุจิและตราโกชูอิน",
+      "path": "/th/omamori.html#omikuji"
+    },
+    {
+      "id": "fuji-hourly-forecast",
+      "date": "2026-11-21",
+      "kind": "function",
+      "title": "ดูพยากรณ์การมองเห็นภูเขาไฟฟูจิรายชั่วโมง",
+      "path": "/th/mieru.html"
+    },
+    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
       "kind": "feature",
@@ -131,20 +159,39 @@
       "path": "/th/factories.html"
     },
     {
+      "id": "donburi-guide",
+      "date": "2026-11-15",
+      "kind": "feature",
+      "title": "คู่มือดงบุริ ข้าวหน้าต่าง ๆ ของญี่ปุ่น",
+      "path": "/th/donburi.html"
+    },
+    {
       "id": "story-shinkalion",
       "date": "2026-11-08",
       "kind": "story",
       "title": "พบรถไฟของจริงที่เป็นต้นแบบของชินคาเลียน",
       "path": "/th/stories/shinkalion.html"
+    },
+    {
+      "id": "solar-ark-dismantling-media",
+      "date": "2026-11-07",
+      "kind": "spot-update",
+      "title": "ภาพถ่ายและวิดีโอใหม่ของโซลาร์อาร์กระหว่างรื้อถอน",
+      "path": "/th/spots/solar-ark.html"
     }
   ],
   "newsBaseline": [
-    "solar-ark-section-correction",
+    "eki-stamp-guide",
+    "nagoya-platform-kishimen",
+    "omikuji-goshuin-guide",
+    "fuji-hourly-forecast",
+    "donburi-guide",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",
     "kizakura-sign-added",
     "story-shinkalion",
+    "solar-ark-dismantling-media",
     "artwork-727-hunt"
   ]
 }

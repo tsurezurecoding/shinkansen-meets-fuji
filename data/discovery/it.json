@@ -117,6 +117,34 @@
   ],
   "news": [
     {
+      "id": "eki-stamp-guide",
+      "date": "2026-11-26",
+      "kind": "feature",
+      "title": "Come collezionare i timbri delle stazioni, con esempi",
+      "path": "/it/journal.html#eki-stamp"
+    },
+    {
+      "id": "nagoya-platform-kishimen",
+      "date": "2026-11-25",
+      "kind": "feature",
+      "title": "Assaggia i kishimen sul binario della stazione di Nagoya",
+      "path": "/it/ramen.html#kishimen"
+    },
+    {
+      "id": "omikuji-goshuin-guide",
+      "date": "2026-11-24",
+      "kind": "feature",
+      "title": "Guida fotografica a omikuji e goshuin",
+      "path": "/it/omamori.html#omikuji"
+    },
+    {
+      "id": "fuji-hourly-forecast",
+      "date": "2026-11-21",
+      "kind": "function",
+      "title": "Previsioni orarie sulla visibilità del Monte Fuji",
+      "path": "/it/mieru.html"
+    },
+    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
       "kind": "feature",
@@ -131,20 +159,39 @@
       "path": "/it/factories.html"
     },
     {
+      "id": "donburi-guide",
+      "date": "2026-11-15",
+      "kind": "feature",
+      "title": "Guida ai donburi, le ciotole di riso giapponesi",
+      "path": "/it/donburi.html"
+    },
+    {
       "id": "story-shinkalion",
       "date": "2026-11-08",
       "kind": "story",
       "title": "I veri treni che hanno ispirato Shinkalion",
       "path": "/it/stories/shinkalion.html"
+    },
+    {
+      "id": "solar-ark-dismantling-media",
+      "date": "2026-11-07",
+      "kind": "spot-update",
+      "title": "Nuove foto e un video dello smantellamento della Solar Ark",
+      "path": "/it/spots/solar-ark.html"
     }
   ],
   "newsBaseline": [
-    "solar-ark-section-correction",
+    "eki-stamp-guide",
+    "nagoya-platform-kishimen",
+    "omikuji-goshuin-guide",
+    "fuji-hourly-forecast",
+    "donburi-guide",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",
     "kizakura-sign-added",
     "story-shinkalion",
+    "solar-ark-dismantling-media",
     "artwork-727-hunt"
   ]
 }

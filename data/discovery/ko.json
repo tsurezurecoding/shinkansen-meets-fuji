@@ -117,6 +117,34 @@
   ],
   "news": [
     {
+      "id": "eki-stamp-guide",
+      "date": "2026-11-26",
+      "kind": "feature",
+      "title": "역 스탬프 모으는 법과 실제 예시",
+      "path": "/ko/journal.html#eki-stamp"
+    },
+    {
+      "id": "nagoya-platform-kishimen",
+      "date": "2026-11-25",
+      "kind": "feature",
+      "title": "나고야역 승강장에서 맛보는 기시멘",
+      "path": "/ko/ramen.html#kishimen"
+    },
+    {
+      "id": "omikuji-goshuin-guide",
+      "date": "2026-11-24",
+      "kind": "feature",
+      "title": "오미쿠지와 고슈인, 사진으로 보는 안내",
+      "path": "/ko/omamori.html#omikuji"
+    },
+    {
+      "id": "fuji-hourly-forecast",
+      "date": "2026-11-21",
+      "kind": "function",
+      "title": "후지산이 보일 가능성을 시간대별로 확인",
+      "path": "/ko/mieru.html"
+    },
+    {
       "id": "rivers-four-crossings",
       "date": "2026-11-19",
       "kind": "feature",
@@ -131,20 +159,39 @@
       "path": "/ko/factories.html"
     },
     {
+      "id": "donburi-guide",
+      "date": "2026-11-15",
+      "kind": "feature",
+      "title": "일본 덮밥 돈부리 가이드",
+      "path": "/ko/donburi.html"
+    },
+    {
       "id": "story-shinkalion",
       "date": "2026-11-08",
       "kind": "story",
       "title": "신카리온에 등장하는 실제 신칸센을 만나다",
       "path": "/ko/stories/shinkalion.html"
+    },
+    {
+      "id": "solar-ark-dismantling-media",
+      "date": "2026-11-07",
+      "kind": "spot-update",
+      "title": "철거 중인 솔라 아크의 새 사진과 영상",
+      "path": "/ko/spots/solar-ark.html"
     }
   ],
   "newsBaseline": [
-    "solar-ark-section-correction",
+    "eki-stamp-guide",
+    "nagoya-platform-kishimen",
+    "omikuji-goshuin-guide",
+    "fuji-hourly-forecast",
+    "donburi-guide",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",
     "kizakura-sign-added",
     "story-shinkalion",
+    "solar-ark-dismantling-media",
     "artwork-727-hunt"
   ]
 }

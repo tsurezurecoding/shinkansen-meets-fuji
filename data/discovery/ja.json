@@ -117,11 +117,18 @@
   ],
   "news": [
     {
-      "id": "solar-ark-section-correction",
-      "date": "2026-11-19",
-      "kind": "spot-update",
-      "title": "ソーラーアークの見える区間を訂正",
-      "path": "/spots/solar-ark.html"
+      "id": "eki-stamp-guide",
+      "date": "2026-11-26",
+      "kind": "feature",
+      "title": "駅スタンプの集め方と実物写真",
+      "path": "/journal.html#eki-stamp"
+    },
+    {
+      "id": "fuji-hourly-forecast",
+      "date": "2026-11-21",
+      "kind": "function",
+      "title": "富士山の見えやすさを時間別グラフで",
+      "path": "/mieru.html"
     },
     {
       "id": "rivers-four-crossings",
@@ -159,6 +166,13 @@
       "path": "/stories/shinkalion.html"
     },
     {
+      "id": "solar-ark-dismantling-media",
+      "date": "2026-11-07",
+      "kind": "spot-update",
+      "title": "解体が進むソーラーアークの写真と動画",
+      "path": "/spots/solar-ark.html"
+    },
+    {
       "id": "artwork-727-hunt",
       "date": "2026-11-05",
       "kind": "artwork",
@@ -167,12 +181,17 @@
     }
   ],
   "newsBaseline": [
-    "solar-ark-section-correction",
+    "eki-stamp-guide",
+    "nagoya-platform-kishimen",
+    "omikuji-goshuin-guide",
+    "fuji-hourly-forecast",
+    "donburi-guide",
     "rivers-four-crossings",
     "factories-odawara-shiga",
     "tamaruya-wasabi-sign-added",
     "kizakura-sign-added",
     "story-shinkalion",
+    "solar-ark-dismantling-media",
     "artwork-727-hunt"
   ]
 }

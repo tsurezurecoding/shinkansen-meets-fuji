@@ -31,6 +31,11 @@ for (const language of languages) {
     assert.equal(new Set(feed.news.map(item => item.id)).size, feed.news.length);
     assert.ok(feed.news.every(item => feed.newsBaseline.includes(item.id)));
     assert.ok(!feed.newsBaseline.includes('spot-video-selection'));
+    assert.ok(!feed.newsBaseline.includes('solar-ark-section-correction'));
+    assert.deepEqual(feed.news.slice(0, 3).map(item => item.id), language === 'ja'
+      ? ['eki-stamp-guide', 'fuji-hourly-forecast', 'rivers-four-crossings']
+      : ['eki-stamp-guide', 'nagoya-platform-kishimen', 'omikuji-goshuin-guide']);
+    assert.equal(feed.news.some(item => item.id === 'donburi-guide'), language !== 'ja');
     assert.deepEqual(feed.news.map(item => item.date), feed.news.map(item => item.date).sort().reverse());
     for (const route of ['zukan.html', 'index.html']) {
       const file = prefix + route;
@@ -110,7 +115,7 @@ test('the header shows a dated, categorized inbox and only opening an item chang
     const prototype = window.HTMLDialogElement.prototype;
     prototype.showModal = function () { this.open = true; };
     prototype.close = function () { this.open = false; this.dispatchEvent(new window.Event('close')); };
-    window.localStorage.setItem('mado-content-news.baseline.v1', JSON.stringify(feed.newsBaseline.slice(2)));
+    window.localStorage.setItem('mado-content-news.baseline.v1', JSON.stringify(feed.newsBaseline.filter(id => id !== 'eki-stamp-guide' && id !== 'fuji-hourly-forecast')));
     window.eval(script);
     await new Promise(resolve => setTimeout(resolve, 0));
     const bell = document.querySelector('.news-bell');
@@ -120,8 +125,8 @@ test('the header shows a dated, categorized inbox and only opening an item chang
     const dialog = document.querySelector('#header-news-drawer');
     assert.ok(dialog.open);
     assert.equal(badge.textContent, '2');
-    assert.deepEqual([...dialog.querySelectorAll('time')].map(date => date.dateTime), ['2026-11-19', '2026-11-14']);
-    assert.deepEqual([...dialog.querySelectorAll('.news-kind')].map(kind => kind.textContent), ['スポット更新','特集','特集','新スポット','新スポット']);
+    assert.deepEqual([...dialog.querySelectorAll('time')].map(date => date.dateTime), ['2026-11-26', '2026-11-21', '2026-11-19', '2026-11-14']);
+    assert.deepEqual([...dialog.querySelectorAll('.news-kind')].map(kind => kind.textContent), ['特集','機能','特集','特集','新スポット']);
     dialog.querySelector('.news-item').addEventListener('click', event => event.preventDefault());
     dialog.querySelector('.news-item').click();
     assert.equal(badge.textContent, '1');
