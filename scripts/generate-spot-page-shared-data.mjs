@@ -737,6 +737,12 @@ function projectPage(spot, lang) {
 // the catalogue or the other languages' payloads.
 export { projectPage };
 
+export function projectRegisteredSpotMap(id, lang) {
+  const spot = source.SPOTS.find(item => item.id === id);
+  if (!spot) throw new Error(`Unknown spot: ${id}`);
+  return projectMap(spot, lang);
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
 const stations = source.ROUTE.refStations.map((station) => ({

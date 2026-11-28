@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "14125d2f75228969",
+  "contentVersion": "f29231a61a6eaa75",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1681,8 +1681,8 @@
     {
       "path": "de/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/de/kyoto-station-views.html",
-      "bytes": 29579,
-      "sha256": "6156edde5ee0ddc5f48a973167023f68aee2882b3cb0496a83988df303f9394e"
+      "bytes": 31635,
+      "sha256": "b5825fbc24d3ff6281f6c6cea901399687d093e786d135886f243ee1ddace4ca"
     },
     {
       "path": "de/live/index.html",
@@ -2203,8 +2203,8 @@
     {
       "path": "en/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/en/kyoto-station-views.html",
-      "bytes": 31995,
-      "sha256": "1f6bc94836ee41f4008da486db64df78d7a8d86c4af1d573dba2dbf46d2b3be9"
+      "bytes": 35544,
+      "sha256": "7f8f3cdb13c2de80993648bd7ae67fd8392d13a0055f18f32fa8ff0b19f0c273"
     },
     {
       "path": "en/omamori.html",
@@ -2443,8 +2443,8 @@
     {
       "path": "es/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/es/kyoto-station-views.html",
-      "bytes": 29903,
-      "sha256": "ac75b8aeed6118a000678f09c3d6a99075eed5e8ce0fdacc9080256d97738de8"
+      "bytes": 31941,
+      "sha256": "c62caf1c043e306c0496048d8ea8bd6e5a6db0c5964f31425e5b3aca2ac9dd6b"
     },
     {
       "path": "es/live/index.html",
@@ -3007,8 +3007,8 @@
     {
       "path": "fr/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/fr/kyoto-station-views.html",
-      "bytes": 30080,
-      "sha256": "621b10ae787b5d913141f6842b50efe79d2bb7de356935763021e1d9ffcb195d"
+      "bytes": 32081,
+      "sha256": "480a224f64285b8e6e3a7a864a2ba19a3a8b325b58708a5999eddeb1f3f25585"
     },
     {
       "path": "fr/live/index.html",
@@ -6025,8 +6025,8 @@
     {
       "path": "it/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/it/kyoto-station-views.html",
-      "bytes": 29963,
-      "sha256": "a5f5c001277636680404c7cb3c8899d317aa161e0fc651ab63d0e826881fe961"
+      "bytes": 32009,
+      "sha256": "8df016f1ebfef5949aa4bf908efbe959fd56a8cfb9f97918ce2d97813036af63"
     },
     {
       "path": "it/live/index.html",
@@ -6541,8 +6541,8 @@
     {
       "path": "ko/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/ko/kyoto-station-views.html",
-      "bytes": 29456,
-      "sha256": "b1071e8095b5d1e9e01bbf6829fea5be068ee563e9d46d790a145255a3582222"
+      "bytes": 31497,
+      "sha256": "17fd2aeedf3a644edf0c5f1f28a3040034e098fc3da49c585559983816f0949d"
     },
     {
       "path": "ko/live/index.html",
@@ -6931,8 +6931,8 @@
     {
       "path": "kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/kyoto-station-views.html",
-      "bytes": 33623,
-      "sha256": "30f5f7f1781c4823eb5db3f8e8b7608c72eec3bddd9f04b3e33b613e1cc8d53d"
+      "bytes": 37451,
+      "sha256": "6687947bb833519fdafe90757e23b8d4d0b2a306f6fb6d5a999e2fbc1b878c2f"
     },
     {
       "path": "live/narration.js",
@@ -8629,8 +8629,8 @@
     {
       "path": "th/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/th/kyoto-station-views.html",
-      "bytes": 43708,
-      "sha256": "379b53a3cc33e3f49dba298c25184c8cfd2c2711adae6b92d9cd2a86ca13f409"
+      "bytes": 46062,
+      "sha256": "7d531dc064d119f88860979a187a6ae7d358e9b875e46402d759aa27ca32f331"
     },
     {
       "path": "th/live/index.html",
@@ -9325,8 +9325,8 @@
     {
       "path": "zh-Hans/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/kyoto-station-views.html",
-      "bytes": 27213,
-      "sha256": "fb4fac6231f02c19e1d738b4f387a96180b031ab5f83ca23c0e37b0b2a0f802d"
+      "bytes": 29190,
+      "sha256": "833959feab786cf4b94f70f812a61b6c241ec60809f61b97051b987183cc04e6"
     },
     {
       "path": "zh-Hans/live/index.html",
@@ -9817,8 +9817,8 @@
     {
       "path": "zh-Hant/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/kyoto-station-views.html",
-      "bytes": 27267,
-      "sha256": "abc55e69192b51ceaa0b8287a552b172704bd094c36b8c24cb490e8bb6cabf08"
+      "bytes": 29244,
+      "sha256": "b9190d73be09de86df94e1f570c6f1143c9703e5ce01daf95f6e97687c91aed0"
     },
     {
       "path": "zh-Hant/live/index.html",

@@ -605,6 +605,26 @@ function selectExistingScope(changes, options = {}) {
       node('scripts/check-content-manifest.mjs')],
   };
   // Existing article layout and night-feature photographs; no spot positions or locale routes change.
+  const kyotoGenerator = 'scripts/generate-kyoto-window-page.mjs';
+  const mapProjection = 'scripts/generate-spot-page-shared-data.mjs';
+  const kyotoInputs = new Set([kyotoGenerator, mapProjection, 'scripts/window-articles.test.mjs',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'content-manifest.json']);
+  const kyotoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?kyoto-station-views\.html$/;
+  const kyotoCopy = /^scripts\/locales\/episode-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
+  if (files.includes(kyotoGenerator) && changes.every(({path:file,status}) =>
+    status === 'M' && (kyotoInputs.has(file) || kyotoPage.test(file) || kyotoCopy.test(file)))) return {
+    scope:'kyoto-spot-guide', needsDependencies:true, pagesCandidate:true,
+    reason:'Kyoto article layouts, shared map projection, localized navigation and advertising placement.',
+    commands:[...syntax,
+      node('--test','scripts/release-scope.test.mjs','scripts/window-articles.test.mjs','scripts/site-adsense.test.mjs'),
+      ...(files.includes(mapProjection) ? [node(mapProjection,'--check')] : []),
+      node(kyotoGenerator,'--check'),
+      node('scripts/generate-castle-locales.mjs','--route','kyoto-station-views.html','--check'),
+      node('scripts/validate-castle-locales.mjs','--route','kyoto-station-views.html'),
+      node('scripts/validate-site-navigation.mjs','--route','kyoto-station-views.html'),
+      node('scripts/check-content-manifest.mjs')],
+  };
+
   const nightArticleSources = new Set(['scripts/generate-kyoto-window-page.mjs', 'scripts/generate-yakei-page.mjs',
     'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'scripts/window-articles.test.mjs', 'yakei.css',
     'scripts/generate-spot-pages.test.mjs', 'scripts/content-metadata.json',
