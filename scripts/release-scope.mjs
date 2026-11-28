@@ -1299,7 +1299,7 @@ function discoveryScope(changes, options) {
   if (!sources.some(file => files.has(file))) return null;
   const bridge = files.has('app-embedded.js');
   const header = files.has('site-runtime-loader.js') || files.has('site-runtime.json');
-  const owned = new Set([...sources, 'ARCHITECTURE.md', 'scripts/shared/utility-locales.mjs', 'scripts/shared/utility-localization.mjs',
+  const owned = new Set([...sources, 'data/discovery/local-news.js', 'ARCHITECTURE.md', 'scripts/shared/utility-locales.mjs', 'scripts/shared/utility-localization.mjs',
     'scripts/generate-content-manifest.mjs', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
   if (header) for (const file of ['site-runtime-loader.js', 'site-runtime.json', 'scripts/generate-site-runtime.mjs',
     'scripts/generate-site-runtime.test.mjs']) owned.add(file);

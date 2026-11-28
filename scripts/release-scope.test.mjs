@@ -36,7 +36,7 @@ test('spot news header scope accepts only loader dependencies and version-only H
 });
 
 test('news registrations check both client projections and embedded articles add bridge validation', () => {
-  const files = ['scripts/content-news.json', 'data/discovery/ja.json', 'index.html', 'en/zukan.html', 'content-manifest.json'].map(change);
+  const files = ['scripts/content-news.json', 'data/discovery/ja.json', 'data/discovery/local-news.js', 'index.html', 'en/zukan.html', 'content-manifest.json'].map(change);
   const news = chooseReleaseScope(files);
   assert.equal(news.scope, 'content-news');
   assert.ok(news.commands.some(args => args.includes('scripts/content-news.test.mjs')));
