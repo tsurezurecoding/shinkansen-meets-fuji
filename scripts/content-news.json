@@ -1,12 +1,89 @@
 [
   {
-    "id": "solar-ark-section-correction",
-    "date": "2026-11-19",
-    "kind": "spot-update",
-    "route": "spots/solar-ark.html",
+    "id": "eki-stamp-guide",
+    "date": "2026-11-26",
+    "kind": "feature",
+    "route": "journal.html#eki-stamp",
     "titles": {
-      "ja": ["ソーラーアークの", "見える区間を訂正"],
-      "en": "Corrected the viewing segment for the Solar Ark"
+      "ja": ["駅スタンプの", "集め方と実物写真"],
+      "en": "How to collect station stamps, with real examples",
+      "zh-Hant": "車站紀念章怎麼收集？來看實際範例",
+      "fr": "Comment collectionner les tampons de gare, avec des exemples",
+      "de": "Bahnhofsstempel sammeln: Tipps und Beispiele",
+      "es": "Cómo coleccionar sellos de estación, con ejemplos",
+      "zh-Hans": "车站纪念章怎么收集？来看实际示例",
+      "ko": "역 스탬프 모으는 법과 실제 예시",
+      "it": "Come collezionare i timbri delle stazioni, con esempi",
+      "th": "วิธีสะสมตราประทับสถานีพร้อมตัวอย่างจริง"
+    }
+  },
+  {
+    "id": "nagoya-platform-kishimen",
+    "date": "2026-11-25",
+    "kind": "feature",
+    "route": "ramen.html#kishimen",
+    "titles": {
+      "en": "Try kishimen noodles on the platform at Nagoya Station",
+      "zh-Hant": "在名古屋站月台吃一碗扁麵",
+      "fr": "Des nouilles kishimen sur le quai de la gare de Nagoya",
+      "de": "Kishimen-Nudeln direkt am Bahnsteig in Nagoya",
+      "es": "Prueba los fideos kishimen en el andén de la estación de Nagoya",
+      "zh-Hans": "在名古屋站站台吃一碗扁面",
+      "ko": "나고야역 승강장에서 맛보는 기시멘",
+      "it": "Assaggia i kishimen sul binario della stazione di Nagoya",
+      "th": "ลองชิมคิชิเม็งบนชานชาลาสถานีนาโกย่า"
+    }
+  },
+  {
+    "id": "omikuji-goshuin-guide",
+    "date": "2026-11-24",
+    "kind": "feature",
+    "route": "omamori.html#omikuji",
+    "titles": {
+      "en": "A guide to omikuji fortunes and goshuin seals, with photos",
+      "zh-Hant": "御神籤與御朱印的圖文指南",
+      "fr": "Omikuji et goshuin : un guide illustré",
+      "de": "Omikuji und Goshuin: ein Ratgeber mit Fotos",
+      "es": "Guía con fotos de los omikuji y los sellos goshuin",
+      "zh-Hans": "御神签与御朱印的图文指南",
+      "ko": "오미쿠지와 고슈인, 사진으로 보는 안내",
+      "it": "Guida fotografica a omikuji e goshuin",
+      "th": "คู่มือพร้อมภาพสำหรับใบเสี่ยงทายโอมิคุจิและตราโกชูอิน"
+    }
+  },
+  {
+    "id": "fuji-hourly-forecast",
+    "date": "2026-11-21",
+    "kind": "function",
+    "route": "mieru.html",
+    "titles": {
+      "ja": ["富士山の見えやすさを", "時間別グラフで"],
+      "en": "See the Mt. Fuji visibility forecast by hour",
+      "zh-Hant": "查看富士山能見度的逐時預報",
+      "fr": "Visibilité du mont Fuji : les prévisions heure par heure",
+      "de": "Stündliche Vorhersage zur Sicht auf den Fuji",
+      "es": "Consulta por horas la previsión de visibilidad del monte Fuji",
+      "zh-Hans": "查看富士山能见度的逐小时预报",
+      "ko": "후지산이 보일 가능성을 시간대별로 확인",
+      "it": "Previsioni orarie sulla visibilità del Monte Fuji",
+      "th": "ดูพยากรณ์การมองเห็นภูเขาไฟฟูจิรายชั่วโมง"
+    }
+  },
+  {
+    "id": "donburi-guide",
+    "date": "2026-11-15",
+    "kind": "feature",
+    "route": "donburi.html",
+    "titles": {
+      "en": "A guide to Japan’s donburi rice bowls",
+      "zh-Hant": "日本丼飯指南",
+      "fr": "Guide des donburi, les bols de riz japonais",
+      "de": "Ein Guide zu Donburi, Japans Reisgerichten in der Schüssel",
+      "es": "Guía de los donburi, los cuencos de arroz japoneses",
+      "zh-Hans": "日本盖饭指南",
+      "ko": "일본 덮밥 돈부리 가이드",
+      "it": "Guida ai donburi, le ciotole di riso giapponesi",
+      "th": "คู่มือดงบุริ ข้าวหน้าต่าง ๆ ของญี่ปุ่น"
     }
   },
   {
@@ -81,6 +158,24 @@
       "ko": "신카리온에 등장하는 실제 신칸센을 만나다",
       "it": "I veri treni che hanno ispirato Shinkalion",
       "th": "พบรถไฟของจริงที่เป็นต้นแบบของชินคาเลียน"
+    }
+  },
+  {
+    "id": "solar-ark-dismantling-media",
+    "date": "2026-11-07",
+    "kind": "spot-update",
+    "route": "spots/solar-ark.html",
+    "titles": {
+      "ja": ["解体が進む", "ソーラーアークの写真と動画"],
+      "en": "New photos and video of the Solar Ark being dismantled",
+      "zh-Hant": "太陽方舟拆除工程的新照片與影片",
+      "fr": "Nouvelles photos et vidéo du démantèlement du Solar Ark",
+      "de": "Neue Fotos und ein Video vom Rückbau der Solar Ark",
+      "es": "Nuevas fotos y un vídeo del desmantelamiento del Solar Ark",
+      "zh-Hans": "太阳方舟拆除工程的新照片和视频",
+      "ko": "철거 중인 솔라 아크의 새 사진과 영상",
+      "it": "Nuove foto e un video dello smantellamento della Solar Ark",
+      "th": "ภาพถ่ายและวิดีโอใหม่ของโซลาร์อาร์กระหว่างรื้อถอน"
     }
   },
   {
