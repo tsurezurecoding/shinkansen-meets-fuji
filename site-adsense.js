@@ -35,16 +35,16 @@
     style.id = 'mado-site-ad-style';
     style.textContent =
       '.site-ad-rail{width:100%;max-width:234px;margin:18px auto;padding:14px 0 16px;border-top:1px solid var(--line,#e2e8f0);border-bottom:1px solid var(--line,#e2e8f0);text-align:center;box-sizing:border-box}' +
-      '.site-ad-rail>small,.site-ad-showcase>small{display:block;margin-bottom:8px;color:var(--muted,#6b7280);font-size:11px;letter-spacing:.08em;text-align:center}' +
+      '.site-ad-rail>small,.site-ad-article>small,.site-ad-showcase>small{display:block;margin-bottom:8px;color:var(--muted,#6b7280);font-size:11px;letter-spacing:.08em;text-align:center}' +
       '.site-ad-rail .site-ad-space{min-height:200px}' +
       '.site-ad-rail .site-ad-unit{display:block;width:200px;height:200px;margin:0 auto}' +
-      '.site-ad-showcase{width:100%;max-width:760px;margin:32px auto;padding:0 16px;box-sizing:border-box;text-align:center}' +
-      '.site-ad-showcase .site-ad-space{min-height:250px}' +
-      '.site-ad-showcase .site-ad-unit{display:block;width:100%;height:250px}' +
-      '@media(min-width:768px){.site-ad-showcase .site-ad-space{min-height:90px}.site-ad-showcase .site-ad-unit{height:90px}}' +
-      '@media(min-width:1100px){.site-ad-mobile-only{display:none}}' +
-      '.site-ad-rail:has(ins[data-ad-status="unfilled"]),.site-ad-showcase:has(ins[data-ad-status="unfilled"]){display:none}' +
-      'html.mado-embedded-web .site-ad-rail,html.mado-embedded-web .site-ad-showcase,html.is-native-app .site-ad-rail,html.is-native-app .site-ad-showcase{display:none!important}';
+      '.site-ad-article{width:100%;max-width:728px;margin:32px auto;padding:14px 0 16px;border-top:1px solid var(--line,#e2e8f0);border-bottom:1px solid var(--line,#e2e8f0);box-sizing:border-box;text-align:center}' +
+      '.site-ad-showcase{width:100%;max-width:760px;margin:32px auto;padding:14px 16px 16px;border-top:1px solid var(--line,#e2e8f0);border-bottom:1px solid var(--line,#e2e8f0);box-sizing:border-box;text-align:center}' +
+      '.site-ad-article .site-ad-space,.site-ad-showcase .site-ad-space{min-height:250px}' +
+      '.site-ad-article .site-ad-unit,.site-ad-showcase .site-ad-unit{display:block;width:100%;height:250px}' +
+      '@media(min-width:768px){.site-ad-article .site-ad-space,.site-ad-showcase .site-ad-space{min-height:90px}.site-ad-article .site-ad-unit,.site-ad-showcase .site-ad-unit{height:90px}}' +
+      '.site-ad-rail:has(ins[data-ad-status="unfilled"]),.site-ad-article:has(ins[data-ad-status="unfilled"]),.site-ad-showcase:has(ins[data-ad-status="unfilled"]){display:none}' +
+      'html.mado-embedded-web .site-ad-rail,html.mado-embedded-web .site-ad-article,html.mado-embedded-web .site-ad-showcase,html.is-native-app .site-ad-rail,html.is-native-app .site-ad-article,html.is-native-app .site-ad-showcase{display:none!important}';
     doc.head.appendChild(style);
   }
 
@@ -114,20 +114,47 @@
     return null;
   }
 
-  function findBottomAnchor() {
+  function findArticleAnchor() {
+    var article = visibleCandidate('article.spot-page-article') ||
+                  visibleCandidate('.spot-page-shell > article') ||
+                  visibleCandidate('main article');
+    if (article) {
+      var map = article.querySelector('.spot-static-map');
+      if (map && (!map.closest || !map.closest('[hidden]'))) {
+        return { node: map, insert: 'before', position: 'before-map', inArticle: true };
+      }
+      var sections = [];
+      for (var i = 0; i < article.children.length; i++) {
+        var child = article.children[i];
+        if (child.tagName === 'SECTION' && (!child.closest || !child.closest('[hidden]'))) {
+          sections.push(child);
+        }
+      }
+      if (sections.length >= 3) {
+        var articleTop = article.getBoundingClientRect().top;
+        var chosen = sections[0];
+        for (var j = 0; j < sections.length - 1; j++) {
+          var rect = sections[j].getBoundingClientRect();
+          if (rect.height <= 0) break;
+          chosen = sections[j];
+          if ((rect.bottom - articleTop) >= 1200) break;
+        }
+        return { node: chosen, insert: 'after', position: 'after-chapter', inArticle: true };
+      }
+    }
     var showcase = visibleCandidate('.spot-page-showcase');
-    if (showcase) return { node: showcase, position: 'before-showcase' };
+    if (showcase) return { node: showcase, insert: 'before', position: 'before-showcase', inArticle: false };
     var content = visibleCandidate('.content-rail-section');
-    if (content) return { node: content, position: 'before-content-rail' };
+    if (content) return { node: content, insert: 'before', position: 'before-content-rail', inArticle: false };
     var footer = visibleCandidate('footer.footer, footer');
-    if (footer) return { node: footer, position: 'before-footer' };
+    if (footer) return { node: footer, insert: 'before', position: 'before-footer', inArticle: false };
     return null;
   }
 
   function mount() {
     var rail = visibleCandidate('.spot-page-rail');
-    var bottom = findBottomAnchor();
-    if (!rail && (!bottom || bottom.position !== 'before-showcase')) return;
+    var anchor = findArticleAnchor();
+    if (!rail && (!anchor || anchor.position !== 'before-showcase')) return;
     ensureStyle();
     if (rail && !doc.getElementById('mado-site-ad-rail')) {
       var railList = rail.querySelector('.spot-page-rail-list-wrap');
@@ -138,11 +165,14 @@
       else rail.appendChild(railBox);
       observeBox(railBox);
     }
-    if (bottom && !doc.getElementById('mado-site-ad-showcase')) {
-      var cls = rail ? 'site-ad-showcase site-ad-mobile-only' : 'site-ad-showcase';
-      var bottomBox = createBox('mado-site-ad-showcase', cls, bottom.position);
-      bottom.node.before(bottomBox);
-      observeBox(bottomBox);
+    // Existing 6 Japanese pilot spots already mount #mado-spot-ad before .spot-static-map via spot-adsense.js.
+    var hasExistingSpotAd = !!(doc.getElementById('mado-spot-ad') || doc.getElementById('mado-spot-ad-config'));
+    if (anchor && !hasExistingSpotAd && !doc.getElementById('mado-site-ad-article')) {
+      var cls = anchor.inArticle ? 'site-ad-article' : 'site-ad-showcase';
+      var articleBox = createBox('mado-site-ad-article', cls, anchor.position);
+      if (anchor.insert === 'after') anchor.node.after(articleBox);
+      else anchor.node.before(articleBox);
+      observeBox(articleBox);
     }
   }
 
