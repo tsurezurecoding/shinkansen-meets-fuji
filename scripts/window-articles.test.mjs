@@ -28,7 +28,10 @@ test('six editions retain the article, clean photo copy and owned opening photog
     }
     const dom=render(page),doc=dom.window.document;
     assert.equal(doc.querySelectorAll('h1').length,1);
-    assert.equal(doc.querySelectorAll('iframe[src*="youtube-nocookie"]').length,id==='kizakura-otsukaresama-sign'?1:0);
+    const videoEmbeds = [...doc.querySelectorAll('template')].flatMap(template =>
+      [...template.content.querySelectorAll('iframe[src*="youtube-nocookie"]')]);
+    assert.equal(videoEmbeds.length,id==='kizakura-otsukaresama-sign'?1:0);
+    assert.equal(doc.querySelector('iframe[src*="youtube-nocookie"]'),null);
     for(const link of doc.querySelectorAll('a[href]'))assert.doesNotMatch(link.getAttribute('href'),/undefined|\.\.\/https:/);
     if(lang==='en')assert.equal(doc.querySelector('h1 .copy-chunk'),null);
     dom.window.close();
