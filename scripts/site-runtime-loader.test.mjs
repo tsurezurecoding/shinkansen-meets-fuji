@@ -106,6 +106,14 @@ test('shared AdSense module loads only on pages with rail or showcase and skips 
   await staticRail.settle();
   assert.deepEqual(files(staticRail), [ADS]);
 
+  const journeyGrid = harness(t, { mode: 'ordinary', extraArticle: '<div class="journey-desktop-grid"></div>' });
+  await journeyGrid.settle();
+  assert.deepEqual(files(journeyGrid), [ADS]);
+
+  const topEnjoy = harness(t, { mode: 'ordinary', extraArticle: '<main class="top-redesign"><section class="enjoy-window"></section></main>' });
+  await topEnjoy.settle();
+  assert.deepEqual(files(topEnjoy), [ADS]);
+
   const ordinaryNoRail = harness(t, { mode: 'ordinary' });
   await ordinaryNoRail.settle();
   assert.deepEqual(files(ordinaryNoRail), []);

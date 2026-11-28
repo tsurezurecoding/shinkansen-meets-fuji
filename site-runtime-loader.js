@@ -61,7 +61,7 @@
   var sharedAds = !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB && (
     thin ||
     (chrome && Array.isArray(chrome.mounts) && chrome.mounts.some(function (m) { return m.kind === 'rail' || m.kind === 'showcase'; })) ||
-    !!document.querySelector('.spot-page-rail, .spot-page-showcase, [data-spot-page-shared-module="rail"], [data-spot-page-shared-module="showcase"]')
+    !!document.querySelector('.spot-page-rail, .spot-page-showcase, [data-spot-page-shared-module="rail"], [data-spot-page-shared-module="showcase"], .journey-desktop-grid, main.top-redesign .enjoy-window')
   );
   // One small request per document, independent of how many common modules it uses.
   var manifest = location.protocol === 'file:' || (!thin && !chrome && !invite && !newsHeader && !sharedAds) ? Promise.resolve({}) : fetch(base + 'site-runtime.json', { cache: 'no-cache' }).then(function (r) {

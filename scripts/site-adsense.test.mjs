@@ -282,3 +282,151 @@ test('waits for MADO_SITE_RUNTIME_READY when common components render asynchrono
   assert.ok(h.doc.getElementById('mado-site-ad-rail'));
   assert.ok(h.doc.getElementById('mado-site-ad-article'));
 });
+
+function journeyHarness({
+  url = 'https://www.michikusa-travel.com/start.html',
+  lang = 'ja',
+  withSpView = true,
+  spotCount = 8,
+  journeyRailWidth = 300,
+  timelineAdWidth = 0,
+} = {}) {
+  const items = ['<li class="tl-station">東京</li>'];
+  for (let i = 1; i <= spotCount; i++) {
+    items.push(`<li class="tl-item" data-spot-idx="${i}">spot ${i}</li>`);
+    if (i === 3) items.push('<li class="tl-station">新横浜</li>');
+  }
+  const html = `<!doctype html><html lang="${lang}"><head></head><body>` +
+    `<section id="journey"><div class="journey-desktop-grid">` +
+    `<div class="journey-form-pane"><div class="setup-card"></div>` +
+    (withSpView ? `<details id="sp-view" open><summary>見本</summary></details>` : `<div class="train-entry-help"><p>help</p></div>`) +
+    `</div>` +
+    `<div class="journey-timeline-pane"><section id="timelineSection"><ol class="timeline" id="timeline">${items.join('')}</ol><div id="timeline-calculation-note"></div></section></div>` +
+    `</div></section><section class="content-rail-section"></section><footer class="footer"></footer></body></html>`;
+  const dom = new JSDOM(html, { url });
+  const observers = [];
+  const root = {
+    document: dom.window.document,
+    location: new URL(url),
+    MutationObserver: dom.window.MutationObserver,
+  };
+  root.self = root;
+  root.top = root;
+  root.IntersectionObserver = class {
+    constructor(callback, options) {
+      this.callback = callback;
+      this.options = options;
+      observers.push(this);
+    }
+    observe(node) { this.node = node; }
+    disconnect() { this.disconnected = true; }
+  };
+  dom.window.HTMLElement.prototype.getBoundingClientRect = function () {
+    if (this.id === 'mado-site-ad-journey-rail') return { width: journeyRailWidth, height: journeyRailWidth ? 250 : 0, top: 0, bottom: 250 };
+    if (this.id === 'mado-site-ad-article') return { width: timelineAdWidth, height: timelineAdWidth ? 250 : 0, top: 0, bottom: 250 };
+    return { width: 350, height: 100, top: 0, bottom: 100 };
+  };
+  const run = () => vm.runInNewContext(source, { window: root });
+  run();
+  return {
+    root,
+    doc: root.document,
+    observers,
+    run,
+    intersectAll: () => observers.forEach(o => o.callback([{ isIntersecting: true }])),
+    sdkCount: () => root.document.querySelectorAll('script[src*="adsbygoogle.js"]').length,
+    close: () => dom.window.close(),
+  };
+}
+
+test('Journey (start.html) PC (>=900px): mounts below #sp-view / help in left pane and hidden mobile slot never pushes', t => {
+  for (const cfg of [
+    { url: 'https://www.michikusa-travel.com/start.html', lang: 'ja', withSpView: true, label: '広告', prevId: 'sp-view' },
+    { url: 'https://www.michikusa-travel.com/en/start.html', lang: 'en', withSpView: false, label: 'Advertisement', prevClass: 'train-entry-help' },
+  ]) {
+    const h = journeyHarness({ ...cfg, journeyRailWidth: 300, timelineAdWidth: 0 });
+    t.after(() => h.close());
+    const railAd = h.doc.getElementById('mado-site-ad-journey-rail');
+    assert.ok(railAd);
+    assert.equal(railAd.getAttribute('data-site-ad-position'), 'journey-rail-bottom');
+    assert.equal(railAd.querySelector('small').textContent, cfg.label);
+    if (cfg.prevId) assert.equal(railAd.previousElementSibling.id, cfg.prevId);
+    if (cfg.prevClass) assert.equal(railAd.previousElementSibling.className, cfg.prevClass);
+
+    const mobileAd = h.doc.getElementById('mado-site-ad-article');
+    assert.ok(mobileAd);
+    assert.equal(mobileAd.getAttribute('data-site-ad-position'), 'timeline-after');
+    assert.equal(h.doc.getElementById('timelineSection').lastElementChild, mobileAd);
+
+    h.intersectAll();
+    assert.equal(h.sdkCount(), 1);
+    assert.equal(h.root.adsbygoogle.length, 1, 'Only visible PC left rail pushes');
+    assert.equal(railAd.querySelectorAll('ins.adsbygoogle').length, 1);
+    assert.equal(mobileAd.querySelectorAll('ins.adsbygoogle').length, 0);
+  }
+});
+
+test('Journey (start.html) Mobile (<900px): mounts once at bottom of #timelineSection and survives timeline re-renders', t => {
+  const h = journeyHarness({ journeyRailWidth: 0, timelineAdWidth: 350, spotCount: 8 });
+  t.after(() => h.close());
+  const timeline = h.doc.getElementById('timeline');
+  const section = h.doc.getElementById('timelineSection');
+  const ad = h.doc.getElementById('mado-site-ad-article');
+  assert.ok(ad);
+  assert.equal(ad.getAttribute('data-site-ad-position'), 'timeline-after');
+  assert.equal(section.lastElementChild, ad);
+  assert.equal(timeline.querySelector('#mado-site-ad-article'), null, 'Never inserted inside #timeline');
+
+  // Re-rendering #timeline never touches or duplicates the bottom slot
+  timeline.innerHTML = '<li class="tl-item">a</li><li class="tl-item">b</li>';
+  h.run();
+  assert.equal(h.doc.querySelectorAll('#mado-site-ad-article').length, 1);
+  assert.equal(section.lastElementChild, ad);
+
+  h.intersectAll();
+  assert.equal(h.sdkCount(), 1);
+  assert.equal(h.root.adsbygoogle.length, 1);
+  assert.equal(h.doc.getElementById('mado-site-ad-journey-rail').querySelectorAll('ins.adsbygoogle').length, 0);
+  assert.equal(ad.querySelectorAll('ins.adsbygoogle').length, 1);
+});
+
+test('TOP (index.html / en/index.html): mounts one band directly before .enjoy-window (after #live-guide)', t => {
+  for (const cfg of [
+    { url: 'https://www.michikusa-travel.com/', lang: 'ja', label: '広告' },
+    { url: 'https://www.michikusa-travel.com/en/', lang: 'en', label: 'Advertisement' },
+  ]) {
+    const html = `<!doctype html><html lang="${cfg.lang}"><head></head><body>` +
+      `<main id="main" class="top-redesign"><section id="quick-intro"></section><nav class="home-purpose"></nav>` +
+      `<section id="content-news"></section><section id="scenery" class="scenery scenery-editorial"></section>` +
+      `<section id="live-guide" class="journey-tools"></section><section class="enjoy-window"></section></main><footer class="footer"></footer></body></html>`;
+    const dom = new JSDOM(html, { url: cfg.url });
+    t.after(() => dom.window.close());
+    const observers = [];
+    const root = { document: dom.window.document, location: new URL(cfg.url) };
+    root.self = root; root.top = root;
+    root.IntersectionObserver = class {
+      constructor(cb) { this.cb = cb; observers.push(this); }
+      observe() {}
+      disconnect() {}
+    };
+    dom.window.HTMLElement.prototype.getBoundingClientRect = function () {
+      return { width: 728, height: 90, top: 0, bottom: 90 };
+    };
+    vm.runInNewContext(source, { window: root });
+
+    const band = root.document.getElementById('mado-site-ad-top-band');
+    const liveGuide = root.document.getElementById('live-guide');
+    const enjoy = root.document.querySelector('.enjoy-window');
+    const ad = root.document.getElementById('mado-site-ad-article');
+    assert.ok(band);
+    assert.ok(ad);
+    assert.equal(liveGuide.nextElementSibling, band);
+    assert.equal(band.nextElementSibling, enjoy);
+    assert.equal(ad.getAttribute('data-site-ad-position'), 'top-before-enjoy');
+    assert.equal(ad.querySelector('small').textContent, cfg.label);
+
+    observers.forEach(o => o.cb([{ isIntersecting: true }]));
+    assert.equal(root.adsbygoogle.length, 1);
+    assert.equal(root.document.querySelectorAll('script[src*="adsbygoogle.js"]').length, 1);
+  }
+});
