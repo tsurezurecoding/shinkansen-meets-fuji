@@ -1221,6 +1221,16 @@ test('registered article-route spots retain all global consumer checks without a
   assert.equal(chooseReleaseScope([change('data.js'), {path:'images/stamps/stamp_kyoto-tower.svg',status:'A'}, {path:'kyoto-station-views.html',status:'M'}]).scope, 'full');
 });
 
+test('Kyoto spot guides check the localized article and shared map output', () => {
+  const files = ['scripts/generate-kyoto-window-page.mjs', 'scripts/generate-spot-page-shared-data.mjs',
+    'scripts/locales/episode-fr.json', 'fr/kyoto-station-views.html', 'content-manifest.json'].map(change);
+  const plan = chooseReleaseScope(files);
+  assert.equal(plan.scope, 'kyoto-spot-guide');
+  assert.ok(plan.commands.some(c => c.slice(1).join(' ') === 'scripts/generate-spot-page-shared-data.mjs --check'));
+  assert.ok(plan.commands.some(c => c.includes('scripts/site-adsense.test.mjs')));
+  assert.notEqual(chooseReleaseScope([...files, change('spot-page-shared.js')]).scope, plan.scope);
+});
+
 test('Kyoto layout and existing night-article additions use their bounded consumers',()=>{
  const files=['scripts/generate-kyoto-window-page.mjs','scripts/generate-yakei-page.mjs','scripts/shared/yakei-spots.mjs','scripts/locales/episode-fr.json','fr/utility-data.js','fr/yakei.html','kyoto-station-views.html','index.html','content-manifest.json'].map(change);
  const plan=chooseReleaseScope(files);
